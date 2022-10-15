@@ -1,0 +1,129 @@
+
+#mock_popup * {
+  /*width: auto;
+  height: auto;
+  background: transparent;*/
+  border: none;
+  /*margin: 0px;
+  padding: 0px;*/
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0px;
+  text-transform: none;
+  white-space: normal;
+  word-spacing: normal;
+  /*font-weight: normal;
+  font-size: 12px;*/
+  font-family: 'Trebuchet MS', sans-serif !important;
+  visibility: visible;
+  line-height: initial;
+  color:black;
+}
+
+
+
+#mock_popup{
+  font-weight: normal;
+  word-break: break-word;
+  pointer-events: none;
+  display: block;
+  width: auto;
+  min-width: 13em;
+  max-width: 27em;
+  height:fit-content;
+  border-radius:1em;
+  background-color:#cdcdcd;
+  position:relative;
+  top:0;
+  left:0;
+  box-shadow: rgb(0 0 0 / 50%) 0px 2px 5px;
+
+  border: double 2px transparent;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #ff0073,#2094ff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+
+  font-family: 'Trebuchet MS', sans-serif !important;
+
+}
+
+#mock_popup .laos_folder{
+  background: #ececec;
+  border-radius: 1em;
+  margin: 0.5em;
+  padding:0.5em;
+}
+
+#mock_popup .laos_header{
+  font-weight:500;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+#mock_popup .laos_header > *{
+  padding:0.3em;
+}
+
+#mock_popup .laos_header h1{
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0 !important;
+}
+
+#mock_popup .laos_header h1:not(:first-child){
+  padding-left: 0.7em;
+}
+
+#mock_popup .laos_zhuyin{
+  font-size: 80% !important;
+
+}
+
+#mock_popup .laos_zhongwhen{
+  font-size: 110% !important;
+}
+
+#mock_popup .laos_popup h1,p{
+  padding: 0.2em;
+}
+
+#mock_popup .laos_folder p{
+  padding-left: 0.3em;
+  margin: 0;
+  font-size: 13px;
+  font-weight: lighter;
+  line-height: 1.4em;
+}
+
+#mock_popup .laos_separator{
+
+    height: 0.1em;
+    width: 98%;
+    display: block;
+    margin-top: 0.5em;
+    background: radial-gradient(circle at top left, #ff0073,#2094ff);
+    margin-left: 1%;
+
+}
+
+#mock_popup .laos_key{
+  background: radial-gradient(circle at top left, rgba(255, 0, 115,0.8),rgba(32, 148, 255,0.8));
+  color: #FFF !important;
+  min-width: 3em;
+  text-align: center;
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
+}
+
+#mock_popup .laos_tone_a{ color:#4fa2f7 !important; }
+
+#mock_popup .laos_tone_b{ color:#ff6a55 !important; }
+
+#mock_popup .laos_tone_c{ color:#70bd0e !important; }
+
+#mock_popup .laos_tone_d{ color:#e54ff2 !important; }

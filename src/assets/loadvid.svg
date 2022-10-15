@@ -1,0 +1,14 @@
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="472.4" height="472.4" viewBox="0 0 472.4 472.4">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 27px;
+      }
+    </style>
+  </defs>
+  <title>loadvid</title>
+  <path class="cls-1" d="M246.3,29.2c123,0,222.8,99.7,222.8,222.7S369.3,474.6,246.3,474.6,23.6,374.9,23.6,251.9A221.4,221.4,0,0,1,55.3,137.4" transform="translate(-10.1 -15.7)"/>
+</svg>

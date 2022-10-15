@@ -1,0 +1,15 @@
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="133" height="175" viewBox="0 0 133 175">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_5);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom_5" data-name="Dégradé sans nom 5" x1="80.92" y1="150.56" x2="81.3" y2="151.6" gradientTransform="matrix(133, 0, 0, -175, -10720.81, 26524.39)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eb3467"/>
+      <stop offset="1" stop-color="#ff75ae"/>
+    </linearGradient>
+  </defs>
+  <title>card_1</title>
+  <rect id="Rectangle_59" data-name="Rectangle 59" class="cls-1" width="133" height="175" rx="15"/>
+</svg>

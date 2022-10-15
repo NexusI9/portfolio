@@ -1,0 +1,17 @@
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="22.3" height="22.3" viewBox="0 0 22.3 22.3">
+  <title>grid</title>
+  <g id="Icon_feather-grid" data-name="Icon feather-grid">
+    <g id="Path_16" data-name="Path 16">
+      <path d="M31.4,49.9H23.5a.9.9,0,0,1-1-1V41a.9.9,0,0,1,1-1h7.9a.9.9,0,0,1,1,1v7.9A.9.9,0,0,1,31.4,49.9Zm-6.9-2h5.9V42H24.5Z" transform="translate(-22.5 -40)" style="fill: #fff"/>
+    </g>
+    <g id="Path_17" data-name="Path 17">
+      <path d="M43.8,49.9H35.9a.9.9,0,0,1-1-1V41a.9.9,0,0,1,1-1h7.9a.9.9,0,0,1,1,1v7.9A.9.9,0,0,1,43.8,49.9Zm-6.9-2h5.9V42H36.9Z" transform="translate(-22.5 -40)" style="fill: #fff"/>
+    </g>
+    <g id="Path_18" data-name="Path 18">
+      <path d="M43.8,62.3H35.9a.9.9,0,0,1-1-1V53.4a.9.9,0,0,1,1-1h7.9a.9.9,0,0,1,1,1v7.9A.9.9,0,0,1,43.8,62.3Zm-6.9-2h5.9V54.4H36.9Z" transform="translate(-22.5 -40)" style="fill: #fff"/>
+    </g>
+    <g id="Path_19" data-name="Path 19">
+      <path d="M31.4,62.3H23.5a.9.9,0,0,1-1-1V53.4a.9.9,0,0,1,1-1h7.9a.9.9,0,0,1,1,1v7.9A.9.9,0,0,1,31.4,62.3Zm-6.9-2h5.9V54.4H24.5Z" transform="translate(-22.5 -40)" style="fill: #fff"/>
+    </g>
+  </g>
+</svg>
