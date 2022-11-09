@@ -23,6 +23,22 @@
       }
     }
 
+    #letterbox {
+      #iframewrapper{
+        width: 100vw;
+        right: 0;
+        height: calc(100vw*9/16);
+        box-sizing: border-box;
+        padding: 2%;
+      }
+      #textLetterbox{
+        left: 0;
+        h1{
+          font-size: 5rem;
+        }
+      }
+    }
+
 }
 @media only screen and (max-width: 425px) {
 

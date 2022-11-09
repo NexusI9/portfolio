@@ -18,24 +18,33 @@ export const Header = ({project}) => (
 
 export const Suggestion = ({projects, display}) =>{
 
-  const variant={
-    show:{opacity:1, y:0, transition:{duration:0.8, type:"tween", ease:'easeOut', delay:0.2}},
-    hide:{opacity:0, y:200, transition:{duration:0.5, type:"tween", ease:'easeOut'}},
-    exit:{y:-400, opacity:0, transition:{duration:0.7}}
+  const variantContainer={
+    show:{opacity:1, transition:{duration:0.8, type:"tween", ease:'easeOut', delay:0.2}},
+    hide:{opacity:0, transition:{duration:0.5, type:"tween", ease:'easeOut'}},
+    exit:{opacity:0, transition:{duration:0.7}}
+  }
+
+  const variantChild={
+    show:{y:0, transition:{duration:0.8, type:"tween", ease:'easeOut'}},
+    hide:{y:200, transition:{duration:0.5, type:"tween", ease:'easeOut',staggerChildren:0.2}},
+    exit:{y:-400, transition:{duration:0.7,staggerChildren:0.2}}
   }
 
   return(
       <motion.div id="suggest"
       key='suggestStrype'
-      variants={variant}
+      variants={variantContainer}
       initial='hide'
       animate={ display ? 'show' : 'hide' }
       exit='exit'
       >
         <h2> See also ... </h2>
-        <section>
+        <motion.section
+          key='suggestSection'
+          variants={variantChild}
+        >
           { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={false} /> ) }
-        </section>
+        </motion.section>
         <Signature />
       </motion.div>
     );

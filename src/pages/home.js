@@ -20,6 +20,7 @@ const VideoBanner = (onScroll) => {
   const container = useRef();
   const name = useRef();
   const quote = useRef();
+  const video = useRef();
   const textArea = useRef();
 
   const letterVar = {
@@ -42,9 +43,9 @@ const VideoBanner = (onScroll) => {
         setOpacity(1-scrollPos / window.innerHeight);
         setDisplayVideo(true);
 
-        //name.current.style.transform = 'translateY(-'+(scrollPos/10)+'%)';
-        //quote.current.style.transform = 'translateY(-'+(scrollPos/20)+'%)';
-        textArea.current.style.transform = 'translateY(-'+(scrollPos/20)+'%)';
+        name.current.style.transform = 'translateY(-'+(scrollPos/4)+'%) ';
+        quote.current.style.transform = 'translateY(-'+(scrollPos/20)+'%)';
+        video.current.style.transform = 'translateY(-'+(scrollPos/30)+'%) ';
       }
       else if( window.pageYOffset > window.innerHeight ){
         setOpacity(0);
@@ -56,7 +57,7 @@ const VideoBanner = (onScroll) => {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
 
-  },[name, quote, textArea]);
+  },[name, quote, video]);
   return (
     <motion.div
       key='motionLetterbox'
@@ -71,17 +72,19 @@ const VideoBanner = (onScroll) => {
           id='iframewrapper'
           style={{display: displayVideo ? 'block' : 'none', pointerEvents: displayVideo ? 'auto' : 'none'}}
         >
-          <Video id={629250987} autoplay={true} resize={false} playIco={false}/>
+          <div ref={video} style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}}>
+            <Video id={629250987} autoplay={true} resize={false} playIco={false} placeholder={'/assets/thumbnails/showreel.jpg'} />
+            <Link to='/showreel'>{/*<Button label="view the showreel"/>*/}</Link>
+          </div>
       </div>
       <motion.div id='textLetterbox'>
 
           <section ref={textArea}>
             <h5 ref={name}>Nassim El Khantour</h5>
-            <h2 ref={quote}>Where art & code shape worlds</h2>
-            <Link to='/showreel'><Button label="view the showreel"/></Link>
+            <h1 ref={quote}>Where art & code<br/> shape worlds</h1>
           </section>
           <a href="#projects" id="arrowScroll">
-            <HoverSquare size='45px' name='arrowScroll'>
+            <HoverSquare size='35px' name='arrowScroll'>
               <img src={downArrow} />
             </HoverSquare>
           </a>

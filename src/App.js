@@ -24,7 +24,7 @@ const Contact = React.lazy(() => import('./pages/contact') );
 function App() {
 
   const routes = [
-    {path:'/', element: <Home projects={PROJECTS} onLoad={ () => setTheme({skin: window.pageYOffset < window.innerHeight ? 'whiteMenu' : 'default'}) } onBelowTheFold = { () => setTheme({}) } onAboveTheFold = { () => setTheme({skin:'whiteMenu'}) }/> },
+    {path:'/', element: <Home projects={PROJECTS} onLoad={ () => setTheme({skin:'default'}) } /> },
     {path:'/project/:title', element: <Project onLoad={ obj => setTheme({color:obj.color, skin:obj.skin, customColor:obj.customColor }) }  /> },
     {path:'/resume', element: <Resume onLoad={ () => setTheme({color:'red'}) } /> },
     {path:'/contact', element: <Contact onLoad={ () => setTheme({color:'purple'}) } /> },
@@ -50,7 +50,7 @@ function App() {
     body.setAttribute('data-skin',theme.skin || 'default');
 
     const favicon = document.getElementById('favicon');
-    setFaviconColor(favicon, theme.color); 
+    setFaviconColor(favicon, theme.color);
 
     if( theme.customColor ){
           body.setAttribute('style','--customcolor:'+ theme.customColor);
