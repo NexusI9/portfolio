@@ -14,11 +14,16 @@
   overflow: hidden;
 
   img{
+    transition: transform 0.3s ease-in-out;
     object-fit: cover !important;
     width: 100% !important;
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.1);
+    }
   }
 
   &.split, &.base{
@@ -69,6 +74,7 @@
   section{
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
 
   }
 
@@ -104,8 +110,8 @@
     z-index: 3;
     top: 0;
     right: 0;
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     display: flex;
     margin: 35px 30px;
     span{
@@ -155,6 +161,18 @@
 
 }
 
+@media only screen and (max-width: 800px){
+
+  .gallery{
+    &.split{
+      grid-auto-flow: row;
+      grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+      grid-template-columns: none;
+    }
+  }
+
+}
+
 
 @media only screen and (max-width: 500px){
 
@@ -162,12 +180,6 @@
 
     &.window{
       grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: none;
-    }
-
-    &.split{
-      grid-auto-flow: row;
-      grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
       grid-template-columns: none;
     }
 

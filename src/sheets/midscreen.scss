@@ -3,7 +3,7 @@
 @media only screen and (max-width: 825px) {
 
   #sidePanel{ display: none; }
-  #project .projectWrapper {width: auto;}
+  #project .projectWrapper {width: auto; padding: 40px 15px; }
   .casualProject #desc { width: 80%; }
 
 
@@ -41,14 +41,15 @@
       width: 100%;
       section{ padding: 10px; }
       br{ display: none;}
+      h2{
+        font-size: 5.5em;
+      }
     }
   }
 
   #squareabout{
-    float: right;
     width: 100%;
     position: relative;
-    right: 0;
   }
 
   #suggest {
@@ -86,6 +87,8 @@
   #signature{
     width: 100%;
     margin: 30px 0;
+    flex-direction: column;
+    span{ margin: 10px 0;}
   }
 
 
@@ -122,13 +125,12 @@
   }
 
   #resume{
-    padding: 0 10%;
-    margin: 0;
     display: block;
   }
 
   #resumeSettings{
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
     row-gap: 20px;
     padding-top: 3vh;
     padding-left: 2vw;
@@ -147,6 +149,14 @@
 
   /*------CASE STUDY------*/
 
+  .article {
+      & > .body > div{
+        margin-bottom: 20px;
+      }
+      .hori, .horizontal, .body{
+        flex-direction: column;
+      }
+  }
   .musicWave{
     left: -7vw;
   }

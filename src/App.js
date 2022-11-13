@@ -24,6 +24,7 @@ const Contact = React.lazy(() => import('./pages/contact') );
 function App() {
 
   const routes = [
+    {path: '*', element: <Home projects={PROJECTS} onLoad={ () => setTheme({skin:'default'}) }/>},
     {path:'/', element: <Home projects={PROJECTS} onLoad={ () => setTheme({skin:'default'}) } /> },
     {path:'/project/:title', element: <Project onLoad={ obj => setTheme({color:obj.color, skin:obj.skin, customColor:obj.customColor }) }  /> },
     {path:'/resume', element: <Resume onLoad={ () => setTheme({color:'red'}) } /> },

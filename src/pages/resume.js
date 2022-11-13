@@ -304,6 +304,11 @@ function Resume({onLoad}){
 
     </motion.div>
 
+
+        <Suspense fallback={<p>Loading 3d model</p>}>
+          <Portrait innerRef={e => portrait.current = e}/>
+        </Suspense>
+
     <AnimatePresence exitBeforeEnter>
       <motion.div id='resumeWrapper'
       variants={slideUp}
@@ -342,20 +347,14 @@ function Resume({onLoad}){
 
         <div id="resume" >
             <div>
-                { listRoute.map( (item,i) => i%2 === 0 && <Section title={item.name} ico={item.ico} content={item.content}/> ) }
+                { listRoute.map( (item,i) => i%2 === 0 && <Section key={'section'+item.id} title={item.name} ico={item.ico} content={item.content}/> ) }
             </div>
            <div>
-               { listRoute.map( (item,i) => i%2 !== 0 && <Section title={item.name} ico={item.ico} content={item.content}/> ) }
+               { listRoute.map( (item,i) => i%2 !== 0 && <Section key={'section'+item.id} title={item.name} ico={item.ico} content={item.content}/> ) }
            </div>
-          <Signature />
         </div>
-
       </motion.div>
     </AnimatePresence>
-
-    <Suspense fallback={<p>Loading 3d model</p>}>
-      <Portrait innerRef={e => portrait.current = e}/>
-    </Suspense>
 
     <Socials />
   </>

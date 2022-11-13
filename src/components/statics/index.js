@@ -200,8 +200,8 @@ export const Socials = () => (
 
 export const Signature = () => (
   <div id='signature'>
-    <small className='discrete'>Website designed & developed by Nassim El Khantour</small>
+    <small>Website designed & developed by Nassim El Khantour</small>
     <span></span>
-    <small className='discrete'>&copy;	Nassim El Khantour 2022</small>
+    <small>&copy;	Nassim El Khantour 2022</small>
   </div>
 )

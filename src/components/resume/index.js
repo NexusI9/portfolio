@@ -26,7 +26,8 @@ const List = ({li}) => (
 
 const Content = ({header, body, detail, separator=true }) => (
   <div>
-      <p className='contentHeader'><b>{header}</b></p>
+
+      <div className='contentHeader'>{header}</div>
       {body}
       <small className='discrete detail'>{detail}</small>
 

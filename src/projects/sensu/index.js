@@ -1,11 +1,5 @@
 import { Img, Gallery, Article, Body } from '../../components/article';
 
-const galleryRoute = {
-  g1:[
-    {type:'split', folder:'/sensu/', pictures:['og_3','og_6']}
-  ]
-}
-
 export default () => (
   <>
     <Article>
@@ -21,8 +15,8 @@ export default () => (
     </Article>
 
     <Article>
-      <Body flexDirection='vertical'>
-        <Gallery galleries={galleryRoute} galleryKey='g1' />
+      <Body>
+        <Img alt="neom" src="/assets/projects/sensu/og_3.jpg" />
       </Body>
     </Article>
 

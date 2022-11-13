@@ -823,8 +823,8 @@ export default () => (
     <Article id="laos_tpt" spaced={true} name="What's Laos">
       <Body flexDirection='horizontal' flexAlignement='centered'>
         <section style={{flexBasis:'30%'}}>
-          <h2>It’s a translator,<br />a personal dico <br /> and a trainer !</h2>
-          <p>&emsp;
+          <h2>It’s a translator,a personal dico and a trainer !</h2>
+          <p>
             The app not only offers an elegant pop-up translator but also a personal dictionary and various exercises.<br /><br />
             It is through a process of gamification that LAOS acts as a user-friendly toolbox to learn mandarin.<br />
             By using LAOS, the user is invited to use various games for a smoother and more enjoyable learning experience.
@@ -844,7 +844,7 @@ export default () => (
     </Article>
 
     <Article spaced={true} name='Four modes'>
-      <Title label='4 modes, 4 worlds' className='half' summary={<>
+      <Title label='4 modes, 4 worlds' summary={<>
         Each of 4 LAOS modes have been thought as distinct universes with singular dominant color, layout and mechanics, while still being anchored in the global aesthetic.
         <br /><br />
         A dynamic throwing the user in an eye-candy and reviving environment each click, preventing the interaction to become too monotonous.
@@ -857,7 +857,7 @@ export default () => (
 
 
     <Article name='Inconography'>
-      <Title label='The Style Guide' summary={<>On top of relying on a joyful and appealing color scheme,  LAOS also dig its inspiration in East-Asia iconography.<br /> Allowing the user to choose between up to four exercises modes  symbolised by distinctive key shapes and color contrasts.</>} className='half' />
+      <Title label='The Style Guide' summary={<>On top of relying on a joyful and appealing color scheme,  LAOS also dig its inspiration in East-Asia iconography.<br /> Allowing the user to choose between up to four exercises modes  symbolised by distinctive key shapes and color contrasts.</>} />
       <Body flexDirection='vertical' flexAlignement='centered'>
           <KeyShapes />
       </Body>
@@ -870,38 +870,37 @@ export default () => (
         <div className='flexblank'></div>
         <div>
           <h1 style={{fontFamily: 'noto-reg', whiteSpace: 'nowrap', position:'relative', visibility:'hidden'}}>覺得</h1>
-          <h1 style={{fontFamily: 'noto-reg', whiteSpace: 'nowrap', backgroundColor: '#b2d1ff', color:'#2f2f2f', top:0, transform: 'translate(23%, 40%)', width: 'fit-content', position:'absolute'}}>覺得</h1>
+          <h1 style={{fontFamily: 'noto-reg', whiteSpace: 'nowrap', backgroundColor: '#b2d1ff', color:'#2f2f2f', top:0, transform: 'translate(0%, 40%)', width: 'fit-content', position:'absolute'}}>覺得</h1>
         </div>
         <div className='flexblank'></div>
       </section>
     </Body>
     <Body className='reverse'>
-      <div className='flexblank' style={{flexBasis:'60%'}}></div>
+      <div className='flexblank' style={{flexBasis:'30%'}}></div>
       <div> <PopUp /> </div>
-      <div>
+      <div className='compress'>
         <h2>The popup</h2>
-        <p>&emsp;The popup translator also uses a dedicated color scheme in order to highlight the different tones and characters contained within the words </p>
+        <p>The popup translator also uses a dedicated color scheme in order to highlight the different tones and characters contained within the words </p>
       </div>
     </Body>
   </Article>
 
-  <Article id='laos_typo' spaced={true} name='Font'>
+  <Article id='laos_typo' spaced={false} name='Font'>
     <Body style={{overflow:'hidden'}}>
+    <section>
+      <h2>The font</h2>
+      <p>Cursive writting can be tedious for beginners to make a clear distinction between the numerous and sometimes complex mandarin characters.<br />
+        As a result LAOS uses a sans-serif font to make the characters easily readable for the user.</p>
+        <br />
+        <br />
+      <p>Compatible with Simplified, Traditional, Roman and Zhuyin characters,
+        Noto Sans is a flexible font ensuring a cohesion depending on the user wishes to learn either Traditional or Simplified.</p>
+    </section>
       <section>
           <div id="laos_typo_switch">
             <img src="/assets/projects/laos/hai.svg" />
             <h1>嗨</h1>
           </div>
-      </section>
-      <section>
-        <h2>The font</h2>
-        <p>Cursive writting can be tedious for beginners to make a clear distinction between the numerous and sometimes complex mandarin characters.<br />
-          As a result LAOS uses a sans-serif font to make the characters easily readable for the user.</p>
-          <br />
-          <br />
-        <p>Compatible with Simplified, Traditional, Roman and Zhuyin characters,
-          Noto Sans is a flexible font ensuring a cohesion depending on the user wishes to learn either Traditional or Simplified.</p>
-        <img style={{width:'80%', opacity:'0.6', marginTop:'100px'}} src="/assets/projects/laos/typeface.svg" />
       </section>
 
 
@@ -915,9 +914,8 @@ export default () => (
     </Body>
   </Article>
 
-  <Article name='Userflow' spaced={true}>
-    <Title label='Userflow'/>
-    <Body style={{display: 'block'}}>
+  <Article name='Userflow' spaced={false}>
+    <Body title='Userflow' style={{textAlign:'center'}}>
         <img src="/assets/projects/laos/user_flow_laos.svg"/>
     </Body>
     <Space />
@@ -926,11 +924,11 @@ export default () => (
 
 
   <Article spaced={true} name='Minimalism'>
-    <Body title='When minimalism dismiss austerity' summary={<>&emsp;LAOS aims for a minimalist environment emphasising <br /> on the essentials while still providing an engaging and colourful <br /> learning experience to the user.</>} flexDirection='vertical' id='laos_layout'>
+    <Body title='When minimalism dismiss austerity' summary={<>LAOS aims for a minimalist environment emphasising on the essentials while still providing an engaging and colourful learning experience to the user.</>} flexDirection='vertical' id='laos_layout'>
       <Slicer />
       <div style={{display:'none'}}>
-        <p>&emsp;On one hand, the idea was to give the user a sense of comfort and ease through a classic and refined flat-design aesthetic and a simple layout without nested parametters. </p>
-        <p>&emsp;And on the other, to add visual dynamics through vibrants elements such as saturated gradients, neuemorphic icons or even animated background. </p>
+        <p>On one hand, the idea was to give the user a sense of comfort and ease through a classic and refined flat-design aesthetic and a simple layout without nested parametters. </p>
+        <p>And on the other, to add visual dynamics through vibrants elements such as saturated gradients, neuemorphic icons or even animated background. </p>
       </div>
       <div style={{display:'none'}}>
         <p>As a result LAOS interface lies between a casual website with its known rules and layout; and a fully-themed, eccentric video-game interface with strong and unusual visual identities.</p>
@@ -942,16 +940,15 @@ export default () => (
 
 
   <Article name='Navigation'>
-    <Body id='laos_sidebar_main' style={{columnGap:'5%'}}>
-      <div style={{flexBasis:'50%'}} className="flexblank"></div>
-      <div style={{flexBasis:'10%'}}>
-        <div style={{height:'100%'}}><SideMenu /></div>
-      </div>
+    <Body id='laos_sidebar_main'>
       <div style={{flexBasis:'50%'}}>
         <h2>One sidebar to control it all</h2>
         <p>LAOS has been designed to be as direct as possible while providing the user the right amount of settings to offer a full personal experience that fit the user wishes and preferences.
           <br /><br />
           Its intuitive and ludic sidebar makes the user emphasise on learning words rather than spend energy figuring how the app works.</p>
+      </div>
+      <div style={{flexBasis:'50%', alignItems:'center', justifyContent:'center'}}>
+        <div style={{height:'100%', margin:'auto', width:'20%'}}><SideMenu /></div>
       </div>
     </Body>
   </Article>
@@ -961,7 +958,7 @@ export default () => (
     <Body>
       <div>
         <h2>Quick settings access</h2>
-        <p> &emsp; As LAOS aims to be straightforward, avoiding nested parameters,
+        <p>As LAOS aims to be straightforward, avoiding nested parameters,
           the extension offers a quick setting access pannel.
           Allowing the user to quickly access and switch between the essentials settings
         </p>
@@ -970,8 +967,6 @@ export default () => (
       <div style={{display:'flex', justifyContent:'center'}}>
           <LaosOptions />
       </div>
-
-      <div></div>
 
     </Body>
   </Article>

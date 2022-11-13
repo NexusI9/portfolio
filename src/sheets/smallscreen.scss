@@ -33,9 +33,7 @@
       }
       #textLetterbox{
         left: 0;
-        h1{
-          font-size: 5rem;
-        }
+        h1{ font-size: 2em; }
       }
     }
 
@@ -149,21 +147,15 @@
 
 
   .article {
-
-    .hori, .horizontal, .body{
-      flex-direction: column !important;
-    }
-    .half{ width:100% !important; }
+    .half{ width:100%; }
     .reverse{ flex-direction: column-reverse;}
-    &.spaced{ margin-bottom: 40% !important; }
+    &.spaced{ margin-bottom: 40%; }
   }
 
 
 
 
   #keyshape{ width:90%; }
-
-  h2{ font-size: 4em; }
 
   #laos_layout .body > div:not(#slicer){
     flex-direction: column;

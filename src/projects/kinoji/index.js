@@ -322,7 +322,7 @@ const GraphicChart = () => (
       </tbody>
     </table>
 
-    <table id='table_inputs'>
+    <table id='table_inputs' style={{display:'none'}}>
       <thead>
         <tr>
           <td colSpan='4'>
@@ -440,10 +440,6 @@ const DatabaseQuery = () => {
 export default () => (
   <>
     <Article spaced={true} name='Introduction'>
-      <Body flexDirection='vertical' flexAlignement='centered'>
-        <div style={{width:'50%'}}><Quote text="Cinema is a mosaic made of time" author="Andrei Tarkovsky"/></div>
-      </Body>
-      <Space type='small' />
       <Body style={{columnGap:'10%'}} >
         <div style={{flexBasis: '50%', boxSizing:'border-box'}}>
           <h2 className='step'>From Asia, <br /> to the west</h2>
@@ -461,21 +457,17 @@ export default () => (
       </Body>
       <Space type='small'/>
       <Body flexDirection='vertical'>
-        <Story paragraphs={ [
-          <>&emsp;Throughout the past 4 years I found myself collecting more and more shots from various movies, going from epic Hollywood sci-fi productions, to deeper and more naturalistic landscapes of Asia's cinema.<br /> Fascinated by Asia’s neo-realism as much as Sci-fi art direction, I started building a simple cinematography catalog.</>,
-          <>I quickly decided to push the concept further in order to make available for others and myself a whole library of inspiration.</>
-        ] } dark={true}/>
-      </Body>
-      <Space type='small'/>
-      <Body flexDirection='vertical'>
         <Gallery galleries={{gallery_1: [{type:'base', folder:'/kinoji/screenshots/', pictures:['moviepage','fullview', 'genrepage']}]}} galleryKey='gallery_1'/>
       </Body>
+      {/*<Body flexDirection='vertical' flexAlignement='centered'>
+        <div style={{width:'40%'}}><Quote text="Cinema is a mosaic made of time" author="Andrei Tarkovsky"/></div>
+      </Body>*/}
     </Article>
 
 
 
     <Article name='Infinity scroll' spaced={true}>
-      <Title className='half' label="The layouts" summary={<>
+      <Title label="The layouts" summary={<>
         Looking through archives can be a tedious job. Thus the primary goal of this project was to give the user efficients and intuitives approaches to browse the content.
         <br /><br />
         Being thought as a tool for inspiration rather than a simple search engine, the website allow the user to switch between two display modes:
@@ -505,20 +497,19 @@ export default () => (
     </Article>
 
 
-    <Article name='Search engine'>
-      <Title className='half' label='The search engine' summary={
+    <Article name='Search engine' spaced={true}>
+      <Title label='The search engine' summary={
             <>Even though the word “Archive” usually rhymes with utilitarian design rather than aesthetic,
-            <br /> Kinoji lies between a functional and a refined interface via its
-            3 filtering interfaces,<br /> each one having a distinct mechanic while being embedded in the same visual signature.
-            <br /><br />
-            A distinction breaking with the usual scroll down list or check-box interfaces, <br /> offering a more engaging browsing experience to the user.</>}
+            Kinoji lies between a functional and a refined interface via its
+            3 filtering interfaces, each one having a distinct mechanic while being embedded in the same visual signature.
+            A distinction breaking with the usual scroll down list or check-box interfaces, offering a more engaging browsing experience to the user.</>}
       />
       <Body flexDirection='vertical'>
 
       <Gallery galleries={{ gallery_2: [{type:'base', folder:'/kinoji/Screenshots/', pictures:['worldmap', 'glossaire', 'tags']}]}} galleryKey='gallery_2'/>
 
       </Body>
-      <Space />
+
     </Article>
 
     <Article name='The style guide'>
@@ -540,7 +531,7 @@ export default () => (
       <Body>
           <div>
             <h2 className='step'>A tool for creatives</h2>
-            <p>	&emsp; As an illustrator it seemed essential to me to emphasize on the visual aspects of movies. <br />
+            <p>As an illustrator it seemed essential to me to emphasize on the visual aspects of movies. <br />
               Hence, the library binds data from two distinct databases offering a filtering system targeted for a creative approach.
               <br /><br />
               On one hand it retrieves basic data via the TMDB API such a the director's name, the date of release and so on.

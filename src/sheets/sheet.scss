@@ -29,7 +29,7 @@ html{ scroll-behavior: smooth; }
 
 @mixin mainFont{
 
-  font-family: 'Red Rose', cursive;
+  font-family: 'Sora';
 }
 
 @mixin frameMargin(){
@@ -126,7 +126,7 @@ $mapFilter:(
 }
 
 @font-face {
-  font-family: 'Red Rose';
+  font-family: 'Sora';
   font-style: normal;
   font-weight: bold;
   src: url("../assets/font/hira_b.otf") format("opentype");
@@ -134,15 +134,42 @@ $mapFilter:(
 }
 
 @font-face {
-  font-family: 'Red Rose';
+  font-family: 'Sora';
   font-style: normal;
   font-weight: normal;
   src: url("../assets/font/hira_r.otf") format("opentype");
   unicode-range: U+4E00-9FFF;
 }
 
+@font-face{
+  font-family: 'Sora';
+  font-weight: normal;
+  src: url("../assets/font/Sora-Regular.woff2") format('woff2');
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap');
+@font-face{
+  font-family: 'Sora';
+  font-weight: 500;
+  src: url("../assets/font/Sora-Medium.woff2") format('woff2');
+}
+
+@font-face{
+  font-family: 'Sora';
+  font-weight: bold;
+  src: url("../assets/font/Sora-SemiBold.woff2") format('woff2');
+}
+
+@font-face{
+  font-family: 'Sora';
+  font-weight: bolder;
+  src: url("../assets/font/Sora-Bold.woff2") format('woff2');
+}
+
+@font-face{
+  font-family: 'Sora';
+  font-weight: lighter;
+  src: url("../assets/font/Sora-Light.woff2") format('woff2');
+}
 
 *{
     font-size: 1em;
@@ -178,18 +205,18 @@ h1{
     font-size: 11em;
 }
 h2{
-  font-family: 'murmure' !important;
-  font-size: 5em;
+  font-size: 2em;
+  font-weight: 500;
 }
 
 h3{
-  font-family: 'murmure';
   font-size: 3em;
+  font-weight: bold;
 }
 
 h4{
   @include mainFont;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 button, input, label, a{ cursor: pointer !important; }
@@ -377,7 +404,7 @@ b .zhg{ font-weight: bold; }
   }
 
   #sidePanel{
-    .projectHeader{ h3{ color: $color; } }
+    .projectHeader{ h2{ color: $color; } }
     .projectPreview{
       //border-color: $color !important;
       input[type='radio'].active + .board{
@@ -431,7 +458,7 @@ b .zhg{ font-weight: bold; }
 
 @mixin setCustomColor($custom){
 
-  .projectHeader h3{ color: $custom !important; }
+  .projectHeader h2{ color: $custom !important; }
 
   #sidePanel .hoverSquare span{
     border-color: $custom !important;
@@ -1492,7 +1519,7 @@ iframe.normal{
     transition: opacity 0.3s ease-out;
     position: fixed;
     margin-top: 30px;
-    padding-left: 40px;
+    padding-left: 30px;
     padding-right: 5px;
     top: 0;
     width: 20vw;
@@ -1562,10 +1589,8 @@ iframe.normal{
       width: calc(100vw - 85vw);
       padding-right: 5%;
       box-sizing: border-box;
-      h3{
+      h2{
         margin-top: 30px;
-        @include skew();
-        margin-bottom: 20px;
       }
     }
 
@@ -1662,21 +1687,30 @@ iframe.normal{
 
 #resumeWrapper{
   position: absolute;
+  width: calc(100% - 100%/3);
+  right: 0;
+  padding: 45px;
+  box-sizing: border-box;
 }
 
 #resumeHeader{
-  margin-top: 12vh;
-  float: right;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: calc(100% - 100%/3);
+  margin-bottom: 60px;
+  h2{
+    margin-bottom: 10px;
+    font-size: 8em;
+    font-family: 'murmure';
+  }
   p{
-    margin-top: -10px;
+    margin-top: -30px;
+    margin-bottom: 7px;
+    font-weight: bold;
     color:$red;
     white-space: nowrap;
   }
-  & > div{ width: 60% }
 
 }
 
@@ -1685,10 +1719,8 @@ iframe.normal{
     padding-left: 0;
     width: fit-content;
     display: grid;
-    grid-template-columns: repeat(2, calc(100%/3));
+    grid-template-columns: repeat(2, calc(100%/2));
     box-sizing: border-box;
-    padding: 45px;
-    float: right;
     justify-content: end;
     position: relative;
 
@@ -1698,14 +1730,15 @@ iframe.normal{
       right: 0;
     }
     & > div{
+      &:first-of-type{ padding-right: 50px;}
+      &:last-of-type{ padding-left: 50px;}
       box-sizing: border-box;
-      padding: 0 20px;
+
     }
     //display: grid;
     //grid-template-columns: repeat(2, 50%);
     .resumeSection{
       box-sizing: border-box;
-      padding: 0 10px;
       margin-bottom: 30px;
       transition: transform 0.6s ease-out;
 
@@ -1721,7 +1754,8 @@ iframe.normal{
         flex-direction: row;
         align-items: center;
         margin-bottom: 1em;
-        border-bottom: solid 2px black;
+        color:$red;
+        border-top: solid 2px $red;
       }
       small{ display: block;}
       .separator{
@@ -1739,8 +1773,9 @@ iframe.normal{
       }
 
       .contentHeader{
+        font-weight: bold;
         margin-bottom: 8px;
-        color: $red;
+        color:black;
         a{
           color: $red;
           font-weight: bold;
@@ -1755,7 +1790,7 @@ iframe.normal{
 
 
     .langueSection{
-      p,b, span{
+      p,b, span,.contentHeader{
         display: flex;
         flex-direction: row;
         column-gap: 5px;
@@ -1916,8 +1951,16 @@ iframe.normal{
     transition-property: opacity, transform;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
+    h2{
+      font-family: 'murmure';
+      font-size: 8em;
+    }
     h1{
-      font-size: 6rem;
+      font-family: 'Sora';
+      font-size:2.3em;
+      line-height: 1em;
+      font-weight: 500;
+      margin-top: -10px;
     }
     & *{ @include squareCursor;         pointer-events: auto; }
     section{
@@ -2082,6 +2125,8 @@ iframe.normal{
   }
 
   h2{
+    font-family: 'murmure';
+    font-weight: normal;
     background-image: linear-gradient(0deg, black, transparent);
     background-position-y: 50vh;
     color: transparent;
@@ -2469,9 +2514,10 @@ img.gradientImg{
   float: right;
 
   #signature{
-    justify-content: flex-end;
+    justify-content: center;
     margin: 0;
-    margin-top: 30px;
+    margin-top: 90px;
+      opacity: 0.3;
   }
   .gradientImg{filter:$mainFilter;}
   .projects{
@@ -2697,10 +2743,6 @@ img.gradientImg{
   transition: background 0.3s ease;
 }
 
-
-.chuhuo{
-  letter-spacing: -10px;
-}
 
 #loadBubble{
   position: absolute;
@@ -3043,30 +3085,32 @@ img.gradientImg{
     grid-template-columns: repeat(2, 1fr);
 
     #signature{
+      padding: 0;
       position: relative;
-      margin: 50px 0;
+      margin-top: 90px;
     }
   }
 
+  #resumeWrapper{
+    width: 100%;
+    position: relative;
+  }
 
   #resumeSettings{
     width: 70%;
   }
 
   #resumeHeader{
-    width: 100%;
-    top: 15vh;
-    & > div{ width: 80%; }
+    h2{ font-size: 6em; }
     p{ white-space: normal;}
   }
 
 
   #squareabout{
-    float: left;
     width: 100%;
     position: relative;
     right: 0;
-    margin: 40px 0;
+    margin-top: 10%;
   }
 
   #graphic_chart{

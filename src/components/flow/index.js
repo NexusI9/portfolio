@@ -139,7 +139,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
           break;
 
           case 'video':
-            return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' placeholder={thumbnail} loadIco={true} playIco={false}/>
+            return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' placeholder={thumbnail} loadIco={false} playIco={false}/>
           break;
 
           case 'slideshow':

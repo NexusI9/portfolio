@@ -84,6 +84,13 @@ export default class SCENE{
       require('./model.gltf'),
       (gltf) => {
 
+        gltf.scene.traverse( item => {
+          if(item.material){
+            item.material.flatShading = true;
+          }
+        });
+
+
         this.head = {
           group:gltf.scene.children[0],
           mesh: gltf.scene.children[0].children[1],
@@ -95,6 +102,7 @@ export default class SCENE{
         this.head.group.position.y = -0.065;
 
         this.head.mesh.material = this.material;
+
 
         this.scene.add(this.head.group);
         this.moveBone = this.head.bone;
@@ -193,7 +201,7 @@ export default class SCENE{
   }
 
   closeEyes(mesh){
-
+    if(!mesh.morphTargetInfluences){ return}
     const close = {value:0};
     const tl = gsap.timeline({
       duration: Math.random(0.1,0.4),

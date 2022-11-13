@@ -43,8 +43,8 @@ const VideoBanner = (onScroll) => {
         setOpacity(1-scrollPos / window.innerHeight);
         setDisplayVideo(true);
 
-        name.current.style.transform = 'translateY(-'+(scrollPos/4)+'%) ';
-        quote.current.style.transform = 'translateY(-'+(scrollPos/20)+'%)';
+        name.current.style.transform = 'translateY(-'+(scrollPos/10)+'%) ';
+        quote.current.style.transform = 'translateY(-'+(scrollPos/6)+'%)';
         video.current.style.transform = 'translateY(-'+(scrollPos/30)+'%) ';
       }
       else if( window.pageYOffset > window.innerHeight ){
@@ -80,8 +80,8 @@ const VideoBanner = (onScroll) => {
       <motion.div id='textLetterbox'>
 
           <section ref={textArea}>
-            <h5 ref={name}>Nassim El Khantour</h5>
-            <h1 ref={quote}>Where art & code<br/> shape worlds</h1>
+            <h2 ref={name}>Nassim El Khantour</h2>
+            <h1 ref={quote}>Where art & code <br/> shape worlds</h1>
           </section>
           <a href="#projects" id="arrowScroll">
             <HoverSquare size='35px' name='arrowScroll'>

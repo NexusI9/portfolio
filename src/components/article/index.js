@@ -265,10 +265,10 @@ export const Title = ({label, summary,id, className, style}) => (
   </section>
 );
 
-export const Body = ({flexDirection, flexAlignement, children, title, summary, id, className, style}) => (
+export const Body = ({flexDirection, flexAlignement, children, title, summary, id='', className, style={}}) => (
   <>
     {title && <Title label={title} summary={summary} />}
-    <section id={id || ''} className={"body compress " + (flexDirection || '')+' '+ (flexAlignement || '')+' '+(className||'')} style={style || {}}>{children}</section>
+    <section {...id} className={"body compress " + (flexDirection || '')+' '+ (flexAlignement || '')+' '+(className||'')} {...style}>{children}</section>
   </>
 );
 

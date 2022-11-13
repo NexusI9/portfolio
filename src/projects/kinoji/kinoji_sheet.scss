@@ -242,6 +242,12 @@ table .leftborder{
 
 /*———————————————————————————————————————————————-*/
 #graphic_chart{
+  thead{
+    h4{
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
   tbody{
     td{
       height: 50px;
@@ -299,7 +305,6 @@ table .leftborder{
 
       &:nth-of-type(2){
         td{
-          background-color: #1b222a;
           vertical-align: middle;
           justify-content: center;
           border-radius: 2px;
@@ -312,7 +317,6 @@ table .leftborder{
 }
 
 #table_icono{
-  margin-top: 30px;
   tbody{
     td{
       background: #111111;
