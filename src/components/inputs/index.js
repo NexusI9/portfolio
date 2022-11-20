@@ -157,13 +157,15 @@ export const SocialsIcons = () => {
       id:'linkedin',
       link:'https://www.linkedin.com/in/nassimelkhantour/',
       icon:linkedin
-    },
-    {
-      id:'instagram',
-      link:'https://www.instagram.com/nassimelkhantour/',
-      icon:instagram
     }
   ];
+
+  /*
+  {
+    id:'instagram',
+    link:'https://www.instagram.com/nassimelkhantour/',
+    icon:instagram
+  }*/
   return(
     <div className='socialsIcons'>
       {mapSocials.map( item => <HoverSquare size='25px' name={'hoversquare'+item.id} key={item.id} top='-25%' left='-20%'><a className='ico' href={item.link} target='_blank' rel="noreferrer" ><img src={item.icon} /></a></HoverSquare> )}

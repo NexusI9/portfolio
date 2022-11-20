@@ -38,24 +38,26 @@
 #ft_circle_infobox{
   width: 90%;
   max-height: 100%;
-}
 
-#ft_circle_infobox > .infobox{
-  margin:0 5%;
-  padding-bottom: 20%;
-  //transform:scale(0);
+  & > .infobox{
+    margin:0 5%;
+    padding-bottom: 20%;
+    //transform:scale(0);
 
-}
+  }
 
-#ft_circle_infobox img{
-  opacity: 1;
-  max-width: 90%;
-  margin-top: -15%;
-  margin-left: 10%;
-  transform: scale(1);
-  transition: opacity 0.3s ease;
-  z-index: 9;
-  box-shadow: -3px 3px 10px rgba(0 0 0 /20%);
+  img{
+    border-radius: 15px;
+    opacity: 1;
+    max-width: 90%;
+    margin-top: -15%;
+    margin-left: 10%;
+    transform: scale(1);
+    transition: opacity 0.3s ease;
+    z-index: 9;
+    box-shadow: -3px 3px 10px rgba(0 0 0 /20%);
+  }
+
 }
 
 

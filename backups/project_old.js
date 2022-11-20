@@ -11,15 +11,13 @@ import {
 } from '../lib/utils';
 import { Suggestion, Header, Content, Previews } from '../components/projects';
 import { PercentBar } from '../components/props';
-import { HomeButton } from '../components/inputs';
 import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/loader';
 import {motion, AnimatePresence} from 'framer-motion';
 import '../sheets/projects_sheet.scss';
-import { gsap } from 'gsap';
 
 
-function Project({onLoad= e => e}){
+function Project({onLoad}){
 
   const {title} = useParams();
 
@@ -43,7 +41,6 @@ function Project({onLoad= e => e}){
   const [showSideBar, setShowSideBar] = useState(true);
 
   const [percent, setPercent] = useState(0);
-  const [percentAnim, startPercentAnim ] = useState(false);
 
   const isScrolling = useRef(false);
 
@@ -105,19 +102,8 @@ function Project({onLoad= e => e}){
     setSuggestions( getRandomProject({ number:3, project:data.project, category:data.category }) );
 
 
-    if(percentAnim){
-      const fakepercent = {percent:0};
-      gsap.to(fakepercent, {
-        percent:100,
-        duration: 1.3,
-        onUpdate: () => setPercent(fakepercent.percent),
-        onComplete: () => setUnlash(true)
-      } );
-    }
-
-
-    if(project){ init(); }
-    onLoad(data);
+    if(unlash){ init(); }
+    if(onLoad){ onLoad(data); }
 
 
     return () => {
@@ -125,15 +111,14 @@ function Project({onLoad= e => e}){
       window.removeEventListener('resize', onResize);
     };
 
-  },[title, project, percentAnim]);
+  },[unlash, title, canvas, activeCanvas, percent]);
 
   return(
     <>
       <AnimatePresence exitBeforeEnter>
-        {!unlash && <Loader key={'LOADER' + title} percent={ percent } onLoad={ () => startPercentAnim(true) } /> }
+        { (!canvasLoaded || !htmlContent) && <Loader key={'LOADER' + title} onLoad={ (e) => setUnlash(e) } percent={ percent } /> }
       </AnimatePresence>
       {
-
         unlash &&
         <>
           <motion.div id='project'
@@ -144,7 +129,8 @@ function Project({onLoad= e => e}){
               { htmlContent && <Content innerRef={projectContainer} >{htmlContent}</Content> }
               { htmlContent && sidePanel &&
                 <div id='sidePanel' style={{opacity: showSideBar ? 1 : 0, pointerEvents: showSideBar ? 'auto' : 'none' }}>
-                  <HomeButton />
+                  <Header project={project}/>
+                  <Previews wrapperRef={projectContainer} onLoad={ e => { setCanvasLoaded(true); setCanvas(e); } } active={activeCanvas} project={project} onScroll={ e => isScrolling.current = e } onProgress={ e => setPercent(e.percent) }/>
               </div>
               }
           </motion.div>

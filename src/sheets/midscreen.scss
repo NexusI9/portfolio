@@ -10,7 +10,6 @@
   .projects img {
     max-width: 100%;
     box-sizing: border-box;
-    padding: 0 5%;
   }
 
   :root{
@@ -88,7 +87,7 @@
     width: 100%;
     margin: 30px 0;
     flex-direction: column;
-    span{ margin: 10px 0;}
+    span{ visibility: hidden;}
   }
 
 

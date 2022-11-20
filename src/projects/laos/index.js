@@ -678,7 +678,7 @@ const Slicer = () => {
 
 
   return(
-    <div id="slicer" ref={slicerRef}>
+    <div id="slicer" ref={slicerRef} className='round'>
       <img src="/assets/projects/laos/flashcard.jpg" />
       <img src="/assets/projects/laos/simplelayout.svg" ref={maskRef} />
       <span ref={barRef}></span>
@@ -823,7 +823,7 @@ export default () => (
     <Article id="laos_tpt" spaced={true} name="What's Laos">
       <Body flexDirection='horizontal' flexAlignement='centered'>
         <section style={{flexBasis:'30%'}}>
-          <h2>It’s a translator,a personal dico and a trainer !</h2>
+          <h2>It’s a translator, a personal dico and a trainer !</h2>
           <p>
             The app not only offers an elegant pop-up translator but also a personal dictionary and various exercises.<br /><br />
             It is through a process of gamification that LAOS acts as a user-friendly toolbox to learn mandarin.<br />

@@ -26,7 +26,7 @@ export default () => {
       const ar = [];
       for(var i = 0; i < listId.length-1; i+=2 ){
         ar.push(
-          <Article key={listId[i]} spaced={true}>
+          <Article key={listId[i]}>
             <Body>
               <div><Video id={listId[i]} placeholder={'/assets/thumbnails/various/'+listId[i]+'.jpg'}/></div>
               <div><Video id={listId[i+1]} placeholder={'/assets/thumbnails/various/'+listId[i+1]+'.jpg'} /></div>

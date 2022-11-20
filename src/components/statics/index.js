@@ -70,10 +70,19 @@ export const Menu = ({projects}) => {
       }
     }
 
-    if(labelWrapper && labelBar && animationDone){
-      initMargin = labelBar.getBoundingClientRect().x;
-      labelWrapper.addEventListener('scroll', onScroll);
+    const onResize = () => {
+      if(labelWrapper && labelBar && animationDone && window.innerWidth > 500){
+        initMargin = labelBar.getBoundingClientRect().x;
+        labelWrapper.removeEventListener('scroll', onScroll);
+        labelWrapper.addEventListener('scroll', onScroll);
+      }else{
+        labelWrapper?.removeEventListener('scroll', onScroll);
+      }
     }
+
+
+    onResize();
+    window.addEventListener('resize', onResize);
 
     if(!active){
       //reset on close
@@ -82,7 +91,10 @@ export const Menu = ({projects}) => {
       setLabelWrapper();
     }
 
-    return () => labelWrapper?.removeEventListener('scroll', onScroll);
+    return () => {
+          labelWrapper?.removeEventListener('scroll', onScroll);
+          window.removeEventListener('resize', onResize);
+    }
 
   },[labelBar, labelWrapper, animationDone, active]);
   const variantPanel={
