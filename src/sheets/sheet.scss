@@ -14,6 +14,8 @@ $grad: #0037ff;
 $mainColor:$red;
 $mainFilter: url(#b);
 
+$border-radius: 15px;
+
 /*values*/
 $frameMargin: 45px;
 $title:2.5em;
@@ -1961,6 +1963,24 @@ iframe.normal{
       line-height: 1em;
       font-weight: 500;
       margin-top: -10px;
+
+      span{
+        display: inline-block;
+        margin-left: 7px;
+        width: 20px;
+        background: black;
+        height: 4px;
+        opacity: 1;
+        animation-name: onOff;
+        animation-duration: 0.5s;
+        animation-timing-function: step-start;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes onOff{
+        50%{ opacity: 0; }
+      }
     }
     & *{ @include squareCursor;         pointer-events: auto; }
     section{
@@ -2300,6 +2320,7 @@ iframe.normal{
   transition: transform 0.6s ease-out, opacity 0.5s ease;
   z-index: 1;
 
+  img{ border-radius: $border-radius; }
   & > section{
     position: absolute;
     top: 0;
@@ -2343,6 +2364,7 @@ iframe.normal{
   .overlay{
     opacity: 0;
     transition: opacity 0.2s ease;
+    border-radius: $border-radius;
     .thumb{
       opacity: 0;
       position: absolute;
@@ -2426,6 +2448,8 @@ img.gradientImg{
 
 .projects::before,
 .popCube::before{
+  border-radius: calc($border-radius + 5px) * 2;
+  border-bottom-right-radius: calc($border-radius + 5px);
   content: '';
   width: 100%;
   height: 100%;
@@ -2433,8 +2457,10 @@ img.gradientImg{
   display: block;
   top: 0;
   left: 0;
-  transition: transform 0.2s ease, padding 0.2s ease, clip-path 0.2s ease, background 0.2s ease;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
+  transition: transform, width, height, padding, clip-path, background, 0.2s ease;
+  //square
+  //clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
+  clip-path: inset( 6px 0px 0px 6px);
 
 }
 
@@ -2581,7 +2607,9 @@ img.gradientImg{
 .projects:hover::before,
 .popCube:hover::before,
 .popCube.active::before{
-  transform: translate( calc(-1 * $depth), calc(-1 * $depth));
+
+  //square
+  /*transform: translate( calc(-1 * $depth), calc(-1 * $depth));
   padding-right: $depth;
   padding-bottom: $depth;
   clip-path: polygon(
@@ -2591,7 +2619,12 @@ img.gradientImg{
     $depth 100%,
     0% calc(100% - $depth )
 
-    );
+    );*/
+  //rounded
+  transform: translate(-15px, -15px);
+  width: calc(100% + 15px);
+  height: calc(100% + 15px);
+
 
 }
 

@@ -16,27 +16,27 @@ const FeaturesCircles = () => {
         icon: "/assets/projects/laos/laos_logo.svg",
         title: "Hover translation",
         summary: "LAOS provides a hover-pop up translator allowing to look-up more than 110 000 mandarin words and their definitions on a simple move.",
-        img: "/assets/projects/LAOS/low_hover.jpg",
+        img: "/assets/projects/laos/low_hover.jpg",
       }, {
         icon: "/assets/projects/laos/lotus.png",
         title: "Personal and multitask dictionary",
         summary: "The extension also provide a personal dictionary allowing to save countless new words, common names and expressions.",
-        img: "/assets/projects/LAOS/low_listselect.jpg",
+        img: "/assets/projects/laos/low_listselect.jpg",
       }, {
         icon: "/assets/projects/laos/yin.png",
         title: "Flashcard game !",
         summary: "For an easy entry level, flashcards are the choice to start learning new words ! Letting the mouse flowing through the cards to pair them together.",
-        img: "/assets/projects/LAOS/low_flashcard.jpg",
+        img: "/assets/projects/laos/low_flashcard.jpg",
       }, {
         icon: "/assets/projects/laos/fire.png",
         title: "Fast type mode",
         summary: "The Fast Typing mode brings a more intensive (yet efficient) learning pace.",
-        img: "/assets/projects/LAOS/low_fasttype.jpg",
+        img: "/assets/projects/laos/low_fasttype.jpg",
       }, {
         icon: "/assets/projects/laos/chakra.png",
         title: "Fill the blank",
         summary: "For the more advanced, a fill sentences mode is available using Tatoeba.org’s boundless sentences database",
-        img: "/assets/projects/LAOS/low_fillblank.jpg",
+        img: "/assets/projects/laos/low_fillblank.jpg",
       },
   ];
 
@@ -159,10 +159,10 @@ const KeyShapes = () => (
 
     <tbody>
       <tr>
-        <td><img src="/assets/projects/LAOS/lotus.png" /></td>
-        <td><img src="/assets/projects/LAOS/yin.png" /></td>
-        <td><img src="/assets/projects/LAOS/fire.png" /></td>
-        <td><img src="/assets/projects/LAOS/chakra.png" /></td>
+        <td><img src="/assets/projects/laos/lotus.png" /></td>
+        <td><img src="/assets/projects/laos/yin.png" /></td>
+        <td><img src="/assets/projects/laos/fire.png" /></td>
+        <td><img src="/assets/projects/laos/chakra.png" /></td>
       </tr>
 
       <tr id="blueprint">
@@ -170,7 +170,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/square.svg" />
+            <img src="/assets/projects/laos/square.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#4EBAFD'}} cx="50" cy="50" r="40"/>
@@ -181,7 +181,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/semicircle.svg" />
+            <img src="/assets/projects/laos/semicircle.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#FF1473'}} cx="50" cy="50" r="40"/>
@@ -192,7 +192,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/triangle.svg" />
+            <img src="/assets/projects/laos/triangle.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#FFA613'}} cx="50" cy="50" r="40"/>
@@ -203,7 +203,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/circle.svg" />
+            <img src="/assets/projects/laos/circle.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#BF38DE'}} cx="50" cy="50" r="40"/>
@@ -251,7 +251,7 @@ const Charts = () => (
   <Masonry columnsCount={ window.innerWidth > window.innerHeight ? 2 : 1} gutter='20px'>
   <div className="infobox guidesheet" key='chart_1'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/laos_logo.svg')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/laos_logo.svg')" }}></span>
       <section>
         <h4>Hover Popup</h4>
       </section>
@@ -329,7 +329,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_2'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/lotus.png')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/lotus.png')" }}></span>
       <section>
         <h4>List mode</h4>
       </section>
@@ -441,7 +441,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_3'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/yin.png')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/yin.png')" }}></span>
       <section>
         <h4>Flashcards</h4>
       </section>
@@ -514,7 +514,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_4'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/fire.png')"}}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/fire.png')"}}></span>
       <section>
         <h4>Fast type</h4>
       </section>
@@ -567,7 +567,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_5'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/chakra.png')"}}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/chakra.png')"}}></span>
       <section>
         <h4>Fill the blank</h4>
       </section>
@@ -679,8 +679,8 @@ const Slicer = () => {
 
   return(
     <div id="slicer" ref={slicerRef}>
-      <img src="/assets/projects/LAOS/Flashcard.jpg" />
-      <img src="/assets/projects/LAOS/simplelayout.svg" ref={maskRef} />
+      <img src="/assets/projects/laos/flashcard.jpg" />
+      <img src="/assets/projects/laos/simplelayout.svg" ref={maskRef} />
       <span ref={barRef}></span>
     </div>
   );
@@ -689,19 +689,19 @@ const SideMenu = () => {
 
   const routeItem = [
     {
-      app: '/assets/projects/LAOS/lotus.png',
+      app: '/assets/projects/laos/lotus.png',
       icons: ['ico_pen', 'ico_rand', 'ico_moon']
     },
     {
-      app: '/assets/projects/LAOS/yin.png',
+      app: '/assets/projects/laos/yin.png',
       icons: ['ico_pinyin', 'ico_rand']
     },
     {
-      app: '/assets/projects/LAOS/fire.png',
+      app: '/assets/projects/laos/fire.png',
       icons: ['ico_pen', 'ico_english']
     },
     {
-      app: '/assets/projects/LAOS/chakra.png',
+      app: '/assets/projects/laos/chakra.png',
       icons: ['ico_pinyin', 'ico_english', 'ico_rand']
     }
   ];
@@ -850,7 +850,7 @@ export default () => (
         A dynamic throwing the user in an eye-candy and reviving environment each click, preventing the interaction to become too monotonous.
         </>}/>
       <Body flexAlignement='vertical'>
-        <Gallery galleries={{snapshots:[{type:'window', folder:'/LAOS/', pictures:['clean_list', 'clean_card','clean_type','clean_blank']}]}} galleryKey='snapshots'/>
+        <Gallery galleries={{snapshots:[{type:'window', folder:'/laos/', pictures:['clean_list', 'clean_card','clean_type','clean_blank']}]}} galleryKey='snapshots'/>
       </Body>
       <Space />
     </Article>

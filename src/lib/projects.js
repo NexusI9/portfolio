@@ -58,19 +58,6 @@ const PROJECTS = {
       "folder":"kinoji",
       "skin":"dark"
     },
-    {
-      "title":"Terrorcore",
-      "thumbnail":"/assets/thumbnails/terrorcore.jpg",
-      "desc":"A futuristic and creative E-Commerce",
-      "overlay":{
-        "type":"video",
-        "url":"581481788"
-      },
-      "date":2021,
-      "folder":"terrorcore",
-      "skin":"dark",
-      "color":"#00ff21"
-    }
   ],
 
   "Animations":[

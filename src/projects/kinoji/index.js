@@ -457,7 +457,7 @@ export default () => (
       </Body>
       <Space type='small'/>
       <Body flexDirection='vertical'>
-        <Gallery galleries={{gallery_1: [{type:'base', folder:'/kinoji/screenshots/', pictures:['moviepage','fullview', 'genrepage']}]}} galleryKey='gallery_1'/>
+        <Gallery galleries={{gallery_1: [{type:'base', folder:'/kinoji/Screenshots/', pictures:['moviepage','fullview', 'genrepage']}]}} galleryKey='gallery_1'/>
       </Body>
       {/*<Body flexDirection='vertical' flexAlignement='centered'>
         <div style={{width:'40%'}}><Quote text="Cinema is a mosaic made of time" author="Andrei Tarkovsky"/></div>

@@ -81,7 +81,7 @@ const VideoBanner = (onScroll) => {
 
           <section ref={textArea}>
             <h2 ref={name}>Nassim El Khantour</h2>
-            <h1 ref={quote}>Where art & code <br/> shape worlds</h1>
+            <h1 ref={quote}>&#187; Where art & code <br/> shape worlds<span></span></h1>
           </section>
           <a href="#projects" id="arrowScroll">
             <HoverSquare size='35px' name='arrowScroll'>
