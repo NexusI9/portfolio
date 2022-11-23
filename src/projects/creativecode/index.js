@@ -21,8 +21,8 @@ export default () => {
         ar.push(
           <Article key={listId[i]}>
             <Body>
-              <div><Video id={listId[i]} placeholder={'/assets/thumbnails/cc/'+listId[i]+'.jpg'}/></div>
-              <div><Video id={listId[i+1]} placeholder={'/assets/thumbnails/cc/'+listId[i+1]+'.jpg'} /></div>
+              <div><Video id={listId[i]} placeholder={'/assets/thumbnails/cc/'+listId[i]+'.jpg'} autoplay={true} pending={true}/></div>
+              <div><Video id={listId[i+1]} placeholder={'/assets/thumbnails/cc/'+listId[i+1]+'.jpg'} autoplay={true} pending={true}/></div>
             </Body>
           </Article>
         )

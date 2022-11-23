@@ -35,8 +35,8 @@ export default () => (
 
     <Article>
       <Body flexDirection='horizontal'>
-          <div><Video id={503762124} placeholder={'/assets/thumbnails/cyber1.jpg'}/></div>
-          <div><Video id={503762148} placeholder={'/assets/thumbnails/cyber2.jpg'}/></div>
+          <div><Video id={503762124} placeholder={'/assets/thumbnails/cyber1.jpg'} autoplay={true} pending={true}/></div>
+          <div><Video id={503762148} placeholder={'/assets/thumbnails/cyber2.jpg'} autoplay={true} pending={true}/></div>
       </Body>
     </Article>
 

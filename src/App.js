@@ -24,12 +24,12 @@ const Contact = React.lazy(() => import('./pages/contact') );
 function App() {
 
   const routes = [
-    {path: '*', element: <Home projects={PROJECTS} onLoad={ () => setTheme({skin:'default'}) }/>},
-    {path:'/', element: <Home projects={PROJECTS} onLoad={ () => setTheme({skin:'default'}) } /> },
-    {path:'/project/:title', element: <Project onLoad={ obj => setTheme({color:obj.color, skin:obj.skin, customColor:obj.customColor }) }  /> },
-    {path:'/resume', element: <Resume onLoad={ () => setTheme({color:'red'}) } /> },
-    {path:'/contact', element: <Contact onLoad={ () => setTheme({color:'purple'}) } /> },
-    {path:'/showreel', element: <Showreel onLoad={ () => setTheme({skin:'dark'}) } /> },
+    {path: '*', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }}/>},
+    {path:'/', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }} /> },
+    {path:'/project/:title', element: <Project onLoad={ obj => { setTheme({color:obj.color, skin:obj.skin, customColor:obj.customColor }); setHomebutton(true) } }  /> },
+    {path:'/resume', element: <Resume onLoad={ () => { setTheme({color:'red'}); setHomebutton(false);  }} /> },
+    {path:'/contact', element: <Contact onLoad={ () => { setTheme({color:'purple'}); setHomebutton(false);  }} /> },
+    {path:'/showreel', element: <Showreel onLoad={ () => { setTheme({skin:'dark'}); setHomebutton(true); }} /> },
     {path:'/map', element: <Map projects={PROJECTS} /> }
   ]
 
@@ -41,6 +41,7 @@ function App() {
     skin: 'default',
     customColor: null
   });
+  const [homebutton, setHomebutton] = useState(false);
 
 
   useEffect( () => {
@@ -73,7 +74,7 @@ function App() {
             </Routes>
         </AnimatePresence>
       </Suspense>
-      <Menu projects={PROJECTS} />
+      <Menu projects={PROJECTS} homebutton={homebutton} />
       <Filter />
     </div>
   );

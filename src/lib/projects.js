@@ -36,8 +36,6 @@ const PROJECTS = {
       "date":2021,
       "folder":"mengfeng",
       "font":"chuhuo",
-      "skin":"dark",
-      "color":"#ffffff"
     },
     {
       "title":"Website mockups",

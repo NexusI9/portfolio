@@ -1,6 +1,6 @@
 
 import { cleanCategoryName, getCategories, getColorOfCategory, setFaviconColor } from '../../lib/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-responsive-masonry';
 import { useEffect, useState, useRef, useCallback } from 'react';
@@ -182,11 +182,8 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
       const iframe = videoCtnr.current.querySelectorAll('iframe')[0];
 
       let newHeight, newWidth;
-      console.log({thumbRatio, ctnrRatio});
-
 
       if( ctnrRatio > 1 ){ //horizontal
-
           if(thumbRatio > 1){ //horizontal video
             newHeight = '100%';
             newWidth = `calc(${newHeight}*16/9)`;
@@ -194,7 +191,6 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
           else{ //vertical video
             newHeight = ctnrWidth * thumbHeight / thumbWidth + 'px';
           }
-
       }else{ //vertical
 
         if(thumbRatio > 1){ //horizontal video
@@ -204,15 +200,9 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
         else{ //vertical video
           newHeight = ctnrWidth * thumbHeight / thumbWidth + 'px';
         }
-
       }
-
       iframe.style.height = newHeight;
       iframe.style.width = newWidth;
-
-
-
-
 
     }
 
@@ -310,7 +300,7 @@ export const Flow = ({projects}) => {
 
   const containerRef = useRef([]);
   const catContainers = getCategories(projects).map( (cat,c) => <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> );
-
+  const navigate = useNavigate();
   const [category, setCategory] = useState();
 
   useEffect( () => {
@@ -342,7 +332,9 @@ export const Flow = ({projects}) => {
           const catColor = getColorOfCategory(title);
           setBodyTheme( catColor );
           setFaviconColor(favicon,catColor);
+          /*navigate('/#'+title);*/
           return setCategory(title);
+
         }
 
 

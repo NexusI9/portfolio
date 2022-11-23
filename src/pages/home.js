@@ -50,6 +50,8 @@ const VideoBanner = (onScroll) => {
       else if( window.pageYOffset > window.innerHeight ){
         setOpacity(0);
         setDisplayVideo(false);
+
+
       }
 
     }

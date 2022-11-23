@@ -4,7 +4,7 @@ import { cleanCategoryName, getCategories } from '../../lib/utils.js';
 import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare } from '../props';
-import { SocialsIcons, MailAddress } from '../inputs';
+import { SocialsIcons, MailAddress, HomeButton, Logo } from '../inputs';
 
 
 const WindowIco = () => (
@@ -30,7 +30,7 @@ export const OldMenu = ({projects}) => (
     </div>
   );
 
-export const Menu = ({projects}) => {
+export const Menu = ({projects, homebutton=false}) => {
 
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
@@ -123,14 +123,15 @@ export const Menu = ({projects}) => {
 
   return(
     <>
-      <div id="menu">
+      <nav id="menu">
+        {homebutton ? <HomeButton /> : <Logo/>}
         <div className='topArea'>
           <div id='bars' onClick={ () => setActive(!active) } className={active ? 'active' : ''}>
             <span></span>
             <span></span>
           </div>
         </div>
-      </div>
+      </nav>
 
         <AnimatePresence exitBeforeEnter>
         {active &&

@@ -11,7 +11,6 @@ import {
 } from '../lib/utils';
 import { Suggestion, Header, Content, Previews } from '../components/projects';
 import { PercentBar } from '../components/props';
-import { HomeButton } from '../components/inputs';
 import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/loader';
 import {motion, AnimatePresence} from 'framer-motion';
@@ -45,11 +44,11 @@ function Project({onLoad= e => e}){
   const [percent, setPercent] = useState(0);
   const [percentAnim, startPercentAnim ] = useState(false);
 
+  const [whiteMenu, setWhiteMenu] = useState(true);
+
   const isScrolling = useRef(false);
 
   useEffect( () => {
-
-    //window.scrollTo(0,0);
 
     const onScroll = () => {
 
@@ -58,16 +57,10 @@ function Project({onLoad= e => e}){
         if( window.pageYOffset > projectContainer.current.offsetHeight - 400 ){ setShowSideBar(false); }
         else{ setShowSideBar(true); }
 
-        //current div
-        if(canvas && !isScrolling.current){
-          //console.log(activeCanvas);
-          canvas.forEach( cnv => {
-            if(
-              (scrollPos + 200 > cnv.offsetTop) &&
-              (scrollPos < cnv.offsetTop + cnv.height) ){
-                setActiveCanvas(cnv);
-              }
-          });
+        if(projectContainer.current.getBoundingClientRect().top > 0){
+          setWhiteMenu(true);
+        }else{
+          setWhiteMenu(false);
         }
 
     }
@@ -104,12 +97,17 @@ function Project({onLoad= e => e}){
     setCategory(data.category);
     setSuggestions( getRandomProject({ number:3, project:data.project, category:data.category }) );
 
+    //window.scrollTo(0,0);
+    const menu = document.querySelector('#menu');
+
+    if(whiteMenu){ menu.classList.add('white'); }
+    else{  menu.classList.remove('white'); }
 
     if(percentAnim){
       const fakepercent = {percent:0};
       gsap.to(fakepercent, {
         percent:100,
-        duration: 1.3,
+        duration: 1,
         onUpdate: () => setPercent(fakepercent.percent),
         onComplete: () => setUnlash(true)
       } );
@@ -123,17 +121,29 @@ function Project({onLoad= e => e}){
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
+      menu.classList.remove('white');
     };
 
-  },[title, project, percentAnim]);
+  },[title, project, percentAnim, whiteMenu]);
 
   return(
     <>
       <AnimatePresence exitBeforeEnter>
         {!unlash && <Loader key={'LOADER' + title} percent={ percent } onLoad={ () => startPercentAnim(true) } /> }
       </AnimatePresence>
-      {
 
+      {unlash && project && whiteMenu && <motion.div
+        id='project_banner'
+        key={'projectBanner' + title}
+        exit={{opacity:0, transition:{duration:0.3}}}
+        >
+        <img alt='project banner' src={process.env.PUBLIC_URL+project.thumbnail}/>
+        <h1>{project.title}</h1>
+        <p>{project.desc}</p>
+        <br/>
+        <p>{project.date}</p>
+      </motion.div> }
+      {
         unlash &&
         <>
           <motion.div id='project'
@@ -144,7 +154,7 @@ function Project({onLoad= e => e}){
               { htmlContent && <Content innerRef={projectContainer} >{htmlContent}</Content> }
               { htmlContent && sidePanel &&
                 <div id='sidePanel' style={{opacity: showSideBar ? 1 : 0, pointerEvents: showSideBar ? 'auto' : 'none' }}>
-                  <HomeButton />
+
               </div>
               }
           </motion.div>

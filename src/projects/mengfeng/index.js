@@ -12,14 +12,13 @@ const galleryRoutes = {
 
 export default () => (
   <>
-        <div id='purpleBkg' className='ignore'></div>
         <Article header='Banner' spaced={true}>
             <Body>
-              <Img src="/assets/projects/mengfeng/banner.jpg"/>
+              <Img src="/assets/projects/mengfeng/banner.jpg" className='round'/>
             </Body>
         </Article>
 
-        <Article header='Pod pairing' spaced={true}>
+        <Article header='Pod pairing' spaced={true} className='purpleBkg round'>
             <Body>
               <div>
                 <h2>Pod pairing</h2>
@@ -33,7 +32,7 @@ export default () => (
             </Body>
         </Article>
 
-        <Article header='Profile setup' spaced={true}>
+        <Article header='Profile setup' spaced={true} className='purpleBkg round'>
             <Body>
                   <div><Img className='padded' src="/assets/projects/mengfeng/mockups/profile.png"/></div>
                   <div>
@@ -49,7 +48,7 @@ export default () => (
             </Body>
         </Article>
 
-        <Article name='widgets' spaced={true}>
+        <Article name='widgets' spaced={true} className='purpleBkg round'>
           <Body>
             <div className='compress'>
               <h2>Widgets based interface</h2>
@@ -61,7 +60,7 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='Diffuser' spaced={true}>
+        <Article name='Diffuser' spaced={true} className='purpleBkg round'>
           <Body className='reverse'>
             <div style={{flexBasis:'30%'}}> <Img src="/assets/projects/mengfeng/mockups/diffuser.png"/> </div>
             <div className='padded'>
@@ -72,7 +71,7 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='Meditation' spaced={true}>
+        <Article name='Meditation' spaced={true} className='purpleBkg round'>
         <Title label='Meditation program' className='half' summary='A frequently updated meditation package is avalaible to the user, offering new inner experiences every weeks.'/>
 
           <Body>
@@ -81,7 +80,7 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='Music' spaced={true}>
+        <Article name='Music' spaced={true} className='purpleBkg round'>
           <Title label='Music speaker' className='half' summary='As the pod is also a music speaker, the app offers a playlist system where the user can play recommended mixes or create personal playlists.'/>
           <Body>
             <div className="musicWave"></div>
@@ -91,7 +90,7 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='Lumino therapy' spaced={true}>
+        <Article name='Lumino therapy' spaced={true} className='purpleBkg round'>
           <Body>
             <div className='compress'>
               <h2>Lumino therapy</h2>
@@ -102,7 +101,7 @@ export default () => (
         </Article>
 
 
-        <Article name='Sleep session' spaced={true}>
+        <Article name='Sleep session' spaced={true} className='purpleBkg round'>
           <Body className='reverse'>
             <div style={{flexBasis:'26%'}}> <Img src="/assets/projects/mengfeng/mockups/alarm_1.png"/> </div>
             <div style={{flexBasis:'26%'}}><Img src="/assets/projects/mengfeng/mockups/alarm_2.png"/></div>
@@ -113,7 +112,7 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='Routine setup' spaced={true}>
+        <Article name='Routine setup' spaced={true} className='purpleBkg round'>
           <Body>
             <div className='compress'>
               <h2>Routine setup</h2>
@@ -123,7 +122,7 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='UI Overview' spaced={true}>
+        <Article name='UI Overview' spaced={true} className='purpleBkg round'>
             <Body flexDirection='horizontal' title='UI Overview'>
               <div><Img src="/assets/projects/mengfeng/p1.png"/></div>
               <div><Img src="/assets/projects/mengfeng/p2.png"/></div>
@@ -157,14 +156,14 @@ export default () => (
         </Article>*/}
 
 
-        <Article name='Product Design' spaced={true}>
+        <Article name='Product Design' spaced={true} >
             <Body flexDirection='vertical' title='Product Design'>
               <Video id={632750562} placeholder={'/assets/thumbnails/mengfeng.jpg'}/>
               <Gallery galleries={galleryRoutes} galleryKey='product' />
             </Body>
         </Article>
 
-        <Article name='Userflow' spaced={true}>
+        <Article name='Userflow' spaced={true} className='purpleBkg round'>
             <Body flexDirection='vertical' title='Userflow'>
               <div id='userflow'>
                 <Img src="/assets/projects/mengfeng/userflow.svg"/>

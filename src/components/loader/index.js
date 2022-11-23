@@ -137,7 +137,7 @@ function Loader({title, onLoad, percent=0}){
         (window.innerWidth < window.innerHeight &&
         labelHeight > window.innerHeight) //Mobile mode
       ){
-        labelFontSize -= 10;
+        labelFontSize -= 150;
         label.current.style.fontSize = labelFontSize + 'px';
         resizeToFit();
       }

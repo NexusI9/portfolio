@@ -10,8 +10,8 @@ import { Dotty } from '../loader';
 
 //Gallery & Medias
 
-export const Img = ({src, name, alt, className, id, style, onClick, boardName}) => (
-  <section onClick={ () => onClick && name ? onClick({src, alt, className, id, style, name}) : 0 } className={onClick ? 'picLink' : ''} style={style || {}} data-board-name={boardName || ''}><img src={src} alt={alt || 'picture'} className={className || ''} id={id || ''} /><span></span></section>
+export const Img = ({src, name, alt, className='', id, style, onClick, boardName}) => (
+  <section onClick={ () => onClick && name ? onClick({src, alt, className, id, style, name}) : 0 } className={className + 'imgWrapper round ' + (onClick ? 'picLink' : '')} style={style || {}} data-board-name={boardName || ''}><img src={src} alt={alt || 'picture'} className={className || ''} id={id || ''} /><span></span></section>
 );
 
 export const Gallery = ({galleries, galleryKey}) => {
@@ -256,7 +256,7 @@ export const Gallery = ({galleries, galleryKey}) => {
 
 }
 
-export const Article = ({children, name, spaced, id, className, style}) => ( <div id={id ? id : ''} style={ style ? style : {} } className={"article " + (spaced ? 'spaced' : ' ') + (className ? className : '')} data-board-name={name || ''}>{children}</div> );
+export const Article = ({children, name, spaced, id, className, style}) => ( <div id={id ? id : ''} style={ style ? style : {} } className={"article " + (spaced ? 'spaced ' : ' ') + (className ? className : '')} data-board-name={name || ''}>{children}</div> );
 
 export const Title = ({label, summary,id, className, style}) => (
   <section id={id || ''} className={"header compress "+ (className || '')} style={style || {}}>
@@ -273,17 +273,17 @@ export const Body = ({flexDirection, flexAlignement, children, title, summary, i
 );
 
 
-export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, placeholder, loadIco, playIco, innerRef, resize=true }) => {
+export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, placeholder, loadIco, playIco, innerRef, resize=true, pending=false }) => {
 
   const [thumbnail, setThumbnail] = useState();
   const [ height, setHeight ] = useState({});
-  const mainIframe = useRef();
+  const [hideVid, setHideVid] = useState(pending);
   const vimeoContainer = useRef();
 
   const Placeholder = ({placeholder, playIco=true, loadIco=false, style={}}) => (
     <div className='iframePlaceholder' style={style}>
       { placeholder ? <img className='picPlaceholder' src={process.env.PUBLIC_URL+placeholder} /> : <section></section> }
-      { playIco && <img className='playIco' src={play}/>}
+      { playIco && <img className='playIco round' src={play}/>}
       { loadIco && <div className='loadIco'> <Dotty /> </div> }
     </div>
   );
@@ -306,15 +306,9 @@ export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, pla
   },[id, vimeoContainer]);
 
   return(
-    <div className='vimeo' ref={innerRef || vimeoContainer} style={height}>
+    <div className='vimeo round' onClick={ () => setHideVid(false)  } ref={innerRef || vimeoContainer} style={height}>
       { <Placeholder placeholder={ placeholder ? placeholder : thumbnail} playIcon={!autoplay} style={style} loadIco={loadIco} playIco={playIco}/> }
-      {
-        autoplay ?
-        <iframe src={"https://player.vimeo.com/video/"+id+"?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=1&muted=1&autopause=0&controls=0"+ (defaultQuality ? ('&amp;quality='+defaultQuality) : '') } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe>
-        :
-        <iframe ref={mainIframe} src={"https://player.vimeo.com/video/"+id+'?transparent=1'} width="1920" height="1080" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen data-html2canvas-ignore style={style}></iframe>
-      }
-
+      { !hideVid && <iframe src={"https://player.vimeo.com/video/"+id+"?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay="+((autoplay && !hideVid) ? 1 : 0)+"&loop=1&title=0&byline=0&portrait=1&muted=1&autopause=0&controls="+(autoplay ? 0 : 1)+ (defaultQuality ? ('&amp;quality='+defaultQuality) : '') } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe> }
       </div>
   );
 }

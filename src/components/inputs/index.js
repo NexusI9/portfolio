@@ -53,9 +53,25 @@ export const Button = ({type="checkbox", innerRef, name, onClick, label, ico, id
   </>
 )
 
+export const Logo = () => (
+  <Link to='/' id='NLogo'>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <g id="Layer_2" data-name="Layer 2">
+        <g id="Calque_1" data-name="Calque 1">
+          <rect x="44.8" y="288" width="134.2" height="224" rx="65.53"/>
+          <rect x="333" width="134.2" height="224" rx="65.53"/>
+          <path d="M384,256h0A128,128,0,0,1,256,128,128,128,0,0,0,128,0h0A128,128,0,0,0,0,128H0A128,128,0,0,0,128,256h0A128,128,0,0,1,256,384h0A128,128,0,0,0,384,512h0A128,128,0,0,0,512,384h0A128,128,0,0,0,384,256Z"/>
+        </g>
+      </g>
+    </svg>
+  </Link>
+);
+
 export const HomeButton = () => (
   <Link to='/' id='homeButton'>
-      <img src={ (document.querySelectorAll('body')[0].getAttribute('data-skin') !== 'default') ? arrowHomeWhite : arrowHome }/>
+      <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="34.1" height="6" viewBox="0 0 34.1 6">
+        <path class="cls-1" d="M2.6,3.7H2.3l.6-.3.5-.5a1.8,1.8,0,0,0,.5-.7l.3-.6c0-.2.1-.4.1-.6H3.7a4.6,4.6,0,0,1-.8,1.9A4.5,4.5,0,0,1,1,4,3.4,3.4,0,0,1,3.2,5.5l.3.8.2.7h.6a2.9,2.9,0,0,0-.7-1.6l-.4-.5-.9-.6H35.1V3.7ZM1,4Z" transform="translate(-1 -1)"/>
+      </svg>
       <HoverSquare size={'40px'} name='homeButton'>
         <small className='discrete'>home</small>
       </HoverSquare>
