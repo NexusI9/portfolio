@@ -36,6 +36,7 @@ function Project({onLoad= e => e}){
   const [ activeCanvas, setActiveCanvas ] = useState();
 
   const projectContainer = useRef();
+  const imgBanner = useRef();
 
   //css / transitions
   const [unlash, setUnlash] = useState(false);
@@ -54,11 +55,15 @@ function Project({onLoad= e => e}){
 
         const scrollPos = window.pageYOffset;
         //sidebar & suggestion
-        if( window.pageYOffset > projectContainer.current.offsetHeight - 400 ){ setShowSideBar(false); }
+        if( scrollPos > projectContainer.current?.offsetHeight - 400 ){ setShowSideBar(false); }
         else{ setShowSideBar(true); }
 
         if(projectContainer.current.getBoundingClientRect().top > 0){
           setWhiteMenu(true);
+          if(imgBanner.current){
+
+            imgBanner.current.style.transform = `translateY(-${scrollPos/6}px)`;
+          }
         }else{
           setWhiteMenu(false);
         }
@@ -75,6 +80,9 @@ function Project({onLoad= e => e}){
     }
 
     const init = () => {
+
+      document.title = 'Nassim El Khantour - '+ project.title;
+
       window.addEventListener('scroll', onScroll);
       window.addEventListener('resize', onResize);
 
@@ -103,11 +111,11 @@ function Project({onLoad= e => e}){
     if(whiteMenu){ menu.classList.add('white'); }
     else{  menu.classList.remove('white'); }
 
-    if(percentAnim){
+  if(percentAnim){
       const fakepercent = {percent:0};
       gsap.to(fakepercent, {
         percent:100,
-        duration: 1,
+        duration: 0.7,
         onUpdate: () => setPercent(fakepercent.percent),
         onComplete: () => setUnlash(true)
       } );
@@ -137,11 +145,24 @@ function Project({onLoad= e => e}){
         key={'projectBanner' + title}
         exit={{opacity:0, transition:{duration:0.3}}}
         >
-        <img alt='project banner' src={process.env.PUBLIC_URL+project.thumbnail}/>
+        <img alt='project banner' ref={imgBanner} src={process.env.PUBLIC_URL+(project.banner || project.thumbnail)}/>
         <h1>{project.title}</h1>
-        <p>{project.desc}</p>
-        <br/>
-        <p>{project.date}</p>
+        <div>
+          <section>
+            <div>
+                <small>{project.desc || ' '}</small>
+            </div>
+
+            {project.category && <div>
+                <h5>Category</h5>
+                <section className='project_category' >{project.category.map( (item,i) => <small key={'cat'+item}>{ i < project.category.length-1 ? <>{item}<span></span></> : item}</small> )}</section>
+              </div>
+            }
+            <br/>
+            <small>{project.date}</small>
+          </section>
+          <p className='project_long_desc'>{project.longdesc || ''}</p>
+        </div>
       </motion.div> }
       {
         unlash &&

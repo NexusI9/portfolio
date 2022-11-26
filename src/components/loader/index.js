@@ -191,7 +191,7 @@ function Loader({title, onLoad, percent=0}){
         </motion.div>
 
         <motion.span className='backPlanes' key='backPlane1' variants={variantPlaneTwo}></motion.span>
-        <motion.span className='backPlanes' key='backPlane2' variants={variantPlane}></motion.span>
+        <motion.span className='backPlanes' key='backPlane2' variants={variantPlane}><img alt='loader background' src={project?.banner}/></motion.span>
 
 
       </motion.div>

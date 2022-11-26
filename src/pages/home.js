@@ -37,6 +37,7 @@ const VideoBanner = (onScroll) => {
 
   useEffect(() => {
 
+    document.title = 'The Art of Nassim El Khantour';
     const onScroll = () => {
       const scrollPos = window.pageYOffset;
       if( window.pageYOffset < window.innerHeight ){

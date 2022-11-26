@@ -16,6 +16,14 @@
     --title:2em;
   }
 
+  #project_banner{
+    padding: 5% 10%;
+    & > div{
+      grid-template-columns: none;
+      row-gap: 30px;
+    }
+  }
+
   #letterbox #iframewrapper{
     width: 75vw;
     height: calc(75vw*9/16);
@@ -32,7 +40,12 @@
     #bars.active{
       margin-top: 6vw !important;
     }
+
+    #homeButton{
+      justify-content: flex-end;
+    }
   }
+
 
   #letterbox{
 
@@ -93,7 +106,13 @@
   }
 
 
-  #loaderPage #frameWrapper #underFrame { width: 30vw; height: 30vw;}
+  #loaderPage{
+    #frameWrapper #underFrame { width: 30vw; height: 30vw;}
+    h2{
+      white-space: break-spaces;
+      text-align: center;
+    }
+  }
 
   #suggest img{
     max-width: none;

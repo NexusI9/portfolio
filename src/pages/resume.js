@@ -243,21 +243,25 @@ function Resume({onLoad}){
 
      switch(langParam){
         case 'eng':
+          document.title = 'Nassim El Khantour - Resume (english)';
           setLanguage('english');
           setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/Resume-Nassim_El_Khantour.pdf');
         break;
 
         case 'fr':
+          document.title = 'Nassim El Khantour - Resume (français)';
           setLanguage('french');
           setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/CV-Nassim_El_Khantour.pdf');
         break;
 
         case 'zhg':
+          document.title = 'Nassim El Khantour - Resume (中文)';
           setLanguage('zhongwen');
           setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/簡歷-Nassim_El_Khantour.pdf');
         break;
 
         default:
+          document.title = 'Nassim El Khantour - Resume (english)';
           setLanguage('english');
           setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/Resume-Nassim_El_Khantour.pdf');
      }

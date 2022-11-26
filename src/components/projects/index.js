@@ -10,7 +10,7 @@ import { Signature } from '../statics';
 export const Header = ({project}) => (
   <div className='projectHeader'>
     <HomeButton />
-    <h2 className={ project.font || '' }>{project.title}</h2>
+    <h2>{project.title}</h2>
     { project.desc && <small className='discrete'>{project.desc}</small>}
     <small className='discrete'>{project.date}</small>
   </div>

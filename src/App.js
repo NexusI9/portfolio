@@ -26,7 +26,7 @@ function App() {
   const routes = [
     {path: '*', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }}/>},
     {path:'/', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }} /> },
-    {path:'/project/:title', element: <Project onLoad={ obj => { setTheme({color:obj.color, skin:obj.skin, customColor:obj.customColor }); setHomebutton(true) } }  /> },
+    {path:'/project/:title', element: <Project onLoad={ obj => { setTheme({color:obj.color, skin:obj.skin}); setHomebutton(true) } }  /> },
     {path:'/resume', element: <Resume onLoad={ () => { setTheme({color:'red'}); setHomebutton(false);  }} /> },
     {path:'/contact', element: <Contact onLoad={ () => { setTheme({color:'purple'}); setHomebutton(false);  }} /> },
     {path:'/showreel', element: <Showreel onLoad={ () => { setTheme({skin:'dark'}); setHomebutton(true); }} /> },
@@ -54,29 +54,21 @@ function App() {
     const favicon = document.getElementById('favicon');
     setFaviconColor(favicon, theme.color);
 
-    if( theme.customColor ){
-          body.setAttribute('style','--customcolor:'+ theme.customColor);
-          body.setAttribute('data-customcolor','1');
-    }else{
-          body.removeAttribute('style');
-          body.setAttribute('data-customcolor','0');
-    }
-
-
   },[theme]);
 
+
   return (
-    <div id='wrapper'>
-      <Suspense fallback={ <Loader /> }>
-        <AnimatePresence exitBeforeEnter initial={false}>
-            <Routes location={location} key={location.pathname}>
-              { routes.map( (route,i) => <Route key={'route'+i} path={route.path} element={route.element} />) }
-            </Routes>
-        </AnimatePresence>
-      </Suspense>
-      <Menu projects={PROJECTS} homebutton={homebutton} />
-      <Filter />
-    </div>
+      <div id='wrapper'>
+        <Suspense fallback={ <Loader /> }>
+          <AnimatePresence exitBeforeEnter initial={false}>
+              <Routes location={location} key={location.pathname}>
+                { routes.map( (route,i) => <Route key={'route'+route.path+i} path={route.path} element={route.element} /> ) }
+              </Routes>
+          </AnimatePresence>
+        </Suspense>
+        <Menu projects={PROJECTS} homebutton={homebutton} />
+        <Filter />
+      </div>
   );
 }
 

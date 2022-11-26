@@ -3,9 +3,13 @@ import { useEffect } from 'react';
 import { MailAddress, SocialsIcons } from '../components/inputs';
 import { Signature } from '../components/statics';
 
-function Contact({onLoad}){
+function Contact({onLoad = () => 0}){
 
-  useEffect(() => onLoad ? onLoad() : 0, []);
+  useEffect(() => {
+      document.title = 'Nassim El Khantour - Contact';
+      onLoad();
+
+  },[]);
 
   const variantContainer = {
     initial:{opacity:0},

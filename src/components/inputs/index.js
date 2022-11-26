@@ -70,7 +70,7 @@ export const Logo = () => (
 export const HomeButton = () => (
   <Link to='/' id='homeButton'>
       <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="34.1" height="6" viewBox="0 0 34.1 6">
-        <path class="cls-1" d="M2.6,3.7H2.3l.6-.3.5-.5a1.8,1.8,0,0,0,.5-.7l.3-.6c0-.2.1-.4.1-.6H3.7a4.6,4.6,0,0,1-.8,1.9A4.5,4.5,0,0,1,1,4,3.4,3.4,0,0,1,3.2,5.5l.3.8.2.7h.6a2.9,2.9,0,0,0-.7-1.6l-.4-.5-.9-.6H35.1V3.7ZM1,4Z" transform="translate(-1 -1)"/>
+        <path className="cls-1" d="M2.6,3.7H2.3l.6-.3.5-.5a1.8,1.8,0,0,0,.5-.7l.3-.6c0-.2.1-.4.1-.6H3.7a4.6,4.6,0,0,1-.8,1.9A4.5,4.5,0,0,1,1,4,3.4,3.4,0,0,1,3.2,5.5l.3.8.2.7h.6a2.9,2.9,0,0,0-.7-1.6l-.4-.5-.9-.6H35.1V3.7ZM1,4Z" transform="translate(-1 -1)"/>
       </svg>
       <HoverSquare size={'40px'} name='homeButton'>
         <small className='discrete'>home</small>
