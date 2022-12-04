@@ -45,7 +45,7 @@ const FeaturesCircles = () => {
   return(
     <>
       <section id='featuresIconContainer'>
-        {contentRoute.map( (item,i) => <span onMouseEnter={ () => setContent(contentRoute[i]) } data-type={item.type}></span> ) }
+        {contentRoute.map( (item,i) => <span key={item.type+i} onMouseEnter={ () => setContent(contentRoute[i]) } data-type={item.type}></span> ) }
       </section>
       <section style={{flexBasis: '50%', marginTop:'3%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <div id="ft_circle_infobox">

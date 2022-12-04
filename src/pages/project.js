@@ -16,7 +16,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 import { gsap } from 'gsap';
 
 
-function Project({onLoad= e => e}){
+function Project({onLoad= () => 0}){
 
   const {title} = useParams();
 
@@ -56,7 +56,7 @@ function Project({onLoad= e => e}){
         if( scrollPos > projectContainer.current?.offsetHeight - 400 ){ setShowSideBar(false); }
         else{ setShowSideBar(true); }
 
-        if(projectContainer.current.getBoundingClientRect().top > 0){
+        if(projectContainer.current?.getBoundingClientRect().top > 0){
           setWhiteMenu(true);
           if(imgBanner.current){
 
@@ -119,7 +119,6 @@ function Project({onLoad= e => e}){
       } );
     }
 
-
     if(project){ init(); }
     onLoad(data);
 
@@ -141,6 +140,8 @@ function Project({onLoad= e => e}){
       {unlash && project && whiteMenu && <motion.div
         id='project_banner'
         key={'projectBanner' + title}
+        initial={{opacity:0}}
+        animate={{opacity:1, transition:{duration:0.3}}}
         exit={{opacity:0, transition:{duration:0.3}}}
         >
         <img alt='project banner' ref={imgBanner} src={process.env.PUBLIC_URL+(project.banner || project.thumbnail)}/>

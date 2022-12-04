@@ -54,6 +54,7 @@ function App() {
 
     const favicon = document.getElementById('favicon');
     setFaviconColor(favicon, theme.color);
+  
 
   },[theme]);
 

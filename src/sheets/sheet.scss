@@ -640,6 +640,7 @@ footer{
   display: flex;
   align-items: center;
   flex-direction: row;
+  &, img{ cursor: pointer; }
   .ico {
     margin: 0px 5px;
     opacity: 0.6;
@@ -2692,6 +2693,7 @@ img.gradientImg{
   .linkSlider{
     transition: transform 0.6s ease-out, opacity 0.5s ease;
     width: fit-content;
+    & *{ cursor: pointer; }
   }
 
  @mixin setBkgFilter($nth, $col, $url ){
@@ -2733,10 +2735,11 @@ img.gradientImg{
   #signature{
     justify-content: center;
     margin: 0;
-    opacity: 0.3;
+    opacity: 0.5;
   }
 
   #socials{
+    left: 0;
     position: relative;
     margin: 20px auto;
     margin-bottom: 0;
@@ -2907,9 +2910,9 @@ img.gradientImg{
     transform-origin: left;
     z-index: -1;
     @include skew();
-    top: 10vh;
+    top: 5vh;
     overflow: hidden;
-    height: calc( 7vw + 20px);
+    height: calc(17vw + 20px);
 
     &::after{
       content: '';
@@ -2918,6 +2921,7 @@ img.gradientImg{
       height: 100%;
       top: 0;
       left: 0;
+      background-image: linear-gradient(0deg, $bkg, transparent 30%, transparent 90%, $bkg);
     }
 
     h1, h2{
@@ -2937,9 +2941,10 @@ img.gradientImg{
     section{
       position: relative;
       display: grid;
-      grid-template-rows: repeat(3,2.5em);
-      top:0em;
+      grid-template-rows: repeat(3,2em); //hardcode
+      top:0;
       /*width: calc($title/2);*/
+      align-items: center;
     }
 
     section > h1:first-of-type{

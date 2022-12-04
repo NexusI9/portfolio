@@ -1,6 +1,6 @@
 
 import { cleanCategoryName, getCategories, getColorOfCategory, setFaviconColor } from '../../lib/utils';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-responsive-masonry';
 import { useEffect, useState, useRef, useCallback } from 'react';
@@ -33,20 +33,20 @@ const toMapTransition = {
   exit:{ scale:0, opacity:0, transition:{ duration:0.2, type:'tween', ease:"backIn"}}
 }
 
-const tl = gsap.timeline({duration:1,repeat:0});
-export const BackgroundHeader = ({title, color, speed=2, delay=0.04, onDone}) => {
 
-  const TEXT_SIZE = 2.5;
+export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
+
+  const TEXT_SIZE = 2;
   const containVariant = {
     initial:{},
-    animate:{opacity:1, transition:{delay:0.1, staggerChildren:delay, duration:speed}},
-    exit:{opacity:0, transition:{staggerChildren:delay, duration:speed}}
+    animate:{opacity:1, transition:{staggerChildren:delay, duration:speed}},
+    exit:{opacity:1, transition:{staggerChildren:delay, duration:speed}}
   };
 
   const caseVariant = {
     initial:{ y: '0em'},
-    animate:{ y: (-1*TEXT_SIZE+'em')  },
-    exit:{ y: (-2*TEXT_SIZE+'em') }
+    animate:{ y: (-1*TEXT_SIZE+'em'), transition:{duration:speed/2,  type:'spring', stiffness: 100} },
+    exit:{ y: (-2*TEXT_SIZE+'em'), transition:{duration:speed/4, type:'tween'}  }
   };
 
   const Case = ({letter='', color}) => (
@@ -286,7 +286,7 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
         initial='initial'
         animate='animate'
         exit='exit'
-        id={"project_"+cleanCategoryName(category)}
+        id={cleanCategoryName(category)}
         className="cat">
           <Masonry columnsCount={ columnsCount } gutter='20px'>
               { projects[category].map( project => <ProjectThumbnails key={project.title} project={project} /> ) }
@@ -300,9 +300,8 @@ export const Flow = ({projects}) => {
 
   const containerRef = useRef([]);
   const catContainers = getCategories(projects).map( (cat,c) => <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> );
-  const navigate = useNavigate();
   const [category, setCategory] = useState();
-
+  
   useEffect( () => {
 
     const setBodyTheme = (color) => {
@@ -332,7 +331,7 @@ export const Flow = ({projects}) => {
           const catColor = getColorOfCategory(title);
           setBodyTheme( catColor );
           setFaviconColor(favicon,catColor);
-          /*navigate('/#'+title);*/
+          window.history.pushState(null, "The Art of Nassim El Khantour - "+title, "/#"+title);
           return setCategory(title);
 
         }
@@ -350,7 +349,7 @@ export const Flow = ({projects}) => {
   return (
     <>
 
-      <AnimatePresence >
+      <AnimatePresence>
         <BackgroundHeader key={'bkg'+category} title={category} color={ getColorOfCategory(category) || '#000000' }/>
       </AnimatePresence>
 

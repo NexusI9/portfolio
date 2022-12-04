@@ -1,11 +1,8 @@
 import downArrow from '../assets/arrowScroll_1.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Flow } from '../components/flow';
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Dotty } from '../components/loader';
-import { ViewShowreel, Button } from '../components/inputs';
-import { gsap } from 'gsap';
 import { Socials } from '../components/statics';
 import { Video } from '../components/article';
 import { HoverSquare } from '../components/props';
@@ -102,6 +99,10 @@ function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheF
 
   const [social, setSocial] = useState(false);
   const [aboveTheFold, setAboveTheFold] = useState(true);
+  const {hash} = useLocation();
+
+  useEffect( () => hash && document.querySelector(decodeURI(hash))?.scrollIntoView(),[]);
+
   useEffect(() => {
 
     const onScroll = () => {
@@ -121,6 +122,7 @@ function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheF
 
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+
 
   },[aboveTheFold]);
 

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { HoverSquare } from '../props';
@@ -68,16 +68,19 @@ export const Logo = () => (
   </Link>
 );
 
-export const HomeButton = () => (
-  <Link to='/' id='homeButton'>
-      <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="34.1" height="6" viewBox="0 0 34.1 6">
-        <path className="cls-1" d="M2.6,3.7H2.3l.6-.3.5-.5a1.8,1.8,0,0,0,.5-.7l.3-.6c0-.2.1-.4.1-.6H3.7a4.6,4.6,0,0,1-.8,1.9A4.5,4.5,0,0,1,1,4,3.4,3.4,0,0,1,3.2,5.5l.3.8.2.7h.6a2.9,2.9,0,0,0-.7-1.6l-.4-.5-.9-.6H35.1V3.7ZM1,4Z" transform="translate(-1 -1)"/>
-      </svg>
-      <HoverSquare size={'40px'} name='homeButton'>
-        <small className='discrete'>home</small>
-      </HoverSquare>
-  </Link>
-);
+export const HomeButton = () => {
+    const navigate = useNavigate();
+    return(
+      <div onClick={ () => navigate(-1) } id='homeButton'>
+          <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="34.1" height="6" viewBox="0 0 34.1 6">
+            <path className="cls-1" d="M2.6,3.7H2.3l.6-.3.5-.5a1.8,1.8,0,0,0,.5-.7l.3-.6c0-.2.1-.4.1-.6H3.7a4.6,4.6,0,0,1-.8,1.9A4.5,4.5,0,0,1,1,4,3.4,3.4,0,0,1,3.2,5.5l.3.8.2.7h.6a2.9,2.9,0,0,0-.7-1.6l-.4-.5-.9-.6H35.1V3.7ZM1,4Z" transform="translate(-1 -1)"/>
+          </svg>
+          <HoverSquare size={'40px'} name='homeButton'>
+            <small className='discrete'>home</small>
+          </HoverSquare>
+      </div>
+    );
+}
 
 export const Multi = ({eng, fr, zh, language}) => {
   const [content, setContent] = useState(eng);
@@ -191,7 +194,7 @@ export const SocialsIcons = ({mail=false}) => {
   return(
     <div className='socialsIcons'>
       {
-      mapSocials.map( (item,i) => !mail && i === 0 ? <></> : <HoverSquare size='25px' name={'hoversquare'+item.id} key={item.id} top='-25%' left='-20%'><a className='ico' href={item.link} target='_blank' rel="noreferrer" ><img src={item.icon} /></a></HoverSquare> ) 
+      mapSocials.map( (item,i) => !mail && i === 0 ? <span key='nullsocial'></span> : <HoverSquare size='25px' name={'hoversquare'+item.id} key={item.id} top='-25%' left='-20%'><a className='ico' href={item.link} target='_blank' rel="noreferrer" ><img src={item.icon} /></a></HoverSquare> ) 
       }
     </div>
   );
