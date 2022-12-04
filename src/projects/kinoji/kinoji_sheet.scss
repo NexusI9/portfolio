@@ -41,14 +41,40 @@
     background: linear-gradient(0, #f3f3f3 5%, #ffffff00);
 }
 
-#inspi > div:first-child .moviemason{
-  /*transform: translateX(-10%);*/
-  //margin-top:40%;
+
+.greyborder{
+  border: solid 0.5px #3d3d3d;
 }
 
-#inspi > div:last-child .moviemason{
-  /*transform: translateX(10%);*/
-  //margin-top:-20%;
+.gradcircle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+
+  &.purple{
+    &::before{
+      background: radial-gradient(#ff00c7 -50%, transparent 50%);
+    }
+  }
+
+  &.double{
+    &::before{
+      background: radial-gradient(circle at 35%, #ff00c7 -87%, transparent 30%), 
+      radial-gradient(circle at 60% 43%, #ff0000 -57%, transparent 31%);
+    }
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: radial-gradient(#ff0000 -50%, transparent 50%);
+    display: block;
+  }
 }
 
 #inspi > div:nth-child(2){
@@ -207,9 +233,6 @@ table .leftborder{
   margin-bottom: 10%;
 }
 
-#mosaic{
-}
-
 
 /*———————————————————————————————————————————————-*/
 
@@ -237,6 +260,11 @@ table .leftborder{
 
 /*———————————————————————————————————————————————-*/
 #graphic_chart{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, calc(100%/3) );
+  justify-items: center;
+
   thead{
     h4{
       text-align: center;
@@ -249,12 +277,12 @@ table .leftborder{
     }
   }
 
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(3, calc(100%/3) );
   & > *{
     box-sizing: border-box;
     padding: 10px;
+    width: 95%;
+    border: solid 1px #3d3d3d;
+    margin-bottom: 10px;
   }
 
 
@@ -262,7 +290,6 @@ table .leftborder{
 #table_font{
   tbody{
     td{
-      background: #111111;
       p{ color: #AAAAAA; margin-bottom: 10px; }
       box-sizing: border-box;
       padding: 10px;
@@ -314,7 +341,6 @@ table .leftborder{
 #table_icono{
   tbody{
     td{
-      background: #111111;
       vertical-align: middle;
       img{
         margin: 0 7px;

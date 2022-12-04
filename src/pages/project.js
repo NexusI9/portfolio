@@ -6,15 +6,13 @@ import {
   getCategoryOfProject,
   getCustomColorFromProject,
   getRandomProject,
-  getSkinFromProject,
-  isMobile
+  getSkinFromProject
 } from '../lib/utils';
 import { Suggestion, Header, Content, Previews } from '../components/projects';
 import { PercentBar } from '../components/props';
 import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/loader';
 import {motion, AnimatePresence} from 'framer-motion';
-import '../sheets/projects_sheet.scss';
 import { gsap } from 'gsap';
 
 

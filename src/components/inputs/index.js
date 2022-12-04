@@ -13,6 +13,7 @@ import twitter from '../../assets/icons/twitter.svg';
 import vimeo from '../../assets/icons/vimeo.svg';
 import pinterest from '../../assets/icons/pinterest.svg';
 import linkedin from '../../assets/icons/linkedin.svg';
+import mailico from '../../assets/icons/mail.svg';
 
 export const BackButton = () => (
 
@@ -142,8 +143,13 @@ export const ViewShowreel = ({container}) => {
 }
 
 export const MailAddress = () => ( <a className='discrete surligneur' href="mailto:nassim.elkhantour@gmail.com"><small>nassim.elkhantour@gmail.com</small></a> );
-export const SocialsIcons = () => {
+export const SocialsIcons = ({mail=false}) => {
   const mapSocials = [
+    {
+      id:'mail',
+      link:'mailto:nassim.elkhantour@gmail.com',
+      icon:mailico
+    },
     {
       id:'behance',
       link:'https://www.behance.net/elkhantour/',
@@ -184,8 +190,9 @@ export const SocialsIcons = () => {
   }*/
   return(
     <div className='socialsIcons'>
-      {mapSocials.map( item => <HoverSquare size='25px' name={'hoversquare'+item.id} key={item.id} top='-25%' left='-20%'><a className='ico' href={item.link} target='_blank' rel="noreferrer" ><img src={item.icon} /></a></HoverSquare> )}
-
+      {
+      mapSocials.map( (item,i) => !mail && i === 0 ? <></> : <HoverSquare size='25px' name={'hoversquare'+item.id} key={item.id} top='-25%' left='-20%'><a className='ico' href={item.link} target='_blank' rel="noreferrer" ><img src={item.icon} /></a></HoverSquare> ) 
+      }
     </div>
   );
 

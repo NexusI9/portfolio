@@ -360,6 +360,8 @@ section.imgWrapper{
   .right{ align-items: flex-end;}
   .hcenter{  justify-content: center; }
   .vcenter{ align-items:center; }
+  .padleft{ padding-left: 5%; }
+  .padright{ padding-right: 5%; }
 
   & > .body {
     display: flex;
@@ -391,7 +393,7 @@ section.imgWrapper{
     padding-left: 5%;
     padding-right: 5%;
   }
-  .padleft{ padding-left: 15%; }
+
   .gridlayout{
     justify-items: center;
     align-items: center;
@@ -411,13 +413,62 @@ section.imgWrapper{
 }
 
 
+.pointer{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: start;
+  align-items: center;
+  height: fit-content;
+
+  &[data-side="right"]{
+    grid-template-columns: 2fr 1fr;
+    span{
+      &::before{
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  small{
+    margin-top: 10px;
+  }
+
+  span{
+    box-sizing: border-box;
+    padding: 0 10px;
+    position: relative;
+    width: 10vw;
+    height: 0.5px;
+    background-color: black;
+    background-clip: content-box;
+    display: block;
+    max-width: 250px;
+    min-width: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: black;
+    }
+  }
+}
+
+
 /*———————————————————————————————————————————————-*/
 
 .infobox{
   min-width: 3em;
   min-height: 4em;
   background: #F4F4F4;
-  color: #707070;
   border-radius: 1em;
   box-sizing: border-box;
   box-shadow: 0 0 7px 0px rgb(0 0 0 / 20%) inset;
@@ -425,6 +476,7 @@ section.imgWrapper{
   grid-template-columns: 3em 1fr;
   padding: 3%;
   column-gap: 3%;
+  align-items: center;
 
   span{
     height: 3em;
@@ -479,12 +531,8 @@ section.imgWrapper{
 
   .body{
     width: 80%;
-    margin-left: 10%;
-    flex-wrap: wrap;
+    margin:auto;
     column-gap: 5%;
-    align-items: flex-start;
-    display: block;
-    margin-top: 2%;
   }
 }
 
@@ -563,6 +611,7 @@ table .tspace td{
   background-origin: border-box;
   background-clip: content-box, border-box;
   height: 100%;
+  overflow: initial;
 }
 
 .white{

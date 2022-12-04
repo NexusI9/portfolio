@@ -192,7 +192,7 @@ export const Filter = () => (
 );
 
 
-export const Socials = () => (
+export const Socials = ({minify=false}) => (
 
     <motion.div
       id="socials"
@@ -202,11 +202,9 @@ export const Socials = () => (
       exit={{opacity:0, y: 70,  transition:{duration:0.2, type:'tween', ease:'easeOut'}}}
     >
 
-      <div>
-        <MailAddress />
-      </div>
+      {!minify && <div><MailAddress /></div>}
 
-      <SocialsIcons />
+      <SocialsIcons mail={minify} />
     </motion.div>
 
 );

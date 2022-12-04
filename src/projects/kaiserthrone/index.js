@@ -2,20 +2,13 @@ import { Img, Video } from '../../components/article';
 
 export default () => (
   <>
+    <div id="desc" data-board-name='Synopsis'>
+    <h2>Synopsis</h2>
+    <p><i>"In an irregular lab based in a deserted and strayed factory, an uncanny event lead to the malfunction of the chemical stability system of the ongoing experiment. The wild nature of the lab built with modest equipment cannot hold that much compulsion. The beast is unleashed and is now spreading..."</i></p>
+    </div>
     <div data-board-name='Music video'>
       <Video id={502594756} placeholder={'/assets/thumbnails/kaiser1.jpg'}/>
     </div>
-
-    <div id="desc" data-board-name='Synopsis'>
-    <h2>Synopsis</h2>
-    <p>Music video made for <a href="https://epicschmetterling.bandcamp.com/" target="_blank">Epic Schmetterling</a> electro-punk music band.
-      <br />
-      Drawing its inspiration from fleshy worlds of directors like Carpenter or Cronenberg but also by the <i>techno-mysticism</i> of Ōtomo, the project explores the relation between the technological matter, the organic and the spiritual in an animistic feast.
-    </p>
-
-    <p><i>"In an irregular lab based in a deserted and strayed factory, an uncanny event lead to the malfunction of the chemical stability system of the ongoing experiment. The wild nature of the lab built with modest equipment cannot hold that much compulsion. The beast is unleashed and is now spreading..."</i></p>
-    </div>
-
     <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_1.jpg"/>
     <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_2.jpg"/>
     <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_3.jpg"/>

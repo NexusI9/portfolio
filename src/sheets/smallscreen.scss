@@ -147,7 +147,7 @@
   }
 
 
-
+  .hidmobile{ display: none; }
   .blank.mobile{ display:none; }
 
   .story > section{
@@ -163,8 +163,6 @@
 
 
   .article {
-    .half{ width:100%; }
-    .reverse{ flex-direction: column-reverse;}
     &.spaced{ margin-bottom: 40%; }
   }
 

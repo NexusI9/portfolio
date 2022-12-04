@@ -11,7 +11,7 @@ import { Dotty } from '../loader';
 //Gallery & Medias
 
 export const Img = ({src, name, alt, className='', id, style, onClick, boardName}) => (
-  <section onClick={ () => onClick && name ? onClick({src, alt, className, id, style, name}) : 0 } className={className + 'imgWrapper round ' + (onClick ? 'picLink' : '')} style={style || {}} data-board-name={boardName || ''}><img src={src} alt={alt || 'picture'} className={className || ''} id={id || ''} /><span></span></section>
+  <section onClick={ () => onClick && name ? onClick({src, alt, className, id, style, name}) : 0 } className={className + ' imgWrapper round ' + (onClick ? 'picLink' : '')} style={style || {}} data-board-name={boardName || ''}><img src={src} alt={alt || 'picture'} className={className || ''} id={id || ''} /><span></span></section>
 );
 
 export const Gallery = ({galleries, galleryKey}) => {
@@ -268,7 +268,7 @@ export const Title = ({label, summary,id, className, style}) => (
 export const Body = ({flexDirection, flexAlignement, children, title, summary, id='', className, style={}}) => (
   <>
     {title && <Title label={title} summary={summary} />}
-    <section {...id} className={"body compress " + (flexDirection || '')+' '+ (flexAlignement || '')+' '+(className||'')} {...style}>{children}</section>
+    <section {...id} className={"body compress " + (flexDirection || '')+' '+ (flexAlignement || '')+' '+(className||'')} style={style}>{children}</section>
   </>
 );
 
@@ -374,3 +374,15 @@ export const SlideShow = ({slides, displayBar=true, duration=5, autoplay=true })
     </div>
   )
 }
+
+
+export const Pointer = ({side='left', barwidth='50%', title='', description='', style={} }) => (
+  <div className={'pointer'} style={style} data-side={side}>
+    {side === 'left' && <span></span>}
+    <h5>{title}</h5>
+    {side === 'right' && <span></span>}
+    {side === 'left' && <br />}
+    <small>{description}</small>
+    {side === 'right' && <br />}
+  </div>
+)

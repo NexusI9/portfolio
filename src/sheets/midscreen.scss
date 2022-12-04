@@ -171,11 +171,32 @@
 
   .article {
       & > .body > div{
-        margin-bottom: 20px;
+        margin-bottom: 70px;
       }
       .hori, .horizontal, .body{
         flex-direction: column;
       }
+
+      .reverse{ flex-direction: column-reverse;}
+
+      .half{ width: 100%; }
+
+      .pointer{
+        display: block;
+        span{ display: none; }
+      }
+
+      .blank{
+        height: 10vh;
+      }
+
+      .sblank{
+        height: 5vh;
+      }
+
+      .hidtablet{ display: none;}
+      .padleft{ padding-left: 0; }
+      .padright{ padding-right: 0; }
   }
   .musicWave{
     left: -7vw;
@@ -184,6 +205,11 @@
   #sidemenu{ margin-bottom: 40px; }
   #dirpath{ margin-top: 40px; }
 
-
+  #featuresIconContainer{
+    justify-content: center;
+    $size:30vw;
+    grid-template-columns: $size $size !important;
+    grid-template-rows: $size $size !important;
+  }
 
 }

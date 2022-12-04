@@ -403,6 +403,17 @@ b .zhg{ font-weight: bold; }
   #suggest{ background: $darkbkg; }
   .vimeo{   background: black; }
 
+  .article{
+    .pointer{
+      span{
+        background-color: white;
+        &::before{
+          background:white;
+        }
+      }
+    } 
+  }
+
 }
 
 @mixin setWhiteMenu(){
@@ -446,7 +457,7 @@ b .zhg{ font-weight: bold; }
 
   #project_banner{
     .project_category{ span{ background-color: $color; }}
-    h1{color: $color;}
+   //h1{color: $color;}
   }
   #sidePanel{
     .projectHeader{ h2{ color: $color; } }
@@ -516,7 +527,7 @@ b .zhg{ font-weight: bold; }
   }
 
   #project_banner{
-    h1{color: $custom;}
+    //h1{color: $custom;}
   }
 
   #sidePanel .projectPreview input[type=radio].active + .board small {
@@ -1643,7 +1654,7 @@ iframe.normal{
   }
   h1{
     font-size: 8em;
-    color: $red;
+    color: $bkg;
   }
   img{
     position: absolute;
@@ -2722,8 +2733,14 @@ img.gradientImg{
   #signature{
     justify-content: center;
     margin: 0;
+    opacity: 0.3;
+  }
+
+  #socials{
+    position: relative;
+    margin: 20px auto;
+    margin-bottom: 0;
     margin-top: 90px;
-      opacity: 0.3;
   }
   .gradientImg{filter:$mainFilter;}
   .projects{

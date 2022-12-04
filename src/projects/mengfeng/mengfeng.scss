@@ -1,21 +1,47 @@
 
 
 .purpleBkg{
-  box-sizing: border-box;
-  padding: 80px 0px;
-  background-image: linear-gradient(45deg, #4a3db0, #160a71);
-  color: white;
+  //box-sizing: border-box;
+  //padding: 80px;
+  //background-image: linear-gradient(45deg, #4a3db0, #160a71);
+  //color: white;
 }
 
-.article[data-board-name="Music"] .imgWrapper{ position: relative; }
-.article[data-board-name="Meditation"] > section div:last-child .imgWrapper{ position: relative; }
+
+.article{
+
+
+  &[data-board-name="Music"] {
+    .imgWrapper{ position: relative; }
+    &, & > *{
+      overflow: visible;
+    }
+  }
+
+  &[data-board-name="Meditation"] > section div:last-child .imgWrapper{ position: relative; }
+
+  &[data-board-name="Diffuser"]{
+    .body > div{
+      &:last-of-type{
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+      }
+    }
+  }
+  &[data-board-name="UI Overview"]{
+    img{ height: 50vh; }
+  }
+  
+
+}
 
 .musicWave{
   position: absolute;
-  width: 102vw;
+  width: 120vw;
   display: block;
   height: 100%;
-  left: -20vw;
+  right: -20vw;
   background-repeat-x: repeat;
   background-image: url('./assets/wave_1.svg');
   background-size: 99%;
@@ -28,7 +54,7 @@
   animation-iteration-count: infinite;
 
   @keyframes waveslide{
-    to{ background-position-x: -100vw; }
+    to{ background-position-x: -121vw; }
   }
 
   &:nth-of-type(2){

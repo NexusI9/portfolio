@@ -158,20 +158,28 @@
     img{pointer-events: auto;}
     &.center{ justify-content: center; }
 
-    & > *{ margin: 0 10px; }
+    & > *{ 
+      margin: 0 10px; 
+      border-radius: 0;
+      img{ border-radius: 5px; }
+    }
 
   }
 
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 825px){
 
+  
   .gallery{
     &.split{
       grid-auto-flow: row;
       grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
       grid-template-columns: none;
     }
+
+
+    &.window{margin-bottom: 0px !important;}
   }
 
 }

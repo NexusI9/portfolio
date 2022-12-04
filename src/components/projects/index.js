@@ -5,7 +5,7 @@ import html2canvas from 'html2canvas';
 import { scrollTo, smoothScroll } from '../../lib/utils';
 import { gsap } from 'gsap';
 import { HomeButton } from '../inputs';
-import { Signature } from '../statics';
+import { Signature, Socials } from '../statics';
 
 export const Header = ({project}) => (
   <div className='projectHeader'>
@@ -45,6 +45,7 @@ export const Suggestion = ({projects, display}) =>{
         >
           { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={false} /> ) }
         </motion.section>
+        <Socials minify={true}/>
         <Signature />
       </motion.div>
     );

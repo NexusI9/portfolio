@@ -1,4 +1,5 @@
 import './sheets/sheet.scss';
+import './sheets/projects_sheet.scss';
 import './sheets/midscreen.scss';
 import './sheets/smallscreen.scss';
 

@@ -93,7 +93,7 @@ const PROJECTS = {
       "thumbnail":"/assets/thumbnails/kaiser.jpg",
       "banner":"/assets/banners/kaiserthrone.jpg",
       "desc": "Music video made for Epic Schmetterling music-band",
-      "longdesc":"",
+      "longdesc":"Music video made for Epic Schmetterling electro-punk music band. Drawing its inspiration from fleshy worlds of directors like Carpenter or Cronenberg but also by the techno-mysticism of Ōtomo, the project explores the relation between the technological matter, the organic and the spiritual in an animistic feast.",
       "category":["Animation","Art Direction","Music Video"],
       "overlay":{
         "type":"video",
@@ -108,7 +108,7 @@ const PROJECTS = {
       "thumbnail":"/assets/thumbnails/neom.jpg",
       "banner":"/assets/banners/neom.jpg",
       "desc":"Collaborative project with Philip Pentacle & Epic Schmetterling",
-      "longdesc":"",
+      "longdesc":"Mainly used as visuals for music performance, NEOM is a project of more than 100 cinematic CG samples of various subjects. Due to its performative nature, the project also has a dedicated VJ software developed with Python and TouchDesigner, allowing to fully express its potential through a diptych projection.",
       "category":["Animation","Art Direction","Events"],
       "overlay":{
         "type":"video",

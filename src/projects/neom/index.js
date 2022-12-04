@@ -7,13 +7,10 @@ export default () => (
     </Article>
 
 		<Article id="desc">
-
-			<h2>NEOM</h2>
-			<p>
-				Dystopian landscapes, glowing cityscapes, archaic monolith, superstar and aboriginal androids: <b>NEOM</b> is a world of genesis and destruction, a world in which modernism faces tradition.
-				<br/><br/>Mainly used as visuals for music performance, <b>NEOM</b> is a project of more than 100 cinematic CG samples of various subjects (from cyborg to cityscape, from micro to macro).
-				Due to its performative nature, the project also has a dedicated VJ software developed with Python and TouchDesigner, allowing to fully express its potential through a diptych projection.
-			</p>
+			<h2>Synopsis</h2>
+			<p><i>
+				"Dystopian landscapes, glowing cityscapes, archaic monolith, superstar and aboriginal androids: NEOM is a world of genesis and destruction, a world in which modernism faces tradition."
+			</i></p>
 		</Article>
 
 		<Img alt="neom" src="/assets/projects/neom/neom_1.jpg" />
