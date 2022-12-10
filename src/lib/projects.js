@@ -47,12 +47,8 @@ const PROJECTS = {
     },
     {
       "title":"Kinoji",
-      "thumbnail":"/assets/thumbnails/kinoji_1.jpg",
+      "thumbnail":"/assets/thumbnails/kinoji/kinoji_1.jpg",
       "banner":"/assets/banners/kinoji.jpg",
-      "overlay":{
-        "type":"picture",
-        "url":"/assets/thumbnails/kinoji_overlay.jpg"
-      },
       "desc":"An online cinematography library using MERN stack",
       "longdesc":"Kinoji is a search engine gathering thousands of shots from hundreds of movies from East-Asia. The website provides various tools to help the user find the perfects shots for his next project.",
       "category":["Web Design","UX/UI","App development"],

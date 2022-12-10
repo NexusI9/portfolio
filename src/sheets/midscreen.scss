@@ -27,7 +27,8 @@
 
   #letterbox #iframewrapper{
     width: 75vw;
-    height: calc(75vw*9/16);
+    height: auto;
+    bottom: 30%;
   }
 
   #menu ul{
@@ -53,10 +54,7 @@
     #textLetterbox{
       width: 100%;
       section{ padding: 10px; }
-      br{ display: none;}
-      h2{
-        font-size: 5.5em;
-      }
+      h2{ font-size: 5.5em; }
     }
   }
 

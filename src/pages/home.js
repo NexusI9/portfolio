@@ -33,6 +33,7 @@ const ThumbTagline = ({src, pos, speed}) => {
 const VideoBanner = (onScroll) => {
 
   const [opacity, setOpacity] = useState(1);
+  const [mobile, setMobile] = useState(0);
 
   const [displayVideo, setDisplayVideo] = useState(true);
   const name = useRef();
@@ -83,13 +84,22 @@ const VideoBanner = (onScroll) => {
 
   useEffect(() => {
 
+    
+
     const HEIGHT = window.innerHeight*2;
 
     document.title = 'The Art of Nassim El Khantour';
+
+    const onResize = () => {
+
+      if(window.innerWidth < 525){ setMobile(true); }
+      else{ setMobile(false); }
+
+    }
     const onScroll = () => {
 
       const scrollPos = window.pageYOffset;
-      if( window.pageYOffset < HEIGHT - 200 ){
+      if( window.pageYOffset < HEIGHT - 500 ){
 
         const t = 1-scrollPos / window.innerHeight;
         const half = scrollPos / (window.innerHeight/3);
@@ -102,8 +112,8 @@ const VideoBanner = (onScroll) => {
         video.current.style.transform = `translate3d(0,0%,-${(scrollPos/3)}px)`;
         firstplan.current.style.opacity = half;
 
-        quote.current.style.transform = `translate3d(0,0%,${(200-scrollPos/3)}px)`;
-
+        quote.current.style.transform = `translate3d(0,0%,${( (mobile ? 100 : 200)-scrollPos/3)}px)`;
+        
       }else{
         setOpacity(0);
         setDisplayVideo(false);
@@ -111,8 +121,17 @@ const VideoBanner = (onScroll) => {
 
     }
 
+    onResize();
+
+
+
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    }
 
   },[]);
   return (
@@ -147,7 +166,7 @@ const VideoBanner = (onScroll) => {
 
         <span id="firstplan" ref={firstplan}></span>
 
-      {thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)}
+      {!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)}
 
       <h1 id="tagline" ref={quote}>
         <span>Where art & code </span> 

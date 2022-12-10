@@ -32,9 +32,12 @@
         box-sizing: border-box;
         padding: 2%;
       }
+      h1{ font-size: 5em; }
       #textLetterbox{
+        align-items: flex-start;
+        padding-top: 30%;
         left: 0;
-        h1{ font-size: 2em; }
+        h2{ font-size: 7em; margin: 0 auto;}
       }
     }
 
