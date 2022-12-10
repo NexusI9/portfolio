@@ -6,7 +6,7 @@ import './sheets/smallscreen.scss';
 import PROJECTS from './lib/projects.js';
 
 import { useRoutes } from 'react-router-dom';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import React from 'react';
 import Loader from './components/loader';
 import { getColorOfCategory, setFaviconColor } from './lib/utils';
@@ -25,9 +25,9 @@ const Contact = React.lazy(() => import('./pages/contact') );
 function App() {
 
   const routes = [
-    {path: '*', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }}/>},
-    {path:'/', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }} /> },
-    {path:'/project/:title', element: <Project onLoad={ obj => { setTheme({color:obj.color, skin:obj.skin}); setHomebutton(true) } }  /> },
+    {path: '*', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }} onCategoryChange={ e => latestHref.current = e } />},
+    {path:'/', element: <Home projects={PROJECTS} onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }}  onCategoryChange={ e => latestHref.current = e } /> },
+    {path:'/project/:title', element: <Project onLoad={ obj => { setTheme({color:obj.color, skin:obj.skin});  } } onLoadFinish={ () => setHomebutton(true) } /> },
     {path:'/resume', element: <Resume onLoad={ () => { setTheme({color:'red'}); setHomebutton(false);  }} /> },
     {path:'/contact', element: <Contact onLoad={ () => { setTheme({color:'purple'}); setHomebutton(false);  }} /> },
     {path:'/showreel', element: <Showreel onLoad={ () => { setTheme({skin:'dark'}); setHomebutton(true); }} /> },
@@ -35,6 +35,7 @@ function App() {
   ]
 
   const location = useLocation();
+  const latestHref = useRef('');
 
 //  const element = useRoutes(routes);
   const [theme, setTheme] = useState({
@@ -54,8 +55,7 @@ function App() {
 
     const favicon = document.getElementById('favicon');
     setFaviconColor(favicon, theme.color);
-  
-
+    
   },[theme]);
 
 
@@ -68,7 +68,7 @@ function App() {
               </Routes>
           </AnimatePresence>
         </Suspense>
-        <Menu projects={PROJECTS} homebutton={homebutton} />
+        <Menu projects={PROJECTS} homebutton={homebutton} latestHref={latestHref.current} />
         <Filter />
       </div>
   );

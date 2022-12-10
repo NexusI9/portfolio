@@ -16,24 +16,18 @@ import {motion, AnimatePresence} from 'framer-motion';
 import { gsap } from 'gsap';
 
 
-function Project({onLoad= () => 0}){
+function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
 
   const {title} = useParams();
 
   //elements
   const [project, setProject] = useState();
-  const [category, setCategory] = useState();
   const [suggestions, setSuggestions] = useState();
 
   //project content
   const [htmlContent, setHtmlContent ] = useState();
-  const [sidePanel, setSidePanel ] = useState(true);
 
-  const [canvasLoaded, setCanvasLoaded] = useState();
-  const [ canvas, setCanvas ] = useState();
-  const [ activeCanvas, setActiveCanvas ] = useState();
-
-  const projectContainer = useRef();
+  const [projectContainer, setProjectContainer]= useState();
   const imgBanner = useRef();
 
   //css / transitions
@@ -45,21 +39,20 @@ function Project({onLoad= () => 0}){
 
   const [whiteMenu, setWhiteMenu] = useState(true);
 
-  const isScrolling = useRef(false);
 
   useEffect( () => {
 
+    //events
     const onScroll = () => {
-
+        
         const scrollPos = window.pageYOffset;
         //sidebar & suggestion
-        if( scrollPos > projectContainer.current?.offsetHeight - 400 ){ setShowSideBar(false); }
+        if( scrollPos > projectContainer?.offsetHeight - 400 ){ setShowSideBar(false); }
         else{ setShowSideBar(true); }
 
-        if(projectContainer.current?.getBoundingClientRect().top > 0){
+        if(projectContainer?.getBoundingClientRect().top > 0){
           setWhiteMenu(true);
           if(imgBanner.current){
-
             imgBanner.current.style.transform = `translateY(-${scrollPos/6}px)`;
           }
         }else{
@@ -67,29 +60,21 @@ function Project({onLoad= () => 0}){
         }
 
     }
-    const onResize = () => {
-      if(window.innerWidth >= 825){
-        setSidePanel(true);
-      }
-      else{
-        setSidePanel(false);
-        setCanvasLoaded(true);
-      }
-    }
 
+    //core
     const init = () => {
 
       document.title = 'Nassim El Khantour - '+ project.title;
 
       window.addEventListener('scroll', onScroll);
-      window.addEventListener('resize', onResize);
 
-      onResize();
+      onScroll();
 
       const Index = require('../projects/'+project.folder).default;
       setHtmlContent(<Index />);
     }
 
+    //project
     const currentProject = getProjectFromTitle(title);
     const data = {
       project: currentProject,
@@ -100,7 +85,6 @@ function Project({onLoad= () => 0}){
     }
 
     setProject(data.project);
-    setCategory(data.category);
     setSuggestions( getRandomProject({ number:3, project:data.project, category:data.category }) );
 
     //window.scrollTo(0,0);
@@ -115,21 +99,22 @@ function Project({onLoad= () => 0}){
         percent:100,
         duration: 0.7,
         onUpdate: () => setPercent(fakepercent.percent),
-        onComplete: () => setUnlash(true)
+        onComplete: () => { setUnlash(true); onLoadFinish(); }
       } );
     }
 
     if(project){ init(); }
+    if(projectContainer){ onScroll(); }
     onLoad(data);
-
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
       menu.classList.remove('white');
     };
 
-  },[title, project, percentAnim, whiteMenu]);
+
+  },[title, project, percentAnim, whiteMenu, projectContainer]);
+
 
   return(
     <>
@@ -140,7 +125,7 @@ function Project({onLoad= () => 0}){
       {unlash && project && whiteMenu && <motion.div
         id='project_banner'
         key={'projectBanner' + title}
-        initial={{opacity:0}}
+        initial={{opacity:1}}
         animate={{opacity:1, transition:{duration:0.3}}}
         exit={{opacity:0, transition:{duration:0.3}}}
         >
@@ -148,9 +133,12 @@ function Project({onLoad= () => 0}){
         <h1>{project.title}</h1>
         <div>
           <section>
-            <div>
-                <small>{project.desc || ' '}</small>
-            </div>
+                { project.desc && 
+                  <div>
+                    <h5>Summary</h5>
+                    <small>{project.desc || ' '}</small>
+                  </div>
+                }
 
             {project.category && <div>
                 <h5>Category</h5>
@@ -171,12 +159,7 @@ function Project({onLoad= () => 0}){
             exit={{opacity:0, transition:{duration:0.3}}}
             >
               <AnimatePresence exitBeforeEnter>{showSideBar && <PercentBar /> }</AnimatePresence>
-              { htmlContent && <Content innerRef={projectContainer} >{htmlContent}</Content> }
-              { htmlContent && sidePanel &&
-                <div id='sidePanel' style={{opacity: showSideBar ? 1 : 0, pointerEvents: showSideBar ? 'auto' : 'none' }}>
-
-              </div>
-              }
+              { htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content> }
           </motion.div>
           <Suggestion projects={suggestions} display={!showSideBar} />
         </>

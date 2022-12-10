@@ -1,4 +1,4 @@
-import { Article, Body, Title, Img, Gallery, Video, Space } from '../../components/article';
+import { Article, Body, Title, Img, Gallery, Video, Parallax } from '../../components/article';
 import './mengfeng.scss';
 const galleryRoutes = {
   product:[
@@ -6,7 +6,8 @@ const galleryRoutes = {
     {type:'base', folder:'/mengfeng/', pictures:['prod_3', 'prod_4', 'prod_5']}
   ],
   logo:[
-    {type:'invertedbase', folder:'/mengfeng/', pictures:['logo_mid','logo_black','logo_AIO'] }
+    {type:'split', folder:'/mengfeng/', pictures:['brandpack','visitcard'] },
+    {type:'split', folder:'/mengfeng/', pictures:['logo_black','logo_mid','logo_AIO'] }
   ]
 }
 
@@ -125,13 +126,8 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='UI Overview' spaced={true} className='purpleBkg round'>
-            <Body flexDirection='vertical' className='vcenter' title='UI Overview'>
-              <Img src="/assets/projects/mengfeng/line1.png"/>
-              <Img src="/assets/projects/mengfeng/line2.png"/>
-              <Img src="/assets/projects/mengfeng/line3.png"/>
-              <Img src="/assets/projects/mengfeng/line4.png"/>
-            </Body>
+        <Article name='UI Overview' spaced={true} className='purpleBkg'>
+            <Parallax src='/assets/projects/mengfeng/parallax.jpg'/>
         </Article>
 
 
@@ -150,7 +146,7 @@ export default () => (
         </Article>
 
         <Article name='Logotype' spaced={true}>
-            <Body flexDirection='vertical' title='Logotype'>
+            <Body flexDirection='vertical' title='Logotype & Branding'>
               <Gallery galleries={galleryRoutes} galleryKey='logo' />
             </Body>
         </Article>

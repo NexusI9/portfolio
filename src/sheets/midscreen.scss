@@ -18,6 +18,7 @@
 
   #project_banner{
     padding: 5% 10%;
+    height: fit-content;
     & > div{
       grid-template-columns: none;
       row-gap: 30px;
@@ -36,7 +37,7 @@
   }
 
   #menu{
-    right: 6vw;
+    padding: 0 3%;
     #bars.active{
       margin-top: 6vw !important;
     }
@@ -86,8 +87,10 @@
     font-size: 0.6em;
     margin: 0;
     padding: 3%;
-    height: 9.5em;
+    height: 7.5em;
     background: #f3f3f3;
+    display: flex;
+    justify-content: center;
      section{
       align-items: flex-start
      }
@@ -152,13 +155,13 @@
 
   }
 
-  #resume{
-    display: block;
+  #resumeWrapper{
+    width: 100%;
   }
 
   #resumeSettings{
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-around;
     row-gap: 20px;
     padding-top: 3vh;
     padding-left: 2vw;
@@ -183,6 +186,11 @@
       }
       .hori, .horizontal, .body{
         flex-direction: column;
+      }
+
+      .parallax{
+        left: -3vw;
+        width: 101vw;
       }
 
       .reverse{ flex-direction: column-reverse;}

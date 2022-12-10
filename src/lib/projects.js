@@ -46,16 +46,6 @@ const PROJECTS = {
       "folder":"mengfeng",
     },
     {
-      "title":"Website mockups",
-      "thumbnail":"/assets/thumbnails/soma_1.jpg",
-      "banner":"/assets/banners/websitemockup.jpg",
-      "desc":"Collection of mockup websites",
-      "longdesc":"Exploring different kinds of interaction and visual dialects depending on the website's main functionalities and the market's culture it is anchored in (luxurious e-commerce, gaming plateform...)",
-      "category":["Web Design", "UX/UI", "Branding",],
-      "date":2021,
-      "folder":"webcollection"
-    },
-    {
       "title":"Kinoji",
       "thumbnail":"/assets/thumbnails/kinoji_1.jpg",
       "banner":"/assets/banners/kinoji.jpg",
@@ -140,8 +130,8 @@ const PROJECTS = {
       "title":"The Lone harvester",
       "thumbnail":"/assets/thumbnails/harvester.jpg",
       "banner":"/assets/banners/loneharvester.jpg",
-      "desc":"",
-      "longdesc":"Lost in the desert",
+      "desc":"Environment concept art study",
+      "longdesc":"\"Lost in the desert, it remained a mystery for all the wandering nomads how the Lone Harvester managed to nurture his soil.\" This project is a concept art exercise attempting to build a world around a light narrative context.",
       "category":["Digital Painting", "3D Production","Concept Art"],
       "overlay":{
         "type":"picture",
@@ -200,8 +190,8 @@ const PROJECTS = {
         "type":"picture",
         "url":"/assets/thumbnails/echo_overlay.jpg"
       },
-      "desc":"Experimenting with art directions and textures",
-      "longdesc":"",
+      "desc":"Experimenting with art directions and textures around the same avatar",
+      "longdesc":"Expanded from the world building project AZUSA, this series tries to gives a humanoid depiction of \"ECHOes\": AZUSA's higher forces and deities.",
       "category":["Art Direction", "3D Production"],
       "date":2020,
       "folder":"echo"
@@ -215,7 +205,7 @@ const PROJECTS = {
       },
       "banner":"/assets/banners/cyberrave.jpg",
       "desc":"Enter the Cyber Rave",
-      "longdesc":"The CYB3R R4VE (cyber rave) uses the rave culture as a lense to explore the questions of gender and identity within the cyberspace and the avatar inhabiting it.",
+      "longdesc":"The CYB3R R4VE (cyber rave) uses the rave culture as a lens to explore the questions of gender and identity within the cyberspace and the avatar inhabiting it.",
       "category":["Animation", "Fine Art", "Art Direction"],
       "date":2021,
       "folder":"cyberrave"
@@ -309,4 +299,15 @@ export const THEMES =
   "date":"2016",
   "folder":"creativecode"
 },
+
+    {
+      "title":"Website mockups",
+      "thumbnail":"/assets/thumbnails/soma_1.jpg",
+      "banner":"/assets/banners/websitemockup.jpg",
+      "desc":"Collection of mockup websites",
+      "longdesc":"Exploring different kinds of interaction and visual dialects depending on the website's main functionalities and the market's culture it is anchored in (luxurious e-commerce, gaming plateform...)",
+      "category":["Web Design", "UX/UI", "Branding",],
+      "date":2021,
+      "folder":"webcollection"
+    },
 */

@@ -309,7 +309,7 @@ function Resume({onLoad}){
     </motion.div>
 
 
-        <Suspense fallback={<p>Loading 3d model</p>}>
+        <Suspense>
           <Portrait innerRef={e => portrait.current = e}/>
         </Suspense>
 
@@ -360,7 +360,7 @@ function Resume({onLoad}){
       </motion.div>
     </AnimatePresence>
 
-    <Socials />
+    <Socials minify={true}/>
   </>
 );
 

@@ -30,7 +30,7 @@ export const OldMenu = ({projects}) => (
     </div>
   );
 
-export const Menu = ({projects, homebutton=false}) => {
+export const Menu = ({projects, homebutton=false, latestHref=''}) => {
 
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
@@ -124,11 +124,19 @@ export const Menu = ({projects, homebutton=false}) => {
   return(
     <>
       <nav id="menu">
-        {homebutton ? <HomeButton /> : <Logo/>}
+        <AnimatePresence exitBeforeEnter>
+        {homebutton ? <HomeButton latestHref={latestHref} /> : <Logo/>}
+        </AnimatePresence>
         <div className='topArea'>
           <div id='bars' onClick={ () => setActive(!active) } className={active ? 'active' : ''}>
-            <span></span>
-            <span></span>
+            <section className='default'>
+              <span></span>
+              <span></span>
+            </section>
+            <section className='close'>
+              <span></span>
+              <span></span>
+            </section>
           </div>
         </div>
       </nav>
@@ -210,9 +218,15 @@ export const Socials = ({minify=false}) => (
 );
 
 export const Signature = () => (
-  <div id='signature'>
+  <motion.div 
+  id='signature'
+  key='signature'
+  initial={{opacity:0, y:70}}
+  animate={{opacity:1, y:0, transition:{duration:0.4, type:'tween', ease:'easeOut'}}}
+  exit={{opacity:0, y: 70,  transition:{duration:0.2, type:'tween', ease:'easeOut'}}}
+  >
     <small>Website designed & developed by Nassim El Khantour</small>
     <span></span>
-    <small>&copy;	Nassim El Khantour 2022</small>
-  </div>
+    <small>&copy;	Nassim El Khantour {new Date().getFullYear()}</small>
+  </motion.div>
 )

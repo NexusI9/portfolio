@@ -100,7 +100,7 @@
   img{
     border-radius: 15px;
     opacity: 1;
-    max-width: 90%;
+    max-width: 100%;
     margin-top: -15%;
     margin-left: 10%;
     transform: scale(1);
@@ -288,7 +288,7 @@
       position: absolute;
       clip-path:inset(0 50% 0px 0);
       left: 0;
-      background-image: url("assets/BW_flashcard.jpg");
+      //background-image: url("assets/BW_flashcard.jpg");
       max-width: 101%;
       height: 100%;
     }

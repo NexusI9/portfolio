@@ -31,14 +31,19 @@ export const Suggestion = ({projects, display}) =>{
   }
 
   return(
-      <motion.div id="suggest"
-      key='suggestStrype'
-      variants={variantContainer}
-      initial='hide'
-      animate={ display ? 'show' : 'hide' }
-      exit='exit'
+      <motion.div 
+        id="suggest"
+        key='suggestStrype'
+        variants={variantContainer}
+        initial='hide'
+        animate={ display ? 'show' : 'hide' }
+        exit='exit'
       >
-        <h2> See also ... </h2>
+        <motion.h2
+          key='suggestSeeAlso'
+          variants={variantChild}
+        > See also ... 
+        </motion.h2>
         <motion.section
           key='suggestSection'
           variants={variantChild}

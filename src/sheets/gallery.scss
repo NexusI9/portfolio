@@ -9,7 +9,7 @@
 .gallery {
 
   $gap:5px;
-  margin: calc($gap/2) 0;
+  margin: calc($gap/2) 0 !important;
 
   overflow: hidden;
 

@@ -1,4 +1,4 @@
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 525px){
 
   .cat{
       width: 100%;
@@ -20,7 +20,8 @@
     }
 
     #project_banner{
-      h1{ font-size: 30vw; }
+      padding: 20% 10%;
+      h1{ font-size: 20vw; }
     }
 
     #letterbox {
@@ -51,7 +52,18 @@
           padding: 50px 0;
        }
     }
+    
+    #resume{
+      display: block;
+    }
 
+    #resumeSettings{
+      bottom: 0;
+      height: fit-content;
+      padding-top: 3%;
+      top: auto;
+      padding-bottom: 3%;
+    }
 }
 @media only screen and (max-width: 425px) {
 
@@ -85,7 +97,6 @@
   #viewerjs_mainframe{ width: 100%; }
 
   #menu{
-    right: 8vw;
     #bars.active{
       margin-top: 6vw !important;
     }
@@ -121,14 +132,21 @@
      }
   }
 
+  #resumeWrapper{
+    margin-top: 0;
+  }
+
   #resume{
     padding: 0;
+    & > div{ 
+      &:last-of-type, &:first-of-type{ padding: 0;}
+    }
   }
 
   #resumeHeader{
-    margin-top: 20vh;
     h2{
       font-size: 3.5em;
+      line-height: 2em;
     }
   }
 

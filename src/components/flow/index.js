@@ -3,8 +3,7 @@ import { cleanCategoryName, getCategories, getColorOfCategory, setFaviconColor }
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-responsive-masonry';
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { gsap } from 'gsap';
+import { useEffect, useState, useRef } from 'react';
 import { Video } from '../article';
 import { Signature } from '../statics';
 
@@ -39,8 +38,8 @@ export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
   const TEXT_SIZE = 2;
   const containVariant = {
     initial:{},
-    animate:{opacity:1, transition:{staggerChildren:delay, duration:speed}},
-    exit:{opacity:1, transition:{staggerChildren:delay, duration:speed}}
+    animate:{transition:{staggerChildren:delay, duration:speed}},
+    exit:{transition:{staggerChildren:delay, duration:speed}}
   };
 
   const caseVariant = {
@@ -69,6 +68,7 @@ export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
       exit='exit'
       className="mainTitle backTitles"
     >
+      <AnimatePresence>
     {
     title &&
     [...title].map( (letter,i) =>
@@ -78,6 +78,7 @@ export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
         />
     )
     }
+    </AnimatePresence>
   </motion.div>
 );
 }
@@ -206,14 +207,15 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
 
     }
 
+    //let tm;
     const onScroll = () => {
-
+      //clearTimeout(tm);
       const top = elt.current.getBoundingClientRect().top;
       const height = elt.current.getBoundingClientRect().height;
       if(top < window.innerHeight && top+height > 0){ setYPos(scrollVelocity()); }
 
       lastScroll = window.pageYOffset;
-
+      //setTimeout( () => setYPos(0), 800 ); //reset pos to prevent overlap thumbnails
     }
 
 
@@ -234,7 +236,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
   return(
     <Link
       to={'/project/'+project.title}
-      style={{transform:'translateY('+yPos+'%)', display:'inline-block'}}
+      style={{transform:'translate3d(0,'+yPos+'%,0)', display:'inline-block'}}
       className='linkSlider'
     >
         <motion.section
@@ -268,11 +270,8 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
   const [columnsCount, setColumnsCount] = useState(2);
 
   useEffect(()=>{
-
       const checkSize = () => window.innerWidth > 500 ? setColumnsCount(2) : setColumnsCount(1);
-
       checkSize();
-
       window.addEventListener('resize', checkSize);
 
       return () => window.removeEventListener('resize', checkSize);
@@ -296,11 +295,12 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
   );
 }
 
-export const Flow = ({projects}) => {
+export const Flow = ({projects, onCategoryChange=()=>0}) => {
 
   const containerRef = useRef([]);
   const catContainers = getCategories(projects).map( (cat,c) => <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> );
   const [category, setCategory] = useState();
+  const location = useLocation();
   
   useEffect( () => {
 
@@ -316,12 +316,16 @@ export const Flow = ({projects}) => {
 
         const container = containerRef.current[c];
         const title = cat.props.category;
-        const { height, top, bottom } = container.getBoundingClientRect();
+        const { top, bottom } = container.getBoundingClientRect();
 
         const scrollTop = window.pageYOffset;
         const windowHeight = window.innerHeight;
 
-        if( scrollTop < windowHeight ){ return setCategory(" "); }
+        if( scrollTop < windowHeight ){ 
+          window.history.pushState(null, "The Art of Nassim El Khantour ", "/");
+          onCategoryChange("");
+          return setCategory(" "); 
+        }
 
         if(
           top < window.innerHeight/4 &&
@@ -332,8 +336,8 @@ export const Flow = ({projects}) => {
           setBodyTheme( catColor );
           setFaviconColor(favicon,catColor);
           window.history.pushState(null, "The Art of Nassim El Khantour - "+title, "/#"+title);
+          onCategoryChange(title);
           return setCategory(title);
-
         }
 
 
@@ -341,16 +345,24 @@ export const Flow = ({projects}) => {
 
     }
 
+    setCategory("");
+
     window.addEventListener('scroll', checkViewportDiv);
     return () => window.removeEventListener('scroll', checkViewportDiv);
 
-  }, [containerRef, category]);
+  }, [location.pathname]);
 
   return (
     <>
-
-      <AnimatePresence>
-        <BackgroundHeader key={'bkg'+category} title={category} color={ getColorOfCategory(category) || '#000000' }/>
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={'bkg'+category}
+          initial={{opacity:1}}
+          animate={{opacity:1, transition: {duration: 0.3}}}
+          exit={{opacity:1, transition: {duration: 0.3}}}
+        >
+            <BackgroundHeader title={category} color={ getColorOfCategory(category) || '#000000' }/>
+        </motion.div>
       </AnimatePresence>
 
       <div id="projects">

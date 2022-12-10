@@ -8,17 +8,37 @@ import { Video } from '../components/article';
 import { HoverSquare } from '../components/props';
 
 
+const ThumbTagline = ({src, pos, speed}) => {
+
+    const thumb = useRef();
+    useEffect(() => {
+
+  
+      const onScroll = () => thumb.current.style.transform = `translate3d(0,0, ${200-pos.z - window.pageYOffset*speed}px )`;
+    
+      
+      window.addEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
+
+    }, []);
+    
+    return(
+      <div className='taglineImg round' ref={ thumb }  style={{left:pos.x+'%', top:pos.y+'%'}}>
+        <img src={src} /> 
+      </div>
+    );
+
+};
+
 const VideoBanner = (onScroll) => {
 
   const [opacity, setOpacity] = useState(1);
 
-  const [bubble, setBubble] = useState();
   const [displayVideo, setDisplayVideo] = useState(true);
-  const container = useRef();
   const name = useRef();
   const quote = useRef();
   const video = useRef();
-  const textArea = useRef();
+  const firstplan = useRef();
 
   const letterVar = {
     initial: { opacity: 0 },
@@ -32,24 +52,61 @@ const VideoBanner = (onScroll) => {
     }
   }
 
+  const thumbs = [
+    { 
+      src: '/assets/thumbnails/echo_overlay.jpg',
+      pos: {x:80, y:40, z:90 },
+      speed:0.5,
+    },
+    { 
+      src: '/assets/thumbnails/aciddesign/comet.jpg',
+      pos: { x:200, y:10, z:40},
+      speed:0.8,
+    },
+    { 
+      src: '/assets/thumbnails/aero_overlay.jpg',
+      pos: { x:-10, y:20, z:50 },
+      speed:0.2
+    },
+    { 
+      src: '/assets/thumbnails/cyber_overlay.jpg',
+      pos: { x:-8, y:50, z:100 },
+      speed:0.2
+    },
+    { 
+      src: '/assets/thumbnails/harvester.jpg',
+      pos: { x:100, y:20, z:90 },
+      speed:0.2
+    }
+
+  ];
+
   useEffect(() => {
+
+    const HEIGHT = window.innerHeight*2;
 
     document.title = 'The Art of Nassim El Khantour';
     const onScroll = () => {
-      const scrollPos = window.pageYOffset;
-      if( window.pageYOffset < window.innerHeight ){
-        setOpacity(1-scrollPos / window.innerHeight);
-        setDisplayVideo(true);
 
-        name.current.style.transform = 'translateY(-'+(scrollPos/10)+'%) ';
-        quote.current.style.transform = 'translateY(-'+(scrollPos/6)+'%)';
-        video.current.style.transform = 'translateY(-'+(scrollPos/30)+'%) ';
-      }
-      else if( window.pageYOffset > window.innerHeight ){
+      const scrollPos = window.pageYOffset;
+      if( window.pageYOffset < HEIGHT - 200 ){
+
+        const t = 1-scrollPos / window.innerHeight;
+        const half = scrollPos / (window.innerHeight/3);
+        
+        setOpacity(1);
+        setDisplayVideo(true);
+      
+
+        name.current.style.transform = `translate3d(0,0%,-${(scrollPos/15)}px)`;
+        video.current.style.transform = `translate3d(0,0%,-${(scrollPos/3)}px)`;
+        firstplan.current.style.opacity = half;
+
+        quote.current.style.transform = `translate3d(0,0%,${(200-scrollPos/3)}px)`;
+
+      }else{
         setOpacity(0);
         setDisplayVideo(false);
-
-
       }
 
     }
@@ -57,8 +114,9 @@ const VideoBanner = (onScroll) => {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
 
-  },[name, quote, video]);
+  },[]);
   return (
+    <>
     <motion.div
       key='motionLetterbox'
       id="letterbox"
@@ -68,34 +126,41 @@ const VideoBanner = (onScroll) => {
       animate='animate'
       exit='exit'
       >
-        <div
-          id='iframewrapper'
+       <div
+         id='iframewrapper'
           style={{display: displayVideo ? 'block' : 'none', pointerEvents: displayVideo ? 'auto' : 'none'}}
         >
-          <div ref={video} style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}}>
-            <Video id={629250987} autoplay={true} resize={false} playIco={false} placeholder={'/assets/thumbnails/showreel.jpg'} />
-            <Link to='/showreel'>{/*<Button label="view the showreel"/>*/}</Link>
+              <div ref={video} style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}}>
+                <Video id={629250987} autoplay={true} resize={false} playIco={false} placeholder={'/assets/thumbnails/showreel.jpg'} />
+                <Link to='/showreel'>{/*<Button label="view the showreel"/>*/}</Link>
+              </div>
           </div>
-      </div>
-      <motion.div id='textLetterbox'>
+          <motion.div id='textLetterbox'>
 
-          <section ref={textArea}>
-            <h2 ref={name}>Nassim El Khantour</h2>
-            <h1 ref={quote}>&#187; Where art & code <br/> shape worlds<span></span></h1>
-          </section>
-          <a href="#projects" id="arrowScroll">
-            <HoverSquare size='35px' name='arrowScroll'>
-              <img src={downArrow} />
-            </HoverSquare>
-          </a>
-      </motion.div>
+              <h2 ref={name}>Nassim <br/> El Khantour</h2>
+              <a href="#projects" id="arrowScroll">
+                <HoverSquare size='35px' name='arrowScroll'>
+                  <img src={downArrow} />
+                </HoverSquare>
+              </a>
+          </motion.div>
+
+        <span id="firstplan" ref={firstplan}></span>
+
+      {thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)}
+
+      <h1 id="tagline" ref={quote}>
+        <span>Where art & code </span> 
+        <span>shape world</span>
+      </h1>
     </motion.div>
+   </>
   );
 }
 
 
 
-function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () => 0}){
+function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () => 0, onCategoryChange=() => 0}){
 
   const [social, setSocial] = useState(false);
   const [aboveTheFold, setAboveTheFold] = useState(true);
@@ -106,7 +171,7 @@ function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheF
   useEffect(() => {
 
     const onScroll = () => {
-      if( window.pageYOffset > window.innerHeight ){
+      if( window.pageYOffset > window.innerHeight*2 ){
         setSocial(true);
          setAboveTheFold(false);
       }else{
@@ -129,9 +194,9 @@ function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheF
   return(
     <>
       <VideoBanner />
-      <Flow projects={projects}/>
+      <Flow projects={projects} onCategoryChange={onCategoryChange}/>
       <AnimatePresence exitBeforeEnter>
-        {social && <Socials/>}
+        {social && <Socials minify={true}/>}
       </AnimatePresence>
     </>
   );

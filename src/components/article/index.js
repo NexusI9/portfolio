@@ -89,7 +89,6 @@ export const Gallery = ({galleries, galleryKey}) => {
 
       const thumbref = useRef();
       const [centered, setCentered] = useState(true);
-
       const [currentPic, setCurrentPic] = useState(pictures[index]);
       const [direction, setDirection] = useState(0);
 
@@ -97,14 +96,12 @@ export const Gallery = ({galleries, galleryKey}) => {
         if(newPage){ setCurrentPic(newPage); }
         else{
           const indexOfCurrentPic = pictures.indexOf(currentPic);
-          if(indexOfCurrentPic === 0 && newDirection === -1){
-            setCurrentPic(pictures[pictures.length-1]);
-          }else if(indexOfCurrentPic === pictures.length-1 && newDirection === 1 ){
-            setCurrentPic(pictures[0]);
-          }else{
-            setCurrentPic(pictures[indexOfCurrentPic + newDirection]);
-          }
+          
+          if(indexOfCurrentPic === 0 && newDirection === -1){ setCurrentPic(pictures[pictures.length-1]); }
+          else if(indexOfCurrentPic === pictures.length-1 && newDirection === 1 ){ setCurrentPic(pictures[0]); }
+          else{ setCurrentPic(pictures[indexOfCurrentPic + newDirection]); }
         }
+
         setDirection(newDirection);
       };
 
@@ -115,6 +112,8 @@ export const Gallery = ({galleries, galleryKey}) => {
 
       const onThumbnailClick = (e) => {
         if(e.prevPic === e.newPic){ return; }
+        //const fullUrl = window.location.pathname+'?gallery='+searchParams.get('gallery')+'&picture='+filenameFromPath(e.newPic);
+        //window.history.pushState(null,searchParams.get('gallery'),fullUrl); 
         setSearchParams({ gallery:searchParams.get('gallery'), picture:filenameFromPath(e.newPic) });
         paginate(e.newPic, pictures.indexOf(e.newPic) >  pictures.indexOf(e.prevPic) ? 1 : -1);
       }
@@ -140,13 +139,12 @@ export const Gallery = ({galleries, galleryKey}) => {
         window.addEventListener('keydown', onKeyDown);
 
         return () => window.removeEventListener('keydown', onKeyDown);
-      },[index, pictures, thumbref, paginate, searchParams.get('picture')]);
+      },[paginate]);
 
 
       return(
           <motion.div
             className='fullview'
-            data-html2canvas-ignore
             variants={variantContainer}
             initial='initial'
             animate='animate'
@@ -256,7 +254,56 @@ export const Gallery = ({galleries, galleryKey}) => {
 
 }
 
-export const Article = ({children, name, spaced, id, className, style}) => ( <div id={id ? id : ''} style={ style ? style : {} } className={"article " + (spaced ? 'spaced ' : ' ') + (className ? className : '')} data-board-name={name || ''}>{children}</div> );
+export const Article = ({children, name, spaced, id, className, style}) => {
+
+  const article = useRef(); 
+
+  useEffect(() => { 
+
+    const appear = () => {
+     article.current.classList.add('appear');
+      window.removeEventListener('scroll', onScroll);
+    }
+
+    const onTransitionend = (e) => {
+      if(e.propertyName === 'transform'){
+        //reset transform to prevent bug on fullview gallery opening
+        article.current.style.transform = 'none';
+        article.current.removeEventListener('transitionend', onTransitionend);
+      }
+    }
+
+    const onScroll = () => {
+      if( article.current?.getBoundingClientRect().top < window.innerHeight - window.innerHeight/4 ){ appear(); }
+    }
+
+
+
+    window.addEventListener('scroll', onScroll);
+
+    //if first article then appear
+    article.current?.addEventListener('transitionend', onTransitionend);
+    if( article.current.parentNode.firstElementChild == article.current ){ appear(); }
+    onScroll();
+
+    return () => {
+      article.current?.removeEventListener('transitionend', onTransitionend);
+      window.removeEventListener('scroll', onScroll);
+    }
+
+  },[]);
+
+  return(
+    <div 
+      id={id ? id : ''} 
+      ref={article}
+      style={ style ? style : {} } 
+      className={"article " + (spaced ? 'spaced ' : ' ') + (className ? className : '')} 
+      data-board-name={name || ''}>
+        {children}
+    </div> 
+  );
+}
 
 export const Title = ({label, summary,id, className, style}) => (
   <section id={id || ''} className={"header compress "+ (className || '')} style={style || {}}>
@@ -308,7 +355,7 @@ export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, pla
   return(
     <div className='vimeo round' onClick={ () => setHideVid(false)  } ref={innerRef || vimeoContainer} style={height}>
       { <Placeholder placeholder={ placeholder ? placeholder : thumbnail} playIcon={!autoplay} style={style} loadIco={loadIco} playIco={playIco}/> }
-      { !hideVid && <iframe src={"https://player.vimeo.com/video/"+id+"?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay="+((autoplay && !hideVid) ? 1 : 0)+"&loop=1&title=0&byline=0&portrait=1&muted=1&autopause=0&controls="+(autoplay ? 0 : 1)+ (defaultQuality ? ('&amp;quality='+defaultQuality) : '') } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe> }
+      { !hideVid && <iframe src={"https://player.vimeo.com/video/"+id+"?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay="+( (autoplay && !hideVid) ? 1 : 0)+"&loop=1&title=0&byline=0&portrait=1&muted=1&autopause=0&controls="+( ( (autoplay && pending) || (!autoplay) ) ? 1 : 0)+ (defaultQuality ? ('&amp;quality='+defaultQuality) : '') } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe> }
       </div>
   );
 }
@@ -385,4 +432,38 @@ export const Pointer = ({side='left', barwidth='50%', title='', description='', 
     <small>{description}</small>
     {side === 'right' && <br />}
   </div>
-)
+);
+
+
+export const Parallax = ({src='/', step=12, initStep=15}) => {
+
+  const img = useRef();
+  const container = useRef();
+
+  useEffect(()=>{
+
+    const onScroll = () => {
+
+      const {top, height} = container.current.getBoundingClientRect();
+      const {innerHeight} = window;
+      const velocity = (top-height)/innerHeight * step;
+      
+      if(top < innerHeight && top > -1*height){
+        img.current.style.transform = 'translate3d(0,-'+(initStep-velocity)+'%,0)';
+      }
+
+
+    }
+
+    img.current.style.transform = 'translate3d(0,-'+initStep+'%,0)';
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  },[]);
+
+  return(
+    <div className='parallax' ref={container}>
+      <img src={src} ref={img} />
+    </div>
+  );
+}

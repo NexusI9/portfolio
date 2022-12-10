@@ -13,19 +13,11 @@ body{
     background-repeat: no-repeat;
 }
 
-h1, h2{
-}
 
-
-h2{
-}
 h1, h2, h3, h4{
   margin: 0;
 }
 
-img, object{
-    max-width: 100%;
-}
 
 object{
   box-sizing: border-box;
@@ -112,6 +104,7 @@ object{
 }
 
 section.imgWrapper{
+  img{ max-width: 100%; }
   display: inline-flex;
 }
 
@@ -293,6 +286,26 @@ section.imgWrapper{
 
 .pix{ image-rendering: -webkit-optimize-contrast; }
 
+
+.parallax{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  left: -10vw;
+  width: 100vw;
+  height: 90vh;
+  img{
+    will-change: transform;
+    transition: transform 0.1s ease;
+    transform: translate3d(0,-15%,0);
+    object-fit: cover;
+    max-width: none;
+    width: 160%;
+    object-fit: cover;
+  }
+}
+
 /*———————————————————————————————————————————————-*/
 
 .backpage{
@@ -332,15 +345,21 @@ section.imgWrapper{
   background-image: none !important;
 }
 
+
 .article{
+
   box-sizing: border-box;
   display: block !important;
+  opacity: 0;
+  transform: translate3d(0px, 100px, 0px);
+  transition: opacity 0.5s ease-out, transform 0.8s ease-out;
+
+  &.appear{ 
+    opacity: 1; 
+    transform: translate3d(0px,0px,0px);
+  }
 
   &.spaced{ margin-bottom: 10%; }
-}
-
-
-.article{
 
   img{ object-fit: contain; }
   & > *{ position:relative; }
@@ -364,6 +383,7 @@ section.imgWrapper{
   .padright{ padding-right: 5%; }
 
   & > .body {
+    img{ max-width: 100%;}
     display: flex;
     column-gap: 1em;
     overflow-x: inherit;
@@ -436,7 +456,7 @@ section.imgWrapper{
 
   span{
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0 8px;
     position: relative;
     width: 10vw;
     height: 0.5px;
@@ -454,8 +474,8 @@ section.imgWrapper{
       display: block;
       position: absolute;
       left: 0;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 100%;
       background: black;
     }
