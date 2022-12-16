@@ -1033,6 +1033,7 @@ footer{
       &.active{
         &::before{
           content: '';
+          border-radius: 10em;
           position: absolute;
           bottom: 1em;
           left: -10%;
@@ -1780,8 +1781,8 @@ iframe.normal{
 
   .projectWrapper{
     @include frameMargin;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-right: 8%;
+    padding-left: 8%;
     padding-top: 15vh;
     width: 100%;
     /*img{
@@ -2012,11 +2013,14 @@ iframe.normal{
   height: 100vh;
   overflow: hidden;
   transition: opacity 0.1s ease;
+  will-change: opacity;
   perspective: 100px;
   display: flex;
   align-items: center;
 
+
   & *, #textLetterbox > *{
+    pointer-events: none;
     transform-style: preserve-3d;
   }
 
@@ -2026,6 +2030,7 @@ iframe.normal{
     left: 0;
     opacity: 0;
     transition: opacity 0.3s ease;
+    will-change: opacity;
     width: 100%;
     height: 100%;
     background: $bkg;
@@ -2036,11 +2041,16 @@ iframe.normal{
   .taglineImg{
     position: absolute;
     transition: transform 0.5s ease-out;
+    will-change: transform;
     transform: translate3d(0, 0, 200px);
     z-index: 4;
     pointer-events: none;
     user-select: none;
-    img{ max-width: 400px; }
+    img{ 
+      max-width: 400px; 
+      image-rendering: pixelated;
+    }
+    
   }
 
 
@@ -2058,28 +2068,48 @@ iframe.normal{
     pointer-events: none;
     color: $red;
     transition: transform 0.5s ease-out;
+    will-change: transform;
+    text-rendering: optimizeSpeed;
     transform: translate3d(0, 0, 200px);
     z-index: 4;
+    pointer-events: none;
   }
 
   #iframewrapper{
-    $width:50vw;
+    $width:45vw;
     position: absolute;
     width: $width;
     aspect-ratio: 16/9;
-    right: 3%;
-    transition-property: clip-path, transform;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+    right: 7%;
+    will-change: transform;
+    transition: transform 0.2s ease-out;
     pointer-events: auto;
     z-index: 2;
-    & > div:first-child{
+
+    #viewshowreel{
+      animation-name: rotate;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-duration: 10s;
+      position: absolute;
+      z-index: 1;
+      right: -10%;
+      top: -10%;
+      pointer-events: none;
+
+
+      @keyframes rotate {
+        to{ transform: rotate(360deg);}
+      }
+    }
+    & > div{
       overflow: hidden;
       border-radius: $border-radius;
-      transition: transform 0.2s ease-out;
+      transition: transform 0.5s cubic-bezier(0.83, 0, 0.17, 1);
+      transform: scale(1);
     }
     &:hover{
-      transform: scale(1.1);
+      & > div{ transform: scale(1.1); }
     }
     .vimeo{
       height: 100%;
@@ -2087,6 +2117,7 @@ iframe.normal{
     }
 
     a{
+      pointer-events: auto;
       position: absolute;
       top:0;
       left: 0;
@@ -2205,7 +2236,7 @@ iframe.normal{
         left: 0;
         width: 100%;
         height: 100%;
-        //background: linear-gradient(0deg, $bkg, transparent 50%);
+        background: linear-gradient(0deg, $bkg, #f3f3f300);
       }
     }
 
@@ -2963,7 +2994,7 @@ img.gradientImg{
       height: 100%;
       top: 0;
       left: 0;
-      background-image: linear-gradient(0deg, $bkg, transparent 30%, transparent 90%, $bkg);
+      background-image: linear-gradient(0deg, $bkg, #f3f3f300 30%, #f3f3f300 90%, $bkg);
     }
 
     h1, h2{
@@ -2986,6 +3017,7 @@ img.gradientImg{
       grid-template-rows: repeat(3,2em); //hardcode
       top:0;
       /*width: calc($title/2);*/
+      will-change: transform;
       align-items: center;
     }
 

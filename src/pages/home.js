@@ -7,6 +7,7 @@ import { Socials } from '../components/statics';
 import { Video } from '../components/article';
 import { HoverSquare } from '../components/props';
 
+import viewshowreel from '../assets/viewshowreel.svg';
 
 const ThumbTagline = ({src, pos, speed}) => {
 
@@ -56,7 +57,7 @@ const VideoBanner = (onScroll) => {
   const thumbs = [
     { 
       src: '/assets/thumbnails/echo_overlay.jpg',
-      pos: {x:80, y:40, z:90 },
+      pos: {x:80, y:100, z:90 },
       speed:0.5,
     },
     { 
@@ -72,12 +73,17 @@ const VideoBanner = (onScroll) => {
     { 
       src: '/assets/thumbnails/cyber_overlay.jpg',
       pos: { x:-8, y:50, z:100 },
-      speed:0.2
+      speed:0.3
     },
     { 
       src: '/assets/thumbnails/harvester.jpg',
       pos: { x:100, y:20, z:90 },
       speed:0.2
+    },
+    { 
+      src: '/assets/thumbnails/acab.jpg',
+      pos: { x:50, y:-20, z:100 },
+      speed:0.4
     }
 
   ];
@@ -85,7 +91,6 @@ const VideoBanner = (onScroll) => {
   useEffect(() => {
 
     
-
     const HEIGHT = window.innerHeight*2;
 
     document.title = 'The Art of Nassim El Khantour';
@@ -96,6 +101,7 @@ const VideoBanner = (onScroll) => {
       else{ setMobile(false); }
 
     }
+
     const onScroll = () => {
 
       const scrollPos = window.pageYOffset;
@@ -107,10 +113,13 @@ const VideoBanner = (onScroll) => {
         setOpacity(1);
         setDisplayVideo(true);
       
+        if(half <= 1.5){
+          name.current.style.transform = `translate3d(0,0%,-${(scrollPos/15)}px)`;
+          video.current.style.transform = `translate3d(0,0%,-${(scrollPos/3)}px)`;
+          firstplan.current.style.opacity = half;
+        }
 
-        name.current.style.transform = `translate3d(0,0%,-${(scrollPos/15)}px)`;
-        video.current.style.transform = `translate3d(0,0%,-${(scrollPos/3)}px)`;
-        firstplan.current.style.opacity = half;
+
 
         quote.current.style.transform = `translate3d(0,0%,${( (mobile ? 100 : 200)-scrollPos/3)}px)`;
         
@@ -147,10 +156,12 @@ const VideoBanner = (onScroll) => {
       >
        <div
          id='iframewrapper'
+         ref={video}
           style={{display: displayVideo ? 'block' : 'none', pointerEvents: displayVideo ? 'auto' : 'none'}}
         >
-              <div ref={video} style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}}>
-                <Video id={629250987} autoplay={true} resize={false} playIco={false} placeholder={'/assets/thumbnails/showreel.jpg'} />
+              <img src={viewshowreel} id='viewshowreel' />
+              <div style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}}>
+                <Video id={629250987} autoplay={true} resize={false} playIco={false} defaultQuality='540p' placeholder={'/assets/thumbnails/showreel.jpg'} />
                 <Link to='/showreel'>{/*<Button label="view the showreel"/>*/}</Link>
               </div>
           </div>

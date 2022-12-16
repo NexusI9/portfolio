@@ -25,12 +25,6 @@
     }
   }
 
-  #letterbox #iframewrapper{
-    width: 75vw;
-    height: auto;
-    bottom: 30%;
-  }
-
   #menu ul{
     clip-path: inset(0 0 100% 0);
     pointer-events: none;
@@ -51,10 +45,23 @@
 
   #letterbox{
 
+    justify-content: center;
+
     #textLetterbox{
-      width: 100%;
+      align-items: flex-start;
       section{ padding: 10px; }
-      h2{ font-size: 5.5em; }
+      h2{ font-size: 15em; }
+    }
+
+    #tagline{
+      font-size: 10em;
+    }
+
+    #iframewrapper{
+      right: auto;
+      width: 75vw;
+      height: auto;
+      bottom: 15%;
     }
   }
 
