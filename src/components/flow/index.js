@@ -1,6 +1,6 @@
 
-import { cleanCategoryName, getCategories, getColorOfCategory, setFaviconColor } from '../../lib/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { cleanCategoryName, getCategories, getColorOfCategory, setFaviconColor, changeHashTo } from '../../lib/utils';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-responsive-masonry';
 import { useEffect, useState, useRef } from 'react';
@@ -68,17 +68,14 @@ export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
       exit='exit'
       className="mainTitle backTitles"
     >
-      <AnimatePresence>
-    {
-    title &&
-    [...title].map( (letter,i) =>
-      <Case  key={'letterback_'+title+letter+i}
-             letter={ letter && letter.replace(" ", "\xa0") || " " }
-             color={color}
-        />
-    )
-    }
-    </AnimatePresence>
+      {
+      title &&
+      [...title].map( (letter,i) =>
+        <Case  key={'letterback_'+title+letter+i}
+              letter={ letter && letter.replace(" ", "\xa0") || " " }
+              color={color}
+          />
+      )}
   </motion.div>
 );
 }
@@ -301,6 +298,11 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
   const catContainers = getCategories(projects).map( (cat,c) => <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> );
   const [category, setCategory] = useState();
   const location = useLocation();
+
+  const categoryChangeEvent = new CustomEvent('categorychange', {
+    bubbles: true,
+    detail: { category: () => category }
+  });
   
   useEffect( () => {
 
@@ -308,6 +310,16 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
       //switch body attribute for CSS change to take effects
       document.querySelector("body").setAttribute('data-theme',color);
     }
+
+    const onClick = () => {
+      //if user clicked on "a" from categorymenu then prevent hash change from this userEffect ( give priority to categorymenu hash change )
+      userScroll = false;
+    }
+    const onMouseWheel = (e) => {
+      userScroll = true;
+    }
+
+    let userScroll = false;
 
     const favicon = document.getElementById('favicon');
     const checkViewportDiv = () => {
@@ -323,7 +335,7 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
 
         if( scrollTop < windowHeight ){ 
           window.history.pushState(null, "The Art of Nassim El Khantour ", "/");
-          onCategoryChange("");
+          onCategoryChange(" ");
           return setCategory(" "); 
         }
 
@@ -333,9 +345,11 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
           category !== title
         ){
           const catColor = getColorOfCategory(title);
+
+          //react 
           setBodyTheme( catColor );
           setFaviconColor(favicon,catColor);
-          window.history.pushState(null, "The Art of Nassim El Khantour - "+title, "/#"+title);
+          if(userScroll) changeHashTo(title);
           onCategoryChange(title);
           return setCategory(title);
         }
@@ -348,13 +362,27 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
     setCategory("");
 
     window.addEventListener('scroll', checkViewportDiv);
-    return () => window.removeEventListener('scroll', checkViewportDiv);
+    window.addEventListener('click', onClick);
+    window.addEventListener('mousewheel', onMouseWheel);
+
+    return () => { 
+      window.removeEventListener('scroll', checkViewportDiv)
+      window.removeEventListener('click', onClick);
+      window.addEventListener('mousewheel', onMouseWheel);
+    };
 
   }, [location.pathname]);
 
+  useEffect( () => {
+    
+    //dispatch custom event
+    window.dispatchEvent(categoryChangeEvent);
+
+  }, [category]);
+
   return (
     <>
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={false} >
         <motion.div
           key={'bkg'+category}
           initial={{opacity:1}}

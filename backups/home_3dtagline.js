@@ -108,20 +108,20 @@ const VideoBanner = (onScroll) => {
       if( window.pageYOffset < HEIGHT - 500 ){
 
         const t = 1-scrollPos / window.innerHeight;
-        const half = scrollPos / (window.innerHeight);
+        const half = scrollPos / (window.innerHeight/3);
         
         setOpacity(1);
         setDisplayVideo(true);
       
         if(half <= 1.5){
-          name.current.style.transform = `translate3d(0,0%,-${(scrollPos/2)}px)`;
-          video.current.style.transform = `translate3d(0,0%,-${(scrollPos/5)}px)`;
+          name.current.style.transform = `translate3d(0,0%,-${(scrollPos/15)}px)`;
+          video.current.style.transform = `translate3d(0,0%,-${(scrollPos/3)}px)`;
           firstplan.current.style.opacity = half;
         }
 
 
 
-        //quote.current.style.transform = `translate3d(0,0%,${( (mobile ? 100 : 200)-scrollPos/3)}px)`;
+        quote.current.style.transform = `translate3d(0,0%,${( (mobile ? 100 : 200)-scrollPos/3)}px)`;
         
       }else{
         setOpacity(0);
@@ -131,6 +131,8 @@ const VideoBanner = (onScroll) => {
     }
 
     onResize();
+
+
 
     window.addEventListener('scroll', onScroll);
     window.addEventListener('resize', onResize);
@@ -165,7 +167,7 @@ const VideoBanner = (onScroll) => {
           </div>
           <motion.div id='textLetterbox'>
 
-              <h1 ref={name}>Nassim <br/> El Khantour</h1>
+              <h2 ref={name}>Nassim <br/> El Khantour</h2>
               <a href="#projects" id="arrowScroll">
                 <HoverSquare size='35px' name='arrowScroll'>
                   <img src={downArrow} />
@@ -175,7 +177,7 @@ const VideoBanner = (onScroll) => {
 
         <span id="firstplan" ref={firstplan}></span>
 
-      {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
+      {!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)}
 
       <h1 id="tagline" ref={quote}>
         <span>Where art & code </span> 
@@ -198,7 +200,7 @@ function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheF
   useEffect(() => {
 
     const onScroll = () => {
-      if( window.pageYOffset > window.innerHeight ){
+      if( window.pageYOffset > window.innerHeight*2 ){
         setSocial(true);
         setAboveTheFold(false);
       }else{

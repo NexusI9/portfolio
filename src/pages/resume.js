@@ -132,7 +132,7 @@ const Section = ({title, ico, content}) => {
 }
 
 
-function Resume({onLoad}){
+function Resume({onLoad=()=>0}){
 
   const [language, setLanguage] = useState();
   const [dlUrl, setDlUrl] = useState();
@@ -231,15 +231,6 @@ function Resume({onLoad}){
    useEffect( () => {
 
      const langParam = searchParams.get('lang');
-     let hidden = false;
-     const onScroll = () => {
-       const scrollPos = window.pageYOffset;
-      /* if(scrollPos > banner.current.getBoundingClientRect().height - 100 && !hidden){
-         gsap.to(banner.current,{transform:'translateY(-100%)', opacity:0, duration:0.3});
-       }else{
-        gsap.to(banner.current,{transform:'translateY(0%)', opacity:1, duration:0.3});
-      }*/
-    }
 
      switch(langParam){
         case 'eng':
@@ -266,15 +257,7 @@ function Resume({onLoad}){
           setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/Resume-Nassim_El_Khantour.pdf');
      }
 
-
-     if(onLoad){ onLoad(); }
-
-     if(banner && portrait){
-       window.addEventListener('scroll', onScroll);
-     }
-
-
-     return () => window.removeEventListener('scroll', onScroll);
+     onLoad();
 
    },[searchParams, banner, portrait]);
 

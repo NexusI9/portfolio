@@ -227,7 +227,7 @@ const PROJECTS = {
       "title":"NTK",
       "thumbnail":"/assets/thumbnails/ntk.jpg",
       "desc": "Selection of loops and samples made for soundsystems and other associations ",
-      "longdesc":"Collection of experiments  generated from procedural software. Those were audio-interactive visuals projected during events",
+      "longdesc":"Collection of visuals generated from procedural software. Those were audio-interactive animations projected during events.",
       "category":["Creative Coding", "VJ", "Events", "Motion Design"],
       "overlay":{
         "type":"video",

@@ -4,7 +4,7 @@ import PROJECTS, { THEMES } from './projects';
 
 export function cleanCategoryName(key){ return key.replace('<br>',''); }
 
-export function getCategories(projects){ return Object.keys(projects); }
+export function getCategories(projects=PROJECTS){ return Object.keys(projects); }
 
 export function getColorOfCategory(category){ return THEMES[category]; }
 
@@ -154,3 +154,5 @@ export function smoothScroll(offsetTop, offset = 0) {
 export function isMobile(){ return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
 
 export function setFaviconColor(favicon, color='red'){ return favicon.href = process.env.PUBLIC_URL + '/favicon_'+color+'.ico' ; }
+
+export function changeHashTo(hash){ return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash); }

@@ -142,13 +142,17 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
 
             {project.category && <div>
                 <h5>Category</h5>
-                <section className='project_category' >{project.category.map( (item,i) => <small key={'cat'+item}>{ i < project.category.length-1 ? <>{item}<span></span></> : item}</small> )}</section>
+                <section className='project_category' >{project.category.map( (item,i) => <small key={'cat'+item}>{ i < project.category.length-1 ? <>{item}<span className='dottySeparator'></span></> : item}</small> )}</section>
               </div>
             }
             <br/>
             <small>{project.date}</small>
           </section>
+          <section>
+          <h5>About the project</h5>
           <p className='project_long_desc'>{project.longdesc || ''}</p>
+          </section>
+
         </div>
       </motion.div> }
       {

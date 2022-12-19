@@ -1,10 +1,9 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { cleanCategoryName, getCategories } from '../../lib/utils.js';
 import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare } from '../props';
-import { SocialsIcons, MailAddress, HomeButton, Logo } from '../inputs';
+import { SocialsIcons, MailAddress, HomeButton, Logo, CategoryMenu } from '../inputs';
 
 
 const WindowIco = () => (
@@ -30,7 +29,7 @@ export const OldMenu = ({projects}) => (
     </div>
   );
 
-export const Menu = ({projects, homebutton=false, latestHref=''}) => {
+export const Menu = ({homebutton=false, latestHref='', categories=true}) => {
 
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
@@ -125,7 +124,7 @@ export const Menu = ({projects, homebutton=false, latestHref=''}) => {
     <>
       <nav id="menu">
         <AnimatePresence exitBeforeEnter>
-        {homebutton ? <HomeButton latestHref={latestHref} /> : <Logo/>}
+        {homebutton ? <HomeButton key='homebuttonpresence' latestHref={latestHref} /> : <Logo/>}
         </AnimatePresence>
         <div className='topArea'>
           <div id='bars' onClick={ () => setActive(!active) } className={active ? 'active' : ''}>

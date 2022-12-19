@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
+import { getCategories, changeHashTo } from '../../lib/utils';
 import { HoverSquare } from '../props';
+
 import arrowHome from '../../assets/arrowHome.svg';
 import arrowHomeWhite from '../../assets/arrowHome_white.svg';
-
 import behance from '../../assets/icons/behance.svg';
 import instagram from '../../assets/icons/instagram.svg';
 import artstation from '../../assets/icons/artstation.svg';
@@ -215,5 +216,51 @@ export const SocialsIcons = ({mail=false}) => {
       }
     </div>
   );
+
+}
+
+export const CategoryMenu = () => {
+  
+  const location = useLocation();
+  const [active, setActive] = useState();
+
+  const onCategoryChange = (e) => {
+
+    let category =  (typeof e === 'string') ? e : e.detail.category();
+    if(category){
+      changeHashTo(category);
+      setActive(category);
+    }
+
+  }
+
+  useEffect(()=>{
+
+    window.addEventListener('categorychange', onCategoryChange);
+    return () => window.removeEventListener('categorychange', onCategoryChange);
+
+  },[]);
+
+
+
+  return( 
+    <motion.ul 
+        key='category_menu'
+        id='category_menu'
+        initial={{opacity:0,y:-100}}
+        animate={{opacity:1, y:0}}
+        exit={{opacity:0, y:-100}}
+        >
+            {getCategories().map( (cat,i) => 
+            <li key={`categoryMenu_${cat}`}>
+              <HoverSquare size='40px' name={'hoversquare'+cat} top='-65%' left='-18%'>
+              <a href={`#${cat}`} onClick={ () => onCategoryChange(cat) } className={ active === cat ? 'active' : undefined }><small>{cat}</small></a>
+              </HoverSquare>
+                {i < getCategories().length-1 && <span className='dottySeparator'></span>}
+            </li>
+          )}
+        </motion.ul>
+    
+      );
 
 }

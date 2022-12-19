@@ -45,7 +45,6 @@ function App() {
   });
   const [homebutton, setHomebutton] = useState(false);
 
-
   useEffect( () => {
 
     //switch body attribute for CSS change to take effects
@@ -55,7 +54,8 @@ function App() {
 
     const favicon = document.getElementById('favicon');
     setFaviconColor(favicon, theme.color);
-    
+  
+
   },[theme]);
 
 
@@ -68,7 +68,7 @@ function App() {
               </Routes>
           </AnimatePresence>
         </Suspense>
-        <Menu projects={PROJECTS} homebutton={homebutton} latestHref={latestHref.current} />
+        <Menu homebutton={homebutton} latestHref={latestHref.current} />
         <Filter />
       </div>
   );

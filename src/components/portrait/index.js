@@ -6,13 +6,15 @@ import { motion } from 'framer-motion';
 
 function Portrait({innerRef = e => e}){
 
+  const container = useRef();
+
   useEffect(() => {
 
       const scene = new SCENE({
-        onLoad: () => gsap.to(innerRef.current,{opacity:1, duration:1})
+        onLoad: () => gsap.to(innerRef.current,{opacity:1, duration:1}),
+        container: container.current
       });
       scene.init();
-
 
   },[]);
 
@@ -20,7 +22,7 @@ function Portrait({innerRef = e => e}){
 
   return( <motion.div
     key={'threecanvas'}
-    ref={innerRef}
+    ref={e => {innerRef(e); container.current = e; }}
     initial={{y:80,opacity:0}}
     animate={{y:0, opacity:1, transition:{duration:0.8}}}
     exit={{opacity:0, transition:{duration:0.3}}}

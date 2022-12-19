@@ -9,23 +9,26 @@ const INIT_HEIGHT = window.innerHeight;
 
 export default class SCENE{
 
-  constructor(ob){
+  renderer = null;
+  scene = null;
+  camera = null;
+  effect = null;
+  clock = null;
+  head = null;
+  mixer = null;
+  material = null;
+  show = true;
+  lastDiv = null;
+  mousePos = {x:0,y:0}
+  loader = new GLTFLoader();
+  moveBone = null;
+  width = () => this.container?.getBoundingClientRect().width;
+  height = () => this.container?.getBoundingClientRect().height;
 
-    this.renderer = null;
-    this.scene = null;
-    this.camera = null;
-    this.effect = null;
-    this.clock = null;
-    this.head = null;
-    this.mixer = null;
-    this.material = null;
-    this.show = true;
-    this.lastDiv = null;
-    this.mousePos = {x:0,y:0}
-    this.loader = new GLTFLoader();
-    this.moveBone = null;
+  constructor({onLoad=()=>0, container=undefined}){
 
-    this.onLoad = ob.onLoad || null;
+    this.onLoad = onLoad;
+    this.container = container;
     this.timeline = gsap.timeline({onComplete: () => this.noiseMove(this.moveBone) });
     this.timeout = null;
 
@@ -57,13 +60,13 @@ export default class SCENE{
     this.renderer = new THREE.WebGLRenderer({ alpha: false });
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setClearColor( 0x000000, 0 );
-    this.renderer.setSize(this.width,this.height);
+    this.renderer.setSize(this.width(),this.height());
     document.getElementById("squareabout").appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(BACKGROUND);
 
-    this.camera = new THREE.PerspectiveCamera(16, this.width / this.height, 0.1, 1000 );
+    this.camera = new THREE.PerspectiveCamera(16, this.width() / this.height(), 0.1, 1000 );
     this.camera.focalLength = 125;
     this.setCanvasSize();
 
@@ -131,30 +134,23 @@ export default class SCENE{
   //events
 
   setCanvasSize(){
+    if(!this.camera){ return; }
     if(  window.innerWidth > window.innerHeight ){
-      this.width = INIT_WIDTH;
-      this.height = INIT_HEIGHT;
-      if(this.camera){
-        this.camera.position.z = 0.7;
+        this.camera.position.z = 0.6;
         this.camera.position.y = 0;
-      }
     }else{ //vertical mode
-        this.width = window.innerWidth;
-        this.height = window.innerHeight/1.5;
-        if(this.camera){
-          this.camera.position.z = 0.5;
-          this.camera.position.y = 0.007;
-        }
+        this.camera.position.z = 0.6;
+        this.camera.position.y = 0.030;
     }
   }
 
   onWindowResize() {
 
-    this.camera.aspect = this.width / this.height;
+    this.camera.aspect = this.width() / this.height();
   	this.camera.updateProjectionMatrix();
 
 
-    this.renderer.setSize( this.width, this.height );
+    this.renderer.setSize( this.width(), this.height() );
     this._render_();
     this.setCanvasSize();
 

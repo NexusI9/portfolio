@@ -20,6 +20,12 @@ export default () => (
             </Body>
         </Article>
 
+        <Article name='Logotype' spaced={true}>
+            <Body flexDirection='vertical' title='Logotype & Branding'>
+              <Gallery galleries={galleryRoutes} galleryKey='logo' />
+            </Body>
+        </Article>
+
         {
         /*<Article header='Banner' spaced={true}>
             <Body>
@@ -126,10 +132,6 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='UI Overview' spaced={true} className='purpleBkg'>
-            <Parallax src='/assets/projects/mengfeng/parallax.jpg'/>
-        </Article>
-
 
         {/*<Article name='Wireframes' spaced={true}>
             <Body title="Wireframes">
@@ -145,11 +147,10 @@ export default () => (
             </Body>
         </Article>
 
-        <Article name='Logotype' spaced={true}>
-            <Body flexDirection='vertical' title='Logotype & Branding'>
-              <Gallery galleries={galleryRoutes} galleryKey='logo' />
-            </Body>
+        <Article name='UI Overview' spaced={true} className='purpleBkg'>
+            <Parallax src='/assets/projects/mengfeng/parallax.jpg'/>
         </Article>
+
 
   </>
 );

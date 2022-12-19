@@ -909,7 +909,7 @@ export default () => (
   <Article name='Mantra'>
     <Body flexAlignement='vertical' className='centered'>
     <h2>Mantra: take LAOS everywhere in your pocket !</h2>
-    <p style={{textAlign:'center', marginBottom: '5vh'}} >Since Google Chrome doesn’t support Web Extensions yet. 
+    <p style={{textAlign:'center', marginBottom: '5vh'}} >Since Google Chrome on mobile doesn’t support Web Extensions yet. 
       LAOS offers a solution to any reader who’d like to translate words on a single touch with <b>Mantra</b>. 
       The app translates any articles to an easily readable transcript in which the user can choose his reading pace, as well as translating any words
       </p>
