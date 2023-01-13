@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
-import { getCategories, changeHashTo } from '../../lib/utils';
+import { getCategories, changeHashTo, setFaviconColor, getColorOfCategory } from '../../lib/utils';
 import { HoverSquare } from '../props';
 
 import arrowHome from '../../assets/arrowHome.svg';
@@ -15,6 +15,9 @@ import vimeo from '../../assets/icons/vimeo.svg';
 import pinterest from '../../assets/icons/pinterest.svg';
 import linkedin from '../../assets/icons/linkedin.svg';
 import mailico from '../../assets/icons/mail.svg';
+
+import leftside from '../../assets/catmenu_left.svg';
+import rightside from '../../assets/catmenu_right.svg';
 
 export const BackButton = () => (
 
@@ -221,45 +224,80 @@ export const SocialsIcons = ({mail=false}) => {
 
 export const CategoryMenu = () => {
   
-  const location = useLocation();
+
   const [active, setActive] = useState();
+  const lastInteraction = useRef();
 
-  const onCategoryChange = (e) => {
+  const updateColor = (category) => {
+    //switch body attribute for CSS change to take effects
+    const color = getColorOfCategory(category);
+    //const favicon = document.getElementById('favicon');
+    document.querySelector("body").setAttribute('data-theme',color);
+    //setFaviconColor(favicon,color);
+  }
 
-    let category =  (typeof e === 'string') ? e : e.detail.category();
-    if(category){
-      changeHashTo(category);
+  const goToCategory = (cat) => { //listen to click change, so we store the new category in ref and set it active in Scroll event listener below
+    lastInteraction.current = 'click';
+    setActive(cat);
+    changeHashTo(cat); 
+    updateColor(cat);
+    document.getElementById(cat)?.scrollIntoView({behavior:'smooth'});
+  }
+
+  const onCategoryChange = (e) => { //listen to global category change (on scroll)
+    const category = (typeof e === 'string') ? e : e.detail.category();
+    if(category && lastInteraction.current != 'click'){
+      changeHashTo(category); 
       setActive(category);
+      updateColor(category);
     }
 
   }
 
   useEffect(()=>{
 
+    let scrollTimeout;
+    const onScroll = () => {
+      //only setActive when scroll is done;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() =>  { 
+        lastInteraction.current = null;
+      }, 100);
+    }
+
+    
+
+    window.addEventListener('scroll', onScroll);
     window.addEventListener('categorychange', onCategoryChange);
-    return () => window.removeEventListener('categorychange', onCategoryChange);
+
+    return () =>{ 
+      window.removeEventListener('categorychange', onCategoryChange); 
+      window.removeEventListener('scroll', onScroll);
+    }
 
   },[]);
 
 
 
   return( 
-    <motion.ul 
+    <motion.div 
         key='category_menu'
         id='category_menu'
         initial={{opacity:0,y:-100}}
         animate={{opacity:1, y:0}}
         exit={{opacity:0, y:-100}}
         >
-            {getCategories().map( (cat,i) => 
-            <li key={`categoryMenu_${cat}`}>
-              <HoverSquare size='40px' name={'hoversquare'+cat} top='-65%' left='-18%'>
-              <a href={`#${cat}`} onClick={ () => onCategoryChange(cat) } className={ active === cat ? 'active' : undefined }><small>{cat}</small></a>
-              </HoverSquare>
-                {i < getCategories().length-1 && <span className='dottySeparator'></span>}
-            </li>
+          <img alt='left side menu' src={leftside}/>
+          <ul>
+              {getCategories().map( (cat,i) => 
+              <li key={`categoryMenu_${cat}`}>
+                <a onClick={ () => goToCategory(cat) } className={ active === cat ? 'active' : undefined }><small>{cat}</small></a>
+                  {i < getCategories().length-1 && <span className='lineSeparator'></span>}
+              </li>
           )}
-        </motion.ul>
+           </ul>
+           <img alt='right side menu' src={rightside}/>
+        </motion.div>
     
       );
 

@@ -770,7 +770,7 @@ export default () => (
     </Article>
 
 
-    <Article spaced={true} name='The features'>
+    <Article name='The features'>
     <Title label='The features' summary="LAOS offers many features and exercises to enhance the user journey to learn mandarin. Interact with the icons to discovers them!" className='half'/>
       <Body id='laos_features' >
           <FeaturesCircles />
@@ -831,7 +831,6 @@ export default () => (
       <p>Cursive writting can be tedious for beginners to make a clear distinction between the numerous and sometimes complex mandarin characters.<br />
         As a result LAOS uses a sans-serif font to make the characters easily readable for the user.</p>
         <br />
-        <br />
       <p>Compatible with Simplified, Traditional, Roman and Zhuyin characters,
         Noto Sans is a flexible font ensuring a cohesion depending on the user wishes to learn either Traditional or Simplified.</p>
     </section>
@@ -848,7 +847,7 @@ export default () => (
   <Article id='guidesheet' spaced={true} name='Graphic chart'>
     <Body flexDirection='vertical' flexAlignement='centered'>
         <h2>The gaphic chart</h2>
-        <p style={{textAlign:'center', marginBottom:'5vh'}} >LAOS' various exercises own distrinct workspace with their own visual hierarchy to optimize and enhance the learning process for the user</p>
+        <p className='half' style={{textAlign:'center', marginBottom:'5vh'}} >LAOS' various exercises own distrinct workspace with their own visual hierarchy to optimize and enhance the learning process for the user</p>
       <Charts />
     </Body>
   </Article>
@@ -863,16 +862,16 @@ export default () => (
   </Article>
 
 
-  <Article spaced={true} name='Ergonomy'>
+  <Article spaced={true} name='Ergonomy' id='laos_ergonomy' className='backdrop'>
   <Title 
     label='Ergonomy first!'
     summary="For the sake of user's comfort, 
-    LAOS has been designed to be as direct as possible while providing the user the right amount of settings to offer a full personal experience that fit the user wishes and preferences: such as a dark mode and other easy accessible mechanics" 
+    LAOS has been designed to be as direct as possible while providing the user the right amount of settings to offer a full personal experience that fit the user wishes and preferences: such as a dark mode and other easy accessible mechanics." 
     className='half'
     />
-    <Body className='vcenter'>
+
       <Img alt='laos dark theme screenshot' src='/assets/projects/laos/mockups/dark_theme.png' />
-    </Body>
+
   </Article>
 
 
@@ -906,10 +905,10 @@ export default () => (
   </Article>
 
 
-  <Article name='Mantra'>
+  <Article name='Mantra' id='laos_mantra' className='backdrop'>
     <Body flexAlignement='vertical' className='centered'>
-    <h2>Mantra: take LAOS everywhere in your pocket !</h2>
-    <p style={{textAlign:'center', marginBottom: '5vh'}} >Since Google Chrome on mobile doesn’t support Web Extensions yet. 
+    <h2 style={{textAlign:'center'}}>Take LAOS everywhere in your pocket !</h2>
+    <p className='half' style={{textAlign:'center', marginBottom: '5vh'}} ><br/>Since Google Chrome on mobile doesn’t support Web Extensions yet. 
       LAOS offers a solution to any reader who’d like to translate words on a single touch with <b>Mantra</b>. 
       The app translates any articles to an easily readable transcript in which the user can choose his reading pace, as well as translating any words
       </p>

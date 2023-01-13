@@ -1,10 +1,10 @@
 
-import PROJECTS, { THEMES } from './projects';
+import CATEGORIES, { THEMES } from './projects';
 
 
 export function cleanCategoryName(key){ return key.replace('<br>',''); }
 
-export function getCategories(projects=PROJECTS){ return Object.keys(projects); }
+export function getCategories(cat=CATEGORIES){ return Object.keys(cat); }
 
 export function getColorOfCategory(category){ return THEMES[category]; }
 
@@ -18,8 +18,8 @@ export function getProjectFromTitle(title){
 
   var project = null;
 
-  getCategories(PROJECTS).map( category => {
-      const filtered = PROJECTS[category].filter( project => project.title === title);
+  getCategories().map( category => {
+      const filtered = CATEGORIES[category].projects.filter( project => project.title === title);
       if( filtered.length > 0 ){ project = filtered[0]; }
     }
   );
@@ -31,8 +31,8 @@ export function getProjectFromTitle(title){
 export function getCategoryOfProject(project){
   var ctg = null;
 
-  getCategories(PROJECTS).map( category => {
-    const filtered = PROJECTS[category].filter( prj => prj.title === project.title );
+  getCategories().map( category => {
+    const filtered = CATEGORIES[category].projects.filter( prj => prj.title === project.title );
     if(filtered.length > 0){ ctg = category; }
   });
 
@@ -42,13 +42,12 @@ export function getCategoryOfProject(project){
 
 export function getColorFromProject(project){ return THEMES[ getCategoryOfProject(project) ]; }
 
-
 export function getRandomProject({number, category, project}){
 
   number  = number || 3;
-  if(PROJECTS[category]){
+  if(CATEGORIES[category]){
 
-      let proj_ar = PROJECTS[category].filter( prj => prj.title !== project.title);
+      let proj_ar = CATEGORIES[category].projects.filter( prj => prj.title !== project.title);
       proj_ar = proj_ar.sort( () => 0.5 - Math.random() );
       return proj_ar.slice(0, number);
 
@@ -59,6 +58,8 @@ export function getRandomProject({number, category, project}){
 
   return [];
 }
+
+export function getProjectsOfCategory(cat){ return CATEGORIES[cat].projects || []; }
 
 export function  getPageTitleFromLocation(location){
 
@@ -74,6 +75,8 @@ export function  getPageTitleFromLocation(location){
 
     return '';
 }
+
+export function getZhongwenOfCategory(category){ return CATEGORIES[category]?.zhongwen }
 
 export function scrollTo(offset, callback) {
     const fixedOffset = offset.toFixed();

@@ -3,7 +3,7 @@ import { gsap, Elastic } from 'gsap';
 import { useLocation, useParams } from 'react-router-dom';
 import { getPageTitleFromLocation, getProjectFromTitle } from '../../lib/utils';
 import { useRef, useEffect } from 'react';
-
+import zhConvertor from 'zhconvertor';
 
 export const Dotty = ({ introComplete }) => {
 
@@ -186,7 +186,7 @@ function Loader({title, onLoad, percent=0}){
           <motion.div key='underframe' exit={{scale:3, opacity:0, transition:{duration:0.3}}} id="underFrame">
             <Dotty introComplete={ (e) => onLoad ? onLoad(e) : 0 }/>
           </motion.div>
-          <motion.h2 key='projectNameLabel' exit={{scale:0.3, opacity:0, transition:{duration:0.2}}} ref={label} className={ project && project.font }>{pageTitle}</motion.h2>
+          <motion.h2 key='projectNameLabel' exit={{scale:0.3, opacity:0, transition:{duration:0.2}}} ref={label} className={ project && project.font }>{ zhConvertor.t2s(pageTitle) }</motion.h2>
           <motion.small id='loaderPercent' exit={{scale:3, opacity:0, transition:{duration:0.3}}} key='percentsmall'>{Math.ceil(percent)}%</motion.small>
         </motion.div>
 

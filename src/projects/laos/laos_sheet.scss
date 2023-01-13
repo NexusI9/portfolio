@@ -177,12 +177,12 @@
 
 
 #NotoTypo h2:first-child{
-  font-family: 'noto-bold';
+
   font-size: 3em;
 }
 
 #NotoTypo h2:nth-child(2){
-  font-family: 'noto-reg';
+
 }
 
 #laos_typo_switch{
@@ -212,7 +212,7 @@
   & > h1:last-child{
     animation-name:popTypo, maskTypo_1;
     background: #f3f3f3;
-    font-family: 'noto-reg';
+    font-family: sans-serif;
     text-align: center;
     width: 40%;
   }
@@ -341,9 +341,19 @@
 
 /*———————————————————————————————————————————————-*/
 
-#laos_tpt{
+#laos_ergonomy{
+  &::before{
+    background-image: linear-gradient(124.8deg, #F7EAFF -2.73%, #B6E0FE 100.08%)
+  }
 }
 
+#laos_mantra{
+  color: white;
+  &::before{
+    background-image: url('./assets/mantrabackdrop.jpg');
+    background-size: cover;
+  }
+}
 /*———————————————————————————————————————————————-*/
 
 #laos_sidebar{

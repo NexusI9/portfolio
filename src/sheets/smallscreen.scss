@@ -1,19 +1,18 @@
 @media only screen and (max-width: 525px){
 
   .cat{
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-right: 0;
     }
 
+    #projects{
+      .project_desc{ padding: 3% 8%; }
+    }
     .projects{
       box-sizing: border-box;
-      padding: 0 5%;
 
       .project_desc{
-        padding: 3% 8%;
         *{
           clip-path: inset(0 0 0 0);
         }
@@ -27,21 +26,21 @@
     }
 
     #project_banner{
-      padding: 20% 10%;
-      h1{ font-size: 20vw; }
+      padding: 10vh 10%;
     }
 
     #project{
-      margin-top: 80vh;
+      margin-top: 90vh;
     }
 
     #letterbox {
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+
       #iframewrapper{
-        width: 100vw;
-        right: 0;
-        height: calc(100vw*9/16);
-        box-sizing: border-box;
-        padding: 2%;
+        width: 90vw;
+        height: calc(90vw*9/16);
       }
       #tagline{ 
         font-size: 5em;
@@ -49,9 +48,7 @@
       }
       #textLetterbox{
         align-items: flex-start;
-        padding-top: 30%;
-        left: 0;
-        h1{ font-size: 7em; margin: 0 auto;}
+        h1{ font-size: 25px; }
       }
     }
 
@@ -63,6 +60,7 @@
           flex-direction: column;
           font-size: 12px;
           margin: auto;
+          & > *{margin: 0;}
           height: 100%;
           justify-content: space-evenly;
           padding: 50px 0;
@@ -87,6 +85,7 @@
 
   #project .projectWrapper {
     padding: 10px;
+    padding-top: 10%;
     box-sizing: border-box;
     float: none;
   }
@@ -115,7 +114,7 @@
 
   #menu{
     #bars.active{
-      margin-top: 6vw !important;
+      margin-top: 2vw;
     }
   }
 

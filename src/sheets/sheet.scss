@@ -3,9 +3,12 @@
 
 /*colors*/
 $red : #ff4545;
-$blue: #0037ff;
+$blue: $red;
+$pink: $red;
+$orange: $red;
+/*$blue: #0037ff;
 $pink: #dd5eff;
-$orange: #ff9500;
+$orange: #ff9500;*/
 $bkg:#f3f3f3;
 $darkgrey: #535353;
 $darkbkg: #0e0e0e;
@@ -14,12 +17,11 @@ $grad: #0037ff;
 $mainColor:$red;
 $mainFilter: url(#b);
 
-$border-radius: 15px;
+$border-radius:10px;
 
 /*values*/
 $frameMargin: 45px;
-//$title:2.5em;
-$title:7.5vw;
+
 
 /*cube*/
 $depth:10px;
@@ -27,7 +29,7 @@ $smallDepth:5px;
 
 html::-webkit-scrollbar { width: 0 !important; display: none; }
 body::-webkit-scrollbar { width: 0 !important; display: none; }
-html{ scroll-behavior: smooth; }
+//html{ scroll-behavior: smooth; }
 
 
 @mixin mainFont{
@@ -103,16 +105,6 @@ $mapFilter:(
 }
 
 @font-face {
-  font-family: 'noto-bold';
-  src: url("../assets/font/NotoSansTC-Bold.otf") format('opentype');
-}
-
-@font-face {
-  font-family: 'noto-reg';
-  src: url("../assets/font/NotoSansTC-Regular.otf") format('opentype');
-}
-
-@font-face {
   font-family: "murmure";
   src: url('../assets/font/LeMurmure-Regular.woff2') format('woff2');
 }
@@ -123,25 +115,15 @@ $mapFilter:(
   unicode-range: U+4E00-9FFF;
 }
 
-@font-face {
+@font-face{
   font-family: 'Sora';
-  font-style: normal;
-  font-weight: bold;
-  src: url("../assets/font/hira_b.otf") format("opentype");
-  unicode-range: U+4E00-9FFF;
-}
-
-@font-face {
-  font-family: 'Sora';
-  font-style: normal;
   font-weight: normal;
-  src: url("../assets/font/hira_r.otf") format("opentype");
-  unicode-range: U+4E00-9FFF;
+  src: url("../assets/font/Sora-Regular.woff2") format('woff2');
 }
 
 @font-face{
   font-family: 'Sora';
-  font-weight: normal;
+  font-weight: 400;
   src: url("../assets/font/Sora-Regular.woff2") format('woff2');
 }
 
@@ -242,7 +224,10 @@ input{
 }
 
 
-.zhg{ display: inline-block; }
+.zhg{ 
+  display: inline-block; 
+  font-weight: 400;
+}
 
 b .zhg{ font-weight: bold; }
 
@@ -328,8 +313,6 @@ b .zhg{ font-weight: bold; }
       width: 30px;
       height: 30px;
 
-      span{
-      }
       img{
         object-fit: cover;
         width: 100%;
@@ -410,6 +393,12 @@ b .zhg{ font-weight: bold; }
     } 
   }
 
+  .mainTitle{
+    &::after{
+      background-image: linear-gradient(0deg, $darkbkg, #f3f3f300 30%, #f3f3f300 90%, $darkbkg);
+    }
+  }
+
   .gallery{
     section{
       border: solid 0.5px #282828;
@@ -474,6 +463,8 @@ b .zhg{ font-weight: bold; }
     background-color: $color; 
   }
 
+
+
   #sidePanel{
     .projectHeader{ h2{ color: $color; } }
     .projectPreview{
@@ -521,6 +512,16 @@ b .zhg{ font-weight: bold; }
       }
     }
     .slideLegend::before, .slideBar{ background-color: $color; }
+  }
+
+  #category_menu{
+    ul a{
+      &:hover, &.active{
+        &,*{
+          color:$color;
+        }
+      }
+    }
   }
 
 }
@@ -664,7 +665,7 @@ footer{
   position: fixed;
   z-index: 9;
   bottom: 0;
-  left: 2vw;
+  right: 2vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -675,7 +676,7 @@ footer{
     width: fit-content;
     display: flex;
     align-items: center;
-    &:last-of-type{ flex-direction: row; margin-top: 10px; }
+    &:last-of-type{ flex-direction: column; gap: 15px; }
   }
 
   .bars{
@@ -698,25 +699,48 @@ footer{
 
 }
 
-ul#category_menu{
+#category_menu{
   position: fixed;
   width: 100%;
-  top: 4%;
+  top: 0;
   left: 0;
-  list-style: none;
   display: flex;
-  align-items: center;
-  padding: 0;
-  flex-direction: row;
-  pointer-events: auto;
   justify-content: center;
-  z-index: 3;
-  li{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+  .hoverSquare{ z-index: 0; }
+  a{ position: relative; 
+    &::before{
+
+    }
+    &,*{ transition: color 0s ease}
   }
+
+  ul{
+    box-sizing: border-box;
+    padding: 0;
+    background-color: white;
+    width: fit-content;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    pointer-events: auto;
+    justify-content: center;
+    li{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+    }
+  }
+  img{
+    height: 100%;
+    position: relative;
+  }
+  z-index: 3;
+
   a{
+
     &.active{
       &,*{
         font-weight: bold;
@@ -754,10 +778,9 @@ ul#category_menu{
   top: 0;
   left: 0;
   display: block;
-  height: 3px;
+  height:4px;
   z-index: 9;
   transition: width 0.1ss ease-in-out;
-  will-change: width;
 }
 #toShowreel{
   position: absolute;
@@ -833,7 +856,7 @@ ul#category_menu{
 
   &.white{
     .topArea{
-      #bars{
+      #bars:not(.active){
         span{
           background: white;
         }
@@ -855,8 +878,14 @@ ul#category_menu{
     flex-direction: column;
     align-items: center;
     row-gap: 15px;
+    width: 100%;
+    height: 30px;
+    justify-content: center;
+    pointer-events: none;
 
+    & > *{ pointer-events: auto; }
     #bars{
+      align-self: flex-end;
       width: 40px;
       position: relative;
       transition: margin, 0.3s ease-out;
@@ -1058,13 +1087,12 @@ ul#category_menu{
   #labelContent{
     display: flex;
     flex-direction: row;
-    column-gap: 8em;
     position: sticky;
     margin-left: 30%;
     width: fit-content;
     top:50%;
     transform: translateY(-50%);
-    & > *{ position: relative;}
+    & > *{ position: relative; margin-left: 8em;}
     a{ color: black; }
   }
 
@@ -1621,6 +1649,14 @@ span.dottySeparator{
     background-color: black;
 }
 
+span.lineSeparator{
+  display: block;
+  margin: 0 10px;
+  width: 1px;
+  height: 30px;
+  background-color: #E9E9E9;
+}
+
 
 #project_banner{
   position: fixed;
@@ -1674,7 +1710,7 @@ span.dottySeparator{
   h1{
     color: $bkg;
     margin: 2% auto;
-    font-size: clamp(30px, 13vw, 150px);
+    font-size: clamp(30px, 13vw, 130px);
   }
   img{
     position: absolute;
@@ -1686,7 +1722,6 @@ span.dottySeparator{
     object-fit: cover;
     opacity: 0.35;
     user-select: none;
-    will-change: transform;
     transition: transform 0.2s ease-out;
     user-select: none;
     pointer-events: none;
@@ -1913,9 +1948,10 @@ span.dottySeparator{
   p{
     margin-top: -30px;
     margin-bottom: 7px;
-    font-weight: bold;
     color:$red;
     white-space: nowrap;
+    font-weight: bold;
+    .zhg{     font-weight: bold; }
   }
 
 }
@@ -2016,20 +2052,22 @@ span.dottySeparator{
 
 #letterbox{
   position: fixed;
-  top: 0;
   left: 0;
   box-sizing: border-box;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  justify-content: space-around;
   transition: opacity 0.1s ease;
-  will-change: opacity;
   perspective: 100px;
+  height: initial;
+  padding: 3%;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  gap: 10px;
 
 
-  & *, #textLetterbox > *{
+  &, & *, #textLetterbox > *{
     pointer-events: none;
     transform-style: preserve-3d;
   }
@@ -2040,7 +2078,6 @@ span.dottySeparator{
     left: 0;
     opacity: 0;
     transition: opacity 0.3s ease;
-    will-change: opacity;
     width: 100%;
     height: 100%;
     background: $bkg;
@@ -2048,54 +2085,18 @@ span.dottySeparator{
     pointer-events: none;
   }
 
-  .taglineImg{
-    position: absolute;
-    transition: transform 0.5s ease-out;
-    will-change: transform;
-    transform: translate3d(0, 0, 200px);
-    z-index: 4;
-    pointer-events: none;
-    user-select: none;
-    img{ 
-      max-width: 400px; 
-      image-rendering: pixelated;
-    }
     
-  }
 
-
-  #tagline{
-    /*font-size:2.3em;*/
-    width: 100%;
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    pointer-events: none;
-    color: $red;
-    transition: transform 0.5s ease-out;
-    will-change: transform;
-    text-rendering: optimizeSpeed;
-    transform: translate3d(0, 0, 200px);
-    z-index: 4;
-    pointer-events: none;
-  }
 
   #iframewrapper{
-    $width:45vw;
-    position: absolute;
+    $width:65vw;
     width: $width;
     aspect-ratio: 16/9;
     height: calc($width * 9/16);
-    right: 7%;
-    will-change: transform;
     transition: transform 0.2s ease-out;
     pointer-events: auto;
     z-index: 2;
+    
 
     #viewshowreel{
       animation-name: rotate;
@@ -2104,7 +2105,8 @@ span.dottySeparator{
       animation-duration: 10s;
       position: absolute;
       z-index: 1;
-      right: -10%;
+      transition: top 0.2s ease-out, left 0.2s ease-out;
+      left: 90%;
       top: -10%;
       pointer-events: none;
 
@@ -2116,12 +2118,8 @@ span.dottySeparator{
     & > div{
       overflow: hidden;
       border-radius: $border-radius;
-      transition: transform 0.5s cubic-bezier(0.83, 0, 0.17, 1);
-      transform: scale(1);
     }
-    &:hover{
-      & > div{ transform: scale(1.1); }
-    }
+
     .vimeo{
       height: 100%;
       margin: 0;
@@ -2219,37 +2217,31 @@ span.dottySeparator{
   #textLetterbox{
     pointer-events: none;
     z-index: 0;
-    width: 100%;
-    height: 100vh;
+    width: max-content;
+    max-width: 100%;
+    height: fit-content;
     display: flex;
-    position: absolute;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: 3%;
-    padding-bottom: 5%; //allows to recenter // cause of weird line height of the font
-    padding-top: 13%;
     align-items: center;
-    top: 0;
-
-    & > *{
-      transition:transform 0.2s ease-out;
-    }
-
+    align-items: flex-start;
+    flex-direction: column;
+    transition:transform 0.2s ease-out;
     
-    h1{
-      font-family: 'murmure';
-      font-size:23vw;
-      color: $red;
-      &::after{
-        content:'';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(0deg, $bkg, #f3f3f300);
-      }
+    & > span{ 
+      display: block;
+      margin: 40px 0;
+      width: 65px;
+      height: 1px;
+      background-color: #0e0e0e;
+     }
+    h1,h2{ color :$red; }
+    h2{ 
+      font-family: 'murmure'; 
+      margin-bottom: 0px;
+      font-size: clamp(80px, 6vw, 100px);
     }
+    h1{ font-family: 'sora'; font-size: 20px; }
 
     & *{ 
       @include squareCursor; 
@@ -2257,10 +2249,7 @@ span.dottySeparator{
     }
 
     #arrowScroll{
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
+      align-self: center;
       animation-name: updown;
       animation-duration: 1.5s;
       animation-iteration-count: infinite;
@@ -2268,6 +2257,23 @@ span.dottySeparator{
       animation-direction: alternate;
       cursor: pointer;
       z-index: 2;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      small{ 
+        transition: transform, opacity, 0.2s ease;
+        opacity: 1;
+        transform: scale3d(1,1,1);
+      }
+
+      &:hover{ 
+        small{ 
+          opacity: 0; 
+          transform: scale3d(1.4,1.4,1.4);
+        } 
+      }
 
       img{ width: 25px; cursor: pointer; }
 
@@ -2534,7 +2540,7 @@ span.dottySeparator{
     box-sizing: border-box;
     padding:10%;
     transform: scale(0);
-    &:first-of-type, &:last-of-type{ border-radius: 100%; }
+    border-radius: 100%; 
 
      animation-name: dotLoad;
      animation-duration: 2s;
@@ -2590,11 +2596,9 @@ span.dottySeparator{
 .projects{
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
   transition: transform 0.6s ease-out, opacity 0.5s ease;
   z-index: 1;
 
-  img{ border-radius: $border-radius; }
   & > section{
     position: absolute;
     top: 0;
@@ -2610,15 +2614,16 @@ span.dottySeparator{
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
+    bottom: 0;
     left: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease-out, opacity 0.2s ease;
     box-sizing: border-box;
-    padding: 5%;
+    padding: 2.5%;
     opacity: 1;
+    overflow: hidden;
     @include squareCursor;
     color: white;
-
+    
     & > *{
       line-height: initial;
       margin: 5px 0;
@@ -2627,6 +2632,8 @@ span.dottySeparator{
       width:fit-content;
       transition: clip-path 0.3s ease-out;
       clip-path: inset(0 100% 0 0);
+      border-radius: 3px;
+      background-color: white;
     }
 
     & h2{
@@ -2634,13 +2641,13 @@ span.dottySeparator{
     }
   }
 
-  .gradientImg{ position: relative; opacity: 1}
   .overlay{
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: transform 0.35s ease-out, opacity 0.25s ease-out;
     border-radius: $border-radius;
+    transform: scale3d(1,1,1);
+
     .thumb{
-      opacity: 0;
       position: absolute;
       transition: transform 0.2s ease-in-out;
       transition-delay: 0.1s;
@@ -2663,12 +2670,11 @@ span.dottySeparator{
         height: 100%;
         width: 100%;
         background: transparent;
-        //margin-left: -40%;
       }
     }
   }
   .move{
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   .thumb{
@@ -2691,16 +2697,13 @@ span.dottySeparator{
 
   &:hover{
     z-index: 3;
-    .move{ transform: translate( calc(-1 * $depth), calc(-1 * $depth)) }
-    .overlay{ opacity: 1;}
-    .overlay .thumb, .iframePlaceholder img{ transform: scale(1.1); opacity: 1; }
+
+    //.move{ transform: translate( calc(-1 * $depth), calc(-1 * $depth)) }
+    .overlay{ opacity: 1; transform: scale3d(1.1,1.1,1.1);} 
     .project_desc > *{ clip-path: inset(0 0 0 0); }
     .project_desc > *:nth-child(2){ transition-delay: 0.2s; }
     .project_desc > *:last-child{ transition-delay: 0.2s; }
 
-    .gradientImg{
-      transform: translate( calc(-1 * $depth), calc(-1 * $depth));
-    }
 
   }
 
@@ -2750,9 +2753,8 @@ img.gradientImg{
   min-height: 100vh;
   box-sizing: border-box;
   padding: 10vw 0;
-  margin: 10vw 0;
-  margin-right: 5%;
-  width: 60%;
+  margin-right: 8%;
+  width: 55%;
   transition: transform 0.2s ease;
 
   & > section:first-child > h1{
@@ -2771,10 +2773,10 @@ img.gradientImg{
   .projects{
     float: right;
     &:hover::before{ background-color: $red;  }
-    .project_desc > * { color: $red; background-color: white; }
   }
 
   .linkSlider{
+    display:'inline-block';
     transition: transform 0.6s ease-out, opacity 0.5s ease;
     width: fit-content;
     & *{ cursor: pointer; }
@@ -2806,8 +2808,8 @@ img.gradientImg{
   @include frameMargin();
   width: 100%;
   height: 105vh;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 12%;
+  padding-right: 12%;
   background: $bkg;
 
   display: flex;
@@ -2828,6 +2830,7 @@ img.gradientImg{
     margin: 20px auto;
     margin-bottom: 0;
     margin-top: 90px;
+    & > div:last-of-type{ flex-direction: row;}
   }
   .gradientImg{/*filter:$mainFilter;*/}
   .projects{
@@ -2846,15 +2849,12 @@ img.gradientImg{
       position: absolute;
       top: 0;
     }
-
-    .project_desc{ position: relative; }
-
     &:hover{
       &::before { background-color: $mainColor;  }
       .project_desc > * { clip-path: inset(0 0 0 0); }
     }
 
-    .project_desc > *{ color: $mainColor; background-color: $bkg; }
+    .project_desc > *{ color: $mainColor; }
 
   }
 
@@ -2868,12 +2868,11 @@ img.gradientImg{
 
   & > section{
     display: flex;
-    //grid-template-columns: repeat(3, calc(100%/3));
+    gap: 10px;
 
     & > .linkSlider{
       box-sizing: border-box;
       flex-basis: 50%;
-      padding: 0 7px;
     }
   }
 
@@ -2884,7 +2883,7 @@ img.gradientImg{
 
 
 
-.projects:hover .project_desc,
+/*.projects:hover .project_desc,*/
 .popCube:hover > *,
 .popCube.active{
   opacity: 1;
@@ -2892,7 +2891,7 @@ img.gradientImg{
 }
 
 
-.projects:hover::before,
+/*.projects:hover::before,*/
 .popCube:hover::before,
 .popCube.active::before{
 
@@ -2973,77 +2972,97 @@ img.gradientImg{
 }
 
 
-.mainTitle{
+#categorySuper{
+
   top: 0;
+  position: fixed;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100%/3);
+  pointer-events: none;
 
-  @each $name, $color in $mapColor{
-    h2[data-color='#{$name}']{ color:$color !important;  }
+
+  #zhongwenName{
+    position: absolute;
+    height: max-content;
+    & >*{ 
+      font-size: clamp(80px, 13vw, 150px); 
+      font-family: 'murmure';
+      opacity: 0.6;
+      color: transparent;
+      -webkit-text-stroke: 1px $red;
+      text-stroke: 1px $red;
+    }
   }
 
-
-  .underline{
-    height: 6px;
-    width: 100%;
-    display: block;
-    background: $red;
-    transition: width 0.3s ease;
-    margin-left: -7%;
-  }
-
-  &.backTitles{
-    position: fixed;
-    margin: 3% 56px;
+  .mainTitle{
     pointer-events: none;
     @include squareCursor;
     transform-origin: left;
-    z-index: -1;
-    @include skew();
-    top: 10vh;
-    overflow: hidden;
     height: calc(17vw + 20px);
+    position: relative;
+    //@each $name, $color in $mapColor{
+    //  h2[data-color='#{$name}']{ color:$color !important;  }
+    //}
 
-    &::after{
-      content: '';
-      position: absolute;
+  
+    .underline{
+      height: 6px;
       width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-image: linear-gradient(0deg, $bkg, #f3f3f300 30%, #f3f3f300 90%, $bkg);
+      display: block;
+      background: black;
+      transition: width 0.3s ease;
+      margin-left: -7%;
     }
-
-    h1, h2{
-      transition: color 0.2s ease;
-      color:$red;
-    }
-
-    *{
-      font-family: 'murmure';
-      float: left;
-      text-transform: none;
-      text-align: center;
-      font-size: clamp(50px,$title, 200px);
-    }
-
-
-    section{
-      position: relative;
-      display: grid;
-      grid-template-rows: repeat(3,2em); //hardcode
-      top:0;
-      /*width: calc($title/2);*/
-      will-change: transform;
-      align-items: center;
-    }
-
-    section > h1:first-of-type{
-      left: -100%;
-    }
-
-
-
+  
+  
+      &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: background 0.2s ease;
+        //background-image: linear-gradient(0deg, $bkg, #f3f3f300 30%, #f3f3f300 90%, $bkg);
+      }
+  
+      h1, h2{
+        transition: color 0.2s ease;
+        color:$red;
+      }
+  
+      *{
+        //$title:2.5em;
+        $title:7.5vw;
+        //$title:5vw;
+        font-family: 'murmure';
+        float: left;
+        text-transform: none;
+        text-align: center;
+        font-size: clamp(50px,$title, 200px);
+      }
+  
+  
+      section{
+        position: relative;
+        display: grid;
+        grid-template-rows: repeat(3,2em); //hardcode
+        top:0;
+        /*width: calc($title/2);*/
+        align-items: center;
+      }
+  
+      section > h1:first-of-type{
+        left: -100%;
+      }
+  
   }
+
 }
+
 
 
 
@@ -3397,7 +3416,7 @@ img.gradientImg{
   }
   & > h1{
     color:$pink;
-    margin: 50px 70px;
+    margin: 100px 70px;
   }
   #contactLinks{
     position: absolute;
@@ -3437,7 +3456,7 @@ img.gradientImg{
 
   #resumeHeader{
     h2{ font-size: 6em; }
-    p{ white-space: normal;}
+    p{ white-space: normal; }
   }
 
 

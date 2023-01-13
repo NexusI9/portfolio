@@ -15,6 +15,7 @@
 
   img{
     transition: transform 0.3s ease-in-out;
+    transform: scale3d(1,1,1);
     object-fit: cover !important;
     width: 100% !important;
     height: 100% !important;
@@ -22,7 +23,7 @@
     max-height: none !important;
     cursor: pointer;
     &:hover{
-      transform: scale(1.1);
+      transform: scale3d(1.1,1.1,1.1);
     }
   }
 
@@ -75,7 +76,6 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
   }
 
 }
@@ -159,9 +159,19 @@
     &.center{ justify-content: center; }
 
     & > *{ 
+      overflow: hidden;
       margin: 0 10px; 
       border-radius: 0;
-      img{ border-radius: 5px; }
+      &:hover{
+        img{
+          transform: scale3d(1.1,1.1,1.1);
+        }
+      }
+      img{ 
+        border-radius: 5px; 
+        transition: transform 0.2s ease-out;
+        transform: scale3d(1,1,1);
+      }
     }
 
   }

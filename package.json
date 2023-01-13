@@ -18,7 +18,8 @@
     "react-xmasonry": "^3.0.5",
     "sass": "^1.49.9",
     "three": "^0.138.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zhconvertor": "^2.2.4"
   },
   "scripts": {
     "start": "react-scripts start",

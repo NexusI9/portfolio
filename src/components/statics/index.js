@@ -122,12 +122,13 @@ export const Menu = ({homebutton=false, latestHref='', categories=true}) => {
 
   return(
     <>
-      <nav id="menu">
+      <nav id="menu" className={active ? 'active' : null}>
         <AnimatePresence exitBeforeEnter>
-        {homebutton ? <HomeButton key='homebuttonpresence' latestHref={latestHref} /> : <Logo/>}
+        {!active && homebutton && <HomeButton key='homebuttonpresence' latestHref={latestHref} /> }
+        {!active && !homebutton && <Logo/> }
         </AnimatePresence>
         <div className='topArea'>
-          <div id='bars' onClick={ () => setActive(!active) } className={active ? 'active' : ''}>
+          <div id='bars' onClick={ () => setActive(!active) } className={active ? 'active' : null}>
             <section className='default'>
               <span></span>
               <span></span>
@@ -199,14 +200,30 @@ export const Filter = () => (
 );
 
 
-export const Socials = ({minify=false}) => (
+export const Socials = ({minify=false, direction='vertical'}) => (
 
     <motion.div
       id="socials"
       key='socials'
-      initial={{opacity:0, y:70}}
-      animate={{opacity:1, y:0, transition:{duration:0.4, type:'tween', ease:'easeOut'}}}
-      exit={{opacity:0, y: 70,  transition:{duration:0.2, type:'tween', ease:'easeOut'}}}
+      initial={ (direction) => {
+        return{
+          opacity:0, 
+          x: direction === 'vertical' ? 70 : 0,
+          y: direction === 'vertical' ? 0 : 70
+        }
+      }
+    }
+      custom={direction}
+      animate={{ opacity:1,  x:0, y:0, transition:{duration:0.4, type:'tween', ease:'easeOut'} }}
+      exit={ (direction) => {
+        return {
+          opacity:0, 
+          x: direction ==='vertical' ? 70 : 0,
+          y: direction ==='vertical' ? 0 : 70,  
+          transition:{duration:0.2, type:'tween', ease:'easeOut'}
+        }
+      }
+    }
     >
 
       {!minify && <div><MailAddress /></div>}

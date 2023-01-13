@@ -14,6 +14,7 @@ import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/loader';
 import {motion, AnimatePresence} from 'framer-motion';
 import { gsap } from 'gsap';
+import zhConvertor from 'zhconvertor';
 
 
 function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
@@ -130,7 +131,7 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
         exit={{opacity:0, transition:{duration:0.3}}}
         >
         <img alt='project banner' ref={imgBanner} src={process.env.PUBLIC_URL+(project.banner || project.thumbnail)}/>
-        <h1>{project.title}</h1>
+        <h1>{ zhConvertor.t2s( project.title) }</h1>
         <div>
           <section>
                 { project.desc && 

@@ -39,7 +39,7 @@ const Content = ({header, body, detail, separator=true }) => (
 export const Pro = ({language}) => (
     <>
       <Content
-        header={<Label ico={logo_rdb}><Multi eng='Web, Print & Motion Designer' fr='Designer Web, Print & Motion Designer' zh='網站設計師 & 動態圖形設計師' language={language}/></Label>}
+        header={<Label ico={logo_rdb}><Multi eng='Lead Motion Designer, Web & Print Designer' fr='Lead Motion Designer, Designer Web & Print' zh='領導動態圖形設計師、網站與印刷設計師' language={language}/></Label>}
         body={<>
           <small><Multi
             eng='Design of visual and interactive content going from websites to print and motion design assets'
@@ -53,28 +53,33 @@ export const Pro = ({language}) => (
               fr='Production de divers éléments Motion Design et Sound Design (Google, Meta, TikTok ads, remarketing, ainsi que la présentation de produits)'
               zh='動態圖形與聲音設計製作 ( 從Google、 Meta、 TikTok 廣告到產品文宣 )'
               language={language}/>,
+              <Multi
+              eng='Supervision of junior designers ensuring their work fit the established art directions.'
+              fr='Supervision des designers junior, assurant le bon suivi des directions artistiques établies.'
+              zh='初級設計師負責。 確保他們的創造適合客戶藝術指導'
+              language={language}/>,
             <Multi
-              eng='Design of websites and print assets'
-              fr='Design de sites web et de fichiers prints'
+              eng='Design of websites and print assets.'
+              fr='Design de sites web et de fichiers prints.'
               zh='網站設計與多種平面元件打造'
               language={language}/>,
             <Multi
-              eng='Branding/ visual identity design'
-              fr="Design d'identité visuelles et de branding, session de brainstorm marketing"
+              eng='Branding/ visual identity design.'
+              fr="Design d'identité visuelles et de branding, session de brainstorm marketing."
               zh='對客戶進行品牌設計'
               language={language}/>,
             <Multi
-              eng="Videography and photo editing of the agency's events and venues"
-              fr="Vidéographie et édition photo des évènements de l'agence"
+              eng="Videography and photo editing of the agency's events and venues."
+              fr="Vidéographie et édition photo des évènements de l'agence."
               zh='企業活動攝影和攝像、後處理 ( 視頻與照片剪輯 )'
               language={language}/>,
             <Multi
               eng='Providing web developers JS libraries to improve websites user experience (3D WebGL interactive content, SVG/CSS/GSAP animations...)'
               fr='Assistance aux web developers en leur fournissant des bibliothèques JavaScript pour améliorer l’expérience utilisateur des sites (intégration 3D WebGL, animations CSS/SVG/GSAP…)'
-              zh='上級網站工程師助理，發開3D WebGL的內容 、 SVG/CSS/GSAP 互動式動畫' language={language}/>,
+              zh='上級網站工程師助理，開發3D WebGL的內容 、 SVG/CSS/GSAP 互動式動畫' language={language}/>,
             <Multi
-              eng='Setup and development of web apps and Adobe Extensions to enhance the agency workflow'
-              fr="Mise en place et développement d'applications web et extensions Adobe pour améliorer le workflow de l’agence"
+              eng='Setup and development of web apps and Adobe Extensions to enhance the agency workflow.'
+              fr="Mise en place et développement d'applications web et extensions Adobe pour améliorer le workflow de l’agence."
               zh='為進步企業工作流製作Adobe Extensions與網絡應用程式'
               language={language}/>
           ]}/>
@@ -97,25 +102,25 @@ export const Pro = ({language}) => (
         body={<>
           <List li={[
             <Multi
-              eng='Development and Web Design of an e-commerce coupled with a dedicated SQL client for products management (LAMP stack)'
-              fr='Développement et Web Design d’un e-commerce ainsi que d’un client SQL pour la gestion des produits (stack LAMP)'
+              eng='Development and Web Design of an e-commerce coupled with a dedicated SQL client for products management (LAMP stack).'
+              fr='Développement et Web Design d’un e-commerce ainsi que d’un client SQL pour la gestion des produits (stack LAMP).'
               zh='電子商務開發與UI/UX設計、產品管理將SQL客戶機軟件開發 (LAMP stack)'
               language={language}/>,
             <Multi
-              eng='Development and UX/UI design of a web browser extension to improve Mandarin learning (popup translator, OCR recognition) '
-              fr='Développement et UX/UI design d’une extension Google Chrome pour l’apprentissage du mandarin (traducteur popup, reconnaissance OCR)'
+              eng='Development and UX/UI design of a web browser extension to improve Mandarin learning (popup translator, OCR recognition).'
+              fr='Développement et UX/UI design d’une extension Google Chrome pour l’apprentissage du mandarin (traducteur popup, reconnaissance OCR).'
               zh='Google Chrome擴充功能開發與UI/UX設計'
               language={language}
             />,
             <Multi
-              eng='Development and UX/UI design of a website archiving various cinematographic content (MERN stack)'
-              fr='Développement et UX/UI d’un site d’archivage de contenu	cinématographique (MERN stack)'
+              eng='Development and UX/UI design of a website archiving various cinematographic content (MERN stack).'
+              fr='Développement et UX/UI d’un site d’archivage de contenu	cinématographique (MERN stack).'
               zh='電影攝影的上網檔案館開發與UI/UX設計 (MERN stack)'
               language={language}
             />,
             <Multi
-              eng='Art direction, background painting and animation for an animated short-movie (music video)'
-              fr='Direction artistique, background painting et animation pour un court-métrage d’animation (clip musical) '
+              eng='Art direction, background painting and animation for an animated short-movie (music video).'
+              fr='Direction artistique, background painting et animation pour un court-métrage d’animation (clip musical).'
               zh='短片打造 ( 藝術總監、背景畫、動畫師 )'
               language={language}
             />,
@@ -140,26 +145,26 @@ export const Pro = ({language}) => (
         body={<>
           <small><Multi
             eng='Providing visuals for various cultural structures such as associations, music acts and soundsystem.'
-            fr='Création de contenus visuels pour diverses structures culturelles telles que des associations, groupes de musique et soundsystems'
+            fr='Création de contenus visuels pour diverses structures culturelles telles que des associations, groupes de musique et soundsystems.'
             zh='提供多種文化機構( 社團、音樂活動、Soundsystem )多媒體材料'
             language={language}/>
           </small>
           <List li={[
-            <Multi eng='Spatial organisation and scenography of various video-mapping installations'
-                   fr='Mise en espace et scénographie de nombreuses installations vidéo-mapping'
+            <Multi eng='Spatial organisation and scenography of various video-mapping installations.'
+                   fr='Mise en espace et scénographie de nombreuses installations vidéo-mapping.'
                    zh='光彫投影裝置、空間佈局 (scenography)'
                    language={language}/>,
             <Multi
-                   eng='Art direction and animation for an animated short-movie (music video)'
-                   fr='Direction artistique et animation pour un court-métrage d’animation (clip musical)'
+                   eng='Art direction and animation for an animated short-movie (music video).'
+                   fr='Direction artistique et animation pour un court-métrage d’animation (clip musical).'
                    zh='短片打造 (藝術總監、動畫師)'
                    language={language}/>,
-            <Multi eng='3D modelling, animation and compositing of more than a 100 visual samples made to be projected during cultural events'
-                   fr='Modélisation, animation et compositing de plus de 100 samples visuels visés à être projetés lors d’évènements culturels '
+            <Multi eng='3D modelling, animation and compositing of more than a 100 visual samples made to be projected during cultural events.'
+                   fr='Modélisation, animation et compositing de plus de 100 samples visuels visés à être projetés lors d’évènements culturels.'
                    zh='為多種文化話動進行更多一百視頻樣本製作 ( 3D設計、動畫、視頻合成 )'
                    language={language}/>,
-            <Multi eng='Development and UI design of interactive audio-visual software (motion design, generative art)'
-                   fr='Développement et UX/UI design de logiciels audio-visuels interactifs (motion design, art génératif)'
+            <Multi eng='Development and UI design of interactive audio-visual software (motion design, generative art).'
+                   fr='Développement et UX/UI design de logiciels audio-visuels interactifs (motion design, art génératif).'
                    zh='音像軟件開發與UI/UX設計（ 動態圖像設計、自動生成藝術 )'
                    language={language}/>,
           ]}/>
@@ -195,8 +200,8 @@ export const Edu = ({language}) => (
           }
         body={
           <Multi
-            eng={<small>Master's degree in Digital Art</small>}
-            fr={<small>Master en Art Numérique</small>}
+            eng={<small>Master's degree in Digital Art.</small>}
+            fr={<small>Master en Art Numérique.</small>}
             zh={<small>數位藝術碩士</small>}
             language={language}/>
         }
@@ -221,8 +226,8 @@ export const Edu = ({language}) => (
           }
         body={
           <Multi
-            eng={<small>International exchange program</small>}
-            fr={<small>Programme d’échange international</small>}
+            eng={<small>International exchange program.</small>}
+            fr={<small>Programme d’échange international.</small>}
             zh={<small>交換項目</small>}
             language={language}/>
         }
@@ -248,8 +253,8 @@ export const Edu = ({language}) => (
           }
         body={
           <Multi
-            eng={<small>Bachelor's degree in Digital Art</small>}
-            fr={<small>Licence en Art Numérique</small>}
+            eng={<small>Bachelor's degree in Digital Art.</small>}
+            fr={<small>Licence en Art Numérique.</small>}
             zh={<small>數位藝術学士</small>}
             language={language}/>
         }
@@ -332,9 +337,9 @@ export const Commu = ({language}) => (
     body={
       <small>
         <Multi
-          eng="Member and visual Artist at the music record Montrez-moi vos muscles (VJ, music video)"
+          eng="Member and visual Artist at the music record Montrez-moi vos muscles (VJ, music video...)"
           fr="Membre et artiste visuel du label Montrez-moi vos muscles (VJ, clips...)"
-          zh="Montrez-moi vos muscles 唱片公司會員、視覺設計師 (VJ, 音樂視頻)"
+          zh="Montrez-moi vos muscles 唱片公司會員、視覺設計師 (VJ, 音樂視頻...)"
           language={language}
         />
       </small>
@@ -348,8 +353,8 @@ export const Commu = ({language}) => (
     body={
       <small>
         <Multi
-          eng="Member of the Music Team, selecting new musics and helping the Web Team"
-          fr="Membre de la Music Team, selection des nouveaux morceaux et assistance à la Web Team"
+          eng="Member of the Music Team, selecting new musics and helping the Web Team."
+          fr="Membre de la Music Team, selection des nouveaux morceaux et assistance à la Web Team."
           zh="音樂團體會員 : 選擇新的音樂要直播、網站團體助理"
           language={language}
         />
@@ -364,8 +369,8 @@ export const Commu = ({language}) => (
     body={
       <small>
         <Multi
-          eng="Visual researches and experimentation duo with Clémence Fontaine"
-          fr="Duo de recherche et d’expérimentations visuelles avec Clémence Fontaine"
+          eng="Experiential art research with Clémence Fontaine."
+          fr="Duo de recherche en art expérientiel avec Clémence Fontaine."
           zh="跟Clémence Fontaine一起藝術研究"
           language={language}
         />
@@ -381,8 +386,8 @@ export const Commu = ({language}) => (
     body={
       <small>
         <Multi
-          eng="Communication manager, designing events’ communication medias"
-          fr="Chargé de communication, design et diffusion des affiches et bannières"
+          eng="Communication manager, designing events’ communication medias."
+          fr="Chargé de communication, design et diffusion des affiches et bannières."
           zh="通訊經理、廣告畫設計"
           language={language}
         />
@@ -402,8 +407,8 @@ export const Events = ({language}) =>(
     header={<b>Maison Mimir fête ses 10 ans</b>}
     body={
       <Multi
-        eng={<small>With Philip Pentacle and Epic Schmetterling</small>}
-        fr={<small>With Philip Pentacle and Epic Schmetterling</small>}
+        eng={<small>With Philip Pentacle and Epic Schmetterling.</small>}
+        fr={<small>With Philip Pentacle and Epic Schmetterling.</small>}
         zh={<small>跟 Philip Pentacle 和 Epic Schmetterling</small>}
         language={language}
       />
@@ -415,8 +420,8 @@ export const Events = ({language}) =>(
     header={<b>ART’ung Live</b>}
     body={
       <Multi
-        eng={<small>With Philip Pentacle, Epic Schmetterling and Noyus</small>}
-        fr={<small>Avec Philip Pentacle, Epic Schmetterling et Noyus</small>}
+        eng={<small>With Philip Pentacle, Epic Schmetterling and Noyus.</small>}
+        fr={<small>Avec Philip Pentacle, Epic Schmetterling et Noyus.</small>}
         zh={<small>跟 Philip Pentacle，Epic Schmetterling 和 Noyus</small>}
         language={language}
       />
@@ -429,8 +434,8 @@ export const Events = ({language}) =>(
     header={<b>CELEBRATION</b>}
     body={
       <Multi
-        eng={<small>With Epic Schmetterling</small>}
-        fr={<small>Avec Epic Schmetterling</small>}
+        eng={<small>With Epic Schmetterling.</small>}
+        fr={<small>Avec Epic Schmetterling.</small>}
         zh={<small>跟 Epic Schmetterling</small>}
         language={language}
       />
@@ -443,8 +448,8 @@ export const Events = ({language}) =>(
     header={<b>Limedia Party #1</b>}
     body={
       <Multi
-        eng={<small>As part of the RING festival, with CTL! soundsystem</small>}
-        fr={<small>Dans le cadre du RING festival, avec CTL! soundsystem</small>}
+        eng={<small>As part of the RING festival, with CTL! soundsystem.</small>}
+        fr={<small>Dans le cadre du RING festival, avec CTL! soundsystem.</small>}
         zh={<small>RING音樂節的一部分，跟 CTL! soundsystem</small>}
         language={language}
       />
@@ -457,8 +462,8 @@ export const Events = ({language}) =>(
     header={<b>TECHNO</b>}
     body={
       <Multi
-        eng={<small>with ENSAD (BDE)</small>}
-        fr={<small>avec ENSAD (BDE)</small>}
+        eng={<small>with ENSAD (BDE).</small>}
+        fr={<small>avec ENSAD (BDE).</small>}
         zh={<small>跟 ENSAD (BDE)</small>}
         language={language}
       />
@@ -470,8 +475,8 @@ export const Events = ({language}) =>(
     header={<b>CTL PARTY!</b>}
     body={
       <Multi
-        eng={<small>With CTL! soundsystem</small>}
-        fr={<small>Avec CTL! soundsystem</small>}
+        eng={<small>With CTL! soundsystem.</small>}
+        fr={<small>Avec CTL! soundsystem.</small>}
         zh={<small>跟 CTL! soundsystem</small>}
         language={language}
       />
@@ -484,8 +489,8 @@ export const Events = ({language}) =>(
     header={<b>Ph pas neutre : Jaquarius</b>}
     body={
       <Multi
-        eng={<small>With CTL! soundsystem</small>}
-        fr={<small>Avec CTL! soundsystem</small>}
+        eng={<small>With CTL! soundsystem.</small>}
+        fr={<small>Avec CTL! soundsystem.</small>}
         zh={<small>跟 CTL! soundsystem</small>}
         language={language}
       />
@@ -498,8 +503,8 @@ export const Events = ({language}) =>(
     header={<b>Festival Moumouth Fest</b>}
     body={
       <Multi
-        eng={<small>With Epic Schmetterling</small>}
-        fr={<small>Avec Epic Schmetterling</small>}
+        eng={<small>With Epic Schmetterling.</small>}
+        fr={<small>Avec Epic Schmetterling.</small>}
         zh={<small>跟 Epic Schmetterling</small>}
         language={language}
       />
@@ -511,8 +516,8 @@ export const Events = ({language}) =>(
     header={<b>ARK4-Artem</b>}
     body={
       <Multi
-        eng={<small>With Latitudes 5.4</small>}
-        fr={<small>Avec Latitudes 5.4</small>}
+        eng={<small>With Latitudes 5.4.</small>}
+        fr={<small>Avec Latitudes 5.4.</small>}
         zh={<small>跟 Latitudes 5.4</small>}
         language={language}
       />
@@ -526,8 +531,8 @@ export const Events = ({language}) =>(
     header={<b>Freshmen homecoming</b>}
     body={
       <Multi
-        eng={<small>With ENSAD (BDE)</small>}
-        fr={<small>Avec ENSAD (BDE)</small>}
+        eng={<small>With ENSAD (BDE).</small>}
+        fr={<small>Avec ENSAD (BDE).</small>}
         zh={<small>跟 ENSAD (BDE)</small>}
         language={language}
       />

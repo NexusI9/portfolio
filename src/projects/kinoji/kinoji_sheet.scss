@@ -7,6 +7,14 @@
   background-size: 20%;
 }
 
+#kinoji_layouts, #kinoji_guidestyle{
+  &::before{ 
+    background-image: linear-gradient(104.78deg, #0E0E0E 18.85%, #700028 97.5%);
+    top:-3%;
+    padding: 5% 0;
+   }
+}
+
 .moviethumb {
     width: calc(100%/3);
     display: block;
@@ -268,6 +276,7 @@ table .leftborder{
   thead{
     h4{
       text-align: center;
+      font-weight: bold;
       margin: 10px 0;
     }
   }
@@ -281,7 +290,6 @@ table .leftborder{
     box-sizing: border-box;
     padding: 10px;
     width: 95%;
-    border: solid 1px #3d3d3d;
     margin-bottom: 10px;
   }
 

@@ -64,6 +64,19 @@
   box-sizing: border-box;
 }
 
+#diffuse_lumino{
+  &::before{
+    top:-7%;
+    background: linear-gradient(124.8deg, #491DBC -2.73%, #0F175F 100.08%);
+  }
+  color: white;
+
+  & > section > div{
+      &:first-of-type{ padding-top: 10%; }
+      &:last-of-type{ padding-bottom: 20%; }
+  }
+}
+
 #zenIllu{
 
   position: absolute;

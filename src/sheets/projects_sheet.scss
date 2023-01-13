@@ -285,7 +285,7 @@ section.imgWrapper{
   justify-content: center;
   overflow: hidden;
   left: -10vw;
-  width: 100vw;
+  width: 110vw;
   height: 90vh;
   img{
     will-change: transform;
@@ -337,6 +337,31 @@ section.imgWrapper{
   background-image: none !important;
 }
 
+.imgWrapper{ display: flex; margin-bottom: 10px; }
+
+.backdrop{
+  &.center{ 
+    &::before{
+      top: 0;
+    }
+  }
+
+  &.fill{
+    &::before{
+      height: 100%;
+    }
+  }
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    width: 120%;
+    left: -10%;
+    height: 90%;
+    top: -10%;
+    display: block;
+  }
+}
 
 .article{
 
@@ -397,6 +422,9 @@ section.imgWrapper{
   .padded{
     box-sizing: border-box;
     padding: 5%;
+    &.small{
+      padding: 2.5%;
+    }
   }
   .half{ width:50%; }
   .third{ width: calc(100%/3); }

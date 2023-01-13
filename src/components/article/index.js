@@ -89,38 +89,39 @@ export const Gallery = ({galleries, galleryKey}) => {
 
       const thumbref = useRef();
       const [centered, setCentered] = useState(true);
-      const [currentPic, setCurrentPic] = useState(pictures[index]);
-      const [direction, setDirection] = useState(0);
+      const [[page, direction], setPage] = useState([pictures[index], 0]);
 
+      //https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?from-embed=&file=/src/Example.tsx:1038-1045
       const paginate = (newPage: string, newDirection: number) => {
-        if(newPage){ setCurrentPic(newPage); }
-        else{
-          const indexOfCurrentPic = pictures.indexOf(currentPic);
-          
-          if(indexOfCurrentPic === 0 && newDirection === -1){ setCurrentPic(pictures[pictures.length-1]); }
-          else if(indexOfCurrentPic === pictures.length-1 && newDirection === 1 ){ setCurrentPic(pictures[0]); }
-          else{ setCurrentPic(pictures[indexOfCurrentPic + newDirection]); }
+        if(!newPage){ 
+          const indexOfCurrentPic = pictures.indexOf(page);
+          if(indexOfCurrentPic === 0 && newDirection === -1){ 
+            newPage = pictures[pictures.length-1]; 
+          }
+          else if(indexOfCurrentPic === pictures.length-1 && newDirection === 1 ){ 
+            newPage = pictures[0]; 
+          }
+          else{ 
+            newPage = pictures[indexOfCurrentPic + newDirection]; 
+          }
         }
 
-        setDirection(newDirection);
+        setPage([newPage, newDirection]);  //update page with direction
+        setSearchParams({ gallery:searchParams.get('gallery'), picture:filenameFromPath(newPage) }); //update URL
       };
 
       const swipeConfidenceThreshold = 1000;
-      const swipePower = (offset: number, velocity: number) => {
-        return Math.abs(offset) * velocity;
-      };
+      const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
 
       const onThumbnailClick = (e) => {
         if(e.prevPic === e.newPic){ return; }
-        //const fullUrl = window.location.pathname+'?gallery='+searchParams.get('gallery')+'&picture='+filenameFromPath(e.newPic);
-        //window.history.pushState(null,searchParams.get('gallery'),fullUrl); 
-        setSearchParams({ gallery:searchParams.get('gallery'), picture:filenameFromPath(e.newPic) });
         paginate(e.newPic, pictures.indexOf(e.newPic) >  pictures.indexOf(e.prevPic) ? 1 : -1);
       }
-
+      
+      
       useEffect(() => {
 
-        document.querySelectorAll('body')[0].style.overflow = 'hidden';
+        document.querySelector('body').style.overflow = 'hidden';
         if(thumbref.current.getBoundingClientRect().width > window.innerWidth){ setCentered(false); }
 
         const onKeyDown = (e) => {
@@ -140,6 +141,7 @@ export const Gallery = ({galleries, galleryKey}) => {
 
         return () => window.removeEventListener('keydown', onKeyDown);
       },[paginate]);
+      
 
 
       return(
@@ -158,10 +160,10 @@ export const Gallery = ({galleries, galleryKey}) => {
                   <span></span>
                 </div>
                 <motion.div variants={variantPic} className='mainframe'>
-                      <AnimatePresence>
+                      <AnimatePresence initial={false} custom={direction}>
                       <motion.img
-                        key={currentPic}
-                        src={currentPic}
+                        key={page}
+                        src={page}
                         variants={variants}
                         custom={direction}
                         initial='enter'
@@ -185,7 +187,7 @@ export const Gallery = ({galleries, galleryKey}) => {
                 </motion.div>
                 {pictures.length > 0 &&
                 <motion.div variants={variantPic} className={'thumbnails' + (centered ? ' center' : '')} ref={thumbref}>
-                  { pictures.map(pic => <Img src={pic} key={'fullview'+pic} name={filenameFromPath(pic)} onClick={ () => onThumbnailClick({prevPic:currentPic, newPic:pic}) } /> ) }
+                  { pictures.map(pic => <Img src={pic} key={'fullview'+pic} name={filenameFromPath(pic)} onClick={ () => onThumbnailClick({prevPic:page, newPic:pic}) } /> ) }
                 </motion.div>
               }
               </>
@@ -320,7 +322,7 @@ export const Body = ({flexDirection, flexAlignement, children, title, summary, i
 );
 
 
-export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, placeholder, loadIco, playIco, innerRef, resize=true, pending=false }) => {
+export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, placeholder, loadIco, playIco, innerRef, resize=true, pending=false, controls=true, forceUnmute=false, forceStop=false }) => {
 
   const [thumbnail, setThumbnail] = useState();
   const [ height, setHeight ] = useState({});
@@ -355,7 +357,7 @@ export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, pla
   return(
     <div className='vimeo round' onClick={ () => setHideVid(false)  } ref={innerRef || vimeoContainer} style={height}>
       { <Placeholder placeholder={ placeholder ? placeholder : thumbnail} playIcon={!autoplay} style={style} loadIco={loadIco} playIco={playIco}/> }
-      { !hideVid && <iframe src={"https://player.vimeo.com/video/"+id+"?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay="+( (autoplay && !hideVid) ? 1 : 0)+"&loop=1&title=0&byline=0&portrait=1&muted=1&autopause=0&controls="+( ( (autoplay && pending) || (!autoplay) ) ? 1 : 0)+ (defaultQuality ? ('&amp;quality='+defaultQuality) : '') } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe> }
+      { !hideVid && <iframe src={`https://player.vimeo.com/video/${id}?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=${ (autoplay || pending)  ? 1 : 0}&loop=${ (autoplay && !forceStop) ? 1 : 0}&title=0&byline=0&portrait=1&muted=${ forceUnmute || pending || (!forceUnmute && !autoplay) ? 0 : 1}&autopause=0&controls=${ (controls ? '1' : '0') }${ defaultQuality ? ('&amp;quality='+defaultQuality) : '' }` } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe> }
       </div>
   );
 }

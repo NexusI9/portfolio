@@ -25,6 +25,30 @@
     }
   }
 
+  #letterbox{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: auto;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    justify-content: center;
+    gap: 10%;
+
+    #textLetterbox{
+      //& > * br{ display: none; }
+      h2{ font-size: clamp(80px, 15vw, 100px); }
+      #arrowScroll{ display: none; animation: none; }
+    }
+
+    #iframewrapper{
+      width: 75vw;
+      height: calc(75vw*9/16);
+    }
+  }
+
   #menu ul{
     clip-path: inset(0 0 100% 0);
     pointer-events: none;
@@ -34,35 +58,9 @@
   #menu{
     padding: 0 3%;
     #bars.active{
-      margin-top: 6vw !important;
+      margin-top: 2vw ;
     }
 
-    #homeButton{
-      justify-content: flex-end;
-    }
-  }
-
-
-  #letterbox{
-
-    justify-content: center;
-
-    #textLetterbox{
-      align-items: flex-start;
-      section{ padding: 10px; }
-      h1{ font-size: 15em; }
-    }
-
-    #tagline{
-      font-size: 10em;
-    }
-
-    #iframewrapper{
-      right: auto;
-      width: 75vw;
-      height: auto;
-      bottom: 15%;
-    }
   }
 
   #squareabout{
@@ -84,27 +82,32 @@
     }
   }
 
-  .mainTitle.backTitles{
-    width: 100%;
-    z-index: 3;
-    box-sizing: border-box;
-    top: 0;
-    transform: skew(0);
-    font-size: 0.6em;
-    margin: 0;
-    padding: 3%;
-    height: 7.5em;
-    background: #f3f3f3;
-    display: flex;
-    justify-content: center;
-     section{
-      align-items: flex-start
-     }
+  #categorySuper{
 
-    &::after{
-      background-image: none;
+    display: none;
+
+    .mainTitle{
+      width: 100%;
+      z-index: 3;
+      box-sizing: border-box;
+      font-size: 0.6em;
+      margin: 0;
+      padding: 3%;
+      height: 7.5em;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+       section{
+        align-items: flex-start
+       }
+  
+      &::after{
+        background-image: none;
+      }
     }
+
   }
+
 
   #socials{
     position: relative;
@@ -148,6 +151,7 @@
 
   .cat{
     width: 90%;
+    margin: auto;
   }
 
   #project{
@@ -232,6 +236,12 @@
     $size:30vw;
     grid-template-columns: $size $size !important;
     grid-template-rows: $size $size !important;
+  }
+
+  #diffuse_lumino{
+    &::before{
+      top: 0;
+    }
   }
 
 }

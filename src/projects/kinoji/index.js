@@ -265,7 +265,7 @@ const GraphicChart = () => (
 <>
 
     <div id='graphic_chart'>
-    <table id='table_font' className='round greyborder'>
+    <table id='table_font' className='round'>
       <thead>
         <tr>
           <td colSpan='2'>
@@ -294,7 +294,7 @@ const GraphicChart = () => (
       </tbody>
     </table>
 
-    <table id='table_color' className='round greyborder'>
+    <table id='table_color' className='round'>
       <thead>
         <tr>
           <td colSpan='4'>
@@ -347,7 +347,7 @@ const GraphicChart = () => (
       </tbody>
     </table>
 
-      <table id='table_icono' className='round greyborder'>
+      <table id='table_icono' className='round'>
         <thead>
           <tr>
             <td colSpan='4'>
@@ -468,7 +468,7 @@ export default () => (
 
 
 
-    <Article name='Infinity scroll' spaced={true}>
+    <Article name='Infinity scroll' spaced={true} className='backdrop center fill' id='kinoji_layouts'>
       <Title label="The layouts" className='half' summary={<>
         Looking through archives can be a tedious job. Thus the primary goal of this project was to give the user efficients and intuitives approaches to browse the content.
         <br /><br />
@@ -478,18 +478,19 @@ export default () => (
 
       <Body flexDirection='horizontal' className='reverse vcenter'>
         <section>
-          <Img alt='poster mode' src='/assets/projects/kinoji/mockups/poster_mode.png' className='gradcircle'/>
+          <Img alt='poster mode' src='/assets/projects/kinoji/mockups/poster_mode.png'/>
         </section>
         <Pointer style={{flexBasis:'40%'}} title='1. Poster mode' description='The poster mode displays the movies’ poster allowing the user to have an overview of the avalaible content.'/>
       </Body>
       <Body flexDirection='horizontal' className='vcenter'>
         <Pointer style={{flexBasis:'40%'}} side='right' title='2. Mosaic mode' description='The second mode throws the user into a dense patchwork of colors and atmospheres. Ideal if one is simply looking for inspiration.'/>
-        <Img alt='poster mode' src='/assets/projects/kinoji/mockups/mosaic_mode.png' className='gradcircle purple'/>
+        <Img alt='poster mode' src='/assets/projects/kinoji/mockups/mosaic_mode.png' />
       </Body>
     </Article>
 
 
     <Article name='Search engine' spaced={true}>
+      <Space type='small'/>
       <Title label='The search engine' className={'half'} summary={
             <>Even though the word “Archive” usually rhymes with utilitarian design rather than aesthetic,
             Kinoji lies between a functional and a refined interface via its
@@ -504,23 +505,20 @@ export default () => (
 
     </Article>
 
-    <Article name='The style guide'>
+    <Article spaced={true} name='The style guide' id='kinoji_guidestyle' className='backdrop center fill'>
       <Body title="The style guide" flexDirection='vertical'>
         <GraphicChart />
       </Body>
       <Space type='small'/>
-    </Article>
-
-
-    <Article spaced={true} name='Userflow'>
-        <Body title='Userflow' flexDirection='vertical'>
-          <img src="/assets/projects/kinoji/userflow.svg" className='round greyborder'/>
+      <Body title='Userflow' flexDirection='vertical'>
+          <img src="/assets/projects/kinoji/userflow.svg" className='round'/>
         </Body>
-        <Space type='small'/>
     </Article>
+
 
 
     <Article spaced={true} name='Creative tool'>
+      <Space type='small'/>
       <Body>
           <div>
             <h2 className='step'>A tool for creatives</h2>

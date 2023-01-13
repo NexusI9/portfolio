@@ -34,6 +34,12 @@ export default () => (
         </Article>*/
         }
 
+
+        <Article name='UI Overview' spaced={true} className='purpleBkg'>
+            <Parallax src='/assets/projects/mengfeng/parallax.jpg'/>
+        </Article>
+
+
         <Article header='Pod pairing' spaced={true} className='purpleBkg round'>
             <Body flexAlignement='centered' style={{textAlign:'center'}}>
               <div>
@@ -48,12 +54,12 @@ export default () => (
 
         <Article header='Profile setup' spaced={true} className='purpleBkg round'>
             <Body>
-                  <div><Img className='padded' src="/assets/projects/mengfeng/mockups/profile.png"/></div>
+                  <div><Img className='padded small' src="/assets/projects/mengfeng/mockups/profile.png"/></div>
                   <div>
                     <h2>Profile setup</h2>
                     <p>The user will now enter various information and preferences so the application will adapts itself to the user preferences (music, meditation level...)</p>
                     <br/>
-                    <small className='padded'>
+                    <small>
                     In an effort to bring a sense of tranquility and ease to the user, the application strongly focuses on the use of imagery as a way to convey the information.
                     <br /><br />
                     By using joyful and vibrant illustrations, the interaction speaks thus to the user’s emotions rather than it’s intellect.
@@ -75,7 +81,16 @@ export default () => (
         </Article>
         */}
 
-        <Article name='Diffuser' spaced={true} className='purpleBkg round'>
+      <Article name='Meditation' spaced={true} className='purpleBkg round'>
+        <Title label='Meditation program' className='half' summary='A frequently updated meditation package is avalaible to the user, offering new inner experiences every weeks.'/>
+
+          <Body>
+            <div className='compress' style={{position:'relative'}}> <Img style={{height:'100%'}} id='zenIllu' className='hidtablet' src="/assets/projects/mengfeng/zen.png"/> </div>
+            <div> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/meditation.png"/> </div>
+          </Body>
+        </Article>
+
+        <Article name='Diffuser' spaced={true} id='diffuse_lumino' className='backdrop center'>
           <Body>
             <div className='padright'>
               <h2>Diffuser Controls</h2>
@@ -89,19 +104,12 @@ export default () => (
           </Body>
         </Article>
 
-        <Article name='Meditation' spaced={true} className='purpleBkg round'>
-        <Title label='Meditation program' className='half' summary='A frequently updated meditation package is avalaible to the user, offering new inner experiences every weeks.'/>
 
-          <Body>
-            <div className='compress' style={{position:'relative'}}> <Img style={{height:'100%'}} id='zenIllu' className='hidtablet' src="/assets/projects/mengfeng/zen.png"/> </div>
-            <div> <Img src="/assets/projects/mengfeng/mockups/meditation.png"/> </div>
-          </Body>
-        </Article>
 
 
         <Article name='Sleep session' spaced={true} className='purpleBkg round'>
           <Body className='reverse'>
-            <div style={{flexBasis:'50%'}}> <Img src="/assets/projects/mengfeng/mockups/alarm_1.png"/> </div>
+            <div style={{flexBasis:'50%'}}> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/alarm_1.png"/> </div>
             <div className='compress'>
               <h2>Sleep session</h2>
               <p>The app also offer a sleep tracking system where the user can set the desired amount of sleep each night.</p>
@@ -118,13 +126,13 @@ export default () => (
               <h2>Music speaker</h2>
               <p>As the pod is also a music speaker, the app offers a playlist system where the user can play recommended mixes or create personal playlists.</p>
             </div>
-            <div style={{flexBasis:'80%'}}> <Img src="/assets/projects/mengfeng/mockups/speaker.png"/> </div>
+            <div style={{flexBasis:'80%'}}> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/speaker.png"/> </div>
           </Body>
         </Article>
 
         <Article name='Routine setup' spaced={true} className='purpleBkg round'>
           <Body>
-            <Img src="/assets/projects/mengfeng/mockups/schedule.png"/>
+            <Img className='padded small' src="/assets/projects/mengfeng/mockups/schedule.png"/>
             <div className='compress'>
               <h2>Routine setup</h2>
               <p>Most of the previous features can be scheduled in weekly routines.</p>
@@ -145,10 +153,6 @@ export default () => (
                 <Img src="/assets/projects/mengfeng/userflow.svg"/>
               </div>
             </Body>
-        </Article>
-
-        <Article name='UI Overview' spaced={true} className='purpleBkg'>
-            <Parallax src='/assets/projects/mengfeng/parallax.jpg'/>
         </Article>
 
 

@@ -40,7 +40,23 @@ const VideoBanner = (onScroll) => {
   const name = useRef();
   const quote = useRef();
   const video = useRef();
+  const viewreelRef = useRef();
   const firstplan = useRef();
+
+  const onVideoEnter = (e) => {
+    const vidLeft = video.current.getBoundingClientRect().left;
+    const vidTop = video.current.getBoundingClientRect().top;
+    const half = viewreelRef.current.getBoundingClientRect().width/2
+
+    viewreelRef.current.style.top =  e.clientY - vidTop - half + 'px';
+    viewreelRef.current.style.left = e.clientX - vidLeft - half + 'px';
+
+  }
+
+  const onVideoLeave = (e) => {
+    viewreelRef.current.style.top = null;
+    viewreelRef.current.style.left = null;
+  }
 
   const letterVar = {
     initial: { opacity: 0 },
@@ -114,12 +130,10 @@ const VideoBanner = (onScroll) => {
         setDisplayVideo(true);
       
         if(half <= 1.5){
-          name.current.style.transform = `translate3d(0,0%,-${(scrollPos/2)}px)`;
+          name.current.style.transform = `translate3d(0,0%,-${(scrollPos/7)}px)`;
           video.current.style.transform = `translate3d(0,0%,-${(scrollPos/5)}px)`;
           firstplan.current.style.opacity = half;
         }
-
-
 
         //quote.current.style.transform = `translate3d(0,0%,${( (mobile ? 100 : 200)-scrollPos/3)}px)`;
         
@@ -141,6 +155,7 @@ const VideoBanner = (onScroll) => {
     }
 
   },[]);
+
   return (
     <>
     <motion.div
@@ -152,35 +167,34 @@ const VideoBanner = (onScroll) => {
       animate='animate'
       exit='exit'
       >
+        <motion.div id='textLetterbox' ref={name}>
+          <h2>Nassim <br/> El Khantour</h2>
+          <h1><b>The powerful blend of art and code, <br/> with a French Touch.</b></h1>
+          <span></span>
+          <p>Art director based in Montreal (soon Taipei) <br/> with an expertise in Web & Motion design.</p>
+          <a onClick={ () => document.getElementById('projects')?.scrollIntoView({behavior:'smooth'}) } id="arrowScroll">
+            <small>see my work</small>
+            <HoverSquare size='35px' name='arrowScroll'>
+              <img src={downArrow} />
+            </HoverSquare>
+          </a>
+        </motion.div>
        <div
          id='iframewrapper'
          ref={video}
           style={{display: displayVideo ? 'block' : 'none', pointerEvents: displayVideo ? 'auto' : 'none'}}
         >
-              <img src={viewshowreel} id='viewshowreel' />
-              <div style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}}>
-                <Video id={629250987} autoplay={true} resize={false} playIco={false} defaultQuality='540p' placeholder={'/assets/thumbnails/showreel.jpg'} />
-                <Link to='/showreel'>{/*<Button label="view the showreel"/>*/}</Link>
+              <img ref={viewreelRef} src={viewshowreel} id='viewshowreel' />
+              <div style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}} onMouseMove={onVideoEnter} onMouseLeave={onVideoLeave} >
+                <Video id={502648300} autoplay={true} resize={false} playIco={false} defaultQuality='720p' placeholder={'/assets/thumbnails/showreel.jpg'} controls={false} />
+                <Link to='/showreel'></Link>
               </div>
           </div>
-          <motion.div id='textLetterbox'>
-
-              <h1 ref={name}>Nassim <br/> El Khantour</h1>
-              <a href="#projects" id="arrowScroll">
-                <HoverSquare size='35px' name='arrowScroll'>
-                  <img src={downArrow} />
-                </HoverSquare>
-              </a>
-          </motion.div>
 
         <span id="firstplan" ref={firstplan}></span>
 
       {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
 
-      <h1 id="tagline" ref={quote}>
-        <span>Where art & code </span> 
-        <span>shape world</span>
-      </h1>
     </motion.div>
    </>
   );
@@ -188,13 +202,13 @@ const VideoBanner = (onScroll) => {
 
 
 
-function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () => 0, onCategoryChange=() => 0}){
+function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () => 0, onCategoryChange=() => 0}){
 
   const [social, setSocial] = useState(false);
   const [aboveTheFold, setAboveTheFold] = useState(true);
   const {hash} = useLocation();
 
-  useEffect( () => hash && document.querySelector(decodeURI(hash))?.scrollIntoView({behavior:'auto'}),[]);
+  useEffect( () => hash && document.querySelector(decodeURI(hash))?.scrollIntoView({behavior:'auto'}),[]); //check hash on mount
   useEffect(() => {
 
     const onScroll = () => {
@@ -223,7 +237,7 @@ function Home({projects, onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheF
     <>
       <CategoryMenu />
       <VideoBanner />
-      <Flow projects={projects} onCategoryChange={ onCategoryChange }/>
+      <Flow onCategoryChange={ onCategoryChange }/>
       <AnimatePresence exitBeforeEnter>
         {social && <Socials minify={true}/>}
       </AnimatePresence>

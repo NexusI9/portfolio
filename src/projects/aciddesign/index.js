@@ -18,7 +18,7 @@ export default () => {
         { type:'invertedbase', folder:'/aciddesign/spicejam/g3', pictures:['sp_8','sp_9','sp_10']}
       ],
     eden:[
-      { type:'base', folder:'/aciddesign/3den/g1', pictures:['3den_1', '3den_5', '3den_6'] },
+      { type:'base', folder:'/aciddesign/3den/g1', pictures:['3den_5', '3den_6', '3den_1'] },
       { type:'split', folder:'/aciddesign/3den/g2', pictures:['3den_8','3den_7']},
       { type:'split', folder:'/aciddesign/3den/g3', pictures:['g_7']}
     ]

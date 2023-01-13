@@ -1,6 +1,13 @@
 
-import { cleanCategoryName, getCategories, getColorOfCategory, setFaviconColor, changeHashTo } from '../../lib/utils';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { 
+  cleanCategoryName, 
+  getCategories, 
+  getColorOfCategory, 
+  changeHashTo, 
+  getProjectsOfCategory,
+  getZhongwenOfCategory
+} from '../../lib/utils';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-responsive-masonry';
 import { useEffect, useState, useRef } from 'react';
@@ -33,7 +40,7 @@ const toMapTransition = {
 }
 
 
-export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
+export const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) => {
 
   const TEXT_SIZE = 2;
   const containVariant = {
@@ -43,10 +50,17 @@ export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
   };
 
   const caseVariant = {
-    initial:{ y: '0em'},
-    animate:{ y: (-1*TEXT_SIZE+'em'), transition:{duration:speed/2,  type:'spring', stiffness: 100} },
-    exit:{ y: (-2*TEXT_SIZE+'em'), transition:{duration:speed/4, type:'tween'}  }
+    initial:{ opacity:0, y: '0em'},
+    animate:{ opacity:1, y: (-1*TEXT_SIZE+'em'), transition:{duration:speed/2,  type:'spring', stiffness: 100, damping:20} },
+    exit:{ opacity:0, y: (-2*TEXT_SIZE+'em'), transition:{duration:speed/4, type:'tween'}  }
   };
+
+  const zhongVariant = {
+    initial:{ opacity:0, y: '0em'},
+    animate:{ opacity:1, y: (-1*TEXT_SIZE+'em'), transition:{duration:speed/2,  type:'spring', stiffness: 100, damping:20} },
+    exit:{ opacity:0, y: (-1.5*TEXT_SIZE+'em'), transition:{duration:speed/4, type:'tween'}  }
+  };
+  
 
   const Case = ({letter='', color}) => (
     <motion.section
@@ -60,23 +74,35 @@ export const BackgroundHeader = ({title, color, speed=1, delay=0.02}) => {
   );
 
   return (
-    <motion.div
-      key={"mainTitle"+title}
-      variants={containVariant}
-      initial='initial'
-      animate='animate'
-      exit='exit'
-      className="mainTitle backTitles"
-    >
-      {
-      title &&
-      [...title].map( (letter,i) =>
-        <Case  key={'letterback_'+title+letter+i}
-              letter={ letter && letter.replace(" ", "\xa0") || " " }
-              color={color}
-          />
-      )}
-  </motion.div>
+    <>
+       <motion.div 
+       id='zhongwenName'
+       key={"zhongwenName"+title}
+       variants={zhongVariant}
+       initial='initial'
+       animate='animate'
+       exit='exit'
+       >
+        {[...zhongwen].map( (letter,i) => <h2 key={`zhongwen${i}`}>{letter}</h2> )}
+      </motion.div>
+      <motion.div
+        key={"mainTitle"+title}
+        variants={containVariant}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        className="mainTitle"
+      >
+        {
+        title &&
+        [...title].map( (letter,i) =>
+          <Case  key={'letterback_'+title+letter+i}
+                letter={ letter && letter.replace(" ", "\xa0") || " " }
+                color={color}
+            />
+        )}
+    </motion.div>
+  </>
 );
 }
 
@@ -124,7 +150,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
 
   //video resize
   const thumbnailImg = useRef();
-  const overlayCtnr = useRef();
+  const rootCtnr = useRef();
   const videoCtnr = useRef();
 
   const overlayContent = () => {
@@ -137,7 +163,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
           break;
 
           case 'video':
-            return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' placeholder={thumbnail} loadIco={false} playIco={false}/>
+            return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' placeholder={thumbnail} controls={false} loadIco={false} playIco={false}/>
           break;
 
           case 'slideshow':
@@ -173,8 +199,8 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
       const thumbWidth = thumbnailImg.current.naturalWidth;
       const thumbRatio = thumbWidth/thumbHeight;
 
-      const ctnrHeight = overlayCtnr.current.getBoundingClientRect().height;
-      const ctnrWidth = overlayCtnr.current.getBoundingClientRect().width;
+      const ctnrHeight = rootCtnr.current.getBoundingClientRect().height;
+      const ctnrWidth = rootCtnr.current.getBoundingClientRect().width;
       const ctnrRatio = ctnrWidth/ctnrHeight;
 
       const iframe = videoCtnr.current.querySelectorAll('iframe')[0];
@@ -233,20 +259,21 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
   return(
     <Link
       to={'/project/'+project.title}
-      style={{transform:'translate3d(0,'+yPos+'%,0)', display:'inline-block'}}
+      style={{transform:`translate3d(0,${ (window.innerWidth > 500) ? yPos/2+'%' : '0' },0)` }}
       className='linkSlider'
+      ref={rootCtnr}
     >
         <motion.section
           key={'thumbnail'+project.title}
           variants={location.pathname === '/map' ? toMapTransition : variant}
-          className={'projects'}
+          className={'projects round'}
           ref={elt}
           onMouseEnter = { () => setOverlay( overlayContent ) }
           onMouseLeave = { () => setOverlay() }
           >
 
           <img className='move thumb gradientImg' src={thumbnail} />
-          <section className='move overlay' ref={overlayCtnr}>
+          <section className='move overlay'>
               <img className='thumb' ref={thumbnailImg} src={thumbnail} />
               {overlay && overlay}
           </section>
@@ -254,7 +281,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
           { innerDesc &&
             <div className='project_desc'>
               <h2 className={project.font ? project.font : ''}>{project.title}</h2>
-              { project.desc && <p>{project.desc}</p> }
+              { project.desc && <p><small><b>{project.desc}</b></small></p> }
           </div>
         }
         </motion.section>
@@ -285,7 +312,7 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
         id={cleanCategoryName(category)}
         className="cat">
           <Masonry columnsCount={ columnsCount } gutter='20px'>
-              { projects[category].map( project => <ProjectThumbnails key={project.title} project={project} /> ) }
+              { getProjectsOfCategory(category).map( project => <ProjectThumbnails key={project.title} project={project} /> ) }
           </Masonry>
       </motion.div>
 
@@ -295,9 +322,12 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
 export const Flow = ({projects, onCategoryChange=()=>0}) => {
 
   const containerRef = useRef([]);
-  const catContainers = getCategories(projects).map( (cat,c) => <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> );
+  const catContainers = getCategories().map( (cat,c) => {
+    return <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> 
+  });
   const [category, setCategory] = useState();
   const location = useLocation();
+  const [displaySuper, setDisplaySuper] = useState();
 
   const categoryChangeEvent = new CustomEvent('categorychange', {
     bubbles: true,
@@ -306,10 +336,6 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
   
   useEffect( () => {
 
-    const setBodyTheme = (color) => {
-      //switch body attribute for CSS change to take effects
-      document.querySelector("body").setAttribute('data-theme',color);
-    }
 
     const onClick = () => {
       //if user clicked on "a" from categorymenu then prevent hash change from this userEffect ( give priority to categorymenu hash change )
@@ -321,7 +347,6 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
 
     let userScroll = false;
 
-    const favicon = document.getElementById('favicon');
     const checkViewportDiv = () => {
 
       catContainers.forEach( (cat,c) => {
@@ -344,11 +369,8 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
           bottom > window.innerHeight &&
           category !== title
         ){
-          const catColor = getColorOfCategory(title);
 
           //react 
-          setBodyTheme( catColor );
-          setFaviconColor(favicon,catColor);
           if(userScroll) changeHashTo(title);
           onCategoryChange(title);
           return setCategory(title);
@@ -374,29 +396,36 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
   }, [location.pathname]);
 
   useEffect( () => {
+
+    const onResize = () => setDisplaySuper( window.innerWidth > 500 );
     
     //dispatch custom event
     window.dispatchEvent(categoryChangeEvent);
+    window.addEventListener('resize', onResize );
+    onResize();
 
+    return () => window.removeEventListener('resize', onResize );
+  
   }, [category]);
 
   return (
     <>
-      <AnimatePresence initial={false} >
+      { displaySuper && <AnimatePresence initial={false} >
         <motion.div
+          id="categorySuper"
           key={'bkg'+category}
           initial={{opacity:1}}
           animate={{opacity:1, transition: {duration: 0.3}}}
           exit={{opacity:1, transition: {duration: 0.3}}}
         >
-            <BackgroundHeader title={category} color={ getColorOfCategory(category) || '#000000' }/>
+            <BackgroundHeader title={category} zhongwen={getZhongwenOfCategory(category)} color={ getColorOfCategory(category) || '#000000' }/>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> }
 
       <div id="projects">
         {catContainers}
-        <Signature />
       </div>
+      <Signature />
 
     </>
   );
