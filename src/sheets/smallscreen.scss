@@ -6,9 +6,6 @@
       align-items: center;
     }
 
-    #projects{
-      .project_desc{ padding: 3% 8%; }
-    }
     .projects{
       box-sizing: border-box;
 
@@ -48,7 +45,14 @@
       }
       #textLetterbox{
         align-items: flex-start;
-        h1{ font-size: 25px; }
+        span{ display: none;}
+        h1{ 
+          font-size: 20px; 
+          margin-bottom: 10px;
+        }
+        h1,p{
+          br{ display: none;  }
+        }
       }
     }
 
@@ -83,13 +87,6 @@
 @media only screen and (max-width: 425px) {
 
 
-  #project .projectWrapper {
-    padding: 10px;
-    padding-top: 10%;
-    box-sizing: border-box;
-    float: none;
-  }
-
   #letterBox {
     & > div{ top:10%; }
     img{ display: none; }
@@ -99,6 +96,27 @@
       top: 4%;
     }
   }
+
+  #viewshowreel{
+    display: none;
+    animation: none;
+  }
+
+  #project_banner{ 
+    position: relative; 
+    max-width: 100vh;
+  }
+  #project{
+    margin: 0;
+    .projectWrapper {
+      padding: 10px;
+      padding-top: 10%;
+      box-sizing: border-box;
+      float: none;
+    }
+  }
+
+
 
   #bottomTitle, #mainTitle{  display: none; }
 
@@ -197,7 +215,7 @@
 
 
   .article {
-    &.spaced{ margin-bottom: 40%; }
+    &.spaced{ margin-bottom: 10%; }
   }
 
 
@@ -212,7 +230,6 @@
   #laos_typo .body{ flex-direction: column-reverse;  }
 
   #laos_sidebar .app{ width: 30%;  }
-  #laos_sidebar_main{ flex-direction: column-reverse; }
   #laos_layout{padding: 0; }
 
   #laos_typo .header {
@@ -240,8 +257,6 @@
   /*.article .padded{ padding-left: 0; padding-right: 0; }*/
 
   .projectContainer #VIEWER { padding: 0; }
-
-  #Terrorcore img.round, #cinegogue .window{ border-radius:0; }
 
   #rosas_dotty{ display: none; }
 
@@ -273,9 +288,6 @@
     border-radius: 20px;
   }
 
-
-
-  #gotoStore > img { width: 100%; }
 
   #creatool{display: inline-block;}
   #creatool > div{ margin-bottom: 100px;}

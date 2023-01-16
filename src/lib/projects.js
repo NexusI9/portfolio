@@ -24,6 +24,14 @@ const CATEGORIES = {
         "title":"Kinoji",
         "thumbnail":"/assets/thumbnails/kinoji/kinoji_1.jpg",
         "banner":"/assets/banners/kinoji.jpg",
+        "overlay":{
+          "type":"slideshow",
+          "url":[
+            "/assets/thumbnails/kinoji/kinoji_2.jpg",
+            "/assets/thumbnails/kinoji/kinoji_4.jpg",
+            "/assets/thumbnails/kinoji/kinoji_3.jpg"
+          ],
+        },
         "desc":"An online cinematography library using MERN stack",
         "longdesc":"Kinoji is a search engine gathering thousands of shots from hundreds of movies from East-Asia. The website provides various tools to help the user find the perfects shots for his next project.",
         "category":["Web Design","UX/UI","App development"],
@@ -40,7 +48,8 @@ const CATEGORIES = {
           "url":[
             "/assets/thumbnails/aciddesign/acid_1.jpg",
             "/assets/thumbnails/aciddesign/acid_2.jpg",
-            "/assets/thumbnails/aciddesign/acid_3.jpg"
+            "/assets/thumbnails/aciddesign/acid_3.jpg",
+            "/assets/thumbnails/aciddesign/comet.jpg"
           ],
         },
         "banner":"/assets/banners/aciddesign.jpg",
@@ -53,7 +62,16 @@ const CATEGORIES = {
       },
       {
         "title":"LAOS",
-        "thumbnail":"/assets/thumbnails/laos.jpg",
+        "thumbnail":"/assets/thumbnails/laos/laos.jpg",
+        "overlay":{
+          "type":"slideshow",
+          "url":[
+            "/assets/thumbnails/laos/laos_1.jpg",
+            "/assets/thumbnails/laos/laos_2.jpg",
+            "/assets/thumbnails/laos/laos_3.jpg",
+            "/assets/thumbnails/laos/laos.jpg"
+          ],
+        },
         "banner":"/assets/banners/laos.jpg",
         "desc":"A web extension helping to learn mandarin",
         "longdesc":"LAOS is a web browser extension helping to learn mandarin. The app provides many tools as well as exercises to make the learning journey as smooth as possible for its users.",
@@ -201,20 +219,6 @@ const CATEGORIES = {
         "folder":"stylized"
       },
       {
-        "title":"感官新青春",
-        "thumbnail":"/assets/thumbnails/sensu.jpg",
-        "banner":"/assets/banners/edos.jpg",
-        "overlay":{
-          "type":"picture",
-          "url":"/assets/thumbnails/sensu_overlay.jpg"
-        },
-        "desc":"Collection of model paintings (explicit content)",
-        "longdesc":"The project revolves around the study of human body and anatomy through an erotic lens by taking inspiration from candid amateurish pictures and extract their subjects from their initial environment.",
-        "category":["Digital Painting", "Fine Art"],
-        "date":2020,
-        "folder":"sensu",
-      },
-      {
         "title":"ECHO",
         "thumbnail":"/assets/thumbnails/echo.jpg",
         "banner":"/assets/banners/echo.jpg",
@@ -321,6 +325,21 @@ export const THEMES =
   "folder":"rabbitgod",
   "font":"chuhuo"
 },
+
+     {
+        "title":"感官新青春",
+        "thumbnail":"/assets/thumbnails/sensu.jpg",
+        "banner":"/assets/banners/edos.jpg",
+        "overlay":{
+          "type":"picture",
+          "url":"/assets/thumbnails/sensu_overlay.jpg"
+        },
+        "desc":"Collection of model paintings (explicit content)",
+        "longdesc":"The project revolves around the study of human body and anatomy through an erotic lens by taking inspiration from candid amateurish pictures and extract their subjects from their initial environment.",
+        "category":["Digital Painting", "Fine Art"],
+        "date":2020,
+        "folder":"sensu",
+      },
 
 //Creative Code
 {

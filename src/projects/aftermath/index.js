@@ -3,7 +3,7 @@ export default () => (
   <>
 	<Article spaced={true}>
 		<Body flexDirection='vertical' flexAlignement='centered'>
-      		<Video id={503040529} placeholder={'/assets/thumbnails/aft1.jpg'}/>
+      		<Video id={503040529}/>
 		</Body>
     </Article>
 	

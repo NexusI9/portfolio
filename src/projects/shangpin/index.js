@@ -10,8 +10,9 @@ const galleryRoutes = {
         {type:'invertedbase', folder:'/shangpin/cosmetic/', pictures:['ardente','casadelia','marsperfume'] }
     ],
     food:[
-      {type:'base', folder:'/shangpin/food/', pictures:['manmanchi','bingcha','islandsoda'] },
-      {type:'split', folder:'/shangpin/food/', pictures:['yuebing','traditionaltea'] }
+      {type:'base', folder:'/shangpin/food/', pictures:['manmanchi','bingcha','bingcha_1'] },
+      {type:'split', folder:'/shangpin/food/', pictures:['yuebing','islandsoda'] },
+      {type:'invertedbase', folder:'/shangpin/food/', pictures:['traditionaltea','traditionaltea_2','traditionaltea_1'] }
     ],
     clothing:[
         {type:'base', folder:'/shangpin/clothing', pictures:['sneaker'] },
@@ -26,7 +27,7 @@ export default () => {
 
             <Article spaced={true}>
                 <Body>
-                    <Video id={787395416} placeholder={'/assets/thumbnails/shangpin_1.jpg'} />
+                    <Video id={787395416} />
                 </Body>
             </Article>
 

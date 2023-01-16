@@ -8,7 +8,7 @@ import {
   getRandomProject,
   getSkinFromProject
 } from '../lib/utils';
-import { Suggestion, Header, Content, Previews } from '../components/projects';
+import { Suggestion, Header, Content } from '../components/projects';
 import { PercentBar } from '../components/props';
 import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/loader';
@@ -39,6 +39,7 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
   const [percentAnim, startPercentAnim ] = useState(false);
 
   const [whiteMenu, setWhiteMenu] = useState(true);
+  const [displayHeader, setDisplayHeader] = useState(true);
 
 
   useEffect( () => {
@@ -51,13 +52,16 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
         if( scrollPos > projectContainer?.offsetHeight - 400 ){ setShowSideBar(false); }
         else{ setShowSideBar(true); }
 
-        if(projectContainer?.getBoundingClientRect().top > 0){
+        if(!projectContainer){return;}
+        if(projectContainer.getBoundingClientRect().top > 0){
           setWhiteMenu(true);
+          setDisplayHeader(true); 
           if(imgBanner.current){
             imgBanner.current.style.transform = `translateY(-${scrollPos/6}px)`;
           }
         }else{
           setWhiteMenu(false);
+          if( !window.matchMedia('(max-width:425px)').matches ){ setDisplayHeader(false); }
         }
 
     }
@@ -123,7 +127,7 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
         {!unlash && <Loader key={'LOADER' + title} percent={ percent } onLoad={ () => startPercentAnim(true) } /> }
       </AnimatePresence>
 
-      {unlash && project && whiteMenu && <motion.div
+      {unlash && project && displayHeader && <motion.div
         id='project_banner'
         key={'projectBanner' + title}
         initial={{opacity:1}}

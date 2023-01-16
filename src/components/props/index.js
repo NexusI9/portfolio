@@ -57,7 +57,9 @@ export const HoverSquare = ({children, size='100%', name='', top, left}) => {
           </motion.div>
         }
       </AnimatePresence>
-      {children}
+      <div className='children'>
+        {children}
+      </div>
     </div>
   );
 

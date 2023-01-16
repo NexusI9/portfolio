@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import { gsap } from 'gsap';
 import { getCategories, changeHashTo, setFaviconColor, getColorOfCategory } from '../../lib/utils';
 import { HoverSquare } from '../props';
 
-import arrowHome from '../../assets/arrowHome.svg';
-import arrowHomeWhite from '../../assets/arrowHome_white.svg';
+
 import behance from '../../assets/icons/behance.svg';
 import instagram from '../../assets/icons/instagram.svg';
 import artstation from '../../assets/icons/artstation.svg';
@@ -87,9 +86,10 @@ export const HomeButton = ({latestHref=''}) => (
       exit={{opacity:0, transition:{duration:0.3}}}
       >
         <Link to={'/'+ (latestHref.length > 0 ? '#'+latestHref : latestHref )} id='homeButton'>
-            <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" width="34.1" height="6" viewBox="0 0 34.1 6">
-              <path className="cls-1" d="M2.6,3.7H2.3l.6-.3.5-.5a1.8,1.8,0,0,0,.5-.7l.3-.6c0-.2.1-.4.1-.6H3.7a4.6,4.6,0,0,1-.8,1.9A4.5,4.5,0,0,1,1,4,3.4,3.4,0,0,1,3.2,5.5l.3.8.2.7h.6a2.9,2.9,0,0,0-.7-1.6l-.4-.5-.9-.6H35.1V3.7ZM1,4Z" transform="translate(-1 -1)"/>
-            </svg>
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+          viewBox="0 0 26 26" >
+          <path d="M17.2,6.5L10.7,13l6.5,6.5l-1.3,2.6L6.8,13l9.1-9.1L17.2,6.5z"/>
+        </svg>
             <HoverSquare size={'40px'} name='homeButton'>
               <small className='discrete'>home</small>
             </HoverSquare>
@@ -284,19 +284,19 @@ export const CategoryMenu = () => {
         key='category_menu'
         id='category_menu'
         initial={{opacity:0,y:-100}}
-        animate={{opacity:1, y:0}}
-        exit={{opacity:0, y:-100}}
+        animate={{opacity:1, y:0, transition:{type:'spring', stiffness: 100} }}
+        exit={{opacity:0, y:-100, transition:{type:'spring', stiffness: 100} }}
         >
-          <img alt='left side menu' src={leftside}/>
           <ul>
               {getCategories().map( (cat,i) => 
-              <li key={`categoryMenu_${cat}`}>
-                <a onClick={ () => goToCategory(cat) } className={ active === cat ? 'active' : undefined }><small>{cat}</small></a>
-                  {i < getCategories().length-1 && <span className='lineSeparator'></span>}
-              </li>
+              <Fragment key={`categoryMenu_${cat}`}>
+                <li>
+                  <a onClick={ () => goToCategory(cat) } className={ active === cat ? 'active' : undefined }><small>{cat}</small></a>
+                </li>
+                {i < getCategories().length-1 && <span className='lineSeparator'></span>}
+              </Fragment>
           )}
            </ul>
-           <img alt='right side menu' src={rightside}/>
         </motion.div>
     
       );

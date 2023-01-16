@@ -3,7 +3,7 @@ import { Img, Video } from '../../components/article';
 export default () => (
   <>
     <div data-board-name='Music video'>
-      <Video id={502594756} placeholder={'/assets/thumbnails/kaiser1.jpg'}/>
+      <Video id={502594756} />
     </div>
 
     <div id="desc" data-board-name='Synopsis'>

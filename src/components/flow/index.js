@@ -122,21 +122,21 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
             setIndex(currentIndex);
         };
 
-        const interval = setInterval( changeIndex, 1000 );
+        const interval = setInterval( changeIndex, 700 );
 
         return () => clearInterval(interval);
 
     },[pictures,index]);
 
     return (
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <motion.img
           className='thumb'
           key={pictures[index]}
           src={pictures[index]}
           initial={{opacity:0}}
-          animate={{opacity:1,transition:{duration:0.2}}}
-          exit={{opacity:0,transition:{duration:0.2}}}
+          animate={{opacity:1,transition:{duration:0.25}}}
+          exit={{opacity:1,transition:{duration:0.25}}}
         />
       </AnimatePresence>
     );
@@ -233,8 +233,8 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
     //let tm;
     const onScroll = () => {
       //clearTimeout(tm);
-      const top = elt.current.getBoundingClientRect().top;
-      const height = elt.current.getBoundingClientRect().height;
+      const top = elt.current?.getBoundingClientRect().top;
+      const height = elt.current?.getBoundingClientRect().height;
       if(top < window.innerHeight && top+height > 0){ setYPos(scrollVelocity()); }
 
       lastScroll = window.pageYOffset;
@@ -272,7 +272,6 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
           onMouseLeave = { () => setOverlay() }
           >
 
-          <img className='move thumb gradientImg' src={thumbnail} />
           <section className='move overlay'>
               <img className='thumb' ref={thumbnailImg} src={thumbnail} />
               {overlay && overlay}
@@ -284,6 +283,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
               { project.desc && <p><small><b>{project.desc}</b></small></p> }
           </div>
         }
+         <img className='move thumb gradientImg' src={thumbnail} />
         </motion.section>
     </Link>
   );
@@ -294,11 +294,11 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
   const [columnsCount, setColumnsCount] = useState(2);
 
   useEffect(()=>{
-      const checkSize = () => window.innerWidth > 500 ? setColumnsCount(2) : setColumnsCount(1);
-      checkSize();
-      window.addEventListener('resize', checkSize);
-
-      return () => window.removeEventListener('resize', checkSize);
+      const checkSize = (e) => e.matches ? setColumnsCount(1) : setColumnsCount(2);
+      const mq = window.matchMedia('(max-width: 500px)');
+      checkSize(mq);
+      mq.addEventListener("change", checkSize);
+      return () => mq.removeEventListener("change", checkSize);
   },[]);
   return(
 
@@ -327,7 +327,7 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
   });
   const [category, setCategory] = useState();
   const location = useLocation();
-  const [displaySuper, setDisplaySuper] = useState();
+  const [displaySuper, setDisplaySuper] = useState(true);
 
   const categoryChangeEvent = new CustomEvent('categorychange', {
     bubbles: true,
@@ -397,14 +397,19 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
 
   useEffect( () => {
 
-    const onResize = () => setDisplaySuper( window.innerWidth > 500 );
+    const onResize = (e) => {
+
+      setDisplaySuper( e.matches );
+    }
     
+
     //dispatch custom event
     window.dispatchEvent(categoryChangeEvent);
-    window.addEventListener('resize', onResize );
-    onResize();
+    const mq = window.matchMedia('(min-width:800px)');
+    onResize(mq);
+    mq.addEventListener('change', onResize);
 
-    return () => window.removeEventListener('resize', onResize );
+    return () => mq.removeEventListener('change', onResize);;
   
   }, [category]);
 

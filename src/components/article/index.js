@@ -186,7 +186,7 @@ export const Gallery = ({galleries, galleryKey}) => {
                       </AnimatePresence>
                 </motion.div>
                 {pictures.length > 0 &&
-                <motion.div variants={variantPic} className={'thumbnails' + (centered ? ' center' : '')} ref={thumbref}>
+                <motion.div variants={variantPic} className={'thumbnails ' + (centered ? ' center' : null)} ref={thumbref}>
                   { pictures.map(pic => <Img src={pic} key={'fullview'+pic} name={filenameFromPath(pic)} onClick={ () => onThumbnailClick({prevPic:page, newPic:pic}) } /> ) }
                 </motion.div>
               }
@@ -356,7 +356,7 @@ export const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, pla
 
   return(
     <div className='vimeo round' onClick={ () => setHideVid(false)  } ref={innerRef || vimeoContainer} style={height}>
-      { <Placeholder placeholder={ placeholder ? placeholder : thumbnail} playIcon={!autoplay} style={style} loadIco={loadIco} playIco={playIco}/> }
+      {  placeholder && <Placeholder placeholder={ placeholder ? placeholder : thumbnail} playIcon={!autoplay} style={style} loadIco={loadIco} playIco={playIco}/> }
       { !hideVid && <iframe src={`https://player.vimeo.com/video/${id}?h=583d0b23c9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=${ (autoplay || pending)  ? 1 : 0}&loop=${ (autoplay && !forceStop) ? 1 : 0}&title=0&byline=0&portrait=1&muted=${ forceUnmute || pending || (!forceUnmute && !autoplay) ? 0 : 1}&autopause=0&controls=${ (controls ? '1' : '0') }${ defaultQuality ? ('&amp;quality='+defaultQuality) : '' }` } frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={style}></iframe> }
       </div>
   );

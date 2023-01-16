@@ -19,6 +19,7 @@
     "sass": "^1.49.9",
     "three": "^0.138.3",
     "web-vitals": "^2.1.4",
+    "webfontloader": "^1.6.28",
     "zhconvertor": "^2.2.4"
   },
   "scripts": {

@@ -13,14 +13,9 @@ const ThumbTagline = ({src, pos, speed}) => {
 
     const thumb = useRef();
     useEffect(() => {
-
-  
       const onScroll = () => thumb.current.style.transform = `translate3d(0,0, ${200-pos.z - window.pageYOffset*speed}px )`;
-    
-      
       window.addEventListener('scroll', onScroll);
       return () => window.removeEventListener('scroll', onScroll);
-
     }, []);
     
     return(
@@ -35,6 +30,7 @@ const VideoBanner = (onScroll) => {
 
   const [opacity, setOpacity] = useState(1);
   const [mobile, setMobile] = useState(0);
+  const [hoverActive, setHoverActive] = useState(false);
 
   const [displayVideo, setDisplayVideo] = useState(true);
   const name = useRef();
@@ -51,11 +47,14 @@ const VideoBanner = (onScroll) => {
     viewreelRef.current.style.top =  e.clientY - vidTop - half + 'px';
     viewreelRef.current.style.left = e.clientX - vidLeft - half + 'px';
 
+    setHoverActive(true);
+
   }
 
   const onVideoLeave = (e) => {
     viewreelRef.current.style.top = null;
     viewreelRef.current.style.left = null;
+    setHoverActive(false);
   }
 
   const letterVar = {
@@ -111,12 +110,7 @@ const VideoBanner = (onScroll) => {
 
     document.title = 'The Art of Nassim El Khantour';
 
-    const onResize = () => {
-
-      if(window.innerWidth < 525){ setMobile(true); }
-      else{ setMobile(false); }
-
-    }
+    const onResize = e => setMobile(!e.matches);
 
     const onScroll = () => {
 
@@ -134,8 +128,6 @@ const VideoBanner = (onScroll) => {
           video.current.style.transform = `translate3d(0,0%,-${(scrollPos/5)}px)`;
           firstplan.current.style.opacity = half;
         }
-
-        //quote.current.style.transform = `translate3d(0,0%,${( (mobile ? 100 : 200)-scrollPos/3)}px)`;
         
       }else{
         setOpacity(0);
@@ -144,14 +136,14 @@ const VideoBanner = (onScroll) => {
 
     }
 
-    onResize();
-
+    const mq = window.matchMedia('(max-width:525px)');
+    onResize(mq);
     window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onResize);
+    mq.addEventListener('change', onResize);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
+      mq.removeEventListener('change', onResize);
     }
 
   },[]);
@@ -172,19 +164,21 @@ const VideoBanner = (onScroll) => {
           <h1><b>The powerful blend of art and code, <br/> with a French Touch.</b></h1>
           <span></span>
           <p>Art director based in Montreal (soon Taipei) <br/> with an expertise in Web & Motion design.</p>
-          <a onClick={ () => document.getElementById('projects')?.scrollIntoView({behavior:'smooth'}) } id="arrowScroll">
-            <small>see my work</small>
-            <HoverSquare size='35px' name='arrowScroll'>
-              <img src={downArrow} />
-            </HoverSquare>
-          </a>
+            <a onClick={ () => document.getElementById('projects')?.scrollIntoView({behavior:'smooth'}) } id="arrowScroll">
+              <HoverSquare size='50px' top='0' name='arrowScroll' left='auto'>
+                <small>see my work</small>
+                <img src={downArrow} />
+              </HoverSquare>
+            </a>
         </motion.div>
        <div
          id='iframewrapper'
          ref={video}
           style={{display: displayVideo ? 'block' : 'none', pointerEvents: displayVideo ? 'auto' : 'none'}}
-        >
-              <img ref={viewreelRef} src={viewshowreel} id='viewshowreel' />
+        >     
+              <div id='viewshowreel' ref={viewreelRef} className={hoverActive ? 'active' : null}>
+                <img src={viewshowreel} />
+              </div>
               <div style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}} onMouseMove={onVideoEnter} onMouseLeave={onVideoLeave} >
                 <Video id={502648300} autoplay={true} resize={false} playIco={false} defaultQuality='720p' placeholder={'/assets/thumbnails/showreel.jpg'} controls={false} />
                 <Link to='/showreel'></Link>
@@ -205,12 +199,14 @@ const VideoBanner = (onScroll) => {
 function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () => 0, onCategoryChange=() => 0}){
 
   const [social, setSocial] = useState(false);
+  const [catMenu, displayCatMenu] = useState();
   const [aboveTheFold, setAboveTheFold] = useState(true);
   const {hash} = useLocation();
 
   useEffect( () => hash && document.querySelector(decodeURI(hash))?.scrollIntoView({behavior:'auto'}),[]); //check hash on mount
   useEffect(() => {
 
+    const onMatchMedia = e => displayCatMenu(!e.matches);
     const onScroll = () => {
       if( window.pageYOffset > window.innerHeight ){
         setSocial(true);
@@ -227,7 +223,15 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
     else{ onBelowTheFold(); }
 
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+
+    const mq = window.matchMedia('(max-width:525px)');
+    onMatchMedia(mq);
+    mq.addEventListener('change', onMatchMedia);
+
+    return () =>{ 
+      mq.removeEventListener('change', onMatchMedia);
+      window.removeEventListener('scroll', onScroll);
+    };
 
 
   },[]);
@@ -235,7 +239,7 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
 
   return(
     <>
-      <CategoryMenu />
+      { catMenu && <CategoryMenu /> }
       <VideoBanner />
       <Flow onCategoryChange={ onCategoryChange }/>
       <AnimatePresence exitBeforeEnter>

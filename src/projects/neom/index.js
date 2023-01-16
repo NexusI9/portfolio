@@ -3,7 +3,7 @@ import { Img, Video,Article } from '../../components/article';
 export default () => (
   <>
 		<Article spaced={true} >
-      <Video id={503057732} placeholder={'/assets/thumbnails/neom1.jpg'}/>
+      <Video id={503057732} />
     </Article>
 
 		<Article id="desc">

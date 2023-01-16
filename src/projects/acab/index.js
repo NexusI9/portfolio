@@ -6,7 +6,7 @@ export default () => (
   <>
     <Article name='Music video'>
       <Body flexDirection='vertical' flexAlignement='centered'>
-       <Video id={502583843} placeholder={'/assets/thumbnails/acab1.jpg'}/>
+       <Video id={502583843}/>
       </Body>
     </Article>
     <Article>

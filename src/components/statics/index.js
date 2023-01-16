@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare } from '../props';
-import { SocialsIcons, MailAddress, HomeButton, Logo, CategoryMenu } from '../inputs';
+import { SocialsIcons, MailAddress, HomeButton, Logo } from '../inputs';
 
 
 const WindowIco = () => (
