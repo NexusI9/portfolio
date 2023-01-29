@@ -14,9 +14,9 @@ import {
   Techni,
   Commu,
   Events,
-  Press
+  Press,
+  ResumeHeader
  } from '../components/resume';
- import { randomInt } from '../lib/utils';
 import Masonry from 'react-responsive-masonry';
 
 import work from '../assets/icons/case.svg';
@@ -30,7 +30,7 @@ import tools from '../assets/icons/tools.svg';
 
 import dl from '../assets/icons/dl.svg';
 
-const Portrait = React.lazy( () => import('../components/portrait') );
+import Portrait from '../components/portrait';
 
 const slideUp = {
   initial:{y:100, opacity:0},
@@ -162,6 +162,7 @@ function Resume({onLoad=()=>0}){
 
    const changeLang = (lang) => {
 
+      window.gtag('event',`click_resume_language_${lang}`,{event_category:'click', event_label:`Switch resume language to ${lang}`});
      setLanguage(lang);
 
      switch(lang){
@@ -232,6 +233,7 @@ function Resume({onLoad=()=>0}){
 
      const langParam = searchParams.get('lang');
 
+
      switch(langParam){
         case 'eng':
           document.title = 'Nassim El Khantour - Resume (english)';
@@ -256,10 +258,16 @@ function Resume({onLoad=()=>0}){
           setLanguage('english');
           setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/Resume-Nassim_El_Khantour.pdf');
      }
+     
 
      onLoad();
 
-   },[searchParams, banner, portrait]);
+   },[searchParams]);
+
+   useEffect( () => {
+    window.scrollTo({top:0,behavior:'smooth'});
+   }, []);
+  
 
   return(
     <>
@@ -276,25 +284,34 @@ function Resume({onLoad=()=>0}){
         {
           language &&
           <>
-        <motion.span key='buttonEng' variants={popUp}><Button label='ENG' id='radioEng' type='radio' name='language' active={ language === 'english' } onClick={ () => changeLang('english') }/></motion.span>
-        <motion.span key='buttonFr' variants={popUp}><Button label='FR' id='radioFr' type='radio' name='language' active={ language === 'french' } onClick={ () => changeLang('french') }/></motion.span>
-        <motion.span key='buttonZh' variants={popUp}><Button label='中文' id='radioZhg' type='radio' name='language' active={ language === 'zhongwen' } onClick={ () => changeLang('zhongwen') }/></motion.span>
+            <motion.span key='buttonEng' variants={popUp}><Button label='ENG' id='radioEng' type='radio' name='language' active={ language === 'english' } onClick={ () => changeLang('english') }/></motion.span>
+            <motion.span key='buttonFr' variants={popUp}><Button label='FR' id='radioFr' type='radio' name='language' active={ language === 'french' } onClick={ () => changeLang('french') }/></motion.span>
+            <motion.span key='buttonZh' variants={popUp}><Button label='中文' id='radioZhg' type='radio' name='language' active={ language === 'zhongwen' } onClick={ () => changeLang('zhongwen') }/></motion.span>
           </>
         }
       </section>
 
       <section>
         <motion.span key='buttonDl' variants={popUp}>
-          <Button label={<Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />} ico={dl} type='button' name='download' href={dlUrl} target='_blank'/>
+          <Button 
+          label={<Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />} 
+          ico={
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.1875 10.375H10.8125C10.9285 10.375 11.0398 10.4211 11.1219 10.5031C11.2039 10.5852 11.25 10.6965 11.25 10.8125C11.25 10.9285 11.2039 11.0398 11.1219 11.1219C11.0398 11.2039 10.9285 11.25 10.8125 11.25H1.1875C1.07147 11.25 0.960188 11.2039 0.878141 11.1219C0.796094 11.0398 0.75 10.9285 0.75 10.8125C0.75 10.6965 0.796094 10.5852 0.878141 10.5031C0.960188 10.4211 1.07147 10.375 1.1875 10.375ZM6.4375 6.9065L9.668 3.67512L10.2866 4.29375L5.95625 8.625L1.625 4.29375L2.24363 3.67512L5.5625 6.994V0.75H6.4375V6.9065Z"/>
+            </svg>
+            } 
+          type='button'
+          name='download' 
+          href={dlUrl} 
+          target='_blank'
+          />
         </motion.span>
       </section>
 
     </motion.div>
 
 
-        <Suspense>
-          <Portrait innerRef={e => portrait.current = e}/>
-        </Suspense>
+    <Portrait innerRef={e => portrait.current = e}/>
 
     <AnimatePresence exitBeforeEnter>
       <motion.div id='resumeWrapper'
@@ -303,36 +320,8 @@ function Resume({onLoad=()=>0}){
       animate='animate'
       exit='exit'
       key={'resumeWrapper'+language} >
-        <section ref={banner} id="resumeHeader">
-            <div>
-            <h2>Nassim El Khantour</h2>
-            <p style={{fontSize:'1.3em'}}>
-              <Multi
-                eng='Multimedia Designer :: Art Director :: Developer'
-                fr='Designer Multimédia :: Directeur Artistique :: Développeur'
-                zh='多媒體設計師  ::  藝術總監  ::  工程師'
-                language={language}/>
-            </p>
-
-            <small>
-            <Multi eng={<>I am a French creative with an expertise in Web and Motion Design, but also proficiencies in development, 3D design, and illustration.
-            An extended skill set I put at work in various projects for the past 5 years such as music videos, web apps, as well as audiovisual interactive setups.
-            </>}
-                    fr={<>Je suis un Créatif français avec une expertise en Web et Motion Design, et des compétences en développement, design 3D, ainsi qu’en illustration. <br/> Un vaste panel de compétences que j’ai pu mettre à l’œuvre ces 5 dernières années dans une variété de projets tels que la réalisation de clips musicaux,
-            d’applications web, mais aussi au sein d’installations audiovisuelles interactives.
-            </>}
-                    zh={<>
-                      我是一個法國人的多媒體設計帥，擅長網站與動態圖形設計。
-                      也製作3D設計，網站開發以及插圖的內容。
-                      已有4年以上視覺設計師相關經歷。
-                </>}
-                language={language}
-            />
-            </small>
-            </div>
-        </section>
-
-        <div id="resume" >
+        <ResumeHeader {...language} innerRef={ e => banner.current = e}/>
+        <div id="resume">
             <div>
                 { listRoute.map( (item,i) => i%2 === 0 && <Section key={'section'+item.id} title={item.name} ico={item.ico} content={item.content}/> ) }
             </div>

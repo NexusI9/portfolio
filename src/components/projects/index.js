@@ -2,10 +2,9 @@ import { ProjectThumbnails } from '../flow';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
-import { scrollTo, smoothScroll, getCategoryOfProject } from '../../lib/utils';
+import { smoothScroll, getCategoryOfProject } from '../../lib/utils';
 import { gsap } from 'gsap';
 import { HomeButton } from '../inputs';
-import { Signature, Socials } from '../statics';
 
 export const Header = ({project}) => (
   <div className='projectHeader'>
@@ -42,7 +41,7 @@ export const Suggestion = ({projects, display}) =>{
         <motion.h2
           key='suggestSeeAlso'
           variants={variantChild}
-        > See other { getCategoryOfProject(projects[0]).toLowerCase() }  projects... 
+        > See other { getCategoryOfProject(projects[0]).toLowerCase() }  projects 
         </motion.h2>
         <motion.section
           key='suggestSection'
@@ -50,8 +49,6 @@ export const Suggestion = ({projects, display}) =>{
         >
           { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={false} /> ) }
         </motion.section>
-        <Socials minify={true} direction='horizontal'/>
-        <Signature />
       </motion.div>
     );
 }

@@ -8,11 +8,13 @@ $pink: $red;
 $orange: $red;
 /*$blue: #0037ff;
 $pink: #dd5eff;
-$orange: #ff9500;*/
-$bkg:#f3f3f3;
-$darkgrey: #535353;
-$darkbkg: #0e0e0e;
-$grad: #0037ff;
+$orange: #ff9500;
+$grad: #0037ff;*/
+$white:#f5f7f9;
+$black: #182449;
+$darkgrey: #444D66;
+$darkbkg: #070812;
+$ctahover: #384467;
 
 $mainColor:$red;
 $mainFilter: url(#b);
@@ -27,10 +29,92 @@ $frameMargin: 45px;
 $depth:10px;
 $smallDepth:5px;
 
+
 html::-webkit-scrollbar { width: 0 !important; display: none; }
 body::-webkit-scrollbar { width: 0 !important; display: none; }
 //html{ scroll-behavior: smooth; }
 
+
+$arrowDist: 10px;
+
+@keyframes moveArrowX{
+  0%{
+    transform: translateX(0);
+    opacity: 0;
+  }
+  50%{
+    transform: translateX( calc($arrowDist/2) );
+    opacity: 1;
+  }
+  100%{
+    transform: translateX($arrowDist);
+    opacity: 0;
+  }
+}
+
+@keyframes moveArrowY{
+  0%{
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50%{
+    transform: translateY( calc($arrowDist/2) );
+    opacity: 1;
+  }
+  100%{
+    transform: translateY($arrowDist);
+    opacity: 0;
+  }
+}
+
+:root {
+  --shadow-color: 210deg 7% 65%;
+  --shadow-elevation-low:
+    0.1px 0.5px 0.6px hsl(var(--shadow-color) / 0.33),
+    0.1px 0.7px 0.8px -1.4px hsl(var(--shadow-color) / 0.31),
+    0.2px 1.7px 1.9px -2.7px hsl(var(--shadow-color) / 0.29);
+  --shadow-elevation-medium:
+    0.1px 0.5px 0.6px hsl(var(--shadow-color) / 0.28),
+    0.1px 1.1px 1.2px -0.7px hsl(var(--shadow-color) / 0.27),
+    0.3px 2.2px 2.4px -1.4px hsl(var(--shadow-color) / 0.26),
+    0.6px 4.5px 4.9px -2.1px hsl(var(--shadow-color) / 0.25),
+    1.2px 8.7px 9.6px -2.7px hsl(var(--shadow-color) / 0.24);
+  --shadow-elevation-high:
+    0.1px 0.5px 0.6px hsl(var(--shadow-color) / 0.26),
+    0.2px 1.9px 2.1px -0.3px hsl(var(--shadow-color) / 0.25),
+    0.4px 3.3px 3.6px -0.6px hsl(var(--shadow-color) / 0.25),
+    0.7px 5px 5.5px -0.9px hsl(var(--shadow-color) / 0.24),
+    1px 7.3px 8px -1.2px hsl(var(--shadow-color) / 0.24),
+    1.4px 10.7px 11.7px -1.5px hsl(var(--shadow-color) / 0.23),
+    2px 15.4px 16.9px -1.8px hsl(var(--shadow-color) / 0.23),
+    2.9px 21.7px 23.8px -2.1px hsl(var(--shadow-color) / 0.22),
+    4px 30px 32.9px -2.4px hsl(var(--shadow-color) / 0.22),
+    5.4px 40.7px 44.6px -2.7px hsl(var(--shadow-color) / 0.21);
+}
+
+
+@mixin ctashadow{
+    box-shadow: var(--shadow-elevation-medium);
+
+}
+
+@mixin animArrow($direction:'x'){
+
+  @if $direction == 'x'{
+    animation-name: moveArrowX;
+  } @else{
+    animation-name: moveArrowY;
+  }
+
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  &:first-of-type{
+    animation-delay: 0.15s;
+  }
+
+
+}
 
 @mixin mainFont{
 
@@ -73,6 +157,11 @@ body::-webkit-scrollbar { width: 0 !important; display: none; }
     width: calc( 100% + $depth);
     height: calc( 100% + $depth);
   }
+}
+
+@mixin maxWidth{
+  max-width: 1920px;
+  margin: auto;
 }
 
 $mapColor: (
@@ -124,7 +213,7 @@ small{
 }
 
 a{
-  color: black;
+  color: $black;
   text-decoration: none;
   line-height: 1.2em;
 }
@@ -161,6 +250,65 @@ button, input, label, a{
   &, & *{ cursor: pointer;  }
 }
 
+*.cta{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  text-transform: lowercase;
+  gap: 5px;
+  letter-spacing: 0.8px;
+  position: relative;
+  padding: 10px 20px;
+  background: #ffffff;
+  transition: background 0.2s ease, transform 0.1s ease-in-out, color 0.2s ease;
+  border-radius: 2.5px;
+  text-align: center;
+
+  @include ctashadow();
+
+
+  &::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+  }
+
+  &, *{ 
+    color: $black;
+  }
+
+  &.primary{ 
+    font-weight: bold; 
+    background:$black;
+    border-color: $black;
+    &, *{ color:$white; }
+  }
+
+
+  @media(hover:hover){
+    &:hover{  
+      &, *{ color:$white; }
+      background-color: $ctahover;
+      svg{
+        fill: $white;
+      }
+    }
+  }
+
+
+}
+
+.aligncta{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -175,6 +323,11 @@ input{
 
   &:checked + .cube{
       @include activeCube($smallDepth);
+  }
+
+  &:checked + .cta{
+    background-color: $black;
+    &, * { color:$white; }
   }
 }
 
@@ -193,6 +346,7 @@ b .zhg{ font-weight: bold; }
 }
 .vimeo{
  
+  @include maxWidth();
   position: relative;
   width: 100%;
   display: block;
@@ -205,7 +359,7 @@ b .zhg{ font-weight: bold; }
     height: 100%;
     position: relative;
     pointer-events: auto;
-    //background: black;
+    //background: $black;
   }
   .iframePlaceholder{
     position: absolute;
@@ -238,7 +392,7 @@ b .zhg{ font-weight: bold; }
       display: block;
       width: 100%;
       height: 100%;
-      //background: black;
+      //background: $black;
       position: relative;
     }
 
@@ -323,22 +477,22 @@ b .zhg{ font-weight: bold; }
 
 @mixin setDarkSkin(){
   background: $darkbkg;
-  color: $bkg;
+  color: $white;
   a{ color: white; }
-  #windowIco span{ background-color: $bkg !important; }
+  #windowIco span{ background-color: $white !important; }
   #menu{
-    p{ color: $bkg;}
+    p{ color: $white;}
     #homeButton{ svg{ fill:white; }}
   }
-  .discrete{ color: $bkg;}
+  .discrete{ color: $white;}
   #loaderPage{
     .backPlanes:last-of-type, #loadPercent{ background-color: $darkbkg !important; }
   }
-  #bars span{ background: $bkg !important; }
-  #bars.active span{ background: black !important; }
+  #bars span{ background: $white !important; }
+  #bars.active span{ background: $black !important; }
   #project{ background: $darkbkg; }
   #suggest{ background: $darkbkg; }
-  .vimeo{   background: black; }
+  .vimeo{   background: $darkbkg; }
 
   .article{
     .pointer{
@@ -367,7 +521,7 @@ b .zhg{ font-weight: bold; }
   .socialsIcons{
     .ico{
       span{
-        background-color: $bkg;
+        background-color: $white;
       }
     }
   }
@@ -375,17 +529,17 @@ b .zhg{ font-weight: bold; }
 }
 
 @mixin setWhiteMenu(){
-  #bars:not(.active) span{ background: $bkg !important; }
+  #bars:not(.active) span{ background: $white !important; }
 }
 
 @mixin setDefaultSkin(){
-  background: $bkg;
-  color: black;
-  #windowIco span{ background-color: black; }
-  #menu p{ color: black;}
+  background: $white;
+  color: $black;
+  #windowIco span{ background-color: $black; }
+  #menu p{ color: $black;}
   .discrete{ color: $darkgrey;}
   #loaderPage{
-    /*.backPlanes:last-of-type,*/ #loadPercent{ background-color: $bkg; }
+    /*.backPlanes:last-of-type,*/ #loadPercent{ background-color: $white; }
   }
 }
 
@@ -409,13 +563,6 @@ b .zhg{ font-weight: bold; }
     & > div:last-of-type a::before{ background: $color; }
   }
 
-  #suggest{
-    .projects{
-      &::before{ background-color: $color; }
-      .gradientImg{ /*filter: filterFromColor($color); */ }
-      .project_desc > *{ color: $color !important; }
-    }
-  }
 
   span.dottySeparator{
     background-color: $color; 
@@ -488,8 +635,8 @@ b .zhg{ font-weight: bold; }
 body{
   @include squareCursor;
   overflow-x: hidden;
-  background: $bkg;
-  color: black;
+  background: $white;
+  color: $black;
   transition: background 0.7s ease;
   text-rendering: geometricPrecision !important;
   -webkit-font-smoothing: antialiased;
@@ -513,14 +660,14 @@ footer{
   box-sizing: border-box;
   justify-content: space-evenly;
   @include squareCursor;
-  color: black;
+  color: $black;
 
   & > section::before{
     content: '';
     display: block;
     height: 2px;
     width: 120%;
-    background: black;
+    background: $black;
     margin-bottom: 20px;
     margin-left: -10%;
   }
@@ -551,24 +698,24 @@ footer{
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  gap: 5px;
   .ico{
     display: flex;
     align-items: center;
-    margin-left: 12px !important;
   }
 
-  .ico + small{
-    padding-left: 10px !important;
-  }
-
-  .ico img{
+  .ico img, svg{
     width: 0.8em;
     height: 0.8em;
     margin: 0;
     vertical-align: middle;
     object-fit: contain;
   }
+
+  svg{
+    fill:$black;
+  }
+
 }
 
 .socialsIcons{
@@ -610,7 +757,6 @@ footer{
   display: flex;
   flex-direction: row;
   margin: 30px;
-  margin-top: 0;
   justify-content: center;
   align-items: center;
   span{
@@ -626,7 +772,7 @@ footer{
   position: fixed;
   z-index: 9;
   bottom: 0;
-  right: 2vw;
+  right: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -655,8 +801,11 @@ footer{
     }
   }
 
-
-
+  @media(hover:hover){
+    .children:hover{
+      .ico{ opacity: 1;}
+    }
+  }
 
 }
 
@@ -667,11 +816,14 @@ footer{
   left: 0;
   display: flex;
   justify-content: center;
+  z-index: 4;
 
   .hoverSquare{ z-index: 0; }
   a{ position: relative; 
     &,*{ transition: color 0s ease}
   }
+
+  .cacheBold{ opacity: 0; pointer-events: none; }
 
   ul{
     box-sizing: border-box;
@@ -700,9 +852,13 @@ footer{
     height: 100%;
     position: relative;
   }
-  z-index: 3;
 
   a{
+    position: relative;
+    small:last-of-type{ 
+      position: absolute;
+      left: 0;
+    }
 
     &.active{
       &,*{
@@ -712,21 +868,74 @@ footer{
   }
 }
 
-#wrapper{
+#homeAbout{
+  height: 75vh;
+  position: relative;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0 5%;
+  background: $white;
+  margin-top: 6%;
+  margin-bottom: 3%;
 
-  /*&[data-skin='dark']{ @include setDarkSkin(); }
-  &[data-skin='default']{ @include setDefaultSkin(); }*/
+  & > div{
+    $gap:70px;
+    border: solid 1px $red;
+    height: 100%;
+    gap:$gap;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    #resumeHeader{
+      padding-right: 10%;
+    }
+
+    & > #squareabout{ 
+      max-width: 50vw;
+      position: relative;
+      width: 100%; 
+      height: 100%;
+      top: 0;
+      display: flex;
+      align-items: center;
+
+      &::after{
+        content: '';
+        display: block;
+        background-color: $red;
+        position: absolute;
+        width: 1px;
+        height: 90%;
+        right: calc(-1 * $gap/2);
+      }
+    }
+
+  }
+
+
+  &::before{
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 30%;
+    display: block;
+    left: 0;
+    top: -30%;
+    background: linear-gradient(0deg, $white, #f5f7f900 );
+  }
 
 }
+
 
 .hoverSquare{ //main
   width: 100%;
   height: 100%;
   position: absolute;
-  cursor: pointer;
   z-index: -1;
   top:-45%;
   left: -30%;
+  &, & > *{   cursor: pointer; }
   span{
     border-radius: $border-radius/2;
     width: 100%;
@@ -760,7 +969,7 @@ footer{
 
   &:hover{
     background: white;
-    *{ color: black; }
+    *{ color: $black; }
   }
 }
 
@@ -780,12 +989,12 @@ footer{
   align-content: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  top:3vh;
+  top:25px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
   padding: 0 2%;
-  color: black;
+  color: $black;
   align-items: center;
   pointer-events: none;
 
@@ -795,10 +1004,34 @@ footer{
 
   #NLogo{
     svg{
-      transition: fill 0.3s ease;
-      fill:black;
+      transition: fill 0.15s ease;
+      fill:$black;
       height: 30px;
+      overflow: inherit;
+
+      @keyframes floatPos { to{ transform: translate3d(0, 50px, 0);} }
+      @keyframes floatNeg { to{ transform: translate3d(0, -50px, 0);} }
+      rect{
+        transform: translate3d(0, 0px, 0);
+        animation-duration: 0.8s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      
+      @media(hover:hover){
+        &:hover{
+          fill:$red;
+          rect{
+            &:first-of-type{ animation-name: floatPos; }
+            &:last-of-type{ animation-name: floatNeg; }
+    
+          }
+        }
+      }
+
     }
+
   }
 
   #homeButton{
@@ -862,7 +1095,7 @@ footer{
         transition: width 0.2s ease-out, transform 0.15s ease-out;
         transform: rotate(0deg);
         display: block;
-        background: black;
+        background: $black;
         width: 100%;
         border-radius: 10em;
         //height: 2.5px;
@@ -959,7 +1192,7 @@ footer{
         padding: 1.3px;
         display: block;
         float: left;
-        background: black;
+        background: $black;
         background-clip: content-box;
         width: calc(100%/2);
         height: calc(100%/2);
@@ -1013,7 +1246,7 @@ footer{
     &:first-of-type{  background:$red; }
     &:last-of-type{
 
-      background: $bkg;
+      background: $white;
       //background-image: url('../assets/menubkgburn.jpg');
       background-size: cover;
       background-position: left;
@@ -1057,7 +1290,7 @@ footer{
     top:50%;
     transform: translateY(-50%);
     & > *{ position: relative; margin-left: 8em;}
-    a{ color: black; }
+    a{ color: $black; }
   }
 
   .cacheScroll{
@@ -1076,7 +1309,7 @@ footer{
   width: 100%;
   height: 100vh;
   z-index: 9;
-  background-color: $bkg;
+  background-color: $white;
   pointer-events: none;
   transition: clip-path 0.3s ease-out;
   clip-path: inset(0 100% 0 0);
@@ -1125,7 +1358,7 @@ footer{
     box-sizing: border-box;
     padding: 9% 0;
     display: block;
-    background-color: black;
+    background-color: $black;
     background-clip: content-box;
     position: absolute;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -1449,7 +1682,7 @@ iframe.normal{
   box-sizing: content-box;
   z-index: 3;
   transition: background-color 0.1s ease, width 0.2s ease, height 0.2s ease, border-radius 0.1s ease-out;
-  border-color: black;
+  border-color: $black;
   border-width: 0px;
   border-style: solid;
   width:30px;
@@ -1610,7 +1843,7 @@ span.dottySeparator{
     width: 5px;
     height: 5px;
     border-radius: 1px;
-    background-color: black;
+    background-color: $black;
 }
 
 span.lineSeparator{
@@ -1624,7 +1857,7 @@ span.lineSeparator{
 
 #project_banner{
   position: fixed;
-  background: black;
+  background: $darkbkg;
   width: 100%;
   height: 60vh;
   top: 0;
@@ -1632,7 +1865,7 @@ span.lineSeparator{
   padding: 5% 20%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
 
@@ -1640,6 +1873,8 @@ span.lineSeparator{
      display: grid;
      grid-template-columns: repeat(2, 1fr);
      column-gap: 10%;
+     max-width: 1000px;
+     justify-items: center;
      & > section {
        box-sizing: border-box;
        h5{ margin-bottom: 5px;}
@@ -1667,7 +1902,7 @@ span.lineSeparator{
 
   &::before{
     content: '';
-    background: black;
+    background: $darkbkg;
     position: absolute;
     top:0;
     left: 0;
@@ -1675,9 +1910,9 @@ span.lineSeparator{
     height: 100vh;
   }
   h1{
-    color: $bkg;
+    color: $white;
     margin: 2% auto;
-    font-size: clamp(30px, 13vw, 130px);
+    font-size: clamp(80px, 13vw, 130px);
   }
   img{
     position: absolute;
@@ -1695,13 +1930,13 @@ span.lineSeparator{
   }
   & > *{
     position: relative;
-    color: white;
+    color: $white;
   }
 }
 
 #project{ //Main
 
-  background: $bkg;
+  background: $white;
   position: relative;
   max-width: 100vw;
   overflow: hidden;
@@ -1858,19 +2093,46 @@ span.lineSeparator{
   justify-content: space-between;
   position: fixed;
   z-index: 2;
-  padding-top: 2%;
+  padding-top: 25px;
   padding-bottom: 1%;
-  background: $bkg;
+  background: $white;
+
+  & > section{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+
+  .cta{
+    padding: 5px 20px;
+  }
+
+  *{  border-radius: 2.5px; }
 
   label{
+    height: 100%;
     margin: 0 5px;
-    small,p{
-      display: block;
-      padding: 5px 12px
-    }
   }
 }
 
+
+#squareabout{
+  h2{
+    font-family: 'murmure';
+    writing-mode: vertical-lr;
+    font-size: clamp(50px, 3.2vw, 100px);
+    position: absolute;
+    margin: 3% 1%;
+    color: $red;
+    z-index: 0;
+    &:first-of-type{ top: 0; left: 0;}
+    &:last-of-type{ bottom: 0; right: 0;}
+  }
+  canvas{
+    position: relative;
+  }
+}
 
 
 
@@ -1891,8 +2153,11 @@ span.lineSeparator{
   position: fixed;
   top: 10%;
   left: 0%;
-  width: 30%;
-  height: 80%;
+  width: calc(100vw/3);
+  height: 90%;
+  canvas{
+    height: 70%;
+  }
 }
 
 
@@ -1916,7 +2181,6 @@ span.lineSeparator{
     margin-top: -30px;
     margin-bottom: 7px;
     color:$red;
-    white-space: nowrap;
     font-weight: bold;
     .zhg{     font-weight: bold; }
   }
@@ -1955,7 +2219,7 @@ span.lineSeparator{
       li{
         margin: 6px 0;
         list-style-type: square;
-        &::marker {  color: black;}
+        &::marker {  color: $black;}
       }
       a{ cursor: pointer; }
       .sectionHeader{
@@ -1984,7 +2248,7 @@ span.lineSeparator{
       .contentHeader{
         font-weight: bold;
         margin-bottom: 8px;
-        color:black;
+        color:$black;
         a{
           color: $red;
           font-weight: bold;
@@ -1992,7 +2256,7 @@ span.lineSeparator{
         }
 
         .neutral{
-          color: black;
+          color: $black;
         }
       }
     }
@@ -2003,12 +2267,12 @@ span.lineSeparator{
         display: flex;
         flex-direction: row;
         column-gap: 5px;
-        color: black;
+        color: $black;
       }
     }
 
     .techniSection{
-      p{ color: black !important; }
+      p{ color: $black !important; }
     }
 
 
@@ -2031,12 +2295,28 @@ span.lineSeparator{
   transform: translateY(-50%);
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 30px;
+
+  
 
 
   &, & *, #textLetterbox > *{
     pointer-events: none;
     transform-style: preserve-3d;
+  }
+
+  #arrowScroll{
+    position: absolute;
+    bottom: -5%;
+    align-self: center;
+    animation-name: updown;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
   }
 
   #firstplan{
@@ -2047,7 +2327,7 @@ span.lineSeparator{
     transition: opacity 0.3s ease;
     width: 100%;
     height: 100%;
-    background: $bkg;
+    background: $white;
     z-index: 3;
     pointer-events: none;
   }
@@ -2066,7 +2346,7 @@ span.lineSeparator{
     
 
     #viewshowreel{
-      animation-name: rotate;
+      animation-name: pulse;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
       animation-duration: 10s;
@@ -2074,14 +2354,24 @@ span.lineSeparator{
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.25s ease-out;
+      transform: scale3d(0,0,0);
       z-index: 1;
-      transition: top 0.2s ease-out, left 0.2s ease-out;
-      left: 90%;
-      top: -10%;
+      //transition: top 0.2s ease-out, left 0.2s ease-out;
       overflow: visible;
       pointer-events: none;
       cursor: pointer;
-      img{ position: relative ;}
+      width: 100px;
+      height: 100px;
+
+      img{ 
+        position: relative ; 
+        width: 100%;
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: 10s;
+      }
       &::before{
         content: '';
         border-radius: 100%;
@@ -2089,17 +2379,20 @@ span.lineSeparator{
         height: 120%;
         position: absolute;
         display: block;
-        background-color: white;
-        transition: transform 0.25s ease-out;
-        transform: scale3d(0,0,0);
+        background-color: #ffffff;
       }
+  
 
-      &.active::before{ transform: scale3d(1,1,1); }
+      &.active{
+        transform: scale3d(1,1,1);
+      }
 
 
       @keyframes rotate {
         to{ transform: rotate(360deg);}
       }
+
+
     }
     & > div{
       overflow: hidden;
@@ -2171,72 +2464,47 @@ span.lineSeparator{
 
 
   #textLetterbox{
-    pointer-events: none;
     z-index: 0;
     width: max-content;
     max-width: 100%;
-    height: fit-content;
+    height: inherit;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     box-sizing: border-box;
     align-items: center;
-    align-items: flex-start;
     flex-direction: column;
+    text-align: center;
+    gap: 10px;
     transition:transform 0.2s ease-out;
-    
-    & > span{ 
-      display: block;
-      margin: 40px 0;
-      width: 65px;
-      height: 1px;
-      background-color: #0e0e0e;
-     }
-    h1,h2{ color :$red; }
-    h2{ 
-      font-family: 'murmure'; 
-      margin-bottom: 0px;
-      font-size: clamp(80px, 6vw, 100px);
-    }
-    h1{ font-family: 'sora'; font-size: 20px; }
+    max-width: 500px;
 
-    & *{ 
-      @include squareCursor; 
-      pointer-events: auto; 
-    }
+    .cta{pointer-events: auto;}
 
-    #arrowScroll{
-      align-self: center;
-      animation-name: updown;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease-in-out;
-      animation-direction: alternate;
-      cursor: pointer;
-      z-index: 2;
-      margin-top: 60px;
-
-      .children{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    & > section{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      span{ 
+        display: block;
+        margin: 30px 0;
+        width: 50px;
+        height: 2px;
+        background-color: $black;
+      }
+      h2{ 
+        font-family: 'murmure'; 
+        margin-bottom: 0px;
+        font-size: clamp(80px, 7vw, 120px);
+        //color :$red;
+      }
+      h1{ 
+        font-family: 'sora'; 
+        font-size: 20px; 
       }
 
-      small{ 
-        transition: transform 0.2s ease, opacity 0.2s ease;
-        opacity: 1;
-        transform: scale3d(1,1,1);
-      }
-
-      &:hover{ 
-        small{ 
-          opacity: 0; 
-          transform: scale3d(1.4,1.4,1.4);
-        } 
-      }
-
-      img{ width: 25px; cursor: pointer; }
-
     }
+
   }
 
 
@@ -2249,10 +2517,10 @@ span.lineSeparator{
 
 @keyframes updown{
   0%{
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   100%{
-    transform: translateX(-50%) translateY(15px);
+    transform: translateY(15px);
   }
 
 }
@@ -2303,7 +2571,7 @@ span.lineSeparator{
   }
 
 
-  //iframe{ background: black;}
+  //iframe{ background: $black;}
 }
 
 #dotty {
@@ -2332,7 +2600,7 @@ span.lineSeparator{
     .cross:last-child{  transform: rotate(-45deg); }
   }
 
-  .dotactive{ background-color:black; }
+  .dotactive{ background-color:$black; }
   .dotactive_white{ background-color:white; }
 
 
@@ -2366,12 +2634,12 @@ span.lineSeparator{
     display: block;
     width: 100vw;
     height: 100vh;
-    background-color: $bkg;
+    background-color: $white;
     transition: background 0.5s ease;
 
 
     &:last-of-type{
-      background-color: black;
+      background-color: $darkbkg;
       & > img{
         transform: scale(1);
         animation-name: zoomBkg;
@@ -2379,6 +2647,7 @@ span.lineSeparator{
         animation-duration: 10s;
         animation-fill-mode: forwards;
         height: 100%;
+        width: 100%;
         object-fit: cover;
         opacity: 0.4;
 
@@ -2392,7 +2661,7 @@ span.lineSeparator{
   h2{
     font-family: 'murmure';
     font-weight: normal;
-    background-image: linear-gradient(0deg, black, transparent);
+    background-image: linear-gradient(0deg, $black, transparent);
     background-position-y: 50vh;
     color: transparent;
     -webkit-text-fill-color: transparent;
@@ -2402,7 +2671,7 @@ span.lineSeparator{
     margin-bottom: -0.2em; //compenser le lineheight
     -webkit-background-clip: text;
     white-space: nowrap;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: $black;
     -webkit-text-stroke-width: 0.5px;
     background-position-y: 100vh;
   }
@@ -2494,7 +2763,7 @@ span.lineSeparator{
     width:100%;
     height:100%;
     display: block;
-    background-color: black;
+    background-color: $black;
     background-clip:content-box;
     box-sizing: border-box;
     padding:10%;
@@ -2542,7 +2811,7 @@ span.lineSeparator{
     position: absolute;
     clip-path:inset(0% 0% 0% 0%);
 
-    &:last-of-type{  background-color: $bkg; }
+    &:last-of-type{  background-color: $white; }
   }
 }
 
@@ -2557,6 +2826,7 @@ span.lineSeparator{
   display: inline-block;
   transition: transform 0.6s ease-out, opacity 0.5s ease;
   z-index: 1;
+  cursor: pointer;
 
   & > section{
     position: absolute;
@@ -2567,10 +2837,7 @@ span.lineSeparator{
     display: block;
     overflow: hidden;
 
-    & > .thumb{
-      opacity: 1;
-      transform: scale3d(1,1,1);
-    }
+    & > .thumb{ opacity: 1; }
   }
 
   .project_desc{
@@ -2585,19 +2852,21 @@ span.lineSeparator{
     padding: 2.5%;
     opacity: 1;
     overflow: hidden;
-    @include squareCursor;
     color: white;
     
     & > *{
       line-height: initial;
       margin: 5px 0;
       box-sizing: border-box;
-      padding: 5px 10px;
+      padding: 5px 15px;
       width:fit-content;
-      transition: clip-path 0.3s ease-out;
+      opacity: 0;
+      transition: clip-path 0.3s ease-out, opacity 0.2s ease-out ,transform 0.3s ease-out;
       clip-path: inset(0 100% 0 0);
-      border-radius: 3px;
-      background-color: white;
+      transform: translate3d(-10px, 0, 0);
+      border-radius: 2.5px;
+      background-color: #ffffff;
+      color:$black;
     }
 
     & h2{
@@ -2642,13 +2911,11 @@ span.lineSeparator{
 
   .thumb{
     width: 100%;
-    //max-height: 50vh;
     transition: transform 0.35s ease-out, opacity 0.35s ease-out;
     vertical-align: top;
     position: relative;
     min-height: 31vh;
     object-fit: cover;
-    max-width: 500px;
   }
 
   .iframePlaceholder img{
@@ -2660,11 +2927,10 @@ span.lineSeparator{
     &:hover{
       z-index: 3;
       //.move{ transform: translate( calc(-1 * $depth), calc(-1 * $depth)) }
-      .thumb:first-of-type{ 
+      & > .thumb{ 
         opacity: 0; 
-        transform: scale3d(1.3,1.3,1.3); 
       } 
-      .project_desc > *{ clip-path: inset(0 0 0 0); }
+      .project_desc > *{ clip-path: inset(0 0 0 0); transform: translate3d(0, 0px, 0); opacity: 1;}
       .project_desc > *:nth-child(2){ transition-delay: 0.2s; }
       .project_desc > *:last-child{ transition-delay: 0.2s; }
     }
@@ -2704,7 +2970,7 @@ img.gradientImg{
   display: block;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: $white;
   transition: transform 0.2s ease, width 0.2s ease, border-radius 0.2s ease, height 0.2s ease, padding 0.2s ease, clip-path  0.2s ease, background 0.2s ease;
   //square
   //clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
@@ -2715,14 +2981,14 @@ img.gradientImg{
 .popCube::before{ background-color: $mainColor; }
 
 .cat, #suggest{
-  .looper{ span{ background-color: $bkg !important; } }
+  .looper{ span{ background-color: $white !important; } }
 }
 
 .cat{
 
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 10vw 0;
+  padding: 10vw 0; 
   margin-right: 8%;
   width: 55%;
   transition: transform 0.2s ease;
@@ -2738,7 +3004,7 @@ img.gradientImg{
     color: white;
   }
 
-  .title{ color:black; }
+  .title{ color:$black; }
 
   .projects{
     float: right;
@@ -2751,24 +3017,6 @@ img.gradientImg{
     & *{ cursor: pointer; }
   }
 
- @mixin setBkgFilter($nth, $col, $url ){
-   &:nth-of-type(#{$nth}n){
-
-     .projects:hover{
-      &::before { background-color: $col;  }
-     }
-
-     .gradientImg{ /*filter: $url;*/ }
-     .projects .project_desc > * { color:$col; }
-
-   }
- }
-
-
-  @each $nth, $obj in $mapFilterIndex{
-    @include setBkgFilter($nth, map-get($obj,color), map-get($obj,filter) );
-  }
-
 }
 
 
@@ -2779,7 +3027,7 @@ img.gradientImg{
   height: 105vh;
   padding-left: 12%;
   padding-right: 12%;
-  background: $bkg;
+  background: $white;
 
   display: flex;
   flex-direction: column;
@@ -2789,8 +3037,8 @@ img.gradientImg{
 
   #signature{
     justify-content: center;
-    margin: 0;
     opacity: 0.5;
+    bottom: 0;
   }
 
   #socials{
@@ -2799,9 +3047,8 @@ img.gradientImg{
     margin: 20px auto;
     margin-bottom: 0;
     margin-top: 90px;
-    & > div:last-of-type{ flex-direction: row; gap: 5px;}
   }
-  .gradientImg{/*filter:$mainFilter;*/}
+
   .projects{
     min-height: 50vh;
     max-height: 200px;
@@ -2823,7 +3070,6 @@ img.gradientImg{
       .project_desc > * { clip-path: inset(0 0 0 0); }
     }
 
-    .project_desc > *{ color: $mainColor; }
 
   }
 
@@ -2981,7 +3227,7 @@ img.gradientImg{
       height: 6px;
       width: 100%;
       display: block;
-      background: black;
+      background: $black;
       transition: width 0.3s ease;
       margin-left: -7%;
     }
@@ -2995,7 +3241,7 @@ img.gradientImg{
         top: 0;
         left: 0;
         transition: background 0.2s ease;
-        //background-image: linear-gradient(0deg, $bkg, #f3f3f300 30%, #f3f3f300 90%, $bkg);
+        //background-image: linear-gradient(0deg, $white, #f3f3f300 30%, #f3f3f300 90%, $white);
       }
   
       h1, h2{
@@ -3187,7 +3433,7 @@ img.gradientImg{
 
   input, textarea, label[for='submit'] p{
     background-color: #e2e2e2;
-    color: black;
+    color: $black;
   }
 
 
@@ -3231,7 +3477,7 @@ img.gradientImg{
   h1:not(:first-child){
     position: absolute;
     top: 0;
-    background: black;
+    background: $black;
     animation-fill-mode:forwards;
     animation-timing-function: linear;
     animation-duration: 2s;
@@ -3358,7 +3604,7 @@ img.gradientImg{
     position: absolute;
     bottom: 0;
     right: 0;
-    background: $bkg;
+    background: $white;
     width: 30px;
     height: 30px;
     margin:10px;
@@ -3380,8 +3626,8 @@ img.gradientImg{
 
   #signature{
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 0;  
+    width: 100%;
   }
   & > h1{
     color:$pink;
@@ -3390,7 +3636,7 @@ img.gradientImg{
   #contactLinks{
     position: absolute;
     left: 50vw;
-    top: 50vh;
+    top: 55vh;
     transform: translateX(-50%) translateY(-50%);
     a{ cursor: pointer; }
     section{
@@ -3441,7 +3687,15 @@ img.gradientImg{
   }
 
   #laos_features{
-    height: 50vh;
+    height: fit-content !important;
+  }
+
+  #laos_typo{
+    .body{
+      section:nth-child(2){
+        margin: 10% 0;
+      }
+    } 
   }
 
 }

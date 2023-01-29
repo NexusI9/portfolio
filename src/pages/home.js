@@ -4,10 +4,13 @@ import { Flow } from '../components/flow';
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Socials } from '../components/statics';
-import { CategoryMenu } from '../components/inputs';
+import { CategoryMenu, Cta } from '../components/inputs';
 import { Video } from '../components/article';
 import { HoverSquare } from '../components/props';
 import viewshowreel from '../assets/viewshowreel.svg';
+import Portrait from '../components/portrait';
+import { ResumeHeader } from '../components/resume';
+import { Signature } from '../components/statics';
 
 const ThumbTagline = ({src, pos, speed}) => {
 
@@ -34,12 +37,13 @@ const VideoBanner = (onScroll) => {
 
   const [displayVideo, setDisplayVideo] = useState(true);
   const name = useRef();
-  const quote = useRef();
   const video = useRef();
   const viewreelRef = useRef();
   const firstplan = useRef();
 
   const onVideoEnter = (e) => {
+
+    window.gtag('event','hover_showreel',{event_category:'hover',event_label:'Hover showreel video'});
     const vidLeft = video.current.getBoundingClientRect().left;
     const vidTop = video.current.getBoundingClientRect().top;
     const half = viewreelRef.current.getBoundingClientRect().width/2
@@ -52,9 +56,12 @@ const VideoBanner = (onScroll) => {
   }
 
   const onVideoLeave = (e) => {
-    viewreelRef.current.style.top = null;
-    viewreelRef.current.style.left = null;
     setHoverActive(false);
+  }
+
+  const onViewClick = () => {
+    document.getElementById('projects')?.scrollIntoView({behavior:'smooth'});
+    window.gtag('event','click_view_work',{event_category:'click', event_label:'Click on view my work'});
   }
 
   const letterVar = {
@@ -136,6 +143,9 @@ const VideoBanner = (onScroll) => {
 
     }
 
+
+    onScroll();
+
     const mq = window.matchMedia('(max-width:525px)');
     onResize(mq);
     window.addEventListener('scroll', onScroll);
@@ -160,16 +170,15 @@ const VideoBanner = (onScroll) => {
       exit='exit'
       >
         <motion.div id='textLetterbox' ref={name}>
-          <h2>Nassim <br/> El Khantour</h2>
-          <h1><b>The powerful blend of art and code, <br/> with a French Touch.</b></h1>
-          <span></span>
-          <p>Art director based in Montreal (soon Taipei) <br/> with an expertise in Web & Motion design.</p>
-            <a onClick={ () => document.getElementById('projects')?.scrollIntoView({behavior:'smooth'}) } id="arrowScroll">
-              <HoverSquare size='50px' top='0' name='arrowScroll' left='auto'>
-                <small>see my work</small>
-                <img src={downArrow} />
-              </HoverSquare>
-            </a>
+          <section>
+            <h2>Nassim <br/> El Khantour</h2>
+            <h1><b>The powerful blend of art and code, with a French Touch.</b></h1>
+            <span></span>
+            <p>Product designer based in Montreal with an expertise in Web & Motion design.</p>
+          </section>
+          <div className='aligncta'>
+            <Cta type='primary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
+          </div>
         </motion.div>
        <div
          id='iframewrapper'
@@ -185,6 +194,11 @@ const VideoBanner = (onScroll) => {
               </div>
           </div>
 
+            <a onClick={onViewClick} id="arrowScroll">
+                  <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.69998 0.899994L9.19998 7.4L15.7 0.899995L18.3 2.19999L9.19998 11.3L0.0999798 2.19999L2.69998 0.899994Z" fill="#070812"/>
+                </svg>
+            </a>
         <span id="firstplan" ref={firstplan}></span>
 
       {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
@@ -194,6 +208,50 @@ const VideoBanner = (onScroll) => {
   );
 }
 
+const About = () => {
+
+  const container = useRef();
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+
+    const onScroll = () => {
+      if( container.current.getBoundingClientRect().top < window.innerHeight){ setInView(true); }
+      else{ setInView(false); }
+    };
+
+    onScroll();
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll',onScroll);
+  },[]);
+
+  useEffect(()=>{
+    if(inView){
+      window.gtag('event','view_about',{event_category:'scroll', event_label:`View about section on homepage`});
+    }
+  },[inView]);
+
+  return(
+    <motion.div 
+    id='homeAbout'
+    ref={container}
+    animate={{opacity:1, y:0}}
+    exit={{opacity:0, y:-300, transition:{duration: 0.5, type:'tween', ease:'easeInOut'}}}
+    >
+      <div className='round'>
+        <Portrait />
+        <section>
+          <ResumeHeader />
+          <div className='aligncta'>
+            <Cta to='/resume'><small><b>See my resume</b></small></Cta>
+            <a className='cta' href='mailto:nassim.elkhantour@gmail.com'><small><b>let's create together</b></small></a>
+          </div>
+        </section>
+      </div>
+    </motion.div>
+  )
+}
 
 
 function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () => 0, onCategoryChange=() => 0}){
@@ -242,6 +300,8 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
       { catMenu && <CategoryMenu /> }
       <VideoBanner />
       <Flow onCategoryChange={ onCategoryChange }/>
+      <About />
+      <Signature />
       <AnimatePresence exitBeforeEnter>
         {social && <Socials minify={true}/>}
       </AnimatePresence>

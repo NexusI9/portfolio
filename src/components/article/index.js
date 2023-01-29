@@ -9,10 +9,10 @@ import play_white from '../../assets/play_white.svg';
 import { Dotty } from '../loader';
 
 //Gallery & Medias
-
 export const Img = ({src, name, alt, className='', id, style, onClick, boardName}) => (
   <section onClick={ () => onClick && name ? onClick({src, alt, className, id, style, name}) : 0 } className={className + ' imgWrapper round ' + (onClick ? 'picLink' : '')} style={style || {}} data-board-name={boardName || ''}><img src={src} alt={alt || 'picture'} className={className || ''} id={id || ''} /><span></span></section>
 );
+
 
 export const Gallery = ({galleries, galleryKey}) => {
 
@@ -38,6 +38,7 @@ export const Gallery = ({galleries, galleryKey}) => {
   }
 
   const onImgClick = (e) => {
+    window.gtag('event','click_gallery_picture',{event_category:'click', event_label:'Click gallery picture'})
     setSearchParams({gallery:galleryKey, picture:e.name});
   }
 
@@ -67,7 +68,7 @@ export const Gallery = ({galleries, galleryKey}) => {
       }
 
       const variants = {
-        enter: (direction: number) => {
+        enter: (direction) => {
           return {
             x: direction > 0 ? 1000 : -1000,
             opacity: 0
@@ -78,7 +79,7 @@ export const Gallery = ({galleries, galleryKey}) => {
           x: 0,
           opacity: 1
         },
-        exit: (direction: number) => {
+        exit: (direction) => {
           return {
             zIndex: 0,
             x: direction < 0 ? 1000 : -1000,
@@ -92,7 +93,7 @@ export const Gallery = ({galleries, galleryKey}) => {
       const [[page, direction], setPage] = useState([pictures[index], 0]);
 
       //https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?from-embed=&file=/src/Example.tsx:1038-1045
-      const paginate = (newPage: string, newDirection: number) => {
+      const paginate = (newPage, newDirection) => {
         if(!newPage){ 
           const indexOfCurrentPic = pictures.indexOf(page);
           if(indexOfCurrentPic === 0 && newDirection === -1){ 
@@ -111,7 +112,7 @@ export const Gallery = ({galleries, galleryKey}) => {
       };
 
       const swipeConfidenceThreshold = 1000;
-      const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
+      const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
 
       const onThumbnailClick = (e) => {
         if(e.prevPic === e.newPic){ return; }

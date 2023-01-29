@@ -62,14 +62,14 @@ const CATEGORIES = {
       },
       {
         "title":"LAOS",
-        "thumbnail":"/assets/thumbnails/laos/laos.jpg",
+        "thumbnail":"/assets/thumbnails/laos/laos_1.jpg",
         "overlay":{
           "type":"slideshow",
           "url":[
-            "/assets/thumbnails/laos/laos_1.jpg",
             "/assets/thumbnails/laos/laos_2.jpg",
             "/assets/thumbnails/laos/laos_3.jpg",
-            "/assets/thumbnails/laos/laos.jpg"
+            "/assets/thumbnails/laos/laos.jpg",
+            "/assets/thumbnails/laos/laos_1.jpg"
           ],
         },
         "banner":"/assets/banners/laos.jpg",
@@ -108,7 +108,7 @@ const CATEGORIES = {
         "thumbnail":"/assets/thumbnails/acab.jpg",
         "banner":"/assets/banners/acab.jpg",
         "desc":"Awarded music video made for Philip Pentacle",
-        "longdesc":"For his 4th album, I had the honor to create the music video for the Synthwave music producer Philip Pentacle. Depicting a futuristic world where uncanny phenomenon seems to inhabit the soul of the sprawl.",
+        "longdesc":"For his 4th album, I had the honor to create the music video for the Synthwave music producer Philip Pentacle. Depicting a futuristic world where uncanny phenomenon seems to inhabit the soul of the sprawl. The music video for the first price at Vibrations Urbaines Festival in 2022.",
         "category":["Animation","Art Direction","Music Video"],
         "stack":["Photoshop","Illustrator","Blender","Maya","After Effects"],
         "overlay":{

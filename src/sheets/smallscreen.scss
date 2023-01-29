@@ -6,11 +6,22 @@
       align-items: center;
     }
 
+    *.cta{
+      padding: 10px 15px;
+    }
+
+    #showreel{
+      padding: 10%;
+      .vimeo{ width: 100%; }
+    }
+
     .projects{
       box-sizing: border-box;
 
       .project_desc{
-        *{
+        & > *{
+          margin: 2% 3%;
+          opacity: 1;
           clip-path: inset(0 0 0 0);
         }
       }
@@ -30,6 +41,7 @@
       margin-top: 90vh;
     }
 
+
     #letterbox {
       flex-direction: column;
       justify-content: center;
@@ -38,21 +50,30 @@
       #iframewrapper{
         width: 90vw;
         height: calc(90vw*9/16);
+
+        #viewshowreel{display: none;}
       }
       #tagline{ 
         font-size: 5em;
         text-align: center;
       }
       #textLetterbox{
-        align-items: flex-start;
-        span{ display: none;}
-        h1{ 
-          font-size: 20px; 
-          margin-bottom: 10px;
+        margin-top: 15%;
+        & > section{ 
+          span{ display: none; }
+
+          h1{ 
+            font-size: 20px; 
+            margin-bottom: 10px;
+          }
+          h1,p{
+            br{ display: none;  }
+          }
+          h2{
+            font-size: clamp(70px, 4vw, 120px); 
+          }
         }
-        h1,p{
-          br{ display: none;  }
-        }
+
       }
     }
 
@@ -83,6 +104,10 @@
       padding: 2% 0;
       align-items: center;
     }
+
+
+    /*-------CASES STUDY------*/
+
 }
 @media only screen and (max-width: 425px) {
 
@@ -163,11 +188,13 @@
      &> h1 {
        font-size: 5em;
         margin-left: 40px;
+        margin-top: 20%;
      }
   }
 
   #resumeWrapper{
     margin-top: 0;
+    padding: 10%;
   }
 
   #resume{
@@ -226,6 +253,7 @@
   #laos_layout .body > div:not(#slicer){
     flex-direction: column;
   }
+
 
   #laos_typo .body{ flex-direction: column-reverse;  }
 

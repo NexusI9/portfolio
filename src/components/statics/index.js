@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare } from '../props';
 import { SocialsIcons, MailAddress, HomeButton, Logo } from '../inputs';
+import { act } from 'react-dom/test-utils';
 
 
 const WindowIco = () => (
@@ -47,6 +48,15 @@ export const Menu = ({homebutton=false, latestHref='', categories=true}) => {
       </motion.div>
     );
   };
+
+  const onBarsClick = () => {
+    setActive(!active);
+    if(!active){
+      window.gtag('event','open_sticky_menu',{event_category:'click', event_label:'Open sticky menu'});
+    }else{
+      window.gtag('event','close_sticky_menu',{event_category:'click', event_label:'Close on sticky menu'});
+    }
+  }
 
   useEffect(() => {
 
@@ -128,7 +138,7 @@ export const Menu = ({homebutton=false, latestHref='', categories=true}) => {
         {!active && !homebutton && <Logo/> }
         </AnimatePresence>
         <div className='topArea'>
-          <div id='bars' onClick={ () => setActive(!active) } className={active ? 'active' : null}>
+          <div id='bars' onClick={onBarsClick} className={active ? 'active' : null}>
             <section className='default'>
               <span></span>
               <span></span>

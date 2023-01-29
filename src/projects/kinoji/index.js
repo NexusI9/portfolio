@@ -452,7 +452,7 @@ export default () => (
           </p>
         </div>
         <div style={{flexBasis: '120%'}} className='stickToRight'>
-          <Img src='/assets/projects/kinoji/mockups/mockup_mac.png' className='gradcircle' />
+          <Img id='kinoji_first_mockup' src='/assets/projects/kinoji/mockups/mockup_mac.png' className='gradcircle' />
         </div>
       </Body>
       <Space />

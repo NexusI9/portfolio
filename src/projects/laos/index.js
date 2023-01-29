@@ -846,7 +846,7 @@ export default () => (
 
   <Article id='guidesheet' spaced={true} name='Graphic chart'>
     <Body flexDirection='vertical' flexAlignement='centered'>
-        <h2>The gaphic chart</h2>
+        <h2>The guide style</h2>
         <p className='half' style={{textAlign:'center', marginBottom:'5vh'}} >LAOS' various exercises own distrinct workspace with their own visual hierarchy to optimize and enhance the learning process for the user</p>
       <Charts />
     </Body>

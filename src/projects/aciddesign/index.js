@@ -19,7 +19,7 @@ export default () => {
       ],
     eden:[
       { type:'base', folder:'/aciddesign/3den/g1', pictures:['3den_1', '3den_7', '3den_8'] },
-      { type:'split', folder:'/aciddesign/3den/g1', pictures:['3den_6','3den_5']},
+      { type:'split', folder:'/aciddesign/3den/g2', pictures:['3den_6','3den_5']},
     ]
   };
 
@@ -65,14 +65,11 @@ export default () => {
         <Article spaced={true} name='#04 3DEN'>
         <Title 
             label='#04 3DEN'
-            summary={<>
+            summary={
+            <>
               Since 3045, 3DEN has seen itself becoming the #1 electronic retailers of erotic and adult products.
-              Selling a variety of goods going from top quality Simstims* to sex worker androids, 3DEN is a place where everyone can unleash their deepest, and way too often, darkest pleasures.
-                <br /><br />
-                <small className='discrete'>
-                  *Simstims are capsules containing specific chemicals released by the android during the sexual act, enhanching the customer's orgasm. They are setup by pluging it down the androids neck or chest. The act of plugging a Simstim caps to an android is called 'Simstim jacking'
-                </small>
-              </>}
+              Selling a variety of goods going from top quality Simstims* to androids, 3DEN is a place where everyone can unleash their deepest, and way too often, darkest pleasures.
+            </>}
             className='half' 
           />
           <Body flexDirection='vertical' >

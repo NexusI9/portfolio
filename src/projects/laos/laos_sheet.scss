@@ -38,7 +38,8 @@
   padding: 3% 0;
   box-sizing: border-box;
   display: grid;
-  $size:12vw;
+  justify-content: center;
+  $size:10vw;
   grid-template-columns: $size $size;
   grid-template-rows: $size $size;
   justify-items: center;
@@ -50,7 +51,7 @@
     height: 90%;
     aspect-ratio: 1/1;
     background-color: white;
-    border-radius: 45px;
+    border-radius: 2em;
     cursor: pointer;
     transition: transform 0.3s ease-out;
     transform: scale3d(1,1,1);
@@ -178,9 +179,6 @@
   font-size: 3em;
 }
 
-#NotoTypo h2:nth-child(2){
-
-}
 
 #laos_typo_switch{
   position: relative;
@@ -208,7 +206,7 @@
 
   & > h1:last-child{
     animation-name:popTypo, maskTypo_1;
-    background: #f3f3f3;
+    background: #f5f7f9;
     font-family: sans-serif;
     text-align: center;
     width: 40%;
@@ -237,11 +235,6 @@
 
 
 /*———————————————————————————————————————————————-*/
-
-
-#laos_layout{
-
-}
 
 
 #laos_layout .body > div:not(#slicer){

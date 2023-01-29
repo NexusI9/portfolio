@@ -3,21 +3,21 @@ import './sheets/projects_sheet.scss';
 import './sheets/midscreen.scss';
 import './sheets/smallscreen.scss';
 
-import { useState, useEffect, Suspense, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import React from 'react';
-import Loader from './components/loader';
 import { getColorOfCategory } from './lib/utils';
 
-import { Menu, Footer, Filter, Socials } from './components/statics';
+import { Menu, Filter } from './components/statics';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation, Routes, Route } from 'react-router-dom';
 
-const Project = React.lazy(() => import('./pages/project') );
-const Map = React.lazy(() => import('./pages/map') );
-const Showreel = React.lazy(() => import('./pages/showreel') );
-const Home = React.lazy(() => import('./pages/home') );
-const Resume = React.lazy(() => import('./pages/resume') );
-const Contact = React.lazy(() => import('./pages/contact') );
+import Project from './pages/project';
+import Map from './pages/map';
+import Showreel from './pages/showreel';
+import Home from './pages/home';
+import Resume from './pages/resume';
+import Contact from './pages/contact';
+
 
 function App() {
 
@@ -50,7 +50,6 @@ function App() {
     body.setAttribute('data-skin',theme.skin || 'default');
 
     const favicon = document.getElementById('favicon');
-    /*setFaviconColor(favicon, theme.color);*/
   
 
   },[theme]);
@@ -58,13 +57,11 @@ function App() {
 
   return (
       <div id='wrapper'>
-        <Suspense fallback={ <Loader /> }>
           <AnimatePresence exitBeforeEnter initial={false}>
               <Routes location={location} key={location.pathname}>
                 { routes.map( (route,i) => <Route key={'route'+route.path+i} path={route.path} element={route.element} /> ) }
               </Routes>
           </AnimatePresence>
-        </Suspense>
         <Menu homebutton={homebutton} latestHref={latestHref.current} />
         <Filter />
       </div>

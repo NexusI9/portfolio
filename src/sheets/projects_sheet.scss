@@ -96,9 +96,6 @@ object{
     margin-right: -20%;
 }
 
-section.imgWrapper{
-  img{ max-width: 100%; }
-}
 
 /*———————————————————————————————————————————————-*/
 
@@ -337,7 +334,15 @@ section.imgWrapper{
   background-image: none !important;
 }
 
-.imgWrapper{ display: flex; margin-bottom: 10px; }
+.imgWrapper{ 
+  display: flex; 
+  max-width: 1920px;
+  margin: auto;
+  margin-bottom: 10px; 
+  justify-content: center; 
+
+  img{ max-width: 100%; }
+}
 
 .backdrop{
   &.center{ 
@@ -370,6 +375,9 @@ section.imgWrapper{
   opacity: 0;
   transform: translate3d(0px, 100px, 0px);
   transition: opacity 0.5s ease-out, transform 0.8s ease-out;
+  max-width: 1600px;
+  margin: auto;
+  
 
   &.appear{ 
     opacity: 1; 

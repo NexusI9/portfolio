@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef, Fragment } from 'react';
 import { gsap } from 'gsap';
 import { getCategories, changeHashTo, setFaviconColor, getColorOfCategory } from '../../lib/utils';
@@ -27,7 +27,6 @@ export const BackButton = () => (
     animate={{x:0, opacity:1, transition:{duration:0.9, type:'tween', ease:'easeOut', delay:0.3}}}
     exit={{y:-200, opacity:0, transition:{duration:0.4}}}
     >
-      <></>
       <small>back to homepage</small>
     </motion.div>
   </Link>
@@ -37,10 +36,10 @@ export const BackButton = () => (
 export const Button = ({type="checkbox", innerRef, name, onClick, label, ico, id, active=false, href, target=''}) => (
   <>
     <input type={type} name={name} id={id} defaultChecked={active} />
-    <label ref={innerRef} htmlFor={id} className='cube' onClick={ () => onClick ? onClick({name,label,ico,id,type}) : 0 }>
+    <label ref={innerRef} htmlFor={id} className='cta' onClick={ () => onClick ? onClick({name,label,ico,id,type}) : 0 }>
         {ico ?
         <div className='label'>
-          <span className='ico'><img src={ico} /></span>
+          { typeof ico === 'string' ? <span className='ico'><img src={ico} /></span> : ico }
           { href ?
             <a href={href} target={target}>
             <small>{label}</small>
@@ -78,12 +77,26 @@ export const Logo = () => (
   </motion.div>
 );
 
+export const Cta = ({children, type='primary', to, onClick=() => 0 }) => {
+  const navigate = useNavigate();
+  const onAnchorClick = () => {
+    if(to){ navigate(to); }
+    onClick(); 
+  }
+  return(
+    <a onClick={ onAnchorClick } className={`cta ${type}` }>
+          {children}
+    </a>
+  );
+}
+
 export const HomeButton = ({latestHref=''}) => (
       <motion.div
       key='homebutton'
       initial={{opacity:0}}
       animate={{opacity:1, transition:{duration:0.3}}}
       exit={{opacity:0, transition:{duration:0.3}}}
+      onClick={ () => window.gtag('event','click_home_button',{event_category:'click', event_label:'Click on home button'})  }
       >
         <Link to={'/'+ (latestHref.length > 0 ? '#'+latestHref : latestHref )} id='homeButton'>
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -162,6 +175,11 @@ export const ViewShowreel = ({container}) => {
 
 export const MailAddress = () => ( <a className='discrete surligneur' href="mailto:nassim.elkhantour@gmail.com"><small>nassim.elkhantour@gmail.com</small></a> );
 export const SocialsIcons = ({mail=false}) => {
+
+  const onSocialClick = (item) => {
+    window.gtag('event',`click_social_${item}`,{event_category:'click', event_label:`Click on social icon: ${item}`});
+  };
+
   const mapSocials = [
     {
       id:'mail',
@@ -212,7 +230,7 @@ export const SocialsIcons = ({mail=false}) => {
       mapSocials.map( (item,i) => !mail && i === 0 ?
          <span key='nullsocial'></span> : 
          <HoverSquare size='25px' name={'hoversquare'+item.id} key={item.id} top='-55%' left='-18%'>
-            <a className='ico' href={item.link} target='_blank' rel="noreferrer" >
+            <a className='ico' href={item.link} target='_blank' rel="noreferrer" onClick={ () => onSocialClick(item.id) }>
               <span data-social={item.id} />
             </a>
           </HoverSquare> ) 
@@ -253,6 +271,11 @@ export const CategoryMenu = () => {
     }
 
   }
+  
+  const onCategoryClick = (e) => {
+    goToCategory(e);
+    window.gtag('event',`click_menu_category_${e}`,{event_category:'click', event_label:`Click on category menu: ${e}`});
+  }
 
   useEffect(()=>{
 
@@ -291,7 +314,10 @@ export const CategoryMenu = () => {
               {getCategories().map( (cat,i) => 
               <Fragment key={`categoryMenu_${cat}`}>
                 <li>
-                  <a onClick={ () => goToCategory(cat) } className={ active === cat ? 'active' : undefined }><small>{cat}</small></a>
+                  <a onClick={ () => onCategoryClick(cat) } className={ active === cat ? 'active' : undefined }>
+                    <small className='cacheBold'><b>{cat}</b></small>
+                    <small>{cat}</small>
+                    </a>
                 </li>
                 {i < getCategories().length-1 && <span className='lineSeparator'></span>}
               </Fragment>

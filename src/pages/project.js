@@ -10,6 +10,7 @@ import {
 } from '../lib/utils';
 import { Suggestion, Header, Content } from '../components/projects';
 import { PercentBar } from '../components/props';
+import { Socials, Signature } from '../components/statics';
 import { useEffect, useState, useRef } from 'react';
 import Loader from '../components/loader';
 import {motion, AnimatePresence} from 'framer-motion';
@@ -171,6 +172,8 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
               { htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content> }
           </motion.div>
           <Suggestion projects={suggestions} display={!showSideBar} />
+          <Signature />
+          <Socials minify={true}/>
         </>
       }
     </>

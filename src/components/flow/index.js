@@ -7,12 +7,11 @@ import {
   getProjectsOfCategory,
   getZhongwenOfCategory
 } from '../../lib/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-responsive-masonry';
 import { useEffect, useState, useRef } from 'react';
 import { Video } from '../article';
-import { Signature } from '../statics';
 
 
 const variant = {
@@ -21,17 +20,13 @@ const variant = {
   exit: {opacity:0, transition:{ delay:0.5, staggerChildren:0.06 } }
 }
 
-const mainTitleVariant={
-  initial:{opacity:0},
-  animate:{opacity:1, transition:{duration:0.4}},
-  exit:{opacity:0, transition:{duration:0.4}},
-}
 
 const toProjectVariant = {
   initial:{opacity:0, y:200},
-  animate:{opacity:1, y:0, transition:{ duration: 0.6 }},
+  animate:{opacity:1, y:0, transition:{ duration: 0.3 }},
   exit:{ y:'-200vh', opacity:0, transition:{ duration:0.4}}
 }
+
 
 const toMapTransition = {
   initial:{opacity:1, scale:1},
@@ -129,7 +124,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
     },[pictures,index]);
 
     return (
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={ !(index === 0) }>
         <motion.img
           className='thumb'
           key={pictures[index]}
@@ -141,8 +136,9 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
       </AnimatePresence>
     );
   }
-  const thumbnail = project.thumbnail;
+  const { thumbnail } = project;
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [ yPos, setYPos ] = useState(0);
   const [overlay, setOverlay] = useState();
@@ -160,15 +156,12 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
         switch(project.overlay.type){
           case 'picture':
             return <img className='thumb' src={project.overlay?.url} />
-          break;
 
           case 'video':
             return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' placeholder={thumbnail} controls={false} loadIco={false} playIco={false}/>
-          break;
 
           case 'slideshow':
             return <SlideOverlay pictures={project.overlay?.url} />
-          break;
 
           default:
         }
@@ -199,8 +192,8 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
       const thumbWidth = thumbnailImg.current.naturalWidth;
       const thumbRatio = thumbWidth/thumbHeight;
 
-      const ctnrHeight = rootCtnr.current.getBoundingClientRect().height;
-      const ctnrWidth = rootCtnr.current.getBoundingClientRect().width;
+      const ctnrHeight = elt.current.getBoundingClientRect().height;
+      const ctnrWidth = elt.current.getBoundingClientRect().width;
       const ctnrRatio = ctnrWidth/ctnrHeight;
 
       const iframe = videoCtnr.current.querySelectorAll('iframe')[0];
@@ -241,6 +234,8 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
       //setTimeout( () => setYPos(0), 800 ); //reset pos to prevent overlap thumbnails
     }
 
+    //transform:`translate3d(0,${ (window.innerWidth > 500) ? yPos/2+'%' : '0' },0)` }
+
 
 
     if(animated){ window.addEventListener('scroll', onScroll); }
@@ -257,23 +252,18 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
   },[elt, animated, overlay]);
 
   return(
-    <Link
-      to={'/project/'+project.title}
-      style={{transform:`translate3d(0,${ (window.innerWidth > 500) ? yPos/2+'%' : '0' },0)` }}
-      className='linkSlider'
-      ref={rootCtnr}
-    >
         <motion.section
-          key={'thumbnail'+project.title}
-          variants={location.pathname === '/map' ? toMapTransition : variant}
           className={'projects round'}
           ref={elt}
           onMouseEnter = { () => setOverlay( overlayContent ) }
           onMouseLeave = { () => setOverlay() }
+          onClick={ () => navigate('/project/'+project.title) }
+          key={'thumbnail'+project.title}
+          variants={variant}
           >
 
           <section className='move overlay'>
-              <img className='thumb' ref={thumbnailImg} src={thumbnail} />
+              {<img className='thumb' src={thumbnail} />}
               {overlay && overlay}
           </section>
 
@@ -283,27 +273,46 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
               { project.desc && <p><small><b>{project.desc}</b></small></p> }
           </div>
         }
-         <img className='move thumb gradientImg' src={thumbnail} />
+         <img className='move thumb gradientImg' src={thumbnail}  ref={thumbnailImg} />
         </motion.section>
-    </Link>
   );
 }
 
 const CategoryContainer = ({projects ,category, innerRef}) => {
 
   const [columnsCount, setColumnsCount] = useState(2);
+  const [display, setDisplay] = useState(false);
+  const container = useRef(); 
 
   useEffect(()=>{
+
+      const onScroll = () => {
+        const {top} = container.current.getBoundingClientRect();
+        if(top < window.innerHeight - 200){ 
+          setDisplay(true);
+          window.removeEventListener('scroll', onScroll);
+        }
+      };
+
       const checkSize = (e) => e.matches ? setColumnsCount(1) : setColumnsCount(2);
       const mq = window.matchMedia('(max-width: 500px)');
       checkSize(mq);
       mq.addEventListener("change", checkSize);
-      return () => mq.removeEventListener("change", checkSize);
+
+      onScroll();
+      if(window.matchMedia('(min-width:525px)').matches){  window.addEventListener('scroll', onScroll); }
+      else{ setDisplay(true); }
+
+      return () => {
+        mq.removeEventListener("change", checkSize);
+        window.removeEventListener('scroll', onScroll);
+      }
+
   },[]);
   return(
 
       <motion.div
-        ref={innerRef}
+        ref={ e => { container.current=e; return innerRef(e); } }
         key={'wrapp_cat'+category}
         variants={variant}
         initial='initial'
@@ -312,7 +321,7 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
         id={cleanCategoryName(category)}
         className="cat">
           <Masonry columnsCount={ columnsCount } gutter='20px'>
-              { getProjectsOfCategory(category).map( project => <ProjectThumbnails key={project.title} project={project} /> ) }
+              { display && getProjectsOfCategory(category).map( project => <ProjectThumbnails key={project.title} project={project} animated={false} /> ) }
           </Masonry>
       </motion.div>
 
@@ -358,7 +367,8 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
         const scrollTop = window.pageYOffset;
         const windowHeight = window.innerHeight;
 
-        if( scrollTop < windowHeight ){ 
+
+        if( (scrollTop < windowHeight) || ( c === catContainers.length-1 && bottom < window.innerHeight/3 ) ){ 
           window.history.pushState(null, "The Art of Nassim El Khantour ", "/");
           onCategoryChange(" ");
           return setCategory(" "); 
@@ -371,6 +381,7 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
         ){
 
           //react 
+          //window.gtag('event',`view_category_${title}`,{event_category:'scroll', event_label: `View homepage category: ${title}`});
           if(userScroll) changeHashTo(title);
           onCategoryChange(title);
           return setCategory(title);
@@ -430,7 +441,6 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
       <div id="projects">
         {catContainers}
       </div>
-      <Signature />
 
     </>
   );

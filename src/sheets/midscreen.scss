@@ -2,6 +2,15 @@
 
 @media only screen and (max-width: 825px) {
 
+
+  body{
+    &[data-skin="dark"]{
+      #menu{
+        &:not(.white){ background:#070812; }
+      }
+    }
+   }
+
   #sidePanel{ display: none; }
   #project .projectWrapper {width: auto; padding: 40px 15px; }
   .casualProject #desc { width: 80%; }
@@ -16,6 +25,42 @@
     --title:2em;
   }
 
+  #homeAbout{
+    min-height: 100vh;
+    height: fit-content;
+    & > div{
+      grid-template-columns: none;
+      grid-template-rows: 1fr auto;
+      height: fit-content;
+
+      #resumeHeader{
+        padding: 0;
+      }
+      & > section{
+        padding: 5%;
+      }
+
+      #squareabout{ 
+        max-width: none;
+        height: 70vh;
+        justify-content: center;
+        &::after{
+          width: 90%;
+          height: 1px;
+          right: auto;
+          bottom: calc(-1 * 70px/2);
+        }
+      }
+    }
+
+
+    #resumeHeader{
+      flex-basis: auto;
+    }
+
+  }
+
+
   #project_banner{
     padding: 5% 10%;
     height: fit-content;
@@ -28,17 +73,20 @@
   #letterbox{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: max-content;
     margin: auto;
     width: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 100%;
+    //height: -webkit-fill-available;
     justify-content: center;
     gap: 10%;
 
     #textLetterbox{
       //& > * br{ display: none; }
+      span{ margin: 0px 0; }
       h2{ font-size: clamp(80px, 15vw, 100px); }
       #arrowScroll{ display: none; animation: none; }
     }
@@ -49,16 +97,22 @@
     }
   }
 
-  #menu ul{
-    clip-path: inset(0 0 100% 0);
-    pointer-events: none;
-    display: none;
-  }
+
 
   #menu{
-    padding: 0 3%;
+    top: 0;
+    padding: 3%;
+    transition: background 0.2s ease;
+    background: transparent;
+    &:not(.white){ background: #f5f7f9; }
+
     #bars.active{
       margin-top: 2vw ;
+    }
+    ul{
+      clip-path: inset(0 0 100% 0);
+      pointer-events: none;
+      display: none;
     }
 
   }
@@ -67,6 +121,7 @@
     width: 100%;
     position: relative;
     height: 50vh;
+    margin-top: 20%;
   }
 
   #suggest {
@@ -116,7 +171,7 @@
     position: relative;
     width: 100%;
     margin: 20px 0;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     left: 0;
 
     & > div:last-of-type{
@@ -190,10 +245,6 @@
     & > h1 {
       font-size: 9em;
     }
-    #signature{
-      box-sizing: border-box;
-      padding: 0 30px;
-    }
   }
 
   /*------CASE STUDY------*/
@@ -248,6 +299,10 @@
     &::before{
       top: 0;
     }
+  }
+
+  #kinoji_first_mockup{
+    margin-top: 10%;
   }
 
 }
