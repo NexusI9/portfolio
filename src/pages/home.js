@@ -1,4 +1,3 @@
-import downArrow from '../assets/arrowScroll_1.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { Flow } from '../components/flow';
 import { useEffect, useState, useRef } from 'react';
@@ -6,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Socials } from '../components/statics';
 import { CategoryMenu, Cta } from '../components/inputs';
 import { Video } from '../components/article';
-import { HoverSquare } from '../components/props';
+import { Spheros } from '../components/props';
 import viewshowreel from '../assets/viewshowreel.svg';
 import Portrait from '../components/portrait';
 import { ResumeHeader } from '../components/resume';
@@ -31,11 +30,9 @@ const ThumbTagline = ({src, pos, speed}) => {
 
 const VideoBanner = (onScroll) => {
 
-  const [opacity, setOpacity] = useState(1);
-  const [mobile, setMobile] = useState(0);
   const [hoverActive, setHoverActive] = useState(false);
 
-  const [displayVideo, setDisplayVideo] = useState(true);
+  const [displayVideo, setDisplayVideo] = useState();
   const name = useRef();
   const video = useRef();
   const viewreelRef = useRef();
@@ -76,69 +73,36 @@ const VideoBanner = (onScroll) => {
     }
   }
 
-  const thumbs = [
-    { 
-      src: '/assets/thumbnails/echo_overlay.jpg',
-      pos: {x:80, y:100, z:90 },
-      speed:0.5,
-    },
-    { 
-      src: '/assets/thumbnails/aciddesign/comet.jpg',
-      pos: { x:200, y:10, z:40},
-      speed:0.8,
-    },
-    { 
-      src: '/assets/thumbnails/aero_overlay.jpg',
-      pos: { x:-10, y:20, z:50 },
-      speed:0.2
-    },
-    { 
-      src: '/assets/thumbnails/cyber_overlay.jpg',
-      pos: { x:-8, y:50, z:100 },
-      speed:0.3
-    },
-    { 
-      src: '/assets/thumbnails/harvester.jpg',
-      pos: { x:100, y:20, z:90 },
-      speed:0.2
-    },
-    { 
-      src: '/assets/thumbnails/acab.jpg',
-      pos: { x:50, y:-20, z:100 },
-      speed:0.4
-    }
-
-  ];
 
   useEffect(() => {
 
-    
     const HEIGHT = window.innerHeight*2;
 
     document.title = 'The Art of Nassim El Khantour';
 
-    const onResize = e => setMobile(!e.matches);
-
     const onScroll = () => {
 
       const scrollPos = window.pageYOffset;
-      if( window.pageYOffset < HEIGHT - 500 ){
+      
+      if( window.pageYOffset < window.innerHeight ){
 
         const t = 1-scrollPos / window.innerHeight;
         const half = scrollPos / (window.innerHeight);
-        
-        setOpacity(1);
+
         setDisplayVideo(true);
       
         if(half <= 1.5){
           name.current.style.transform = `translate3d(0,0%,-${(scrollPos/7)}px)`;
           video.current.style.transform = `translate3d(0,0%,-${(scrollPos/5)}px)`;
-          firstplan.current.style.opacity = half;
+          firstplan.current.style.opacity = t >= 0 ? t : 0;
         }
         
       }else{
-        setOpacity(0);
         setDisplayVideo(false);
+        if( firstplan.current.style.opacity !== 0 ){
+          firstplan.current.style.opacity = 0;
+        }
+
       }
 
     }
@@ -146,38 +110,39 @@ const VideoBanner = (onScroll) => {
 
     onScroll();
 
-    const mq = window.matchMedia('(max-width:525px)');
-    onResize(mq);
     window.addEventListener('scroll', onScroll);
-    mq.addEventListener('change', onResize);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      mq.removeEventListener('change', onResize);
     }
 
   },[]);
 
   return (
-    <>
     <motion.div
       key='motionLetterbox'
       id="letterbox"
-      variants={letterVar}
-      initial='initial'
-      custom = {opacity}
-      animate='animate'
-      exit='exit'
+      ref={firstplan}
+      custom={displayVideo}
+      initial={{opacity:0}}
+      animate={ (displayVideo) => { 
+        return { 
+          opacity: displayVideo ? 1 : 0, 
+          transition:{duration: 0.5, type:'tween', ease:'easeInOut'} 
+        };
+       }}
+      exit={{opacity:0, transition:{duration: 0.5, type:'tween', ease:'easeInOut'}}}
       >
-        <motion.div id='textLetterbox' ref={name}>
+        <motion.div id='textLetterbox' ref={name} style={{display: displayVideo ? null : 'none'}}>
           <section>
             <h2>Nassim <br/> El Khantour</h2>
             <h1><b>The powerful blend of art and code, with a French Touch.</b></h1>
-            <span></span>
+            {/*<span></span>
             <p>Product designer based in Montreal with an expertise in Web & Motion design.</p>
+            */}
           </section>
           <div className='aligncta'>
-            <Cta type='primary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
+            <Cta type='secondary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
           </div>
         </motion.div>
        <div
@@ -194,21 +159,19 @@ const VideoBanner = (onScroll) => {
               </div>
           </div>
 
-            <a onClick={onViewClick} id="arrowScroll">
+            <a onClick={onViewClick} id="arrowScroll" style={{display: displayVideo ? null : 'none'}}>
                   <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.69998 0.899994L9.19998 7.4L15.7 0.899995L18.3 2.19999L9.19998 11.3L0.0999798 2.19999L2.69998 0.899994Z" fill="#070812"/>
                 </svg>
             </a>
-        <span id="firstplan" ref={firstplan}></span>
 
       {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
 
     </motion.div>
-   </>
   );
 }
 
-const About = () => {
+const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
 
   const container = useRef();
   const [inView, setInView] = useState(false);
@@ -228,16 +191,19 @@ const About = () => {
 
   useEffect(()=>{
     if(inView){
+      onEnterView();
       window.gtag('event','view_about',{event_category:'scroll', event_label:`View about section on homepage`});
+    }else{
+      onExitView();
     }
-  },[inView]);
+  },[inView, onEnterView, onExitView]);
 
   return(
     <motion.div 
-    id='homeAbout'
-    ref={container}
-    animate={{opacity:1, y:0}}
-    exit={{opacity:0, y:-300, transition:{duration: 0.5, type:'tween', ease:'easeInOut'}}}
+      id='homeAbout'
+      ref={container}
+      animate={{opacity:1, y:0}}
+      exit={{opacity:0, y:-300, transition:{duration: 0.5, type:'tween', ease:'easeInOut'}}}
     >
       <div className='round'>
         <Portrait />
@@ -259,6 +225,8 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
   const [social, setSocial] = useState(false);
   const [catMenu, displayCatMenu] = useState();
   const [aboveTheFold, setAboveTheFold] = useState(true);
+  const [aboutView, setAboutView] = useState(false);
+  const [spherePos, setSpherePos] = useState('default');
   const {hash} = useLocation();
 
   useEffect( () => hash && document.querySelector(decodeURI(hash))?.scrollIntoView({behavior:'auto'}),[]); //check hash on mount
@@ -277,9 +245,6 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
     onLoad();
     onScroll();
 
-    if(aboveTheFold){ onAboveTheFold(); }
-    else{ onBelowTheFold(); }
-
     window.addEventListener('scroll', onScroll);
 
     const mq = window.matchMedia('(max-width:525px)');
@@ -294,13 +259,24 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
 
   },[]);
 
+  useEffect( () => aboveTheFold ? onAboveTheFold() : onBelowTheFold(), [aboveTheFold]);
+
+  useEffect( () => {
+      //set Spheros positions depending on above the fold or if about is in view
+      if(aboveTheFold){ setSpherePos('default'); }
+      else if( !aboutView ){ setSpherePos('spread'); }
+      else if( aboutView){ setSpherePos('about'); }
+
+  }, [onAboveTheFold, aboutView]);
+
 
   return(
     <>
+      <Spheros state={ spherePos } />
       { catMenu && <CategoryMenu /> }
       <VideoBanner />
       <Flow onCategoryChange={ onCategoryChange }/>
-      <About />
+      <About onEnterView={ () => setAboutView(true) } onExitView={ () => setAboutView(false) }/>
       <Signature />
       <AnimatePresence exitBeforeEnter>
         {social && <Socials minify={true}/>}

@@ -36,7 +36,7 @@ const Content = ({header, body, detail, separator=true }) => (
 )
 
 
-export const ResumeHeader = (innerRef, language='english') => (
+export const ResumeHeader = ({innerRef, language='english'}) => (
    <section ref={ e => innerRef } id="resumeHeader">
             <div>
             <h2>Nassim El Khantour</h2>
@@ -44,7 +44,7 @@ export const ResumeHeader = (innerRef, language='english') => (
               <Multi
                 eng='Multimedia Designer :: Art Director :: Developer'
                 fr='Designer Multimédia :: Directeur Artistique :: Développeur'
-                zh='多媒體設計師  ::  藝術總監  ::  工程師'
+                zh='多媒體設計師  ::  藝術總監  ::  網站工程師'
                 language={language}/>
             </p>
 

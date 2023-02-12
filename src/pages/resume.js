@@ -1,10 +1,9 @@
 
 import {motion, AnimatePresence} from 'framer-motion';
-import { Button, Multi } from '../components/inputs';
-import { useState, useEffect, useRef, Suspense } from 'react';
+import { Button, Multi, Cta } from '../components/inputs';
+import { useState, useEffect, useRef } from 'react';
 import React from 'react';
-import {gsap} from 'gsap';
-import { Socials, Signature } from '../components/statics';
+import { Socials } from '../components/statics';
 import { useSearchParams } from 'react-router-dom';
 import {
   Pro,
@@ -17,7 +16,6 @@ import {
   Press,
   ResumeHeader
  } from '../components/resume';
-import Masonry from 'react-responsive-masonry';
 
 import work from '../assets/icons/case.svg';
 import hat from '../assets/icons/hat.svg';
@@ -27,8 +25,6 @@ import group from '../assets/icons/group.svg';
 import art from '../assets/icons/art.svg';
 import press from '../assets/icons/press.svg';
 import tools from '../assets/icons/tools.svg';
-
-import dl from '../assets/icons/dl.svg';
 
 import Portrait from '../components/portrait';
 
@@ -292,19 +288,15 @@ function Resume({onLoad=()=>0}){
       </section>
 
       <section>
-        <motion.span key='buttonDl' variants={popUp}>
-          <Button 
-          label={<Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />} 
-          ico={
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <motion.span key='buttonDl' variants={popUp} id="dlresume">
+          <Cta href={dlUrl} type='secondary'>
+             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1.1875 10.375H10.8125C10.9285 10.375 11.0398 10.4211 11.1219 10.5031C11.2039 10.5852 11.25 10.6965 11.25 10.8125C11.25 10.9285 11.2039 11.0398 11.1219 11.1219C11.0398 11.2039 10.9285 11.25 10.8125 11.25H1.1875C1.07147 11.25 0.960188 11.2039 0.878141 11.1219C0.796094 11.0398 0.75 10.9285 0.75 10.8125C0.75 10.6965 0.796094 10.5852 0.878141 10.5031C0.960188 10.4211 1.07147 10.375 1.1875 10.375ZM6.4375 6.9065L9.668 3.67512L10.2866 4.29375L5.95625 8.625L1.625 4.29375L2.24363 3.67512L5.5625 6.994V0.75H6.4375V6.9065Z"/>
             </svg>
-            } 
-          type='button'
-          name='download' 
-          href={dlUrl} 
-          target='_blank'
-          />
+            <small>
+              <Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />
+            </small>
+          </Cta> 
         </motion.span>
       </section>
 
@@ -320,7 +312,7 @@ function Resume({onLoad=()=>0}){
       animate='animate'
       exit='exit'
       key={'resumeWrapper'+language} >
-        <ResumeHeader {...language} innerRef={ e => banner.current = e}/>
+        <ResumeHeader language={language} innerRef={ e => banner.current = e}/>
         <div id="resume">
             <div>
                 { listRoute.map( (item,i) => i%2 === 0 && <Section key={'section'+item.id} title={item.name} ico={item.ico} content={item.content}/> ) }

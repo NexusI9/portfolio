@@ -22,12 +22,12 @@ import Contact from './pages/contact';
 function App() {
 
   const routes = [
-    {path: '*', element: <Home onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }} onCategoryChange={ e => latestHref.current = e } />},
-    {path:'/', element: <Home onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); }}  onCategoryChange={ e => latestHref.current = e } /> },
+    {path: '*', element: <Home onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); setHomeAbove(true); }} onCategoryChange={ e => latestHref.current = e } />},
+    {path:'/', element: <Home onLoad={ () => { setTheme({skin:'default'}); setHomebutton(false); setHomeAbove(true); }}  onCategoryChange={ e => latestHref.current = e } onAboveTheFold={ () => setHomeAbove(true) } onBelowTheFold={ () => setHomeAbove(false) } /> },
     {path:'/project/:title', element: <Project onLoad={ obj => { setTheme({color:obj.color, skin:obj.skin});  } } onLoadFinish={ () => setHomebutton(true) } /> },
-    {path:'/resume', element: <Resume onLoad={ () => { setTheme({color:'red'}); setHomebutton(false);  }} /> },
-    {path:'/contact', element: <Contact onLoad={ () => { setTheme({color:'purple'}); setHomebutton(false);  }} /> },
-    {path:'/showreel', element: <Showreel onLoad={ () => { setTheme({skin:'dark'}); setHomebutton(true); }} /> },
+    {path:'/resume', element: <Resume onLoad={ () => { setTheme({color:'red'}); setHomebutton(false); setHomeAbove(true); }} /> },
+    {path:'/contact', element: <Contact onLoad={ () => { setTheme({color:'purple'}); setHomebutton(false);  setHomeAbove(true); }} /> },
+    {path:'/showreel', element: <Showreel onLoad={ () => { setTheme({skin:'dark'}); setHomebutton(true); setHomeAbove(true); }} /> },
     {path:'/map', element: <Map /> }
   ]
 
@@ -41,6 +41,7 @@ function App() {
     customColor: null
   });
   const [homebutton, setHomebutton] = useState(false);
+  const [homeAbove, setHomeAbove] = useState(false);
 
   useEffect( () => {
 
@@ -62,7 +63,7 @@ function App() {
                 { routes.map( (route,i) => <Route key={'route'+route.path+i} path={route.path} element={route.element} /> ) }
               </Routes>
           </AnimatePresence>
-        <Menu homebutton={homebutton} latestHref={latestHref.current} />
+        <Menu homebutton={homebutton} latestHref={latestHref.current} background={ !homeAbove } />
         <Filter />
       </div>
   );

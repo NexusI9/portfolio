@@ -8,7 +8,7 @@ import {
   getRandomProject,
   getSkinFromProject
 } from '../lib/utils';
-import { Suggestion, Header, Content } from '../components/projects';
+import { Suggestion, Content } from '../components/projects';
 import { PercentBar } from '../components/props';
 import { Socials, Signature } from '../components/statics';
 import { useEffect, useState, useRef } from 'react';
@@ -155,8 +155,8 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
             <small>{project.date}</small>
           </section>
           <section>
-          <h5>About the project</h5>
-          <p className='project_long_desc'>{project.longdesc || ''}</p>
+            <h5>About the project</h5>
+            <p className='project_long_desc'>{project.longdesc || ''}</p>
           </section>
 
         </div>

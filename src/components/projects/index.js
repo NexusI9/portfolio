@@ -47,7 +47,7 @@ export const Suggestion = ({projects, display}) =>{
           key='suggestSection'
           variants={variantChild}
         >
-          { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={false} /> ) }
+          { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={true} /> ) }
         </motion.section>
       </motion.div>
     );

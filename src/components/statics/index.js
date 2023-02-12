@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare } from '../props';
 import { SocialsIcons, MailAddress, HomeButton, Logo } from '../inputs';
-import { act } from 'react-dom/test-utils';
 
 
 const WindowIco = () => (
@@ -30,7 +29,7 @@ export const OldMenu = ({projects}) => (
     </div>
   );
 
-export const Menu = ({homebutton=false, latestHref='', categories=true}) => {
+export const Menu = ({homebutton=false, latestHref='', categories=true, background=false}) => {
 
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
@@ -132,7 +131,7 @@ export const Menu = ({homebutton=false, latestHref='', categories=true}) => {
 
   return(
     <>
-      <nav id="menu" className={active ? 'active' : null}>
+      <nav id="menu" className={(active ? 'active' : null) +' '+ (background ? null : 'transparent') }>
         <AnimatePresence exitBeforeEnter>
         {!active && homebutton && <HomeButton key='homebuttonpresence' latestHref={latestHref} /> }
         {!active && !homebutton && <Logo/> }

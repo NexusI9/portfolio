@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { MailAddress, SocialsIcons } from '../components/inputs';
 import { Signature } from '../components/statics';
+import { Spheros } from '../components/props';
 
 function Contact({onLoad = () => 0}){
 
@@ -37,7 +38,8 @@ function Contact({onLoad = () => 0}){
     initial='initial'
     animate='animate'
     exit='exit'
-    >
+    > 
+      <Spheros />
       <motion.h1 key='letsgetintouch' variants={variantTitle}>Let's get in touch!</motion.h1>
 
       <motion.div id='contactLinks' key='contactLinks' variants={variantContact}>

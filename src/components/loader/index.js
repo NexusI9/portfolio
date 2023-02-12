@@ -14,50 +14,6 @@ export const Dotty = ({ introComplete }) => {
 
   useEffect(() => {
 
-      const elastEaseIn = Elastic.easeIn.config(2, 0.75);
-      const elastEaseOut = Elastic.easeOut.config(2, 0.75);
-
-      const speed = 0.4;
-      const recover_speed = 0.2;
-
-      function intro(){
-
-        const dottyAppear = gsap.timeline({ delay: 1, onComplete: () => introComplete ? introComplete(true) : 0 });
-        dottyAppear.to([alpha.current, beta.current,gamma.current, delta.current] , {scale:0, duration:0});
-        dottyAppear.to(alpha.current, {scale:1, duration:speed/2, ease:elastEaseOut});
-        dottyAppear.to(beta.current, {scale:1, duration:speed/2, ease:elastEaseOut});
-        dottyAppear.to(delta.current, {scale:1, duration:speed/2, ease:elastEaseOut });
-        dottyAppear.to(gamma.current, {scale:1, duration:speed/2, ease:elastEaseOut });
-
-        return dottyAppear;
-      }
-      function loop(){
-
-        const dottyAnim = gsap.timeline({ repeat:-1 });
-        //phase 1 : remove
-        dottyAnim.to(alpha.current, {x:'100%', borderRadius:0, duration:speed, ease: elastEaseIn});
-        dottyAnim.to(alpha.current, {visibility:'hidden', borderRadius:'100%', x:0, y:'100%', duration:0});
-
-        dottyAnim.to(beta.current, {y:'100%', borderRadius:'100%', duration:speed, ease: elastEaseIn});
-        dottyAnim.to(beta.current, {visibility:'hidden', borderRadius:0, y:0, x:'-100%', duration:0});
-
-        dottyAnim.to(gamma.current, {x:'-100%', borderRadius:0, duration:speed, ease: elastEaseIn});
-        dottyAnim.to(gamma.current, {visibility:'hidden', borderRadius:'100%', x:0, y:'-100%', duration:0});
-
-        dottyAnim.to(delta.current, {y:'-100%', borderRadius:'100%', rotate:180,duration:speed*1.5, ease: Elastic.easeInOut.config(4, 0.75)});
-        //phase 2 : recover
-
-        dottyAnim.to(alpha.current, {visibility:'visible', x:0, y:0, duration:0});
-        dottyAnim.to(delta.current, {visibility:'hidden', y:0, x:'100%', borderRadius:0,duration:0});
-        // v
-        dottyAnim.to(beta.current, {visibility:'visible', x:0, y:0, duration:recover_speed, ease:elastEaseOut});
-        dottyAnim.to(gamma.current, {visibility:'visible', x:0, y:0, duration:recover_speed, ease:elastEaseOut});
-        dottyAnim.to(delta.current, {visibility:'visible', x:0, y:0, duration:recover_speed, ease:elastEaseOut});
-
-        return dottyAnim;
-      }
-      const master = gsap.timeline();
-
       var iteration = 0;
       const onAnimationEnd = (e) => {
         iteration++;
@@ -81,37 +37,6 @@ export const Dotty = ({ introComplete }) => {
 
 }
 
-const MainFrame = ({percent}) => {
-
-  const frame = useRef();
-  const cache = useRef();
-  const bar = useRef();
-
-  useEffect(() => {
-
-
-      /*const startAnim  = gsap.timeline();
-      startAnim.to(frame.current, {scaleY:0, scaleX:0, duration:0 });
-      startAnim.to(frame.current, {scaleY:1, scaleX:0.02, duration:0.3, ease: "easeIn" });
-      startAnim.to(frame.current, {scaleX:1, scaleY:1, duration:0.4, ease: Elastic.easeOut.config(1, 0.5), onComplete: () => frame.current ? frame.current.style.animationName = 'sinScale' : 0 } );
-      startAnim.to(cache.current, {scale:0.97, duration:0.8, ease: Elastic.easeOut.config(1, 0.3) } );
-      startAnim.to(bar.current, {width:"400%", duration:0.8, ease: "easeOut" } );
-      */
-
-  }, [frame]);
-
-  return(
-      <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg" id="loadFrame" style={{display:'none'}}>
-        <defs>
-        </defs>
-        <rect width='100%' height='100%' id='frameCache'/>
-        <clipPath id='frameClip'>
-          <rect width='100%' height='144%' />
-        </clipPath>
-      </svg>
-
-  );
-}
 
 function Loader({title, onLoad, percent=0}){
 
@@ -144,8 +69,13 @@ function Loader({title, onLoad, percent=0}){
     }
 
     if(percent == 0){ resizeToFit(); }
+    gsap.to(label.current, {
+      'background-position-y': `${(50 - (percent*50/100))}vh`, 
+      'background-color': percent > 80 ? `rgb(255, 255, 255, ${percent/100})` : null,
+      duration:percent > 80 ? 0.5 : 0.3, 
+      ease:"easeOut"
+    });
 
-    gsap.to(label.current, {'background-position-y': (50 - (percent*50/100))+'vh', duration:0.3, ease:"easeOut"});
 
   },[percent]);
 

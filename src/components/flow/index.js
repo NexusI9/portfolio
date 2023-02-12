@@ -137,8 +137,13 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
     );
   }
   const { thumbnail } = project;
-  const location = useLocation();
   const navigate = useNavigate();
+
+  const parallaxConfig = {
+    zoom: 1.12,
+    scale:45,
+    minmax:17
+  }
 
   const [ yPos, setYPos ] = useState(0);
   const [overlay, setOverlay] = useState();
@@ -146,7 +151,6 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
 
   //video resize
   const thumbnailImg = useRef();
-  const rootCtnr = useRef();
   const videoCtnr = useRef();
 
   const overlayContent = () => {
@@ -174,7 +178,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
 
     function scrollVelocity(max = 20){
 
-        var velocity = lastScroll - window.pageYOffset;
+        let velocity = lastScroll - window.pageYOffset;
         if( velocity > max){ velocity = max; }
         if( velocity < -1*max){ velocity = -1*max; }
         if( velocity == -1 || velocity == 1){ velocity=0;}
@@ -225,20 +229,17 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
 
     //let tm;
     const onScroll = () => {
-      //clearTimeout(tm);
-      const top = elt.current?.getBoundingClientRect().top;
-      const height = elt.current?.getBoundingClientRect().height;
-      if(top < window.innerHeight && top+height > 0){ setYPos(scrollVelocity()); }
-
+      const { top, height, bottom }  = elt.current?.getBoundingClientRect();
+      if( bottom > 0 && top < window.innerHeight  ){ 
+        const decal = (top-height/2)/window.innerHeight * parallaxConfig.scale;
+        //if(decal > parallaxConfig.minmax ){ decal = parallaxConfig.minmax; }
+        //else if(decal < -1 * parallaxConfig.minmax ){ decal = -1 * parallaxConfig.minmax; }
+        setYPos( -1 * decal ); 
+      }
       lastScroll = window.pageYOffset;
-      //setTimeout( () => setYPos(0), 800 ); //reset pos to prevent overlap thumbnails
     }
 
-    //transform:`translate3d(0,${ (window.innerWidth > 500) ? yPos/2+'%' : '0' },0)` }
-
-
-
-    if(animated){ window.addEventListener('scroll', onScroll); }
+    if(animated && window.matchMedia('(hover:hover)').matches ){ window.addEventListener('scroll', onScroll); }
 
     if(videoCtnr.current){
       scaleVideo();
@@ -249,7 +250,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
       if(animated){ window.removeEventListener('scroll', onScroll) }
       if(videoCtnr){ window.removeEventListener('resize', scaleVideo); }
     };
-  },[elt, animated, overlay]);
+  },[elt, overlay]);
 
   return(
         <motion.section
@@ -273,7 +274,7 @@ export const ProjectThumbnails = ({project, variant=toProjectVariant, animated=t
               { project.desc && <p><small><b>{project.desc}</b></small></p> }
           </div>
         }
-         <img className='move thumb gradientImg' src={thumbnail}  ref={thumbnailImg} />
+         <img className='move thumb' src={thumbnail}  ref={thumbnailImg} style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${ yPos }px,0)` }} />
         </motion.section>
   );
 }
@@ -321,7 +322,8 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
         id={cleanCategoryName(category)}
         className="cat">
           <Masonry columnsCount={ columnsCount } gutter='20px'>
-              { display && getProjectsOfCategory(category).map( project => <ProjectThumbnails key={project.title} project={project} animated={false} /> ) }
+              { /* category === 'Design' && c === 0 */ }
+              { display && getProjectsOfCategory(category).map( (project,c) => <ProjectThumbnails key={project.title} project={project} animated={true} /> ) }
           </Masonry>
       </motion.div>
 
@@ -344,7 +346,6 @@ export const Flow = ({projects, onCategoryChange=()=>0}) => {
   });
   
   useEffect( () => {
-
 
     const onClick = () => {
       //if user clicked on "a" from categorymenu then prevent hash change from this userEffect ( give priority to categorymenu hash change )
