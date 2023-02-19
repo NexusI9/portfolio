@@ -1,8 +1,8 @@
-import { Img, Video,Article } from '../../components/article';
+import {Article, Img, Video} from '../../components/Folio';
 
 export default () => (
   <>
-		<Article spaced={true} >
+	<Article spaced={true} >
       <Video id={503057732} />
     </Article>
 

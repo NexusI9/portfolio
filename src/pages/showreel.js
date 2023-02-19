@@ -1,5 +1,5 @@
-import { Video } from '../components/article';
-import { Socials } from '../components/statics';
+import { Video } from '../components/Folio';
+import { Socials } from '../components/Statics';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 

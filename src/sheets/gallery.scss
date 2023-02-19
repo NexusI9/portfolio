@@ -76,6 +76,10 @@
     height: 100%;
   }
 
+  & > section{
+    border: solid 1px #ebebec;
+  }
+
   section{
     box-sizing: border-box;
     position: relative;

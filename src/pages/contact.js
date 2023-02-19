@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { MailAddress, SocialsIcons } from '../components/inputs';
-import { Signature } from '../components/statics';
-import { Spheros } from '../components/props';
+import { MailAddress, SocialsIcons } from '../components/Inputs';
+import { Signature } from '../components/Statics';
+import { Spheros } from '../components/Props';
 
 function Contact({onLoad = () => 0}){
 

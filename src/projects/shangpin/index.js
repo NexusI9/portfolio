@@ -1,4 +1,4 @@
-import { Title, Space, Article, Body, Gallery, Video } from '../../components/article';
+import {Article, Body, Gallery, Title, Video} from '../../components/Folio';
 
 const galleryRoutes = {
     technology:[

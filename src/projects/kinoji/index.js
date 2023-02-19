@@ -1,12 +1,4 @@
-import {
-  Gallery,
-  Article,
-  Body,
-  Title,
-  Space,
-  Pointer,
-  Img
-} from '../../components/article';
+import {Article, Body, Gallery, Title, Space, Pointer, Img} from '../../components/Folio';
 
 import {
   SearchBar,
@@ -16,6 +8,7 @@ import {
   MicroFilters
 } from './inputs';
 import './kinoji_sheet.scss';
+import logo from './assets/logo.svg';
 
 
 const picsArray = {
@@ -441,7 +434,7 @@ export default () => (
       <Space type='small' />
       <Body style={{columnGap:'10%'}} className='flex vcenter' >
         <div style={{flexBasis: '50%', boxSizing:'border-box'}}>
-          <h2 className='step'>From Asia, to the west</h2>
+          <h2>From Asia, to the west</h2>
           <br/>
           <p>
             Kinoji is a free online cinematography library gathering movies' shots from all horizons.
@@ -457,6 +450,8 @@ export default () => (
       </Body>
       <Space />
       <Body flexDirection='vertical'>
+        <h2>Web-app snapshots</h2>
+        <br/>
         <Gallery galleries={
           {
             gallery_1: [
@@ -506,10 +501,20 @@ export default () => (
     </Article>
 
     <Article spaced={true} name='The style guide' id='kinoji_guidestyle' className='backdrop center fill'>
-      <Body title="The style guide" flexDirection='vertical'>
+      
+    <Body title="The style guide" flexDirection='vertical'>
+        <section id='logointroduce' >
+            <h5>The logotype</h5>
+            <p>Combining elements of modernity with more classical shapes,
+            <br/>the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
+            <img src={logo}/>
+        </section>
+      </Body>
+
+      <Body flexDirection='vertical'>
         <GraphicChart />
       </Body>
-      <Space type='small'/>
+      
       <Body title='Userflow' flexDirection='vertical'>
           <img src="/assets/projects/kinoji/userflow.svg" className='round'/>
         </Body>

@@ -1,15 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Flow } from '../components/flow';
+import { Flow } from '../components/Flow';
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Socials } from '../components/statics';
-import { CategoryMenu, Cta } from '../components/inputs';
-import { Video } from '../components/article';
-import { Spheros } from '../components/props';
+import { Socials,Signature } from '../components/Statics';
+import { CategoryMenu, Cta } from '../components/Inputs';
+import { Video } from '../components/Folio';
+import { Spheros } from '../components/Props';
 import viewshowreel from '../assets/viewshowreel.svg';
-import Portrait from '../components/portrait';
-import { ResumeHeader } from '../components/resume';
-import { Signature } from '../components/statics';
+import { Portrait } from '../components/Portrait';
+import { ResumeHeader } from '../components/Resume';
 
 const ThumbTagline = ({src, pos, speed}) => {
 

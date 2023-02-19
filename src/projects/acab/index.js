@@ -1,4 +1,5 @@
-import { Img, Video, Article, Body, Gallery } from '../../components/article';
+import {Article, Body, Video, Img} from '../../components/Folio';
+
 
 const galleryRoute = {
   acab:[

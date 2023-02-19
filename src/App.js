@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { getColorOfCategory } from './lib/utils';
 
-import { Menu, Filter } from './components/statics';
+import { Menu, Filter } from './components/Statics';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation, Routes, Route } from 'react-router-dom';
 

@@ -5,20 +5,24 @@ const CATEGORIES = {
     "color":"red",
     "projects":
     [
-        {
-          "title":"商品設計合集",
-          "thumbnail":"/assets/thumbnails/shangpin.jpg",
-          "banner":"/assets/banners/shangpin.jpg",
-          "overlay":{
-            "type":"video",
-            "url":"787247173"
-          },
-          "date": 2023,
-          "desc":"Collection of Taiwanese inspired products design",
-          "longdesc":"A collection of various product design exploring various kinds of art directions and branding as well as field of productions, going from cosmetic, to food and technology.",
-          "category":["Product Design", "UX/UI", "Branding"],
-          "stack":["Photoshop","Illustrator","Blender","After Effects"],
-          "folder":"shangpin"
+      {
+        "title":"XTRA",
+        "thumbnail":"/assets/thumbnails/xtra/xtra.jpg",
+        "banner":"/assets/banners/xtra.jpg",
+        "overlay":{
+          "type":"slideshow",
+          "url":[
+            "/assets/thumbnails/xtra/xtra_1.jpg",
+            "/assets/thumbnails/xtra/xtra_2.jpg",
+            "/assets/thumbnails/xtra/xtra_3.jpg"
+          ],
+        },
+        "date": 2023,
+        "desc":"Website for a data privacy and compliance solution company",
+        "longdesc":"XTRA is a cybersecurity firm providing various services going from cybersecurity analysis to network setup. All these services are gathered within a visually impactful and modernistic website.",
+        "category":["Web Design", "UX/UI", "Branding"],
+        "stack":["Photoshop","Illustrator","Figma"],
+        "folder":"xtra"
       },
       {
         "title":"Kinoji",
@@ -94,7 +98,22 @@ const CATEGORIES = {
         "stack":["Photoshop","Illustrator","Blender","After Effects"],
         "date":2021,
         "folder":"mengfeng",
-      }
+      },
+      {
+        "title":"商品設計合集",
+        "thumbnail":"/assets/thumbnails/shangpin.jpg",
+        "banner":"/assets/banners/shangpin.jpg",
+        "overlay":{
+          "type":"video",
+          "url":"787247173"
+        },
+        "date": 2023,
+        "desc":"Collection of Taiwanese inspired products design",
+        "longdesc":"A collection of various product design exploring various kinds of art directions and branding as well as field of productions, going from cosmetic, to food and technology.",
+        "category":["Product Design", "UX/UI", "Branding"],
+        "stack":["Photoshop","Illustrator","Blender","After Effects"],
+        "folder":"shangpin"
+    }
     ]
   }
     ,
@@ -234,7 +253,7 @@ const CATEGORIES = {
       },
       {
         "title":"CYB3R T3CHN0 R4VE",
-        "thumbnail":"/assets/thumbnails/cyber.jpg",
+        "thumbnail":"/assets/thumbnails/cyber/cyber.jpg",
         "overlay":{
           "type":"video",
           "url":"717071952"

@@ -96,6 +96,9 @@ object{
     margin-right: -20%;
 }
 
+.stickToLeft{
+  margin-left: -20%;
+}
 
 /*———————————————————————————————————————————————-*/
 
@@ -458,6 +461,14 @@ object{
   }
 
 
+}
+
+.tableGroup{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: auto;
+  gap: 50px;
 }
 
 

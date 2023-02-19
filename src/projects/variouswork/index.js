@@ -1,6 +1,4 @@
-import {Article, Body, Video} from '../../components/article';
-import {useEffect, useState} from 'react';
-
+import {Article, Body, Video} from '../../components/Folio';
 
 export default () => {
 

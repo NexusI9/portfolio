@@ -2,9 +2,9 @@
 import { motion } from 'framer-motion';
 import { getCategories } from '../lib/utils';
 import { Link } from 'react-router-dom';
-import { ProjectThumbnails } from '../components/flow';
+import { ProjectThumbnails } from '../components/Flow';
 
-import { BackButton } from '../components/inputs';
+import { BackButton } from '../components/Inputs';
 import { useState } from 'react';
 
 const variantWrapper = {

@@ -1,4 +1,4 @@
-import { Gallery, Article, Body } from '../../components/article';
+import {Article, Body, Gallery} from '../../components/Folio';
 
 const galleryRoutes = {
   g1:[ 

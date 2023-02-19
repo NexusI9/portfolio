@@ -1,4 +1,5 @@
-import { Img, Gallery, Article, Body } from '../../components/article';
+import {Article, Body, Img} from '../../components/Folio';
+
 
 export default () => (
   <>

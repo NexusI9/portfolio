@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {Article, Body, Gallery, Title, Space, Pointer, Img, Video} from '../../components/Folio';
 
-import { Img, Gallery, Article, Body, Title, Video, Pointer, Space } from '../../components/article';
 import './laos_sheet.scss';
 import './laos_popup.scss';
 import './laos_features.scss';

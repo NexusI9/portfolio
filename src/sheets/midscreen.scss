@@ -260,6 +260,7 @@
       .parallax{
         left: -3vw;
         width: 101vw;
+        height: 25vh;
       }
 
       .reverse{ flex-direction: column-reverse;}
@@ -269,6 +270,9 @@
       .pointer{
         display: block;
         span{ display: none; }
+        & > br{
+          display: none;
+        }
       }
 
       .blank{
@@ -282,6 +286,16 @@
       .hidtablet{ display: none;}
       .padleft{ padding-left: 0; }
       .padright{ padding-right: 0; }
+
+      .tableGroup{
+        flex-direction: column;
+      }
+
+      .body{
+        img{
+          margin-top: 80px;
+        }
+      }
   }
   .musicWave{
     left: -7vw;

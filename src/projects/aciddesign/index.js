@@ -1,5 +1,4 @@
-import { generateGallery } from '../../lib/utils';
-import { Article, Gallery, Body, Title } from '../../components/article';
+import {Article, Body, Title, Gallery} from '../../components/Folio';
 
 export default () => {
 
@@ -29,7 +28,7 @@ export default () => {
   return(
     <>
         <Article spaced={true} name='#01 Holospace'>
-          <Title 
+          <Title
             label='#01 Holospace' 
             summary="Sold by Trilobeat, the Holospace is a holographic audio speaker projecting soundwaves and a spectrum of others visuals according to the user's music playing"
             className='half' 
@@ -40,7 +39,7 @@ export default () => {
         </Article>
 
         <Article spaced={true} name='#02 The Comet'>
-        <Title 
+        <Title
             label='#02 The Comet'
             summary="The Comet is galaxy's largest Space community and Astrophysics news feed." 
             className='half' 
@@ -51,7 +50,7 @@ export default () => {
         </Article>
 
         <Article spaced={true} name='#03 Spice Jam'>
-        <Title 
+        <Title
             label='#03 SPICE JAM'
             summary="Famously known for it's top quality psychotropic brewings and herbal blends, Spice Jam is a nutrition company making it's consummer dream and transcend since 1969."
             className='half' 
@@ -63,7 +62,7 @@ export default () => {
 
 
         <Article spaced={true} name='#04 3DEN'>
-        <Title 
+        <Title
             label='#04 3DEN'
             summary={
             <>

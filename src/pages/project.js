@@ -8,11 +8,11 @@ import {
   getRandomProject,
   getSkinFromProject
 } from '../lib/utils';
-import { Suggestion, Content } from '../components/projects';
-import { PercentBar } from '../components/props';
-import { Socials, Signature } from '../components/statics';
+import { Suggestion, Content } from '../components/Projects';
+import { PercentBar } from '../components/Props';
+import { Socials, Signature } from '../components/Statics';
 import { useEffect, useState, useRef } from 'react';
-import Loader from '../components/loader';
+import { Loader } from '../components/Loader';
 import {motion, AnimatePresence} from 'framer-motion';
 import { gsap } from 'gsap';
 import zhConvertor from 'zhconvertor';

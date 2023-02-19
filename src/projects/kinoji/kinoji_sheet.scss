@@ -2,7 +2,6 @@
 
 #cine_board{
   width: 100%;
-  background-image: url("assets/cinegogue_logo.svg");
   height: 100%;
   background-size: 20%;
 }
@@ -20,6 +19,23 @@
    }
 }
 
+#kinoji_guidestyle{
+  & > .body:not(:last-of-type){
+    border-bottom:solid 1px #dddddd5e ;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+  }
+
+  #logointroduce{
+    margin-top: 50px;
+    text-align: center;
+    img{ 
+      margin-top: 80px;
+      width: 600px; 
+    }
+  }
+}
+
 #kinoji_first_mockup{
   transform: translateX(15%);
   max-width: 115%;
@@ -35,6 +51,8 @@
     color-rendering: optimizeSpeed;
     image-rendering: pixelated;
 }
+
+
 
 .moviemason{
     white-space:nowrap;

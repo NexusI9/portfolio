@@ -1,5 +1,6 @@
-import { Article, Body, Title, Img, Gallery, Video, Parallax } from '../../components/article';
+import {Article, Body, Gallery, Title, Img, Video, Parallax} from '../../components/Folio';
 import './mengfeng.scss';
+
 const galleryRoutes = {
   product:[
     {type:'window', folder:'/mengfeng/', pictures:['prod_1', 'prod_2']},

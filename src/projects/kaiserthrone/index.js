@@ -1,4 +1,4 @@
-import { Img, Video } from '../../components/article';
+import {Img, Video} from '../../components/Folio';
 
 export default () => (
   <>

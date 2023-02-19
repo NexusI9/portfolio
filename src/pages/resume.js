@@ -1,9 +1,9 @@
 
 import {motion, AnimatePresence} from 'framer-motion';
-import { Button, Multi, Cta } from '../components/inputs';
+import { Button, Multi, Cta } from '../components/Inputs';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
-import { Socials } from '../components/statics';
+import { Socials } from '../components/Statics';
 import { useSearchParams } from 'react-router-dom';
 import {
   Pro,
@@ -15,7 +15,7 @@ import {
   Events,
   Press,
   ResumeHeader
- } from '../components/resume';
+ } from '../components/Resume';
 
 import work from '../assets/icons/case.svg';
 import hat from '../assets/icons/hat.svg';
@@ -26,7 +26,7 @@ import art from '../assets/icons/art.svg';
 import press from '../assets/icons/press.svg';
 import tools from '../assets/icons/tools.svg';
 
-import Portrait from '../components/portrait';
+import { Portrait } from '../components/Portrait';
 
 const slideUp = {
   initial:{y:100, opacity:0},

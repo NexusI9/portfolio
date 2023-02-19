@@ -1,4 +1,4 @@
-import { Img, Space, Article, Body } from '../../components/article';
+import {Article, Body, Space, Img} from '../../components/Folio';
 
 export default () => (
   

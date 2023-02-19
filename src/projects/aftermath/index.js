@@ -1,4 +1,6 @@
-import { Img, Video, Body, Title, Article, Space } from '../../components/article';
+import {Article, Body, Title, Video, Img} from '../../components/Folio';
+
+
 export default () => (
   <>
 	<Article spaced={true}>
