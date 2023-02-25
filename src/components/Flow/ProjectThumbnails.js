@@ -64,7 +64,7 @@ const ProjectThumbnails = ({project, variant=toProjectVariant, animated=true, in
               return <img className='thumb' src={project.overlay?.url} />
   
             case 'video':
-              return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' placeholder={thumbnail} controls={false} loadIco={false} playIco={false}/>
+              return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' controls={false} loadIco={false} playIco={false}/>
   
             case 'slideshow':
               return <SlideOverlay pictures={project.overlay?.url} />

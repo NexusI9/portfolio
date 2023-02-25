@@ -75,8 +75,8 @@ const CategoryMenu = () => {
             <ul>
                 {getCategories().map( (cat,i) => 
                 <Fragment key={`categoryMenu_${cat}`}>
-                  <li>
-                    <a onClick={ () => onCategoryClick(cat) } className={ active === cat ? 'active' : undefined }>
+                  <li className={ active === cat ? 'active' : undefined }>
+                    <a onClick={ () => onCategoryClick(cat) } >
                       <small className='cacheBold'><b>{cat}</b></small>
                       <small>{cat}</small>
                       </a>

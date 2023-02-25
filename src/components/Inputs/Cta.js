@@ -7,7 +7,7 @@ const Cta = ({children, type='primary', to, onClick=() => 0, href=null }) => {
       onClick(); 
     }
     return(
-      <a onClick={ onAnchorClick } className={`cta ${type}` } href={href} target={href ? '_blank' : null}>
+      <a onClick={ onAnchorClick } className={`cta ${type}` } href={href} target={href && !href.includes('mailto') ? '_blank' : null}>
             {children}
       </a>
     );

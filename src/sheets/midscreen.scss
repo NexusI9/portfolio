@@ -12,7 +12,6 @@
     }
    }
 
-  #sidePanel{ display: none; }
   #project .projectWrapper {width: auto; padding: 40px 15px; }
   .casualProject #desc { width: 80%; }
 
@@ -291,11 +290,6 @@
         flex-direction: column;
       }
 
-      .body{
-        img{
-          margin-top: 80px;
-        }
-      }
   }
   .musicWave{
     left: -7vw;

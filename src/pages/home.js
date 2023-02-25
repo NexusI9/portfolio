@@ -134,14 +134,13 @@ const VideoBanner = (onScroll) => {
       >
         <motion.div id='textLetterbox' ref={name} style={{display: displayVideo ? null : 'none'}}>
           <section>
-            <h2>Nassim <br/> El Khantour</h2>
-            <h1><b>The powerful blend of art and code, with a French Touch.</b></h1>
-            {/*<span></span>
-            <p>Product designer based in Montreal with an expertise in Web & Motion design.</p>
-            */}
+              <h2>Nassim <br/> El Khantour</h2>
+              <p>Web Design&nbsp;::&nbsp;Motion Design&nbsp;::&nbsp;Development</p>
+              <h1><b>The powerful blend of art and code, with a French Touch.</b></h1>
           </section>
           <div className='aligncta'>
-            <Cta type='secondary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
+          <Cta type='primary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
+          <Cta type='secondary' to='/resume'><small><b>view my resume</b></small></Cta>
           </div>
         </motion.div>
        <div
@@ -153,7 +152,7 @@ const VideoBanner = (onScroll) => {
                 <img src={viewshowreel} />
               </div>
               <div style={{position:'relative', width:'100%', height:'100%', display:'inline-block'}} onMouseMove={onVideoEnter} onMouseLeave={onVideoLeave} >
-                <Video id={502648300} autoplay={true} resize={false} playIco={false} defaultQuality='720p' placeholder={'/assets/thumbnails/showreel.jpg'} controls={false} />
+                <Video id={502648300} autoplay={true} resize={false} playIco={false} defaultQuality='720p' controls={false} />
                 <Link to='/showreel'></Link>
               </div>
           </div>
@@ -210,7 +209,7 @@ const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
           <ResumeHeader />
           <div className='aligncta'>
             <Cta to='/resume'><small><b>See my resume</b></small></Cta>
-            <a className='cta' href='mailto:nassim.elkhantour@gmail.com'><small><b>let's create together</b></small></a>
+            <Cta type='secondary' href='mailto:nassim.elkhantour@gmail.com'><small><b>let's create together</b></small></Cta>
           </div>
         </section>
       </div>

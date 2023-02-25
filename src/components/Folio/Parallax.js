@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const Parallax = ({src='/', step=12, initStep=15}) => {
+const Parallax = ({src='/', step=20, initStep=50}) => {
 
     const img = useRef();
     const container = useRef();
@@ -14,7 +14,7 @@ const Parallax = ({src='/', step=12, initStep=15}) => {
         const velocity = (top-height)/innerHeight * step;
         
         if(top < innerHeight && top > -1*height){
-          img.current.style.transform = `translate3d(0,-${initStep-velocity}%,0)`;
+          img.current.style.transform = `translate3d(0,-${initStep+velocity}%,0)`;
         }
   
   
