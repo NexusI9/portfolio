@@ -17,7 +17,7 @@ const Spheros = ({state='default'}) => {
       src:sphere_purple_1, 
       style:{ 
         default:  { width:25, left:-16, top:70 },
-        spread:   { width:25, left:-10, top:100 },
+        spread:   { width:25, left:-30, top:90 }, //left:-10, top:100 
         about:    { width:25, left:-20, top:110 }
       }
     },
@@ -27,7 +27,7 @@ const Spheros = ({state='default'}) => {
       src:sphere_purple_1, 
       style:{ 
         default:  { width:25, left:70, top:-10 },
-        spread:   { width:25, left:90, top:-20 },
+        spread:   { width:25, left:150, top:-150 }, //left:90, top:-20
         about:    { width:25, left:90, top: 30 },
       }
     },
@@ -37,7 +37,7 @@ const Spheros = ({state='default'}) => {
       src:sphere_purple_1, 
       style:{ 
         default:  { width:15, left:24, top:10 },
-        spread:   { width:15, left:12, top:10 },
+        spread:   { width:15, left:-80, top:-30 }, //left:12, top:10 
         about:    { width:15, left: 10, top:50}
       },
     },
@@ -47,7 +47,7 @@ const Spheros = ({state='default'}) => {
       src:sphere_purple_1,
       style:{ 
         default:  { width:15, left:60, top:70 },
-        spread:   { width:15, left:70, top:90 },
+        spread:   { width:15, left:150, top:150 }, //left:70, top:90
         about:    { width:15, left:80, top:80}
       }},
   ]);
@@ -115,7 +115,7 @@ const Spheros = ({state='default'}) => {
   useEffect(() => {
 
     const onScroll = () => {
-
+      if( state === 'spread' ){ return; }
       const pos = window.pageYOffset / document.body.scrollHeight;
       
       spheres.current.forEach( item => {
