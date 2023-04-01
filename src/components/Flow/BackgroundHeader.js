@@ -17,8 +17,8 @@ const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) =
   
     const zhongVariant = {
       initial:{ opacity:0, y: '0em'},
-      animate:{ opacity:1, y: (-1*TEXT_SIZE+'em'), transition:{duration:speed/2,  type:'spring', stiffness: 100, damping:20} },
-      exit:{ opacity:0, y: (-1.5*TEXT_SIZE+'em'), transition:{duration:speed/4, type:'tween'}  }
+      animate:{ opacity:1, y: (-1*6+'vh'), transition:{duration:speed/2,  type:'spring', stiffness: 100, damping:20} },
+      exit:{ opacity:0, y: (-1.5*6+'vh'), transition:{duration:speed/4, type:'tween'}  }
     };
     
   

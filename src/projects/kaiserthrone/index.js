@@ -1,10 +1,10 @@
-import {Img, Video} from '../../components/Folio';
+import {Article, Img, Video} from '../../components/Folio';
 
 export default () => (
   <>
-    <div data-board-name='Music video'>
+    <Article data-board-name='Music video'>
       <Video id={502594756} />
-    </div>
+    </Article>
 
     <div id="desc" data-board-name='Synopsis'>
       <h2>Synopsis</h2>

@@ -211,7 +211,7 @@ export default class SCENE{
   }
 
   closeEyes(mesh){
-    if(!mesh.morphTargetInfluences){ return}
+    if(!mesh || !mesh.morphTargetInfluences){ return; }
     const close = {value:0};
     const tl = gsap.timeline({
       duration: Math.random(0.1,0.4),

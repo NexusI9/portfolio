@@ -108,20 +108,22 @@ const Menu = ({homebutton=false, latestHref='', categories=true, background=fals
   return(
     <>
       <nav id="menu" className={(active ? 'active' : null) +' '+ (background ? null : 'transparent') }>
-        <AnimatePresence exitBeforeEnter>
-        {!active && homebutton && <HomeButton key='homebuttonpresence' latestHref={latestHref} /> }
-        {!active && !homebutton && <Logo/> }
-        </AnimatePresence>
-        <div className='topArea'>
-          <div id='bars' onClick={onBarsClick} className={active ? 'active' : null}>
-            <section className='default'>
-              <span></span>
-              <span></span>
-            </section>
-            <section className='close'>
-              <span></span>
-              <span></span>
-            </section>
+        <div>
+          <AnimatePresence exitBeforeEnter>
+          {!active && homebutton && <HomeButton key='homebuttonpresence' latestHref={latestHref} /> }
+          {!active && !homebutton && <Logo/> }
+          </AnimatePresence>
+          <div className='topArea'>
+            <div id='bars' onClick={onBarsClick} className={active ? 'active' : null}>
+              <section className='default'>
+                <span></span>
+                <span></span>
+              </section>
+              <section className='close'>
+                <span></span>
+                <span></span>
+              </section>
+            </div>
           </div>
         </div>
       </nav>

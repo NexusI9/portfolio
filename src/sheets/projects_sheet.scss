@@ -287,6 +287,8 @@ object{
   left: -10vw;
   width: 110vw;
   height: 80vh;
+  left: 50%;
+  transform: translateX(-50%);
   img{
     will-change: transform;
     transition: transform 0.1s ease;
@@ -363,8 +365,9 @@ object{
   &::before{
     content: '';
     position: absolute;
-    width: 120%;
-    left: -10%;
+    width: 120vw;
+    left: 50%;
+    transform: translateX(-50%);
     height: 90%;
     top: -10%;
     display: block;
@@ -421,6 +424,12 @@ object{
       position: relative;
     }
 
+  }
+
+  .vimeo{
+    iframe{
+        background: black;
+    }
   }
 
   & > .header{

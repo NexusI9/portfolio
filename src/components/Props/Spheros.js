@@ -16,7 +16,7 @@ const Spheros = ({state='default'}) => {
       ref: null, 
       src:sphere_purple_1, 
       style:{ 
-        default:  { width:25, left:-16, top:70 },
+        default:  { width:25, left:-16, top:30 },
         spread:   { width:25, left:-30, top:90 }, //left:-10, top:100 
         about:    { width:25, left:-20, top:110 }
       }

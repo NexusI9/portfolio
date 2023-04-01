@@ -39,7 +39,7 @@ function Contact({onLoad = () => 0}){
     animate='animate'
     exit='exit'
     > 
-      <Spheros />
+      {/*<Spheros />*/}
       <motion.h1 key='letsgetintouch' variants={variantTitle}>Let's get in touch!</motion.h1>
 
       <motion.div id='contactLinks' key='contactLinks' variants={variantContact}>

@@ -8,7 +8,7 @@ const Portrait = ({innerRef = e => e}) => {
     const container = useRef();
     const [render, setRender] = useState(false);
     const scene = useMemo( () => new SCENE({
-      onLoad: () => gsap.to(innerRef.current,{opacity:1, duration:1}),
+      onLoad: () => innerRef.current && gsap.to(innerRef.current,{opacity:1, duration:1}),
       container: container.current
     }),[] ); 
   

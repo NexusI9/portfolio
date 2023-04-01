@@ -270,7 +270,7 @@ function Home({ onLoad = () => 0, onBelowTheFold = () => 0, onAboveTheFold = () 
 
   return(
     <>
-      <Spheros state={ spherePos } />
+      { /*<Spheros state={ spherePos } />*/ }
       { catMenu && <CategoryMenu /> }
       <VideoBanner />
       <Flow onCategoryChange={ onCategoryChange }/>

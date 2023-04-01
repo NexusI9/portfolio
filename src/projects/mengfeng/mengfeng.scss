@@ -38,7 +38,8 @@
   width: 120vw;
   display: block;
   height: 100%;
-  right: -20vw;
+  left: 50%;
+  transform: translateX(-50%);
   background-repeat-x: repeat;
   background-image: url('./assets/wave_1.svg');
   background-size: 99%;

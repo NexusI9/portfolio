@@ -147,7 +147,7 @@ function Project({onLoad=()=> 0, onLoadFinish=()=>0}){
                 }
 
             {project.category && <div>
-                <h5>Category</h5>
+                <h5>Categories</h5>
                 <section className='project_category' >{project.category.map( (item,i) => <small key={'cat'+item}>{ i < project.category.length-1 ? <>{item}<span className='dottySeparator'></span></> : item}</small> )}</section>
               </div>
             }
