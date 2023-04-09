@@ -28,6 +28,7 @@
   #homeAbout{
     min-height: 100vh;
     height: fit-content;
+    max-height: none;
     & > div{
       grid-template-columns: none;
       grid-template-rows: 1fr auto;

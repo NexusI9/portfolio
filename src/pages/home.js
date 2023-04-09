@@ -39,7 +39,7 @@ const VideoBanner = (onScroll) => {
 
   const onVideoEnter = (e) => {
 
-    window.gtag('event','hover_showreel',{event_category:'hover',event_label:'Hover showreel video'});
+    //window.gtag('event','hover_showreel',{event_category:'hover',event_label:'Hover showreel video'});
     const vidLeft = video.current.getBoundingClientRect().left;
     const vidTop = video.current.getBoundingClientRect().top;
     const half = viewreelRef.current.getBoundingClientRect().width/2
@@ -140,7 +140,7 @@ const VideoBanner = (onScroll) => {
           </section>
           <div className='aligncta'>
           <Cta type='primary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
-          <Cta type='secondary' to='/resume'><small><b>view my resume</b></small></Cta>
+          <Cta type='secondary' to='/resume'><small><b>see my resume</b></small></Cta>
           </div>
         </motion.div>
        <div
@@ -208,8 +208,8 @@ const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
         <section>
           <ResumeHeader />
           <div className='aligncta'>
-            <Cta to='/resume'><small><b>See my resume</b></small></Cta>
-            <Cta type='secondary' href='mailto:nassim.elkhantour@gmail.com'><small><b>let's create together</b></small></Cta>
+            <Cta href='mailto:nassim.elkhantour@gmail.com'><small><b>let's create together</b></small></Cta>
+            <Cta to='/resume' type='secondary'><small><b>see my resume</b></small></Cta>
           </div>
         </section>
       </div>

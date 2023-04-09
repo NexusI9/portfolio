@@ -8,7 +8,6 @@ import ProjectThumbnails from "./ProjectThumbnails";
 const CategoryContainer = ({projects ,category, innerRef}) => {
 
     const [columnsCount, setColumnsCount] = useState(2);
-    const [display, setDisplay] = useState(false);
     const container = useRef(); 
   
     useEffect(()=>{
@@ -16,7 +15,6 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
         const onScroll = () => {
           const {top} = container.current.getBoundingClientRect();
           if(top < window.innerHeight - 200){ 
-            setDisplay(true);
             window.removeEventListener('scroll', onScroll);
           }
         };
@@ -26,13 +24,14 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
         checkSize(mq);
         mq.addEventListener("change", checkSize);
   
-        onScroll();
+        /*onScroll();
         if(window.matchMedia('(min-width:525px)').matches){  window.addEventListener('scroll', onScroll); }
         else{ setDisplay(true); }
+        */
   
         return () => {
           mq.removeEventListener("change", checkSize);
-          window.removeEventListener('scroll', onScroll);
+          //window.removeEventListener('scroll', onScroll);
         }
   
     },[]);
@@ -48,7 +47,7 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
           id={cleanCategoryName(category)}
           className="cat">
             <Masonry columnsCount={ columnsCount } gutter='20px'>
-                { display && getProjectsOfCategory(category).map( (project,c) => <ProjectThumbnails key={project.title} project={project} animated={true} /> ) }
+                { getProjectsOfCategory(category).map( (project,c) => <ProjectThumbnails key={project.title} project={project} animated={true} /> ) }
             </Masonry>
         </motion.div>
   
