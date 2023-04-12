@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;400;600&family=Barlow:ital,wght@0,300;0,400;0,500;1,400&display=swap');
-
 $ui_blue:linear-gradient(90deg, #7e5bff 0%, #00b9ff 100%);
 $grey_bkg: #222;
 $settings_back:#ddd;
@@ -145,27 +143,27 @@ $colours: (
     }
 
     /*search ico*/
-    &.search { background-image: url("./assets/icons/search.svg"); }
+    &.search { background-image: url("../../projects/kinoji/assets/icons/search.svg"); }
 
 
-    &.smallarrow{ background-image: url("./assets/icons/smallarrow.svg"); transition: background 0.2s ease; }
+    &.smallarrow{ background-image: url("../../projects/kinoji/assets/icons/smallarrow.svg"); transition: background 0.2s ease; }
     /*tag ico*/
-    &#tag,{ background-image: url("./assets/icons/tag.svg"); }
-    &.tag{ background-image: url("./assets/icons/tag.svg"); }
+    &#tag,{ background-image: url("../../projects/kinoji/assets/icons/tag.svg"); }
+    &.tag{ background-image: url("../../projects/kinoji/assets/icons/tag.svg"); }
 
     /*clap ico*/
-    &#clap{ background-image: url("./assets/icons/clapperboard.svg"); }
+    &#clap{ background-image: url("../../projects/kinoji/assets/icons/clapperboard.svg"); }
 
     /*chrono ico*/
-    &#date{ background-image: url("./assets/icons/globe.svg"); }
+    &#date{ background-image: url("../../projects/kinoji/assets/icons/globe.svg"); }
 
 
     /*mosaic ico*/
-    &#poster{ background-image: url("./assets/icons/poster.svg"); }
-    &#mosaic{ background-image: url("./assets/icons/mosaic.svg"); }
+    &#poster{ background-image: url("../../projects/kinoji/assets/icons/poster.svg"); }
+    &#mosaic{ background-image: url("../../projects/kinoji/assets/icons/mosaic.svg"); }
 
     &#backArrow{
-      background-image: url("./assets/icons/arrowback.svg");
+      background-image: url("../../projects/kinoji/assets/icons/arrowback.svg");
       margin-right: 6%;
       margin-left: 6%;
       width: 100%;
@@ -174,8 +172,8 @@ $colours: (
 
      }
 
-     #micro_name &{ background-image: url("./assets/icons/az.svg"); }
-     #micro_year &{ background-image: url("./assets/icons/calendar.svg"); }
+     #micro_name &{ background-image: url("../../projects/kinoji/assets/icons/az.svg"); }
+     #micro_year &{ background-image: url("../../projects/kinoji/assets/icons/calendar.svg"); }
 
       &.colours{
         border-radius: 100%;
@@ -365,7 +363,7 @@ $colours: (
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        background-image: url('assets/icons/smallarrow.svg');
+        background-image: url('../../projects/kinoji/assets/icons/smallarrow.svg');
         margin-right: 7px;
     }
 
@@ -377,7 +375,7 @@ $colours: (
     }
 
     #chinaflag{
-      background-image: url('assets/chinaflag.svg');
+      background-image: url('../../projects/kinoji/assets/chinaflag.svg');
     }
   }
 

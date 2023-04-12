@@ -1,10 +1,11 @@
 
 import {motion, AnimatePresence} from 'framer-motion';
-import { Button, Multi, Cta } from '../components/Inputs';
+import { Button, Multi, Cta } from '@/components/Inputs';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
-import { Socials } from '../components/Statics';
-import { useSearchParams } from 'react-router-dom';
+import { Socials } from '@/components/Statics';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 import {
   Pro,
   Skills,
@@ -15,18 +16,18 @@ import {
   Events,
   Press,
   ResumeHeader
- } from '../components/Resume';
+ } from '@/components/Resume';
 
-import work from '../assets/icons/case.svg';
-import hat from '../assets/icons/hat.svg';
-import web from '../assets/icons/web.svg';
-import az from '../assets/icons/az.svg';
-import group from '../assets/icons/group.svg';
-import art from '../assets/icons/art.svg';
-import press from '../assets/icons/press.svg';
-import tools from '../assets/icons/tools.svg';
+import work from '@/assets/icons/case.svg';
+import hat from '@/assets/icons/hat.svg';
+import web from '@/assets/icons/web.svg';
+import az from '@/assets/icons/az.svg';
+import group from '@/assets/icons/group.svg';
+import art from '@/assets/icons/art.svg';
+import press from '@/assets/icons/press.svg';
+import tools from '@/assets/icons/tools.svg';
 
-import { Portrait } from '../components/Portrait';
+import { Portrait } from '@/components/Portrait';
 
 const slideUp = {
   initial:{y:100, opacity:0},
@@ -45,30 +46,6 @@ const stagger = {
   initial:{opacity:0},
   animate:{opacity:1, transition:{staggerChildren:0.1}},
   exit:{opacity:1, transition:{staggerChildren:0.1}}
-}
-
-const opa = {
-  initial:{opacity:0, y:20},
-  animate: () => {
-    return {
-      opacity:1,
-      y:0,
-      transition:{duration:0.2}
-    };
-  },
-  exit: () => {
-    return {
-      y:-20,
-      opacity:0,
-      transition:{duration:0.2}
-    };
-  },
-}
-
-const toProjectVariant = {
-  initial:{opacity:0, y:200},
-  animate:{opacity:1, y:0, transition:{ duration: 0.6 }},
-  exit:{ y:'-200vh', opacity:0, transition:{ duration:0.4}}
 }
 
 const Section = ({title, ico, content}) => {
@@ -117,7 +94,7 @@ const Section = ({title, ico, content}) => {
       key={'section'+title}
       >
         <div className='sectionHeader'>
-          {ico && <span className='ico'><img src={ico}/></span> }
+          {ico && <span className='ico'><img src={ico.src}/></span> }
           <p><b>{title}</b></p>
         </div>
         {content}
@@ -128,13 +105,14 @@ const Section = ({title, ico, content}) => {
 }
 
 
-function Resume({onLoad=()=>0}){
+function Resume(){
 
   const [language, setLanguage] = useState();
   const [dlUrl, setDlUrl] = useState();
   const [hide, setHide] = useState(false);
+  const [headTitle, setHeadtitle] = useState('Nassim El Khantour - Resume (english)');
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
 
   const banner = useRef();
   const portrait = useRef();
@@ -158,24 +136,32 @@ function Resume({onLoad=()=>0}){
 
    const changeLang = (lang) => {
 
-      window.gtag('event',`click_resume_language_${lang}`,{event_category:'click', event_label:`Switch resume language to ${lang}`});
+     window.gtag('event',`click_resume_language_${lang}`,{event_category:'click', event_label:`Switch resume language to ${lang}`});
      setLanguage(lang);
 
      switch(lang){
-        case 'english':
-           setSearchParams({lang:'eng'});
-        break;
 
         case 'french':
-          setSearchParams({lang:'fr'});
+          router.push({
+            pathname:router.pathname,
+            query:{lang:'fr'}
+           });
         break;
 
         case 'zhongwen':
-          setSearchParams({lang:'zhg'});
+          router.push({
+            pathname:router.pathname,
+            query:{lang:'zhg'}
+           });
         break;
 
+        case 'english':
+
         default:
-          setSearchParams({lang:'eng'});
+          router.push({
+            pathname:router.pathname,
+            query:{lang:'eng'}
+          });
      }
    };
 
@@ -227,38 +213,35 @@ function Resume({onLoad=()=>0}){
 
    useEffect( () => {
 
-     const langParam = searchParams.get('lang');
+     const langParam = router.query.lang;
 
 
      switch(langParam){
         case 'eng':
-          document.title = 'Nassim El Khantour - Resume (english)';
+          setHeadtitle('Nassim El Khantour - Resume (english)');
           setLanguage('english');
-          setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/Resume-Nassim_El_Khantour.pdf');
+          setDlUrl('/assets/pdf/Resume-Nassim_El_Khantour.pdf');
         break;
 
         case 'fr':
-          document.title = 'Nassim El Khantour - Resume (français)';
+          setHeadtitle('Nassim El Khantour - Resume (français)');
           setLanguage('french');
-          setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/CV-Nassim_El_Khantour.pdf');
+          setDlUrl('/assets/pdf/CV-Nassim_El_Khantour.pdf');
         break;
 
         case 'zhg':
-          document.title = 'Nassim El Khantour - Resume (中文)';
+          setHeadtitle('Nassim El Khantour - Resume (中文)');
           setLanguage('zhongwen');
-          setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/簡歷-Nassim_El_Khantour.pdf');
+          setDlUrl('/assets/pdf/簡歷-Nassim_El_Khantour.pdf');
         break;
 
         default:
-          document.title = 'Nassim El Khantour - Resume (english)';
+          setHeadtitle('Nassim El Khantour - Resume (english)');
           setLanguage('english');
-          setDlUrl(process.env.PUBLIC_URL+'/assets/pdf/Resume-Nassim_El_Khantour.pdf');
+          setDlUrl('/assets/pdf/Resume-Nassim_El_Khantour.pdf');
      }
-     
 
-     onLoad();
-
-   },[searchParams]);
+   },[router]);
 
    useEffect( () => {
     window.scrollTo({top:0,behavior:'smooth'});
@@ -266,8 +249,10 @@ function Resume({onLoad=()=>0}){
   
 
   return(
-    <>
-
+    <>  
+    <Head>
+      <title>{headTitle}</title>
+    </Head>
     <motion.div
       id='resumeSettings'
       key='buttonWrappResume'
@@ -305,7 +290,7 @@ function Resume({onLoad=()=>0}){
 
     <Portrait innerRef={e => portrait.current = e}/>
 
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode='wait'>
       <motion.div id='resumeWrapper'
       variants={slideUp}
       initial='initial'

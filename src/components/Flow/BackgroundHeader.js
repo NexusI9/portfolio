@@ -20,22 +20,10 @@ const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) =
       animate:{ opacity:1, y: (-1*6+'vh'), transition:{duration:speed/2,  type:'spring', stiffness: 100, damping:20} },
       exit:{ opacity:0, y: (-1.5*6+'vh'), transition:{duration:speed/4, type:'tween'}  }
     };
-    
-  
-    const Case = ({letter='', color}) => (
-      <motion.section
-      className='case'
-      variants={caseVariant}
-      >
-        <h2></h2>
-        <h2 data-color={color}>{letter}</h2>
-        <h2></h2>
-      </motion.section>
-    );
   
     return (
       <>
-         <motion.div 
+        <motion.div 
          id='zhongwenName'
          key={"zhongwenName"+title}
          variants={zhongVariant}
@@ -46,7 +34,7 @@ const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) =
           {[...zhongwen].map( (letter,i) => <h2 key={`zhongwen${i}`}>{letter}</h2> )}
         </motion.div>
         <motion.div
-          key={"mainTitle"+title}
+          key={"mainTitle"}
           variants={containVariant}
           initial='initial'
           animate='animate'
@@ -54,14 +42,18 @@ const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) =
           className="mainTitle"
         >
           {
-          title &&
           [...title].map( (letter,i) =>
-            <Case  key={'letterback_'+title+letter+i}
-                  letter={ letter && letter.replace(" ", "\xa0") || " " }
-                  color={color}
-              />
+            <motion.section
+              key={letter+i+'subletter'}
+              className='case'
+              variants={caseVariant}
+              >
+                <h2></h2>
+                <h2>{letter}</h2>
+                <h2></h2>
+            </motion.section>
           )}
-      </motion.div>
+        </motion.div>
     </>
   );
   }

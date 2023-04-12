@@ -42,15 +42,15 @@ export function getCategoryOfProject(project){
 
 export function getColorFromProject(project){ return THEMES[ getCategoryOfProject(project) ]; }
 
-export function getRandomProject({number, category, project}){
+export function getRandomProject({number, project}){
 
   number  = number || 3;
+  const category = getCategoryOfProject(project);
+  
   if(CATEGORIES[category]){
-
       let proj_ar = CATEGORIES[category].projects.filter( prj => prj.title !== project.title);
       proj_ar = proj_ar.sort( () => 0.5 - Math.random() );
       return proj_ar.slice(0, number);
-
   }else{
     console.log("couldn't find category: " +category );
     return [];
@@ -70,7 +70,6 @@ export function  getPageTitleFromLocation(location){
     ]
 
     const filtered = routes.filter( route =>  pathname.match(route.string) );
-
     if( filtered && filtered.length > 0){ return filtered[0].title(pathname) }
 
     return '';

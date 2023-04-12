@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const BackButton = () => (
 
-    <Link to='/'>
+    <Link href='/'>
       <motion.div
       id='backButton'
       initial={{x:-200, opacity:0}}

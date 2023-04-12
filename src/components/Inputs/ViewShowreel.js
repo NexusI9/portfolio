@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
@@ -33,7 +33,7 @@ const ViewShowreel = ({container}) => {
         animate={{scale:1, transition:{duration:0.2}}}
         exit={{scale:0, transition:{duration:0.2}}}
       >
-        <Link to='/showreel'></Link>
+        <Link href='/showreel'></Link>
       </motion.div>
     );
   }

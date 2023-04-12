@@ -1,6 +1,5 @@
 
 
-import './inputs_sheets.scss';
 export const Options = ({ id, label }) => (
     <div className='label'><span className='ico' id={id}></span><p>{label}</p></div>
 );

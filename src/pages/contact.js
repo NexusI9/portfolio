@@ -1,15 +1,14 @@
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 import { useEffect } from 'react';
-import { MailAddress, SocialsIcons } from '../components/Inputs';
-import { Signature } from '../components/Statics';
-import { Spheros } from '../components/Props';
+import { MailAddress, SocialsIcons } from '@/components/Inputs';
+import { Signature } from '@/components/Statics';
+import { Spheros } from '@/components/Props';
 
-function Contact({onLoad = () => 0}){
+export default function Contact({onLoad = () => 0}){
 
   useEffect(() => {
-      document.title = 'Nassim El Khantour - Contact';
       onLoad();
-
   },[]);
 
   const variantContainer = {
@@ -32,6 +31,10 @@ function Contact({onLoad = () => 0}){
 
 
   return(
+    <>    
+    <Head>
+      <title>Nassim El Khantour - Contact</title>
+    </Head>
     <motion.div
     id='contactContainer'
     variants={variantContainer}
@@ -58,8 +61,8 @@ function Contact({onLoad = () => 0}){
 
       <Signature />
     </motion.div>
+    </>
   );
 }
 
 
-export default Contact;

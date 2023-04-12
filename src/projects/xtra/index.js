@@ -1,7 +1,5 @@
 import {Article, Body, Gallery, Title, Space, Pointer, Img, Parallax} from '../../components/Folio';
 
-
-import './xtra_sheet.scss';
 import logo from './assets/xtralogo.svg';
 import baijam from './assets/baijam.svg';
 
@@ -76,7 +74,7 @@ export default () => (
                         Similar to a flight company that will skyrocket your business with its powerful and secure tools.
                     </p>
                 </section>
-                <img alt='xtra logo' src={logo}/>
+                <img alt='xtra logo' src={logo.src}/>
             </Body>
             <Body flexDirection='vertical' id='xtra_typecolor'>
             <section className='half' >
@@ -97,7 +95,7 @@ export default () => (
 
                   <tr>
                     <td>
-                      <img src={baijam} />
+                      <img src={baijam.src} />
                     </td>
                   </tr>
                     

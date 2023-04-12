@@ -1,4 +1,4 @@
-
+@import 'inputs';
 
 #cine_board{
   width: 100%;
@@ -247,7 +247,7 @@ table .leftborder{
 }
 
 .taglabel span{
-  background-image:url("assets/dtb.svg");
+  background-image:url("../../projects/kinoji/assets/dtb.svg");
   flex-shrink: 0;
 }
 

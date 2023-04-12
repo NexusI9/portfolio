@@ -65,7 +65,7 @@ $xtragradient: linear-gradient(104.68deg, #132534 0.98%, #050101 107.45%);
 #xtra_map{
     img{ width: 700px; }
     &::before{
-        background-image: url('./assets/mapbkg.jpg');
+        background-image: url('../../projects/xtra/assets/mapbkg.jpg');
         background-size: cover;
         background-position: center;
     }

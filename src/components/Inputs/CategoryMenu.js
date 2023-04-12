@@ -1,8 +1,13 @@
 import { useEffect, useState, useRef, Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { getCategories, changeHashTo, getColorOfCategory } from '../../lib/utils';
+import { connect } from 'react-redux';
 
-const CategoryMenu = () => {
+const mapStateToProps = (state) => ({
+  _category: state.flow.category
+});
+
+const CategoryMenu = ({_category}) => {
   
 
     const [active, setActive] = useState();
@@ -61,6 +66,8 @@ const CategoryMenu = () => {
       }
   
     },[]);
+
+    useEffect( () => { setActive(_category) },[_category])
   
   
   
@@ -92,4 +99,4 @@ const CategoryMenu = () => {
   }
 
 
-export default CategoryMenu;
+export default connect(mapStateToProps)(CategoryMenu);

@@ -1,5 +1,4 @@
-import {Article, Body, Gallery, Title, Img, Video, Parallax} from '../../components/Folio';
-import './mengfeng.scss';
+import {Article, Body, Gallery, Title, Img, Video, Parallax} from '@/components/Folio';
 
 const galleryRoutes = {
   product:[

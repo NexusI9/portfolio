@@ -1,13 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {Article, Body, Gallery, Title, Space, Pointer, Img, Video} from '../../components/Folio';
-
-import './laos_sheet.scss';
-import './laos_popup.scss';
-import './laos_features.scss';
-import './laos_options.scss';
+import {Article, Body, Gallery, Title, Space, Pointer, Img, Video} from '@/components/Folio';
 import { gsap } from 'gsap';
-
 import Masonry from 'react-responsive-masonry';
 const FeaturesCircles = () => {
 
@@ -51,7 +45,7 @@ const FeaturesCircles = () => {
         <div id="ft_circle_infobox">
             { content &&
               <>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence mode='wait'>
                   <motion.section
                       key={'feature_infobox'+content.title}
                       initial={{opacity:0, y:30}}
@@ -68,7 +62,7 @@ const FeaturesCircles = () => {
 
                 </motion.section>
               </AnimatePresence>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence mode='wait'>
                 <motion.img
                   key={'feature_pix'+content.title}
                   initial={{opacity:0}}

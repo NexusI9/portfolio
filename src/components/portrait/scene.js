@@ -2,10 +2,7 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { randomInt } from '../../lib/utils';
-
-
-const INIT_WIDTH =  window.innerWidth / 3;
-const INIT_HEIGHT = window.innerHeight;
+import model from './model.gltf';
 
 export default class SCENE{
 
@@ -84,7 +81,7 @@ export default class SCENE{
   importModel(){
 
     this.loader.load(
-      require('./model.gltf'),
+      model,
       (gltf) => {
 
         gltf.scene.traverse( item => {

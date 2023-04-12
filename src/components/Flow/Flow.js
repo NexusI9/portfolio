@@ -5,53 +5,56 @@ import {
     getZhongwenOfCategory
   } from '../../lib/utils';
   import CategoryContainer from './CategoryContainer';
-  import { useLocation } from 'react-router-dom';
+  import { useRouter } from 'next/router';
   import { motion, AnimatePresence } from 'framer-motion';
   import { useEffect, useState, useRef } from 'react';
   import BackgroundHeader from './BackgroundHeader';
+  import { connect } from 'react-redux';
 
-const Flow = ({projects, onCategoryChange=()=>0}) => {
+const mapStateToPorps = (state) => ({
+  _category: state.flow.category
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  _onCategoryChange: (cat) => dispatch({type: 'CHANGE_CATEGORY', category:cat})
+});
+
+const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
 
     const containerRef = useRef([]);
-    const catContainers = getCategories().map( (cat,c) => {
-      return <CategoryContainer key={'CategoryContainer_'+c} category={cat} projects={projects} innerRef={el => containerRef.current[c] = el }/> 
-    });
-    const [category, setCategory] = useState();
-    const location = useLocation();
+    const categories = useRef( getCategories() );
+    const [category, setCategory] = useState(_category);
+    const router = useRouter();
+    const location = router.asPath;
     const [displaySuper, setDisplaySuper] = useState(true);
-  
-    const categoryChangeEvent = new CustomEvent('categorychange', {
-      bubbles: true,
-      detail: { category: () => category }
-    });
+    const userScroll = useRef(false);
+
     
     useEffect( () => {
   
       const onClick = () => {
         //if user clicked on "a" from categorymenu then prevent hash change from this userEffect ( give priority to categorymenu hash change )
-        userScroll = false;
+        userScroll.current = false;
       }
       const onMouseWheel = (e) => {
-        userScroll = true;
+        userScroll.current = true;
       }
   
-      let userScroll = false;
   
       const checkViewportDiv = () => {
   
-        catContainers.forEach( (cat,c) => {
-  
+        getCategories().forEach( (cat,c) => {
+          if(!containerRef.current.length){ return; }
           const container = containerRef.current[c];
-          const title = cat.props.category;
+          const title = cat;
           const { top, bottom } = container.getBoundingClientRect();
   
           const scrollTop = window.pageYOffset;
           const windowHeight = window.innerHeight;
   
   
-          if( (scrollTop < windowHeight) || ( c === catContainers.length-1 && bottom < window.innerHeight/3 ) ){ 
-            window.history.pushState(null, "The Art of Nassim El Khantour ", "/");
-            onCategoryChange(" ");
+          if( (scrollTop < windowHeight) || ( c === containerRef.current.length-1 && bottom < window.innerHeight/3 ) ){ 
+            _onCategoryChange(" ");
             return setCategory(" "); 
           }
   
@@ -60,11 +63,13 @@ const Flow = ({projects, onCategoryChange=()=>0}) => {
             bottom > window.innerHeight &&
             category !== title
           ){
-  
+
             //react 
             //window.gtag('event',`view_category_${title}`,{event_category:'scroll', event_label: `View homepage category: ${title}`});
-            if(userScroll) changeHashTo(title);
-            onCategoryChange(title);
+            if(userScroll.current) changeHashTo(title);
+            else{
+              _onCategoryChange(title);
+            }
             return setCategory(title);
           }
   
@@ -90,13 +95,11 @@ const Flow = ({projects, onCategoryChange=()=>0}) => {
     useEffect( () => {
   
       const onResize = (e) => {
-  
         setDisplaySuper( e.matches );
       }
       
   
       //dispatch custom event
-      window.dispatchEvent(categoryChangeEvent);
       const mq = window.matchMedia('(min-width:800px)');
       onResize(mq);
       mq.addEventListener('change', onResize);
@@ -104,27 +107,34 @@ const Flow = ({projects, onCategoryChange=()=>0}) => {
       return () => mq.removeEventListener('change', onResize);;
     
     }, [category]);
+
   
     return (
       <>
-        { displaySuper && <AnimatePresence initial={false} >
-          <motion.div
+      <AnimatePresence>
+        {displaySuper && 
+          <motion.div 
             id="categorySuper"
-            key={'bkg'+category}
-            initial={{opacity:1}}
-            animate={{opacity:1, transition: {duration: 0.3}}}
-            exit={{opacity:1, transition: {duration: 0.3}}}
-          >
+            key={'catsuper'+category}
+            >
               <BackgroundHeader title={category} zhongwen={getZhongwenOfCategory(category)} color={ getColorOfCategory(category) || '#000000' }/>
           </motion.div>
-        </AnimatePresence> }
-  
-        <div id="projects">
-          {catContainers}
-        </div>
+          }
+      </AnimatePresence>
+
+          <div id="projects">
+                {
+              categories.current.map( (cat,c) =>
+                  <CategoryContainer 
+                      key={'CategoryContainer_'+c} 
+                      category={cat} 
+                      projects={projects} 
+                      innerRef={el => containerRef.current[c] = el }
+                  />)}
+          </div>
   
       </>
     );
   }
 
-export default Flow;
+export default connect(mapStateToPorps, mapDispatchToProps)(Flow);

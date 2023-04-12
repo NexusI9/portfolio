@@ -1,8 +1,11 @@
 import { ProjectThumbnails } from '../Flow';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {  getCategoryOfProject } from '../../lib/utils';
+import { useRouter } from 'next/router';
 
 const Suggestion = ({projects, display}) =>{
+
+  const { title } = useRouter().query;
 
   const variantContainer={
     show:{opacity:1, transition:{duration:0.8, type:"tween", ease:'easeOut', delay:0.2}},
@@ -17,26 +20,26 @@ const Suggestion = ({projects, display}) =>{
   }
 
   return(
-      <motion.div 
-        id="suggest"
-        key='suggestStrype'
-        variants={variantContainer}
-        initial='hide'
-        animate={ display ? 'show' : 'hide' }
-        exit='exit'
-      >
-        <motion.h2
-          key='suggestSeeAlso'
-          variants={variantChild}
-        > See other { getCategoryOfProject(projects[0]).toLowerCase() }  projects 
-        </motion.h2>
-        <motion.section
-          key='suggestSection'
-          variants={variantChild}
+      <AnimatePresence mode='wait'>
+        <motion.div 
+          id="suggest"
+          key={ 'suggestStrype' + title}
+          variants={variantContainer}
+          initial='hide'
+          animate={ display ? 'show' : 'hide' }
+          exit='exit'
         >
-          { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={true} /> ) }
-        </motion.section>
-      </motion.div>
+          <motion.h2 key='suggestSeeAlso' variants={variantChild} > 
+              See other { getCategoryOfProject(projects[0]).toLowerCase() } projects 
+          </motion.h2>
+          <motion.section
+            key={ 'suggestSection'}
+            variants={variantChild}
+          >
+            { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={true} /> ) }
+          </motion.section>
+        </motion.div>
+      </AnimatePresence>
     );
 }
 

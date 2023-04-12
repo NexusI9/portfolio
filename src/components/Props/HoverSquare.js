@@ -39,7 +39,7 @@ const HoverSquare = ({children, size='100%', name='', top, left}) => {
 
   return(
     <div style={{position:'relative'}} onMouseEnter={ () => setActive(true) } onMouseLeave={ () => setActive(false) }>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode='wait'>
         {
           active &&
           <motion.div

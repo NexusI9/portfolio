@@ -1,11 +1,19 @@
 import { useEffect, useState, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import Link  from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare } from '../Props';
 import { HomeButton, Logo } from '../Inputs';
+import { connect } from 'react-redux';
 
-const Menu = ({homebutton=false, latestHref='', categories=true, background=false}) => {
+const mapStateToProps = (state) => ({
+  _background: state.menu.background,
+  _homebutton: state.menu.homebutton,
+  _latestHref: state.flow.category
+});
+
+
+const Menu = ({_background=false, _homebutton=false, _latestHref=''}) => {
 
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
@@ -19,7 +27,7 @@ const Menu = ({homebutton=false, latestHref='', categories=true, background=fals
   const onAnimationComplete = () => {
     setChildren(
       <motion.div id='labelContent' key='labelContent' ref={labelNode} variants={variantPanel} initial='initial' animate='animate' exit='exit'>
-        {mapMenu.map(item => <motion.div variants={variantLabel}  key={item.label} onAnimationComplete={ () => setAnimationDone(true) }><NavLink onClick={ () => setActive(false) } to={item.link} activeclassname="surligneur"><HoverSquare size='14em' name={item.label}><h1>{item.label}</h1></HoverSquare></NavLink></motion.div> )}
+        {mapMenu.map(item => <motion.div variants={variantLabel}  key={item.label} onAnimationComplete={ () => setAnimationDone(true) }><Link onClick={ () => setActive(false) } href={item.link} activeclassname="surligneur"><HoverSquare size='14em' name={item.label}><h1>{item.label}</h1></HoverSquare></Link></motion.div> )}
       </motion.div>
     );
   };
@@ -81,6 +89,8 @@ const Menu = ({homebutton=false, latestHref='', categories=true, background=fals
     }
 
   },[labelBar, labelWrapper, animationDone, active]);
+
+
   const variantPanel={
     initial:{},
     animate:{transition:{staggerChildren:0.2}},
@@ -107,11 +117,11 @@ const Menu = ({homebutton=false, latestHref='', categories=true, background=fals
 
   return(
     <>
-      <nav id="menu" className={(active ? 'active' : null) +' '+ (background ? null : 'transparent') }>
+      <nav id="menu" className={(active ? 'active' : null) +' '+ (_background ? null : 'transparent') }>
         <div>
-          <AnimatePresence exitBeforeEnter>
-          {!active && homebutton && <HomeButton key='homebuttonpresence' latestHref={latestHref} /> }
-          {!active && !homebutton && <Logo/> }
+          <AnimatePresence mode='wait'>
+            {!active && _homebutton && <HomeButton key='_homebuttonpresence' latestHref={_latestHref} /> }
+            {!active && !_homebutton && <Logo/> }
           </AnimatePresence>
           <div className='topArea'>
             <div id='bars' onClick={onBarsClick} className={active ? 'active' : null}>
@@ -128,13 +138,13 @@ const Menu = ({homebutton=false, latestHref='', categories=true, background=fals
         </div>
       </nav>
 
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode='wait'>
         {active &&
           <motion.div id='menuPanel' key='menuPanel' variants={variantPanel} initial='initial' animate='animate' exit='exit'>
             <motion.div key='panelChild_1' variants={variantChild}></motion.div>
             <motion.div key='panelChild_2' variants={variantChild} ref={wrapperNode} onAnimationComplete={onAnimationComplete}>
               <div className='cacheScroll'></div>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence mode='wait'>
                 {children && children}
               </AnimatePresence>
             </motion.div>
@@ -145,4 +155,4 @@ const Menu = ({homebutton=false, latestHref='', categories=true, background=fals
     );
 }
 
-export default Menu;
+export default connect(mapStateToProps)(Menu);

@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const Cta = ({children, type='primary', to, onClick=() => 0, href=null }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const onAnchorClick = () => {
-      if(to){ navigate(to); }
+      if(to){ router.push({pathname:to},undefined,{scroll:false}); }
       onClick(); 
     }
     return(

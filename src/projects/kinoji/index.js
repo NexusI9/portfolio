@@ -1,4 +1,4 @@
-import {Article, Body, Gallery, Title, Space, Pointer, Img} from '../../components/Folio';
+import {Article, Body, Gallery, Title, Space, Pointer, Img} from '@/components/Folio';
 
 import {
   SearchBar,
@@ -7,7 +7,7 @@ import {
   Card,
   MicroFilters
 } from './inputs';
-import './kinoji_sheet.scss';
+
 import logo from './assets/logo.svg';
 
 

@@ -1,13 +1,13 @@
 import { Multi } from '../Inputs';
-import logo_mmvm from '../../assets/logos/mmvm_logo.png';
-import logo_WIUP from '../../assets/logos/WIUP.png';
+import logo_mmvm from '@/assets/logos/mmvm_logo.png';
+import logo_WIUP from '@/assets/logos/WIUP.png';
 import Content from './Content';
 import Label from './Label';
 
 const Commu = ({language}) => (
   <>
   <Content
-    header={ <Label ico={logo_mmvm}><Multi eng="Montrez-moi vos muscles Records" fr="Label Montrez-moi vos muscles" zh="Montrez-moi vos muscles 唱片公司" language={language} /></Label> }
+    header={ <Label ico={logo_mmvm.src}><Multi eng="Montrez-moi vos muscles Records" fr="Label Montrez-moi vos muscles" zh="Montrez-moi vos muscles 唱片公司" language={language} /></Label> }
     body={
       <small>
         <Multi
@@ -23,7 +23,7 @@ const Commu = ({language}) => (
    />
 
   <Content
-    header={ <Label ico={logo_WIUP}><Multi eng="WIUP radio station" fr="Station radio WIUP" zh="WIUP 廣播電台" language={language} /></Label> }
+    header={ <Label ico={logo_WIUP.src}><Multi eng="WIUP radio station" fr="Station radio WIUP" zh="WIUP 廣播電台" language={language} /></Label> }
     body={
       <small>
         <Multi

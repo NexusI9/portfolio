@@ -2,15 +2,15 @@ import Label from './Label';
 import Content from './Content';
 import List from './List';
 import { Multi } from '../Inputs';
-import logo_rdb from '../../assets/logos/redbox_logo.png';
-import logo_N from '../../assets/logos/N_logo.png';
-import logo_NEK from '../../assets/logos/NEK.png';
+import logo_rdb from '@/assets/logos/redbox_logo.png';
+import logo_N from '@/assets/logos/N_logo.png';
+import logo_NEK from '@/assets/logos/NEK.png';
 
 
 const Pro = ({language}) => (
     <>
       <Content
-        header={<Label ico={logo_rdb}><Multi eng='Lead Designer: Motion, Web & Print productions' fr='Lead Designer: Motion, Web & Print design' zh='領導視覺計師 : 動態圖形設 、 網站 、 印刷製作' language={language}/></Label>}
+        header={<Label ico={logo_rdb.src}><Multi eng='Lead Designer: Motion, Web & Print productions' fr='Lead Designer: Motion, Web & Print design' zh='領導視覺計師 : 動態圖形設 、 網站 、 印刷製作' language={language}/></Label>}
         body={<>
           <small><Multi
             eng='Design of visual and interactive content going from websites to print and motion design assets'
@@ -69,7 +69,7 @@ const Pro = ({language}) => (
 
 
       <Content
-        header={<Label ico={logo_N}><Multi eng='Freelance in audiovisual & Web Design' fr='Freelance en audiovisuel et Web Design' zh='網絡設計師與音像製作自由職業者' language={language}/></Label>}
+        header={<Label ico={logo_N.src}><Multi eng='Freelance in audiovisual & Web Design' fr='Freelance en audiovisuel et Web Design' zh='網絡設計師與音像製作自由職業者' language={language}/></Label>}
         body={<>
           <List li={[
             <Multi
@@ -112,7 +112,7 @@ const Pro = ({language}) => (
 
       <Content
         separator={false}
-        header={<Label ico={logo_NEK}><Multi eng='Graphic and Multimedia designer' fr='Designer Graphique et Multimédia' zh='視覺與多媒體設計師' language={language}/></Label>}
+        header={<Label ico={logo_NEK.src}><Multi eng='Graphic and Multimedia designer' fr='Designer Graphique et Multimédia' zh='視覺與多媒體設計師' language={language}/></Label>}
         body={<>
           <small><Multi
             eng='Providing visuals for various cultural structures such as associations, music acts and soundsystem.'

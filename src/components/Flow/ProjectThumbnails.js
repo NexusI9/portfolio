@@ -1,10 +1,10 @@
 import { toProjectVariant } from './Flow.constants';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { Video } from '../Folio';
   
-const ProjectThumbnails = ({project, variant=toProjectVariant, animated=true, innerDesc=true}) => {
+const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
 
     const SlideOverlay = ({pictures}) => {
   
@@ -39,7 +39,7 @@ const ProjectThumbnails = ({project, variant=toProjectVariant, animated=true, in
       );
     }
     const { thumbnail } = project;
-    const navigate = useNavigate();
+    const router = useRouter();
   
     const parallaxConfig = {
       zoom: 1.12,
@@ -131,6 +131,7 @@ const ProjectThumbnails = ({project, variant=toProjectVariant, animated=true, in
   
       //let tm;
       const onScroll = () => {
+        if(!elt.current){ return; }
         const { top, height, bottom }  = elt.current?.getBoundingClientRect();
         if( bottom > 0 && top < window.innerHeight  ){ 
           const decal = (top-height/2)/window.innerHeight * parallaxConfig.scale;
@@ -160,9 +161,15 @@ const ProjectThumbnails = ({project, variant=toProjectVariant, animated=true, in
             ref={elt}
             onMouseEnter = { () => setOverlay( overlayContent ) }
             onMouseLeave = { () => setOverlay() }
-            onClick={ () => navigate('/project/'+project.title) }
+            onClick={ () => router.push({
+              pathname: '/project/'+project.title,
+              query:{}
+            }, 
+            undefined,
+            { scroll:false}
+            ) }
             key={'thumbnail'+project.title}
-            variants={variant}
+            variants={toProjectVariant}
             >
   
             <section className='move overlay'>

@@ -1,15 +1,13 @@
-import '../../sheets/gallery.scss';
-
 import Img from './Img';
 import { useState, useEffect, useRef } from 'react';
 import {  AnimatePresence, motion } from 'framer-motion';
-import { useSearchParams } from 'react-router-dom';
-import { pictureToFullPath, filenameFromPath } from '../../lib/utils';
+import { useRouter } from 'next/router';
+import { pictureToFullPath, filenameFromPath } from '@/lib/utils';
 import { concatGalleries} from './Gallery.helper';
 
 const Gallery = ({galleries, galleryKey}) => {
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const router = useRouter();
     const [fullview, setFullview] = useState();
   
     /*
@@ -20,8 +18,8 @@ const Gallery = ({galleries, galleryKey}) => {
   
     const check_Click_Or_Params = (e=null) => {
   
-      const paramGallery = searchParams.get('gallery') || (e && e.galleryKey);
-      const paramPicture = searchParams.get('picture') || (e && e.picture);
+      const paramGallery = router.query.gallery || (e && e.galleryKey);
+      const paramPicture = router.query.picture || (e && e.picture);
   
       if( paramGallery && paramGallery === galleryKey && paramPicture){
         const convertedGallery = concatGalleries({ galleries:galleries, galleryKey:galleryKey, selectedPicture:paramPicture });
@@ -32,17 +30,20 @@ const Gallery = ({galleries, galleryKey}) => {
   
     const onImgClick = (e) => {
       window.gtag('event','click_gallery_picture',{event_category:'click', event_label:'Click gallery picture'})
-      setSearchParams({gallery:galleryKey, picture:e.name});
+      router.push({
+        pathname: router.pathname, 
+        query: {...router.query, gallery:galleryKey, picture:e.name}
+      });
     }
   
     const onQuit = () => {
-      setSearchParams();
+      router.push({pathname: router.pathname });
       setFullview();
       document.querySelectorAll('body')[0].style.overflow = 'initial';
     }
   
   
-    useEffect(() => check_Click_Or_Params(), [searchParams.get('gallery')]);
+    useEffect(() => check_Click_Or_Params(), [router.query.gallery]);
   
     //Fullview
   
@@ -101,7 +102,14 @@ const Gallery = ({galleries, galleryKey}) => {
           }
   
           setPage([newPage, newDirection]);  //update page with direction
-          setSearchParams({ gallery:searchParams.get('gallery'), picture:filenameFromPath(newPage) }); //update URL
+          router.push({
+            pathname: router.pathname,
+            query: { 
+              ...router.query,
+              gallery:router.query.gallery, 
+              picture:filenameFromPath(newPage) 
+            }
+          }); //update URL
         };
   
         const swipeConfidenceThreshold = 1000;
@@ -243,7 +251,7 @@ const Gallery = ({galleries, galleryKey}) => {
   
     return ( <>
       {generateGallery(galleries[galleryKey])}
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode='wait'>
         {fullview && fullview}
       </AnimatePresence>
       </> );

@@ -1,10 +1,12 @@
 
+@import  'features', 'options', 'popup';
+
 .guidesheet .card td:nth-child(2){
- background-image: url("assets/card_1.svg");
+ background-image: url("../../projects/laos/assets/card_1.svg");
 }
 
 .guidesheet .card td:last-of-type{
-  background-image: url("assets/card_2.svg");
+  background-image: url("../../projects/laos/assets/card_2.svg");
 }
 
 
@@ -59,19 +61,19 @@
 
     &[data-type="lotus"]{
       box-shadow: 0px 3.90123px 3.90123px rgba(0, 0, 0, 0.25), inset 0px 0px 32.1852px rgba(92, 157, 255, 0.17);
-      background-image: url('assets/lotus.png');
+      background-image: url('../../projects/laos/assets/lotus.png');
     }
     &[data-type="yin"]{ 
       box-shadow: 0px 3.90123px 3.90123px rgba(0, 0, 0, 0.25), inset 0px 0px 32.1852px rgba(255, 146, 244, 0.17);
-      background-image: url('assets/yin.png');
+      background-image: url('../../projects/laos/assets/yin.png');
     }
     &[data-type="fire"]{
       box-shadow: 0px 3.90123px 3.90123px rgba(0, 0, 0, 0.25), inset 0px 0px 32.1852px rgba(255, 148, 70, 0.17);
-      background-image: url('assets/fire.png');
+      background-image: url('../../projects/laos/assets/fire.png');
     }
     &[data-type="chakra"]{
       box-shadow: 0px 3.90123px 3.90123px rgba(0, 0, 0, 0.25), inset 0px 0px 32.1852px rgba(105, 13, 255, 0.17);
-      background-image: url('assets/chakra.png');
+      background-image: url('../../projects/laos/assets/chakra.png');
     }
 
     &:hover{
@@ -278,7 +280,7 @@
       position: absolute;
       clip-path:inset(0 50% 0px 0);
       left: 0;
-      //background-image: url("assets/BW_flashcard.jpg");
+      //background-image: url("../../projects/laos/assets/BW_flashcard.jpg");
       max-width: 101%;
       height: 100%;
     }
@@ -388,11 +390,11 @@
   margin-top: 80%;
 }
 
-.ico_pen{  background-image: url("assets/ico/pen.svg"); }
-.ico_rand{  background-image: url("assets/ico/dice_1.svg"); }
-.ico_moon{  background-image: url("assets/ico/moon.svg"); }
-.ico_pinyin{  background-image: url("assets/ico/show_pinyin.svg"); }
-.ico_english{  background-image: url("assets/ico/english.svg"); }
+.ico_pen{  background-image: url("../../projects/laos/assets/ico/pen.svg"); }
+.ico_rand{  background-image: url("../../projects/laos/assets/ico/dice_1.svg"); }
+.ico_moon{  background-image: url("../../projects/laos/assets/ico/moon.svg"); }
+.ico_pinyin{  background-image: url("../../projects/laos/assets/ico/show_pinyin.svg"); }
+.ico_english{  background-image: url("../../projects/laos/assets/ico/english.svg"); }
 
 #laos_sidebar .app{
   padding: 5%;
@@ -455,14 +457,14 @@
     column-gap: 0.5em;
 }
 
-.ico_pointer{  background-image: url("assets/ico/pointer.svg"); }
-.ico_type{  background-image: url("assets/ico/type.svg"); }
-.ico_scroll{  background-image: url("assets/ico/scroll.svg"); }
-.ico_verti{  background-image: url("assets/ico/vertical.svg"); }
-.ico_grid{  background-image: url("assets/ico/grid.svg"); }
-.ico_static{  background-image: url("assets/ico/static.svg"); }
-.ico_drag{  background-image: url("assets/ico/drag.svg"); }
-.ico_horizontal{  background-image: url("assets/ico/horizontal.svg"); }
+.ico_pointer{  background-image: url("../../projects/laos/assets/ico/pointer.svg"); }
+.ico_type{  background-image: url("../../projects/laos/assets/ico/type.svg"); }
+.ico_scroll{  background-image: url("../../projects/laos/assets/ico/scroll.svg"); }
+.ico_verti{  background-image: url("../../projects/laos/assets/ico/vertical.svg"); }
+.ico_grid{  background-image: url("../../projects/laos/assets/ico/grid.svg"); }
+.ico_static{  background-image: url("../../projects/laos/assets/ico/static.svg"); }
+.ico_drag{  background-image: url("../../projects/laos/assets/ico/drag.svg"); }
+.ico_horizontal{  background-image: url("../../projects/laos/assets/ico/horizontal.svg"); }
 
 
 /*———————————————————————————————————————————————-*/

@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const Logo = () => (
     <motion.div
-    key='nLogo'
-    initial={{opacity:0}}
-    animate={{opacity:1, transition:{duration:0.3}}}
-    exit={{opacity:0, transition:{duration:0.3}}}
+      key='nLogo'
+      initial={{opacity:0}}
+      animate={{opacity:1, transition:{duration:0.3}}}
+      exit={{opacity:0, transition:{duration:0.3}}}
     >
-      <Link to='/' id='NLogo'>
+      <Link href='/' id='NLogo'>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <g id="Layer_2" data-name="Layer 2">
             <g id="Calque_1" data-name="Calque 1">

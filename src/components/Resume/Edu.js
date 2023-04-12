@@ -1,6 +1,6 @@
 import { Multi } from '../Inputs';
-import logo_iup from '../../assets/logos/IUP_logo.png';
-import logo_ensad from '../../assets/logos/ensad-nancy_1.png';
+import logo_iup from '@/assets/logos/IUP_logo.png';
+import logo_ensad from '@/assets/logos/ensad-nancy_1.png';
 import Label from './Label';
 import Content from './Content';
 
@@ -8,7 +8,7 @@ const Edu = ({language}) => (
     <>
       <Content
         header={
-          <Label ico={logo_ensad}>
+          <Label ico={logo_ensad.src}>
           <Multi
             eng='DNSEP (Superior National Diploma of Plastic Expression) with summa cum laude'
             fr='DNSEP (Diplôme National Supérieur d’Expression Plastique) obtenu avec les félicitations du jury'
@@ -34,7 +34,7 @@ const Edu = ({language}) => (
 
       <Content
         header={
-          <Label ico={logo_iup}>
+          <Label ico={logo_iup.src}>
           <Multi
             eng='Web & Game Design, Illustration, 3D Animation'
             fr='Web & Game Design, illustration et animation 3D'
@@ -61,7 +61,7 @@ const Edu = ({language}) => (
       <Content
         separator={false}
         header={
-          <Label ico={logo_ensad}>
+          <Label ico={logo_ensad.src}>
           <Multi
             eng='DNA (National Diploma of Art) with honors'
             fr='DNA (Diplôme National d’Art) obtenu avec Mention'

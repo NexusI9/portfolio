@@ -1,7 +1,7 @@
 import { Multi } from '../Inputs';
 
-const ResumeHeader = ({innerRef, language='english'}) => (
-    <section ref={ e => innerRef } id="resumeHeader">
+const ResumeHeader = ({innerRef=(e)=>0, language='english'}) => (
+    <section ref={ e => innerRef(e) } id="resumeHeader">
              <div>
              <h2>Nassim El Khantour</h2>
              <p style={{fontSize:'1.3em'}}>
