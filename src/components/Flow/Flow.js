@@ -1,7 +1,6 @@
 import { 
     getCategories, 
     getColorOfCategory, 
-    changeHashTo, 
     getZhongwenOfCategory
   } from '../../lib/utils';
   import CategoryContainer from './CategoryContainer';
@@ -29,20 +28,10 @@ const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
     const [displaySuper, setDisplaySuper] = useState(true);
     const userScroll = useRef(false);
 
-    
     useEffect( () => {
-  
-      const onClick = () => {
-        //if user clicked on "a" from categorymenu then prevent hash change from this userEffect ( give priority to categorymenu hash change )
-        userScroll.current = false;
-      }
-      const onMouseWheel = (e) => {
-        userScroll.current = true;
-      }
-  
-  
-      const checkViewportDiv = () => {
-  
+        
+      const checkViewportDiv = ({forceChange=false}) => {
+
         getCategories().forEach( (cat,c) => {
           if(!containerRef.current.length){ return; }
           const container = containerRef.current[c];
@@ -51,11 +40,9 @@ const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
   
           const scrollTop = window.pageYOffset;
           const windowHeight = window.innerHeight;
-  
-  
+          
           if( (scrollTop < windowHeight) || ( c === containerRef.current.length-1 && bottom < window.innerHeight/3 ) ){ 
             _onCategoryChange(" ");
-            return setCategory(" "); 
           }
   
           if(
@@ -64,49 +51,46 @@ const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
             category !== title
           ){
 
-            //react 
+
             //window.gtag('event',`view_category_${title}`,{event_category:'scroll', event_label: `View homepage category: ${title}`});
-            if(userScroll.current) changeHashTo(title);
-            else{
-              _onCategoryChange(title);
-            }
-            return setCategory(title);
+            if(forceChange || userScroll.current){ _onCategoryChange(title); }
+
           }
   
   
         });
   
       }
-  
-      setCategory("");
-  
+      
+      //if user clicked on "a" from categorymenu then prevent hash change from this userEffect ( give priority to categorymenu hash change )
+      const onClick = ({target}) =>  {
+        if( !/(path|svg)/.test(target.nodeName) ){ userScroll.current = false; }
+      };
+      const onMouseWheel = () => userScroll.current = true;
+
+      const onResize = (e) => setDisplaySuper( e.matches );  
+      
+      checkViewportDiv({forceChange:true});
+      
       window.addEventListener('scroll', checkViewportDiv);
       window.addEventListener('click', onClick);
       window.addEventListener('mousewheel', onMouseWheel);
+
+      const mq = window.matchMedia('(min-width:800px)');
+      onResize(mq);
+      mq.addEventListener('change', onResize);
   
       return () => { 
         window.removeEventListener('scroll', checkViewportDiv)
         window.removeEventListener('click', onClick);
         window.addEventListener('mousewheel', onMouseWheel);
+        mq.removeEventListener('change', onResize);
       };
   
-    }, [location.pathname]);
-  
-    useEffect( () => {
-  
-      const onResize = (e) => {
-        setDisplaySuper( e.matches );
-      }
-      
-  
-      //dispatch custom event
-      const mq = window.matchMedia('(min-width:800px)');
-      onResize(mq);
-      mq.addEventListener('change', onResize);
-  
-      return () => mq.removeEventListener('change', onResize);;
-    
-    }, [category]);
+    }, []);
+
+    useEffect(() => { setCategory(_category); },[_category]);
+    useEffect(() => { setCategory(''); }, [router.pathname]);
 
   
     return (

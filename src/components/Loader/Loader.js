@@ -87,6 +87,7 @@ const Loader = ({title, background, font, onLoadComplete=()=>0}) => {
 
   
     return(
+      <>
         <motion.div
         key='loaderPage'
         id="loaderPage"
@@ -108,6 +109,7 @@ const Loader = ({title, background, font, onLoadComplete=()=>0}) => {
   
   
         </motion.div>
+        </>
     );
   }
 

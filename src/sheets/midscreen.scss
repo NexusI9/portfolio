@@ -263,9 +263,13 @@
         height: 25vh;
       }
 
-      .reverse{ flex-direction: column-reverse;}
+      section.horizontal{
+        flex-direction: column;
+        &.reverse{ flex-direction: column-reverse;}
+      }
+      
 
-      .half{ width: 100%; }
+      .half{ width: 100% !important; }
 
       .pointer{
         display: block;

@@ -1,4 +1,3 @@
-import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Flow } from '@/components/Flow';
 import { useEffect, useState } from 'react';
@@ -11,12 +10,11 @@ import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({
   _setHomeButton: () => dispatch({type: 'TOGGLE_BACK_BUTTON', active:false}),
-  _setSkin: (e='default') => dispatch({type:'SWITCH_SKIN', skin:e}),
+  _setSkin: (e) => dispatch({type:'SWITCH_SKIN', skin:e}),
 });
 
 const Home = ({_setHomeButton, _setSkin}) => {
 
-  //const latestHref = useRef('');
   const [social, setSocial] = useState(false);
   const [catMenu, displayCatMenu] = useState();
   const [aboveTheFold, setAboveTheFold] = useState(true);
@@ -58,6 +56,7 @@ const Home = ({_setHomeButton, _setSkin}) => {
     mq.addEventListener('change', onMatchMedia);
 
     _setHomeButton(false);
+    _setSkin('default');
 
     return () =>{ 
       mq.removeEventListener('change', onMatchMedia);
@@ -66,8 +65,6 @@ const Home = ({_setHomeButton, _setSkin}) => {
 
 
   },[]);
-
-  useEffect( () => { _setSkin(aboveTheFold ? 'whiteMenu': 'default'); }, [aboveTheFold]);
 
   useEffect( () => {
       //set Spheros positions depending on above the fold or if about is in view

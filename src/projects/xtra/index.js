@@ -18,7 +18,7 @@ export default () => (
             </p>
           </div>
           <div style={{flexBasis: '70%'}} >
-            <Img src='/assets/projects/xtra/homepage.png' />
+            <Img src='/assets/projects/xtra/homepage.webp' />
           </div>
         </Body>
         <Space type='small'/>
@@ -37,7 +37,7 @@ export default () => (
   
   
       <Article spaced={true}>
-         <Parallax src='/assets/projects/xtra/paralax_xtra.jpg'/>
+         <Parallax src='/assets/projects/xtra/wide_parallax_xtra.webp'/>
       </Article>
 
   
@@ -45,7 +45,7 @@ export default () => (
         <Title label="Overall aesthetic" className='half' summary='The brand heavily rely on tech and cybernetics illustrations to break the usual austerity and sometimes complex Data Privacy semantic, giving the customer a sense of comfort as his journey is supported by visuals.' />
         <Space type='small'/>
         <Body flexDirection='horizontal' className='reverse vcenter'>
-          <Img className='stickToLeft' alt='poster mode' src='/assets/projects/xtra/cybernetic.png'/>
+          <Img className='stickToLeft' alt='poster mode' src='/assets/projects/xtra/cybernetic.webp'/>
           <Pointer style={{flexBasis:'40%'}} title='Cybernetic visuals' description='In order to enhance user’s navigation, each XTRA’s page use a themed cybernetic illustration to give customer hints about what to except on this page on top of making his experience visually richer.'/>
         </Body>
         <Space type='small'/>
@@ -56,7 +56,7 @@ export default () => (
             <br/>It thus felt important to inject some materiality in the website by the use of abstract textures to expand the art direction out of the digital world boundaries.
             </>
           }/>
-          <Img className='stickToRight' alt='poster mode' src='/assets/projects/xtra/textures.png' />
+          <Img className='stickToRight' alt='poster mode' src='/assets/projects/xtra/textures.webp' />
         </Body>
         <Space type='small'/>
       </Article>
@@ -159,7 +159,7 @@ export default () => (
             </p>
           </div>
           <div style={{flexBasis:'110%'}}>
-            <Img src='/assets/projects/xtra/blog.png' />
+            <Img src='/assets/projects/xtra/blog.webp' />
           </div>
         </Body>
         <Space type='small'/>
@@ -169,7 +169,7 @@ export default () => (
         <Space type='small'/>
         <Body style={{columnGap:'10%'}} className='reverse'>
         <div style={{flexBasis:'50%'}}>
-            <Img src='/assets/projects/xtra/newsletter.png' />
+            <Img src='/assets/projects/xtra/newsletter.webp' />
           </div>
           <div>
             <h2>Lead magnet & newsletter</h2>
@@ -190,7 +190,7 @@ export default () => (
         className='half'
         />
         <Space type='small'/>
-        <Img alt='laos dark theme screenshot' src='/assets/projects/xtra/map.png' />
+        <Img alt='laos dark theme screenshot' src='/assets/projects/xtra/map.webp' />
       </Article>
 
   

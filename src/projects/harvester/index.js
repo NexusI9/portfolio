@@ -4,13 +4,13 @@ export default () => (
   
   <Article>
     <Body flexDirection='vertical' flexAlignement='centered'>
-      <Img src="/assets/projects/harvester/the_lone_harvester.jpg"   alt="theloveharvester" />
+      <Img src="/assets/projects/harvester/the_lone_harvester.webp"   alt="theloveharvester" />
       <Space type='small'/>
-      <Img src="/assets/projects/harvester/concept_tent_1.jpg"   alt="theloveharvester_concept_tent" />
+      <Img src="/assets/projects/harvester/concept_tent_1.webp"   alt="theloveharvester_concept_tent" />
       <Space type='small'/>
-      <Img src="/assets/projects/harvester/cook_room.jpg"   alt="theloveharvester_cook_room" />
+      <Img src="/assets/projects/harvester/cook_room.webp"   alt="theloveharvester_cook_room" />
       <Space type='small'/>
-      <Img src="/assets/projects/harvester/inside.jpg"   alt="theloveharvester_inside" />   
+      <Img src="/assets/projects/harvester/inside.webp"   alt="theloveharvester_inside" />   
     </Body>
   </Article>
 

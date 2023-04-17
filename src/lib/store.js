@@ -11,8 +11,7 @@ const themeReducer = (state={}, action) => {
             }
         default:
             return {
-                ...state,
-                skin: 'default'
+                ...state
             };
     };
 }
@@ -42,11 +41,23 @@ const flowReducer = (state={}, action) => {
             category: action.category
         };
 
+        case 'SET_LAST_HREF':
+        return{
+            ...state,
+            href: action.href
+        }
+
+        case 'GET_LAST_HREF':
+        return{
+            ...state
+        }
+
         default:
             return {...state};
 
     };
 }
+
 
 const rootReducer = combineReducers({
     theme: themeReducer,

@@ -99,7 +99,7 @@ export function getSkinFromProject(project){ return project.skin || 'default'; }
 
 export function getCustomColorFromProject(project){ return project.color || null; }
 
-export function pictureToFullPath({folder, picture, extension='jpg'}){ return '/assets/projects'+folder+'/'+picture+'.'+extension; }
+export function pictureToFullPath({folder, picture, extension='webp'}){ return '/assets/projects'+folder+'/'+picture+'.'+extension; }
 
 
 export function filenameFromPath(path){
@@ -139,4 +139,12 @@ export function isMobile(){ return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IE
 
 export function setFaviconColor(favicon, color='red'){ return favicon.href = process.env.PUBLIC_URL + '/favicon_'+color+'.ico' ; }
 
-export function changeHashTo(hash){ return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash); }
+export function changeHashTo(hash){ 
+
+  if(!hash || !hash.length || !hash.trim().length ){
+    return window.history.pushState(null, "The Art of Nassim El Khantour","/");
+  }else{
+    return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash);
+  }
+
+}

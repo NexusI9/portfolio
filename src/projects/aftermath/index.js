@@ -22,15 +22,15 @@ export default () => (
 
 	<Article>
 		<Body flexDirection='vertical' flexAlignement='centered'>
-			<Img src="/assets/projects/aftermath/af2_1.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/af2_2.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/af1_4.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/af1_2.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/af3_1.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/af3_4.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/af3_5.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/frame1.jpg" alt="aft" />
-			<Img src="/assets/projects/aftermath/frame2.jpg" alt="aft" />
+			<Img src="/assets/projects/aftermath/af2_1.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/af2_2.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/af1_4.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/af1_2.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/af3_1.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/af3_4.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/af3_5.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/frame1.webp" alt="aft" />
+			<Img src="/assets/projects/aftermath/frame2.webp" alt="aft" />
 		</Body>
 	</Article>
   </>

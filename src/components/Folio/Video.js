@@ -12,7 +12,7 @@ const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, placeholde
     const Placeholder = ({placeholder=null, playIco=true, loadIco=false, style={}}) => (
       <div className='iframePlaceholder' style={style}>
         { placeholder ? 
-          <img className='picPlaceholder' src={process.env.PUBLIC_URL+placeholder} /> 
+          <img className='picPlaceholder' src={placeholder} /> 
           :
           <div className='loadIco'> <Dotty /> </div> }
         { playIco && <img className='playIco round' src={play}/>}

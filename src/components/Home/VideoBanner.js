@@ -4,9 +4,14 @@ import { motion } from 'framer-motion';
 import { Cta } from '@/components/Inputs';
 import { Video } from '@/components/Folio';
 import viewshowreel from '@/assets/viewshowreel.svg';
+import { HoverSquare } from '../Props';
+import { connect } from 'react-redux';
 
+const mapDispatchToProps = (dispatch) => ({
+  _setCategory: (e) => dispatch({type:"CHANGE_CATEGORY", category:e})
+});
 
-const VideoBanner = (onScroll) => {
+const VideoBanner = ({_setCategory}) => {
 
     const [hoverActive, setHoverActive] = useState(false);
   
@@ -37,6 +42,7 @@ const VideoBanner = (onScroll) => {
     const onViewClick = () => {
       document.getElementById('projects')?.scrollIntoView({behavior:'smooth'});
       window.gtag('event','click_view_work',{event_category:'click', event_label:'Click on view my work'});
+      //_setCategory("Design");
     }
   
     const letterVar = {
@@ -141,12 +147,15 @@ const VideoBanner = (onScroll) => {
                   <Link href='/showreel'></Link>
                 </div>
             </div>
-  
-              <a onClick={onViewClick} id="arrowScroll" style={{display: displayVideo ? null : 'none'}}>
-                    <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2.69998 0.899994L9.19998 7.4L15.7 0.899995L18.3 2.19999L9.19998 11.3L0.0999798 2.19999L2.69998 0.899994Z" fill="#070812"/>
-                  </svg>
-              </a>
+
+                <a onClick={onViewClick} id="arrowScroll" style={{display: displayVideo ? null : 'none'}}>
+                  <HoverSquare name='arrow_down' size='25px'>
+                      <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.69998 0.899994L9.19998 7.4L15.7 0.899995L18.3 2.19999L9.19998 11.3L0.0999798 2.19999L2.69998 0.899994Z" fill="#070812"/>
+                    </svg>
+                  </HoverSquare>
+                </a>
+
   
         {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
   
@@ -154,4 +163,4 @@ const VideoBanner = (onScroll) => {
     );
   }
 
-  export default VideoBanner;
+  export default connect(null, mapDispatchToProps)(VideoBanner);

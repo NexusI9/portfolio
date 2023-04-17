@@ -879,6 +879,7 @@ footer{
   top:-45%;
   left: -30%;
   &, & > *{   cursor: pointer; }
+
   span{
     border-radius: $border-radius/2;
     width: 100%;
@@ -2209,6 +2210,9 @@ span.lineSeparator{
     cursor: pointer;
     pointer-events: auto;
     z-index: 2;
+    *{
+      pointer-events: auto;
+    }
   }
 
     

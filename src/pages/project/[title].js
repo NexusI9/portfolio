@@ -17,7 +17,7 @@ import dynamic from 'next/dynamic';
 
 const mapDispatchToProps = (dispatch) => ({
   _setHomeButton: (e) => dispatch({type: 'TOGGLE_BACK_BUTTON', active:e}),
-  _setSkin: (e='default') => dispatch({type:'SWITCH_SKIN', skin:e}),
+  _setSkin: (e) => dispatch({type:'SWITCH_SKIN', skin:e}),
 });
 
 function Project({_setHomeButton, _setSkin}){
@@ -26,6 +26,7 @@ function Project({_setHomeButton, _setSkin}){
 
   //elements
   const [project, setProject] = useState();
+  const [headerTitle, setHeaderTitle]=useState('');
   const suggestions = useRef();
 
   //project content
@@ -48,69 +49,60 @@ function Project({_setHomeButton, _setSkin}){
   useEffect( () => { 
 
     _setHomeButton(false); 
-    /*setProjectContainer();
-    setHtmlContent();
-    setProject();
-    setSuggestions();*/
-    if( router.query.title){ setLoadComplete(false); }
-
-    
-
-  },[router.query]);
-
-  useEffect( () => {
+    setProject(undefined);
 
     //project
     const {title} = router.query;
     if(title){
       const currentProject = getProjectFromTitle(title);
+      if(!currentProject){ return router.push('/'); }
       const data = {
         project: currentProject,
         color: currentProject.color,
         category:getCategoryOfProject(currentProject),
         skin: currentProject.skin
       }
+
+      setLoadComplete(false); 
       setProject(data.project);
+      setHeaderTitle(data.project.title + ' on Nassim El Khantour');
     }
-  
-  },[router.query]);
+
+  },[router.query.title]);
 
 
   useEffect( () => {
 
-      //events
-      const onScroll = () => {
-      
-        const scrollPos = window.pageYOffset;
-        //sidebar & suggestion
+    if(!project){return; }
+    
+    const onScroll = () => {
+    
+      const scrollPos = window.pageYOffset;
+      //sidebar & suggestion
 
-        if( scrollPos > projectContainer?.offsetHeight - 400 ){ setShowSideBar(false); }
-        else{ setShowSideBar(true); }
+      if( scrollPos > projectContainer?.offsetHeight - 400 ){ setShowSideBar(false); }
+      else{ setShowSideBar(true); }
 
-        if(!projectContainer){return;}
+      if(!projectContainer){return;}
 
-        if(projectContainer.getBoundingClientRect().top > 0){
-          setWhiteMenu(true);
-          setDisplayHeader(true); 
-        }else{
-          setWhiteMenu(false);
-          if( !window.matchMedia('(max-width:425px)').matches ){ setDisplayHeader(false); }
-        }
-  
+      if(projectContainer.getBoundingClientRect().top > 0){
+        setWhiteMenu(true);
+        setDisplayHeader(true); 
+      }else{
+        setWhiteMenu(false);
+        if( !window.matchMedia('(max-width:425px)').matches ){ setDisplayHeader(false); }
       }
 
-
-    if(project){
-      const Index = dynamic(() => import('../../projects/'+project.folder));
-      window.addEventListener('scroll', onScroll);
-      _setSkin(project.skin || 'default');
-      onScroll();
-      setHtmlContent(<Index />);
     }
 
+    const Index = dynamic(() => import('../../projects/'+project.folder));
+    window.addEventListener('scroll', onScroll);
+    _setSkin(project.skin);
     onScroll();
+    setHtmlContent(<Index />);
 
-    return () => window.removeEventListener('scroll', onScroll);
+
+  return () => window.removeEventListener('scroll', onScroll);
     
   },[project, projectContainer]);
 
@@ -130,8 +122,9 @@ function Project({_setHomeButton, _setSkin}){
   return(
     <>
       <Head>
-        <title>{project?.title || 'project'} on Nassim El Khantour</title>
+        <title>{headerTitle}</title>
       </Head>
+
       <AnimatePresence mode='wait'> 
           { (!loadComplete && project) &&  <Loader 
               key={'LOADER' + project.title} 
@@ -143,23 +136,28 @@ function Project({_setHomeButton, _setSkin}){
           }
         </AnimatePresence>
 
-        {loadComplete && project && displayHeader &&  <Header project={project} />}  
+        <AnimatePresence mode='wait'> 
+          {loadComplete && project && displayHeader &&  <Header project={project} />}  
+        </AnimatePresence>
 
-        {project &&
+        <AnimatePresence mode='wait'> 
+        {project && loadComplete &&
           <>
-            <motion.div id='project'
+            <motion.div 
+              id='project'
               key={ 'projectContainer' + project.title }
               exit={{opacity:0, transition:{duration:0.3}}}
-            >
+            > 
                 {showSideBar && <PercentBar />}
                 {htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content>}
             </motion.div>
+
             {suggestions.current && <Suggestion projects={suggestions.current} display={!showSideBar} /> }
             <Signature />
-
             <Socials minify={true}/>
           </>
         }
+        </AnimatePresence> 
     </>);
 
 }

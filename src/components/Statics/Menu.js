@@ -5,6 +5,7 @@ import {gsap} from 'gsap';
 import { HoverSquare } from '../Props';
 import { HomeButton, Logo } from '../Inputs';
 import { connect } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const mapStateToProps = (state) => ({
   _background: state.menu.background,
@@ -13,7 +14,9 @@ const mapStateToProps = (state) => ({
 });
 
 
-const Menu = ({_background=false, _homebutton=false, _latestHref=''}) => {
+const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
+
+  const router = useRouter(); 
 
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
@@ -27,7 +30,18 @@ const Menu = ({_background=false, _homebutton=false, _latestHref=''}) => {
   const onAnimationComplete = () => {
     setChildren(
       <motion.div id='labelContent' key='labelContent' ref={labelNode} variants={variantPanel} initial='initial' animate='animate' exit='exit'>
-        {mapMenu.map(item => <motion.div variants={variantLabel}  key={item.label} onAnimationComplete={ () => setAnimationDone(true) }><Link onClick={ () => setActive(false) } href={item.link} activeclassname="surligneur"><HoverSquare size='14em' name={item.label}><h1>{item.label}</h1></HoverSquare></Link></motion.div> )}
+        {mapMenu.map(({label, link}) => 
+            <motion.div 
+                variants={variantLabel}  
+                key={label} 
+                onAnimationComplete={ () => setAnimationDone(true) }>
+                  <Link onClick={ () => setActive(false) } href={link} className={router.pathname === link ? 'active' : ''}>
+                    <HoverSquare size='14em' name={label}>
+                      <h1>{label}</h1>
+                    </HoverSquare>
+                  </Link>
+            </motion.div> 
+        )}
       </motion.div>
     );
   };
@@ -117,14 +131,14 @@ const Menu = ({_background=false, _homebutton=false, _latestHref=''}) => {
 
   return(
     <>
-      <nav id="menu" className={(active ? 'active' : null) +' '+ (_background ? null : 'transparent') }>
+      <nav id="menu" className={(active ? 'active' : '') +' '+ (_background ? '' : 'transparent') }>
         <div>
           <AnimatePresence mode='wait'>
             {!active && _homebutton && <HomeButton key='_homebuttonpresence' latestHref={_latestHref} /> }
             {!active && !_homebutton && <Logo/> }
           </AnimatePresence>
           <div className='topArea'>
-            <div id='bars' onClick={onBarsClick} className={active ? 'active' : null}>
+            <div id='bars' onClick={onBarsClick} className={active ? 'active' : ''}>
               <section className='default'>
                 <span></span>
                 <span></span>

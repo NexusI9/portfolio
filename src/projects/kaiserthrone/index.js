@@ -11,20 +11,20 @@ export default () => (
       <p><i>"In an irregular lab based in a deserted and strayed factory, an uncanny event lead to the malfunction of the chemical stability system of the ongoing experiment. The wild nature of the lab built with modest equipment cannot hold that much compulsion. The beast is unleashed and is now spreading..."</i></p>
     </div>
 
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_1.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_2.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_3.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_4.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_5.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_6.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_7.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_8.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_9.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_10.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_11.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_12.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_13.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_14.jpg"/>
-    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_15.jpg"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_1.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_2.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_3.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_4.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_5.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_6.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_7.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_8.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_9.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_10.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_11.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_12.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_13.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_14.webp"/>
+    <Img class="paint" alt="kaiser" src="/assets/projects/kaiserthrone/k_15.webp"/>
   </>
 );

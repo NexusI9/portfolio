@@ -42,10 +42,6 @@ const App = ({ Component, pageProps }) => {
                 <meta charSet="utf-8" />
                 <link rel="icon" id='favicon' href="/favicon.ico" />
                 <link rel="apple-touch-icon" href="/logo192.png" />
-
-                <link rel="stylesheet" href="/assets/fonts/fonts.css"/>
-                <link rel="preload" href="/assets/fonts/chuhuo.ttf" as="font" type="font/ttf" crossorigin/>
-
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="theme-color" content="#000000" />
                 <meta property="og:site_name" content="The Art of Nassim El Khantour"/>

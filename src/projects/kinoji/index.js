@@ -27,7 +27,7 @@ function fetchPicFromLength({folder, name, length}){
       var str = "" + i;
       var pad = "00000";
       str = pad.substring(0, pad.length - str.length) + str;
-      ar.push('/assets/projects/kinoji/'+folder+'/'+name+'_'+str+'.jpg');
+      ar.push('/assets/projects/kinoji/'+folder+'/'+name+'_'+str+'.webp');
     }
     return ar;
 
@@ -333,7 +333,7 @@ const GraphicChart = () => (
         </tr>
         <tr>
           <td colSpan='4'>
-            <Card visual={<img src='/assets/projects/kinoji/YimouZhang.jpg' alt='YimouZhang'/>} label='Zhang Yimou' subtext={<small>1951-today</small>} summary={<small style={{fontSize:'0.7em', lineHeight:'1.4em'}}><br />Zhang Yimou is a Chinese film director, producer, writer and actor, and former cinematographer.</small>}/>
+            <Card visual={<img src='/assets/projects/kinoji/YimouZhang.webp' alt='YimouZhang'/>} label='Zhang Yimou' subtext={<small>1951-today</small>} summary={<small style={{fontSize:'0.7em', lineHeight:'1.4em'}}><br />Zhang Yimou is a Chinese film director, producer, writer and actor, and former cinematographer.</small>}/>
           </td>
         </tr>
 
@@ -445,7 +445,7 @@ export default () => (
           </p>
         </div>
         <div style={{flexBasis: '120%'}} className='stickToRight'>
-          <Img id='kinoji_first_mockup' src='/assets/projects/kinoji/mockups/mockup_mac.png' className='gradcircle' />
+          <Img id='kinoji_first_mockup' src='/assets/projects/kinoji/mockups/mockup_mac.webp' className='gradcircle' />
         </div>
       </Body>
       <Space />
@@ -473,13 +473,13 @@ export default () => (
 
       <Body flexDirection='horizontal' className='reverse vcenter'>
         <section>
-          <Img alt='poster mode' src='/assets/projects/kinoji/mockups/poster_mode.png'/>
+          <Img alt='poster mode' src='/assets/projects/kinoji/mockups/poster_mode.webp'/>
         </section>
         <Pointer style={{flexBasis:'40%'}} title='1. Poster mode' description='The poster mode displays the movies’ poster allowing the user to have an overview of the avalaible content.'/>
       </Body>
       <Body flexDirection='horizontal' className='vcenter'>
         <Pointer style={{flexBasis:'40%'}} side='right' title='2. Mosaic mode' description='The second mode throws the user into a dense patchwork of colors and atmospheres. Ideal if one is simply looking for inspiration.'/>
-        <Img alt='poster mode' src='/assets/projects/kinoji/mockups/mosaic_mode.png' />
+        <Img alt='poster mode' src='/assets/projects/kinoji/mockups/mosaic_mode.webp' />
       </Body>
     </Article>
 
@@ -507,7 +507,7 @@ export default () => (
             <h5>The logotype</h5>
             <p>Combining elements of modernity with more classical shapes,
             <br/>the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
-            <img src={logo}/>
+            <img src={logo.src}/>
         </section>
       </Body>
 
@@ -544,7 +544,7 @@ export default () => (
       </Body>
       <Space type='small' />
       <Body flexDirection='horizontal' className='reverse vcenter'>
-        <Img alt='aesthetics mockup' src='/assets/projects/kinoji/mockups/aesthetics.png' className='gradcircle double' />
+        <Img alt='aesthetics mockup' src='/assets/projects/kinoji/mockups/aesthetics.webp' className='gradcircle double' />
         <Pointer style={{flexBasis:'40%'}} title='Filter by aesthetics' description='Black and white, red, urbanistic, or naturalistic shots: Kinoji offers a in depth filtering system, allowing the user to search shots by their aesthetics or hues.' />
       </Body>
     </Article>

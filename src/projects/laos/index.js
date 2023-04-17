@@ -3,33 +3,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {Article, Body, Gallery, Title, Space, Pointer, Img, Video} from '@/components/Folio';
 import { gsap } from 'gsap';
 import Masonry from 'react-responsive-masonry';
+
 const FeaturesCircles = () => {
 
   const contentRoute = [
      {
         type:'lotus',
-        icon: "/assets/projects/laos/lotus.png",
+        icon: "/assets/projects/laos/lotus.webp",
         title: "Multitask dictionary",
         summary: "The extension also provide a personal dictionary allowing to save countless new words, common names and expressions.",
-        img: "/assets/projects/laos/low_listselect.jpg",
+        img: "/assets/projects/laos/low_listselect.webp",
       }, {
         type:'yin',
-        icon: "/assets/projects/laos/yin.png",
+        icon: "/assets/projects/laos/yin.webp",
         title: "Flashcard game !",
         summary: "For an easy entry level, flashcards are the choice to start learning new words ! Letting the mouse flowing through the cards to pair them together.",
-        img: "/assets/projects/laos/low_flashcard.jpg",
+        img: "/assets/projects/laos/low_flashcard.webp",
       }, {
         type:'fire',
-        icon: "/assets/projects/laos/fire.png",
+        icon: "/assets/projects/laos/fire.webp",
         title: "Fast type mode",
         summary: "The Fast Typing mode brings a more intensive (yet efficient) learning pace.",
-        img: "/assets/projects/laos/low_fasttype.jpg",
+        img: "/assets/projects/laos/low_fasttype.webp",
       }, {
         type:'chakra',
-        icon: "/assets/projects/laos/chakra.png",
+        icon: "/assets/projects/laos/chakra.webp",
         title: "Fill the blank",
         summary: "For the more advanced, a fill sentences mode is available using Tatoeba.org’s boundless sentences database",
-        img: "/assets/projects/laos/low_fillblank.jpg",
+        img: "/assets/projects/laos/low_fillblank.webp",
       },
   ];
 
@@ -86,10 +87,10 @@ const KeyShapes = () => (
 
     <tbody>
       <tr>
-        <td><img src="/assets/projects/laos/lotus.png" /></td>
-        <td><img src="/assets/projects/laos/yin.png" /></td>
-        <td><img src="/assets/projects/laos/fire.png" /></td>
-        <td><img src="/assets/projects/laos/chakra.png" /></td>
+        <td><img src="/assets/projects/laos/lotus.webp" /></td>
+        <td><img src="/assets/projects/laos/yin.webp" /></td>
+        <td><img src="/assets/projects/laos/fire.webp" /></td>
+        <td><img src="/assets/projects/laos/chakra.webp" /></td>
       </tr>
 
       <tr id="blueprint">
@@ -256,7 +257,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_2'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/lotus.png')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/lotus.webp')" }}></span>
       <section>
         <h5>List mode</h5>
       </section>
@@ -368,7 +369,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_3'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/yin.png')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/yin.webp')" }}></span>
       <section>
         <h5>Flashcards</h5>
       </section>
@@ -441,7 +442,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_4'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/fire.png')"}}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/fire.webp')"}}></span>
       <section>
         <h5>Fast type</h5>
       </section>
@@ -494,7 +495,7 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_5'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/chakra.png')"}}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/chakra.webp')"}}></span>
       <section>
         <h5>Fill the blank</h5>
       </section>
@@ -606,7 +607,7 @@ const Slicer = () => {
 
   return(
     <div id="slicer" ref={slicerRef} className='round'>
-      <img src="/assets/projects/laos/flashcard.jpg" />
+      <img src="/assets/projects/laos/flashcard.webp" />
       <img src="/assets/projects/laos/simplelayout.svg" ref={maskRef} />
       <span ref={barRef}></span>
     </div>
@@ -616,19 +617,19 @@ const SideMenu = () => {
 
   const routeItem = [
     {
-      app: '/assets/projects/laos/lotus.png',
+      app: '/assets/projects/laos/lotus.webp',
       icons: ['ico_pen', 'ico_rand', 'ico_moon']
     },
     {
-      app: '/assets/projects/laos/yin.png',
+      app: '/assets/projects/laos/yin.webp',
       icons: ['ico_pinyin', 'ico_rand']
     },
     {
-      app: '/assets/projects/laos/fire.png',
+      app: '/assets/projects/laos/fire.webp',
       icons: ['ico_pen', 'ico_english']
     },
     {
-      app: '/assets/projects/laos/chakra.png',
+      app: '/assets/projects/laos/chakra.webp',
       icons: ['ico_pinyin', 'ico_english', 'ico_rand']
     }
   ];
@@ -758,7 +759,7 @@ export default () => (
           </p>
         </section>
         <section style={{flexBasis:'50%'}} className='stickToRight'>
-          <img src='/assets/projects/laos/mockups/hero.png' alt='board'/>
+          <img src='/assets/projects/laos/mockups/hero.webp' alt='board'/>
         </section>
       </Body>
     </Article>
@@ -864,7 +865,7 @@ export default () => (
     className='half'
     />
 
-      <Img alt='laos dark theme screenshot' src='/assets/projects/laos/mockups/dark_theme.png' />
+      <Img alt='laos dark theme screenshot' src='/assets/projects/laos/mockups/dark_theme.webp' />
 
   </Article>
 
@@ -879,14 +880,14 @@ export default () => (
           </>}
       side='right'
       />
-      <Img alt='laos sidebar screenshot' src='/assets/projects/laos/mockups/sidebar.png' />
+      <Img alt='laos sidebar screenshot' src='/assets/projects/laos/mockups/sidebar.webp' />
     </Body>
   </Article>
 
 
   <Article spaced={true} name='Settings'>
     <Body className='reverse vcenter'>
-    <Img alt='laos options screenshot' src='/assets/projects/laos/mockups/options.png' />
+    <Img alt='laos options screenshot' src='/assets/projects/laos/mockups/options.webp' />
     <Pointer 
       style={{flexBasis:'50%'}} 
       title='Quick settings access' 
@@ -907,7 +908,7 @@ export default () => (
       The app translates any articles to an easily readable transcript in which the user can choose his reading pace, as well as translating any words
       </p>
       <div className='compress'>
-        <Img alt='laos options screenshots' src='/assets/projects/laos/mockups/mantra.png' className='compress'/>
+        <Img alt='laos options screenshots' src='/assets/projects/laos/mockups/mantra.webp' className='compress'/>
       </div>
 
     </Body>

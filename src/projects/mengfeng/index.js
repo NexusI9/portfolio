@@ -15,7 +15,7 @@ export default () => (
   <>
         <Article name='Product Design' spaced={true} >
             <Body flexDirection='vertical' title='Product Design'>
-              <Video id={632750562} placeholder={'/assets/thumbnails/mengfeng.jpg'}/>
+              <Video id={632750562} placeholder={'/assets/thumbnails/mengfeng.webp'}/>
               <Gallery galleries={galleryRoutes} galleryKey='product' />
             </Body>
         </Article>
@@ -29,14 +29,14 @@ export default () => (
         {
         /*<Article header='Banner' spaced={true}>
             <Body>
-              <Img src="/assets/projects/mengfeng/banner.jpg" className='round'/>
+              <Img src="/assets/projects/mengfeng/banner.webp" className='round'/>
             </Body>
         </Article>*/
         }
 
 
         <Article name='UI Overview' spaced={true} className='purpleBkg'>
-            <Parallax src='/assets/projects/mengfeng/parallax.jpg'/>
+            <Parallax src='/assets/projects/mengfeng/wide_parallax.webp'/>
         </Article>
 
 
@@ -48,13 +48,13 @@ export default () => (
               </div>
             </Body>
             <Body id='pairing' className='padded'>
-                <Img className='compress' src="/assets/projects/mengfeng/mockups/wake_1.png"/>
+                <Img className='compress' src="/assets/projects/mengfeng/mockups/wake_1.webp"/>
             </Body>
         </Article>
 
         <Article header='Profile setup' spaced={true} className='purpleBkg round'>
             <Body>
-                  <div><Img className='padded small' src="/assets/projects/mengfeng/mockups/profile.png"/></div>
+                  <div><Img className='padded small' src="/assets/projects/mengfeng/mockups/profile.webp"/></div>
                   <div>
                     <h2>Profile setup</h2>
                     <p>The user will now enter various information and preferences so the application will adapts itself to the user preferences (music, meditation level...)</p>
@@ -75,7 +75,7 @@ export default () => (
               <p>In order to access the numerous pod’s features such as diffuser, speaker or light, the user access to a simple widget board.</p>
             </div>
             <div style={{flexBasis:'30%'}}>
-              <Img src="/assets/projects/mengfeng/mockups/module.png"/>
+              <Img src="/assets/projects/mengfeng/mockups/module.webp"/>
             </div>
           </Body>
         </Article>
@@ -85,8 +85,8 @@ export default () => (
         <Title label='Meditation program' className='half' summary='A frequently updated meditation package is avalaible to the user, offering new inner experiences every weeks.'/>
 
           <Body>
-            <div className='compress' style={{position:'relative'}}> <Img style={{height:'100%'}} id='zenIllu' className='hidtablet' src="/assets/projects/mengfeng/zen.png"/> </div>
-            <div> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/meditation.png"/> </div>
+            <div className='compress' style={{position:'relative'}}> <Img style={{height:'100%'}} id='zenIllu' className='hidtablet' src="/assets/projects/mengfeng/zen.webp"/> </div>
+            <div> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/meditation.webp"/> </div>
           </Body>
         </Article>
 
@@ -96,7 +96,7 @@ export default () => (
               <h2>Diffuser Controls</h2>
               <p>The user can in a touch activate the pod’s essential oil diffuser as well as controlling either the diffusion time or the flow intensity </p>
             </div>
-            <div style={{flexBasis:'80%'}}> <Img src="/assets/projects/mengfeng/mockups/luminoDiffuse.png"/> </div>
+            <div style={{flexBasis:'80%'}}> <Img src="/assets/projects/mengfeng/mockups/luminoDiffuse.webp"/> </div>
             <div className='padleft'>
               <h2>Lumino therapy</h2>
               <p>Lumino therapy is also one the many features the pod can do ! The user can thus choose between various animations and light programs.</p>
@@ -109,7 +109,7 @@ export default () => (
 
         <Article name='Sleep session' spaced={true} className='purpleBkg round'>
           <Body className='reverse'>
-            <div style={{flexBasis:'50%'}}> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/alarm_1.png"/> </div>
+            <div style={{flexBasis:'50%'}}> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/alarm_1.webp"/> </div>
             <div className='compress'>
               <h2>Sleep session</h2>
               <p>The app also offer a sleep tracking system where the user can set the desired amount of sleep each night.</p>
@@ -126,13 +126,13 @@ export default () => (
               <h2>Music speaker</h2>
               <p>As the pod is also a music speaker, the app offers a playlist system where the user can play recommended mixes or create personal playlists.</p>
             </div>
-            <div style={{flexBasis:'80%'}}> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/speaker.png"/> </div>
+            <div style={{flexBasis:'80%'}}> <Img className='padded small'  src="/assets/projects/mengfeng/mockups/speaker.webp"/> </div>
           </Body>
         </Article>
 
         <Article name='Routine setup' spaced={true} className='purpleBkg round'>
           <Body>
-            <Img className='padded small' src="/assets/projects/mengfeng/mockups/schedule.png"/>
+            <Img className='padded small' src="/assets/projects/mengfeng/mockups/schedule.webp"/>
             <div className='compress'>
               <h2>Routine setup</h2>
               <p>Most of the previous features can be scheduled in weekly routines.</p>
@@ -143,7 +143,7 @@ export default () => (
 
         {/*<Article name='Wireframes' spaced={true}>
             <Body title="Wireframes">
-                <Img src="/assets/projects/mengfeng/wireframe.png"/>
+                <Img src="/assets/projects/mengfeng/wireframe.webp"/>
             </Body>
         </Article>*/}
 

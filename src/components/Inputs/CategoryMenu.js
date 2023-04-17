@@ -1,42 +1,31 @@
 import { useEffect, useState, useRef, Fragment } from 'react';
 import { motion } from 'framer-motion';
-import { getCategories, changeHashTo, getColorOfCategory } from '../../lib/utils';
+import { getCategories, changeHashTo } from '../../lib/utils';
 import { connect } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const mapStateToProps = (state) => ({
-  _category: state.flow.category
+  _category: state.flow.category,
+  _latestHref: state.flow.href
 });
 
-const CategoryMenu = ({_category}) => {
-  
+const mapDispatchToProps = (dispatch) => ({
+  _setLatestHref: (e) => dispatch({type:'SET_LAST_HREF', href:e}),
+  _onCategoryChange: (e) => dispatch({type:'CHANGE_CATEGORY', category:e}),
+});
 
-    const [active, setActive] = useState();
+const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange}) => {
+
+    const [active, setActive] = useState(_category);
+    const lastHref =  useRef(_latestHref);
     const lastInteraction = useRef();
+    const router = useRouter();
   
-    const updateColor = (category) => {
-      //switch body attribute for CSS change to take effects
-      const color = getColorOfCategory(category);
-      //const favicon = document.getElementById('favicon');
-      document.querySelector("body").setAttribute('data-theme',color);
-      //setFaviconColor(favicon,color);
-    }
-  
-    const goToCategory = (cat) => { //listen to click change, so we store the new category in ref and set it active in Scroll event listener below
+    const goToCategory = (cat, behavior={behavior:'smooth'}) => { 
+      //listen to click change, so we store the new category in ref and set it active in Scroll event listener below
       lastInteraction.current = 'click';
-      setActive(cat);
-      changeHashTo(cat); 
-      updateColor(cat);
-      document.getElementById(cat)?.scrollIntoView({behavior:'smooth'});
-    }
-  
-    const onCategoryChange = (e) => { //listen to global category change (on scroll)
-      const category = (typeof e === 'string') ? e : e.detail.category();
-      if(category && lastInteraction.current != 'click'){
-        changeHashTo(category); 
-        setActive(category);
-        updateColor(category);
-      }
-  
+      _onCategoryChange(cat);
+      document.getElementById(cat)?.scrollIntoView(behavior);
     }
     
     const onCategoryClick = (e) => {
@@ -55,21 +44,25 @@ const CategoryMenu = ({_category}) => {
         }, 100);
       }
   
-      
-  
       window.addEventListener('scroll', onScroll);
-      window.addEventListener('categorychange', onCategoryChange);
   
-      return () =>{ 
-        window.removeEventListener('categorychange', onCategoryChange); 
-        window.removeEventListener('scroll', onScroll);
-      }
+      return () => window.removeEventListener('scroll', onScroll);
   
     },[]);
 
-    useEffect( () => { setActive(_category) },[_category])
+    useEffect( () => { 
+      let realCategory = lastHref.current ? lastHref.current : _category; //lastHref take over
+      _setLatestHref(realCategory);
+      setActive(realCategory);
+      changeHashTo(realCategory);
+    },[_category]);
   
-  
+    useEffect( () => { 
+      if(lastHref.current){ 
+        goToCategory(lastHref.current, {behavior:'instant'}); 
+        lastHref.current = undefined;
+      } 
+    },[lastHref] );
   
     return( 
       <motion.div 
@@ -99,4 +92,4 @@ const CategoryMenu = ({_category}) => {
   }
 
 
-export default connect(mapStateToProps)(CategoryMenu);
+export default connect(mapStateToProps,mapDispatchToProps)(CategoryMenu);
