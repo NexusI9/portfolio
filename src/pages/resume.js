@@ -15,6 +15,7 @@ import {
   Commu,
   Events,
   Press,
+  Section,
   ResumeHeader
  } from '@/components/Resume';
 
@@ -48,61 +49,6 @@ const stagger = {
   exit:{opacity:1, transition:{staggerChildren:0.1}}
 }
 
-const Section = ({title, ico, content}) => {
-
-  const [ yPos, setYPos ] = useState(0);
-  const elt = useRef();
-
-  useEffect(() => {
-
-      let lastScroll = 0;
-      let lastVelo = 0
-
-      function scrollVelocity(max = 5){
-
-          var velocity = lastScroll - window.pageYOffset;
-          if( velocity > max){ velocity = max; }
-          if( velocity < -1*max){ velocity = -1*max; }
-          if( velocity == -1 || velocity == 1){ velocity=0;}
-          if(velocity != lastVelo){ return velocity; }
-
-          lastVelo = velocity;
-          return 0;
-      }
-
-      const onScroll = () => {
-
-        const top = elt.current.getBoundingClientRect().top;
-        const height = elt.current.getBoundingClientRect().height;
-        if(top < window.innerHeight && top+height > 0){ setYPos(scrollVelocity()); }
-        lastScroll = window.pageYOffset;
-
-      }
-
-      window.addEventListener('scroll', onScroll);
-
-      return () => window.removeEventListener('scroll', onScroll);
-    },[elt]);
-
-
-  return(
-
-      <motion.div
-      className='resumeSection'
-      style={{transform:'translateY('+0+'%)'}}
-      ref={elt}
-      key={'section'+title}
-      >
-        <div className='sectionHeader'>
-          {ico && <span className='ico'><img src={ico.src}/></span> }
-          <p><b>{title}</b></p>
-        </div>
-        {content}
-
-      </motion.div>
-
-  );
-}
 
 
 function Resume(){
@@ -168,7 +114,7 @@ function Resume(){
    const listRoute = [
      {
        id:'professional',
-       name:<Multi eng='Professional experiences' fr='Expériences professionnelles' zh='工作經驗' language={language}/>,
+       name:<Multi eng='Professional experiences' fr='Expériences professionn&shy;elles' zh='工作經驗' language={language}/>,
        ico:work,
        content: <Pro language={language} />
      },{
@@ -180,7 +126,7 @@ function Resume(){
        id:'technicals',
        name:<Multi eng='Technicals' fr='Technique' zh='技術技能' language={language}/>,
        ico:web,
-       content: <Techni />
+       content: <Techni language={language}/>
      },{
        id:'languages',
        name:<Multi eng='Languages' fr='Langues' zh='語言能力' language={language}/>,
@@ -265,12 +211,22 @@ function Resume(){
         {
           language &&
           <>
+            <small className='discrete light'>Language: </small>
             <motion.span key='buttonEng' variants={popUp}><Button label='ENG' id='radioEng' type='radio' name='language' active={ language === 'english' } onClick={ () => changeLang('english') }/></motion.span>
             <motion.span key='buttonFr' variants={popUp}><Button label='FR' id='radioFr' type='radio' name='language' active={ language === 'french' } onClick={ () => changeLang('french') }/></motion.span>
             <motion.span key='buttonZh' variants={popUp}><Button label='中文' id='radioZhg' type='radio' name='language' active={ language === 'zhongwen' } onClick={ () => changeLang('zhongwen') }/></motion.span>
           </>
           }
-          <motion.span key='buttonDl' variants={popUp} id="dlresume">
+      </section>
+
+      <section>
+
+        <motion.span key='letsWerk' variants={popUp} id="dlresume">
+            <Cta href='mailto:nassim.elkhantour@gmail.com' type='primary'>
+              <small>Let's work together</small>
+            </Cta> 
+        </motion.span>
+        <motion.span key='buttonDl' variants={popUp} id="dlresume">
           <Cta href={dlUrl} type='secondary'>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1.1875 10.375H10.8125C10.9285 10.375 11.0398 10.4211 11.1219 10.5031C11.2039 10.5852 11.25 10.6965 11.25 10.8125C11.25 10.9285 11.2039 11.0398 11.1219 11.1219C11.0398 11.2039 10.9285 11.25 10.8125 11.25H1.1875C1.07147 11.25 0.960188 11.2039 0.878141 11.1219C0.796094 11.0398 0.75 10.9285 0.75 10.8125C0.75 10.6965 0.796094 10.5852 0.878141 10.5031C0.960188 10.4211 1.07147 10.375 1.1875 10.375ZM6.4375 6.9065L9.668 3.67512L10.2866 4.29375L5.95625 8.625L1.625 4.29375L2.24363 3.67512L5.5625 6.994V0.75H6.4375V6.9065Z"/>
@@ -279,14 +235,6 @@ function Resume(){
               <Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />
             </small>
           </Cta> 
-        </motion.span>
-      </section>
-
-      <section>
-        <motion.span key='letsWerk' variants={popUp} id="dlresume">
-            <Cta href='mailto:nassim.elkhantour@gmail.com' type='primary'>
-              <small>Let's work together</small>
-            </Cta> 
         </motion.span>
 
       </section>
@@ -305,12 +253,7 @@ function Resume(){
       key={'resumeWrapper'+language} >
         <ResumeHeader language={language} innerRef={ e => banner.current = e}/>
         <div id="resume">
-            <div>
-                { listRoute.map( (item,i) => i%2 === 0 && <Section key={'section'+item.id} title={item.name} ico={item.ico} content={item.content}/> ) }
-            </div>
-           <div>
-               { listRoute.map( (item,i) => i%2 !== 0 && <Section key={'section'+item.id} title={item.name} ico={item.ico} content={item.content}/> ) }
-           </div>
+            { listRoute.map( ({id, name, ico, content}) => <Section key={'section'+id} title={name} ico={ico} content={content}/> ) }
         </div>
       </motion.div>
     </AnimatePresence>

@@ -11,3 +11,4 @@ export {default as Techni} from './Techni';
 export {default as Content} from './Content';
 export {default as Label} from './Label';
 export {default as List} from './List';
+export {default as Section} from './Section';

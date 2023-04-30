@@ -61,6 +61,32 @@
 
   }
 
+  #resume{
+    .resumeSection{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .sectionHeader{
+        position: relative;
+        width: 100%;
+        top: 0;
+      }
+
+      .content{
+
+        &.technical{
+          ul{
+            grid-template-columns: repeat(2,1fr);
+          }
+        }
+        &.grid{
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
 
   #project_banner{
     padding: 5% 10%;
@@ -235,12 +261,28 @@
   }
 
   #resumeSettings{
-    flex-direction: row;
-    justify-content: space-around;
-    row-gap: 20px;
-    padding-top: 3vh;
-    padding-left: 2vw;
-    width:100%;
+    bottom: 0;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    padding: 0;
+    top: 0;
+    z-index: 999991;
+    background: transparent;
+    justify-content: space-between;
+
+    & > section{
+      padding-top: 4%;
+      padding-bottom: 3%;
+      &:last-of-type{ 
+        background: var(--white); 
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 
   #contactContainer{
