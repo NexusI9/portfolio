@@ -7,7 +7,7 @@ export default () => (
     <>
       <Article spaced={true} name='Introduction'>
         <Space type='small' />
-        <Body style={{columnGap:'10%'}} className='flex vcenter' >
+        <Body style={{columnGap:'10%'}} className='flex' >
           <div style={{flexBasis: '50%', boxSizing:'border-box'}}>
             <h2>An <i><b>XTRA</b></i> project</h2>
             <br/>

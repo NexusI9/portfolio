@@ -269,13 +269,10 @@ function Resume(){
             <motion.span key='buttonFr' variants={popUp}><Button label='FR' id='radioFr' type='radio' name='language' active={ language === 'french' } onClick={ () => changeLang('french') }/></motion.span>
             <motion.span key='buttonZh' variants={popUp}><Button label='中文' id='radioZhg' type='radio' name='language' active={ language === 'zhongwen' } onClick={ () => changeLang('zhongwen') }/></motion.span>
           </>
-        }
-      </section>
-
-      <section>
-        <motion.span key='buttonDl' variants={popUp} id="dlresume">
+          }
+          <motion.span key='buttonDl' variants={popUp} id="dlresume">
           <Cta href={dlUrl} type='secondary'>
-             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1.1875 10.375H10.8125C10.9285 10.375 11.0398 10.4211 11.1219 10.5031C11.2039 10.5852 11.25 10.6965 11.25 10.8125C11.25 10.9285 11.2039 11.0398 11.1219 11.1219C11.0398 11.2039 10.9285 11.25 10.8125 11.25H1.1875C1.07147 11.25 0.960188 11.2039 0.878141 11.1219C0.796094 11.0398 0.75 10.9285 0.75 10.8125C0.75 10.6965 0.796094 10.5852 0.878141 10.5031C0.960188 10.4211 1.07147 10.375 1.1875 10.375ZM6.4375 6.9065L9.668 3.67512L10.2866 4.29375L5.95625 8.625L1.625 4.29375L2.24363 3.67512L5.5625 6.994V0.75H6.4375V6.9065Z"/>
             </svg>
             <small>
@@ -283,6 +280,15 @@ function Resume(){
             </small>
           </Cta> 
         </motion.span>
+      </section>
+
+      <section>
+        <motion.span key='letsWerk' variants={popUp} id="dlresume">
+            <Cta href='mailto:nassim.elkhantour@gmail.com' type='primary'>
+              <small>Let's work together</small>
+            </Cta> 
+        </motion.span>
+
       </section>
 
     </motion.div>
