@@ -1,14 +1,4 @@
-import {
-  Img,
-  Gallery,
-  Article,
-  Body,
-  Title,
-  Video,
-  Story,
-  Space,
-  SlideShow
-} from '../../components/article';
+import {Article, Body, Gallery, Title, Space, Pointer, Img} from '@/components/Folio';
 
 import {
   SearchBar,
@@ -17,7 +7,8 @@ import {
   Card,
   MicroFilters
 } from './inputs';
-import './kinoji_sheet.scss';
+
+import logo from './assets/logo.svg';
 
 
 const picsArray = {
@@ -36,7 +27,7 @@ function fetchPicFromLength({folder, name, length}){
       var str = "" + i;
       var pad = "00000";
       str = pad.substring(0, pad.length - str.length) + str;
-      ar.push('/assets/projects/kinoji/'+folder+'/'+name+'_'+str+'.jpg');
+      ar.push('/assets/projects/kinoji/'+folder+'/'+name+'_'+str+'.webp');
     }
     return ar;
 
@@ -267,7 +258,7 @@ const GraphicChart = () => (
 <>
 
     <div id='graphic_chart'>
-    <table id='table_font'>
+    <table id='table_font' className='round'>
       <thead>
         <tr>
           <td colSpan='2'>
@@ -296,7 +287,7 @@ const GraphicChart = () => (
       </tbody>
     </table>
 
-    <table id='table_color'>
+    <table id='table_color' className='round'>
       <thead>
         <tr>
           <td colSpan='4'>
@@ -307,22 +298,22 @@ const GraphicChart = () => (
 
       <tbody>
         <tr>
-          <td style={{backgroundColor:'#111111'}}></td>
-          <td style={{backgroundColor:'#E03434'}}></td>
-          <td style={{backgroundColor:'#4989FF'}}></td>
-          <td style={{backgroundColor:'#B740E6'}}></td>
+          <td className='round greyborder' style={{backgroundColor:'#111111'}}></td>
+          <td className='round' style={{backgroundColor:'#E03434'}}></td>
+          <td className='round' style={{backgroundColor:'#4989FF'}}></td>
+          <td className='round' style={{backgroundColor:'#B740E6'}}></td>
         </tr>
         <tr>
-          <td style={{backgroundColor:'#D4D4D4'}}></td>
-          <td style={{backgroundColor:'#717171'}}></td>
-          <td style={{backgroundColor:'#3C4658'}}></td>
-          <td style={{backgroundColor:'#1B222A'}}></td>
+          <td className='round' style={{backgroundColor:'#D4D4D4'}}></td>
+          <td className='round' style={{backgroundColor:'#717171'}}></td>
+          <td className='round' style={{backgroundColor:'#3C4658'}}></td>
+          <td className='round' style={{backgroundColor:'#1B222A'}}></td>
         </tr>
 
       </tbody>
     </table>
 
-    <table id='table_inputs'>
+    <table id='table_inputs' style={{display:'none'}} className='round'>
       <thead>
         <tr>
           <td colSpan='4'>
@@ -342,14 +333,14 @@ const GraphicChart = () => (
         </tr>
         <tr>
           <td colSpan='4'>
-            <Card visual={<img src='/assets/projects/kinoji/YimouZhang.jpg' alt='YimouZhang'/>} label='Zhang Yimou' subtext={<small>1951-today</small>} summary={<small style={{fontSize:'0.7em', lineHeight:'1.4em'}}><br />Zhang Yimou is a Chinese film director, producer, writer and actor, and former cinematographer.</small>}/>
+            <Card visual={<img src='/assets/projects/kinoji/YimouZhang.webp' alt='YimouZhang'/>} label='Zhang Yimou' subtext={<small>1951-today</small>} summary={<small style={{fontSize:'0.7em', lineHeight:'1.4em'}}><br />Zhang Yimou is a Chinese film director, producer, writer and actor, and former cinematographer.</small>}/>
           </td>
         </tr>
 
       </tbody>
     </table>
 
-      <table id='table_icono'>
+      <table id='table_icono' className='round'>
         <thead>
           <tr>
             <td colSpan='4'>
@@ -440,13 +431,11 @@ const DatabaseQuery = () => {
 export default () => (
   <>
     <Article spaced={true} name='Introduction'>
-      <Body flexDirection='vertical' flexAlignement='centered'>
-        <div style={{width:'50%'}}><Quote text="Cinema is a mosaic made of time" author="Andrei Tarkovsky"/></div>
-      </Body>
       <Space type='small' />
-      <Body style={{columnGap:'10%'}} >
+      <Body style={{columnGap:'10%'}} className='flex vcenter' >
         <div style={{flexBasis: '50%', boxSizing:'border-box'}}>
-          <h2 className='step'>From Asia, <br /> to the west</h2>
+          <h2>From Asia, to the west</h2>
+          <br/>
           <p>
             Kinoji is a free online cinematography library gathering movies' shots from all horizons.
             <br /><br />
@@ -455,92 +444,90 @@ export default () => (
             Nevertheless, though the library emphasises on Asia cinema, it still provides a wide spectrum of genre including western and soviet cinema.
           </p>
         </div>
-        <div style={{flexBasis: '90%'}} className='stickToRight'>
-          <img src='/assets/projects/kinoji/mockup_mac.png' />
+        <div style={{flexBasis: '120%'}} className='stickToRight'>
+          <Img id='kinoji_first_mockup' src='/assets/projects/kinoji/mockups/mockup_mac.webp' className='gradcircle' />
         </div>
       </Body>
-      <Space type='small'/>
+      <Space />
       <Body flexDirection='vertical'>
-        <Story paragraphs={ [
-          <>&emsp;Throughout the past 4 years I found myself collecting more and more shots from various movies, going from epic Hollywood sci-fi productions, to deeper and more naturalistic landscapes of Asia's cinema.<br /> Fascinated by Asia’s neo-realism as much as Sci-fi art direction, I started building a simple cinematography catalog.</>,
-          <>I quickly decided to push the concept further in order to make available for others and myself a whole library of inspiration.</>
-        ] } dark={true}/>
-      </Body>
-      <Space type='small'/>
-      <Body flexDirection='vertical'>
-        <Gallery galleries={{gallery_1: [{type:'base', folder:'/kinoji/screenshots/', pictures:['moviepage','fullview', 'genrepage']}]}} galleryKey='gallery_1'/>
+        <h2>Web-app snapshots</h2>
+        <br/>
+        <Gallery galleries={
+          {
+            gallery_1: [
+              {type:'base', folder:'/kinoji/Screenshots/', pictures:['moviepage','fullview', 'discover']},
+              {type:'split', folder:'/kinoji/Screenshots', pictures:['genres','genrepage']}
+              ]}} galleryKey='gallery_1'/>
       </Body>
     </Article>
 
 
 
-    <Article name='Infinity scroll' spaced={true}>
-      <Title className='half' label="The layouts" summary={<>
+    <Article name='Infinity scroll' spaced={true} className='backdrop center fill' id='kinoji_layouts'>
+      <Title label="The layouts" className='half' summary={<>
         Looking through archives can be a tedious job. Thus the primary goal of this project was to give the user efficients and intuitives approaches to browse the content.
         <br /><br />
         Being thought as a tool for inspiration rather than a simple search engine, the website allow the user to switch between two display modes:
-        <ol>
-          <li>The first mode displays the movies’ poster allowing the user to have an overview of the avalaible content.</li>
-          <li>The second mode throws the user into a dense patchwork of colors and atmospheres. Ideal if one is simply looking for inspiration.</li>
-        </ol>
         </>
       } />
 
-      <Body flexDirection='vertical'>
-        {/*<SlideShow slides={
-          [
-            {
-              content: <img src='/assets/projects/kinoji/Screenshots/poster.jpg'/>,
-              legend: "The first mode displays the movies’ poster allowing the user to have an overview of the avalaible content."
-            },
-            {
-              content: <img src='/assets/projects/kinoji/Screenshots/mosaic.jpg'/>,
-              legend: "The second mode throws the user into a dense patchwork of colors and atmospheres. Ideal if one is simply looking for inspiration."
-            }
-          ]
-        }/>*/}
-        <Gallery galleries={{ gallery_4: [{type:'split', folder:'/kinoji/Screenshots/', pictures:['poster', 'mosaic']}]}} galleryKey='gallery_4'/>
-
+      <Body flexDirection='horizontal' className='reverse vcenter'>
+        <section>
+          <Img alt='poster mode' src='/assets/projects/kinoji/mockups/poster_mode.webp'/>
+        </section>
+        <Pointer style={{flexBasis:'40%'}} title='1. Poster mode' description='The poster mode displays the movies’ poster allowing the user to have an overview of the avalaible content.'/>
+      </Body>
+      <Body flexDirection='horizontal' className='vcenter'>
+        <Pointer style={{flexBasis:'40%'}} side='right' title='2. Mosaic mode' description='The second mode throws the user into a dense patchwork of colors and atmospheres. Ideal if one is simply looking for inspiration.'/>
+        <Img alt='poster mode' src='/assets/projects/kinoji/mockups/mosaic_mode.webp' />
       </Body>
     </Article>
 
 
-    <Article name='Search engine'>
-      <Title className='half' label='The search engine' summary={
+    <Article name='Search engine' spaced={true}>
+      <Space type='small'/>
+      <Title label='The search engine' className={'half'} summary={
             <>Even though the word “Archive” usually rhymes with utilitarian design rather than aesthetic,
-            <br /> Kinoji lies between a functional and a refined interface via its
-            3 filtering interfaces,<br /> each one having a distinct mechanic while being embedded in the same visual signature.
-            <br /><br />
-            A distinction breaking with the usual scroll down list or check-box interfaces, <br /> offering a more engaging browsing experience to the user.</>}
+            Kinoji lies between a functional and a refined interface via its
+            3 filtering interfaces, each one having a distinct mechanic while being embedded in the same visual signature. <br/><br/>
+            A distinction breaking with the usual scroll down list or check-box interfaces, offering a more engaging browsing experience to the user.</>}
       />
       <Body flexDirection='vertical'>
 
       <Gallery galleries={{ gallery_2: [{type:'base', folder:'/kinoji/Screenshots/', pictures:['worldmap', 'glossaire', 'tags']}]}} galleryKey='gallery_2'/>
 
       </Body>
-      <Space />
+
     </Article>
 
-    <Article name='The style guide'>
-      <Body title="The style guide" flexDirection='vertical'>
+    <Article spaced={true} name='The style guide' id='kinoji_guidestyle' className='backdrop center fill'>
+      
+    <Body title="The style guide" flexDirection='vertical'>
+        <section id='logointroduce' >
+            <h5>The logotype</h5>
+            <p>Combining elements of modernity with more classical shapes,
+            <br/>the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
+            <img src={logo.src}/>
+        </section>
+      </Body>
+
+      <Body flexDirection='vertical'>
         <GraphicChart />
       </Body>
-      <Space type='small'/>
-    </Article>
-
-
-    <Article spaced={true} name='Userflow'>
-        <Body title='Userflow'>
-          <img src="/assets/projects/kinoji/userflow.svg" />
+      
+      <Body title='Userflow' flexDirection='vertical'>
+          <img src="/assets/projects/kinoji/userflow.svg" className='round'/>
         </Body>
     </Article>
 
 
-    <Article name='Creative tool'>
+
+    <Article spaced={true} name='Creative tool'>
+      <Space type='small'/>
       <Body>
           <div>
             <h2 className='step'>A tool for creatives</h2>
-            <p>	&emsp; As an illustrator it seemed essential to me to emphasize on the visual aspects of movies. <br />
+            <p>As an illustrator it seemed essential to me to emphasize on the visual aspects of movies. <br />
               Hence, the library binds data from two distinct databases offering a filtering system targeted for a creative approach.
               <br /><br />
               On one hand it retrieves basic data via the TMDB API such a the director's name, the date of release and so on.
@@ -556,25 +543,9 @@ export default () => (
         </div>
       </Body>
       <Space type='small' />
-      <Body flexDirection='vertical'>
-      {/*<SlideShow slides={
-        [
-          {
-            content: <img src='/assets/projects/kinoji/Screenshots/filter_1.jpg'/>,
-            legend: "The user can search movies depending on their primary color, mood and main visual subjects."
-          },
-          {
-            content: <img src='/assets/projects/kinoji/Screenshots/filter_2.jpg'/>,
-            legend: "The user can search movies depending on their primary color, mood and main visual subjects. "
-          },
-          {
-            content: <img src='/assets/projects/kinoji/Screenshots/filter_3.jpg'/>,
-            legend: "The user can search movies depending on their primary color, mood and main visual subjects."
-          }
-        ]
-      }/>*/}
-      <Gallery galleries={{ gallery_3: [{type:'split', folder:'/kinoji/Screenshots/', pictures:['filter_1', 'filter_3', 'filter_2']}]}} galleryKey='gallery_3'/>
-
+      <Body flexDirection='horizontal' className='reverse vcenter'>
+        <Img alt='aesthetics mockup' src='/assets/projects/kinoji/mockups/aesthetics.webp' className='gradcircle double' />
+        <Pointer style={{flexBasis:'40%'}} title='Filter by aesthetics' description='Black and white, red, urbanistic, or naturalistic shots: Kinoji offers a in depth filtering system, allowing the user to search shots by their aesthetics or hues.' />
       </Body>
     </Article>
 

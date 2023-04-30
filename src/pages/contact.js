@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 import { useEffect } from 'react';
-import { MailAddress, SocialsIcons } from '../components/inputs';
-import { Signature } from '../components/statics';
+import { MailAddress, SocialsIcons } from '@/components/Inputs';
+import { Signature } from '@/components/Statics';
+import { Spheros } from '@/components/Props';
 
-function Contact({onLoad}){
+export default function Contact({onLoad = () => 0}){
 
-  useEffect(() => onLoad ? onLoad() : 0, []);
+  useEffect(() => {
+      onLoad();
+  },[]);
 
   const variantContainer = {
     initial:{opacity:0},
@@ -27,13 +31,18 @@ function Contact({onLoad}){
 
 
   return(
+    <>    
+    <Head>
+      <title>Nassim El Khantour - Contact</title>
+    </Head>
     <motion.div
     id='contactContainer'
     variants={variantContainer}
     initial='initial'
     animate='animate'
     exit='exit'
-    >
+    > 
+      {/*<Spheros />*/}
       <motion.h1 key='letsgetintouch' variants={variantTitle}>Let's get in touch!</motion.h1>
 
       <motion.div id='contactLinks' key='contactLinks' variants={variantContact}>
@@ -52,8 +61,8 @@ function Contact({onLoad}){
 
       <Signature />
     </motion.div>
+    </>
   );
 }
 
 
-export default Contact;

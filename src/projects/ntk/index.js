@@ -1,5 +1,4 @@
-import {Article, Body, Video} from '../../components/article';
-import {useEffect, useState} from 'react';
+import {Article, Body, Video} from '../../components/Folio';
 
 
 export default () => {
@@ -35,8 +34,8 @@ export default () => {
         ar.push(
           <Article key={listId[i]}>
             <Body>
-              <div><Video id={listId[i]} placeholder={'/assets/thumbnails/ntk/'+listId[i]+'.jpg'}/></div>
-              <div><Video id={listId[i+1]} placeholder={'/assets/thumbnails/ntk/'+listId[i+1]+'.jpg'}/></div>
+              <div><Video id={listId[i]} placeholder={'/assets/thumbnails/ntk/'+listId[i]+'.webp'} pending={true} autoplay={true}/></div>
+              <div><Video id={listId[i+1]} placeholder={'/assets/thumbnails/ntk/'+listId[i+1]+'.webp'} pending={true} autoplay={true}/></div>
             </Body>
           </Article>
         )

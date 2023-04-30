@@ -1,42 +1,36 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-import { Img, Gallery, Article, Body, Title, Video, Story, Space } from '../../components/article';
-import './laos_sheet.scss';
-import './laos_popup.scss';
-import './laos_features.scss';
-import './laos_options.scss';
+import {Article, Body, Gallery, Title, Space, Pointer, Img, Video} from '@/components/Folio';
 import { gsap } from 'gsap';
-
 import Masonry from 'react-responsive-masonry';
+
 const FeaturesCircles = () => {
 
   const contentRoute = [
-      {
-        icon: "/assets/projects/laos/laos_logo.svg",
-        title: "Hover translation",
-        summary: "LAOS provides a hover-pop up translator allowing to look-up more than 110 000 mandarin words and their definitions on a simple move.",
-        img: "/assets/projects/LAOS/low_hover.jpg",
-      }, {
-        icon: "/assets/projects/laos/lotus.png",
-        title: "Personal and multitask dictionary",
+     {
+        type:'lotus',
+        icon: "/assets/projects/laos/lotus.webp",
+        title: "Multitask dictionary",
         summary: "The extension also provide a personal dictionary allowing to save countless new words, common names and expressions.",
-        img: "/assets/projects/LAOS/low_listselect.jpg",
+        img: "/assets/projects/laos/low_listselect.webp",
       }, {
-        icon: "/assets/projects/laos/yin.png",
+        type:'yin',
+        icon: "/assets/projects/laos/yin.webp",
         title: "Flashcard game !",
         summary: "For an easy entry level, flashcards are the choice to start learning new words ! Letting the mouse flowing through the cards to pair them together.",
-        img: "/assets/projects/LAOS/low_flashcard.jpg",
+        img: "/assets/projects/laos/low_flashcard.webp",
       }, {
-        icon: "/assets/projects/laos/fire.png",
+        type:'fire',
+        icon: "/assets/projects/laos/fire.webp",
         title: "Fast type mode",
         summary: "The Fast Typing mode brings a more intensive (yet efficient) learning pace.",
-        img: "/assets/projects/LAOS/low_fasttype.jpg",
+        img: "/assets/projects/laos/low_fasttype.webp",
       }, {
-        icon: "/assets/projects/laos/chakra.png",
+        type:'chakra',
+        icon: "/assets/projects/laos/chakra.webp",
         title: "Fill the blank",
         summary: "For the more advanced, a fill sentences mode is available using Tatoeba.org’s boundless sentences database",
-        img: "/assets/projects/LAOS/low_fillblank.jpg",
+        img: "/assets/projects/laos/low_fillblank.webp",
       },
   ];
 
@@ -45,80 +39,14 @@ const FeaturesCircles = () => {
 
   return(
     <>
-      <section style={{flexBasis: '33%', padding: '3%', boxSizing: 'border-box'}}>
-        <svg id="ft_circle" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 665.6 665.6" style={{enableBackground:'new 0 0 665.6 665.6'}} xmlSpace="preserve">
-
-      <g id="Calque_1">
-        <g id="Ellipse_6">
-          <circle className="st0" cx="331.4" cy="330.9" r="329.5"/>
-          <circle className="st1" cx="331.4" cy="330.9" r="327"/>
-        </g>
-        <g className='five tags' onMouseEnter={ () => setContent(contentRoute[4])  } >
-          <g id="Ellipse_9" transform="translate(56 74)">
-            <circle className="st2" cx="32.4" cy="31.9" r="33"/>
-            <circle className="st1" cx="32.4" cy="31.9" r="33"/>
-          </g>
-          <text transform="matrix(1 0 0 1 81.4 113.9)" className="st3 st4 st5">5</text>
-        </g>
-      </g>
-      <g id="Calque_2">
-        <g id="Ellipse_13">
-          <circle className="st0" cx="331.4" cy="330.9" r="256.5"/>
-          <circle className="st6" cx="331.4" cy="330.9" r="254"/>
-        </g>
-        <g className='four tags' onMouseEnter={ () => setContent(contentRoute[3]) }>
-          <g id="Ellipse_9_1_" transform="translate(440 103)">
-            <circle className="st2" cx="105.4" cy="104.9" r="33"/>
-            <circle className="st6" cx="105.4" cy="104.9" r="33"/>
-          </g>
-          <text transform="matrix(1 0 0 1 539.4 214.9)" className="st7 st4 st5">4</text>
-        </g>
-      </g>
-      <g id="Calque_3">
-        <g id="Ellipse_12">
-          <circle className="st0" cx="331.4" cy="330.9" r="194.5"/>
-          <circle className="st8" cx="331.4" cy="330.9" r="192"/>
-        </g>
-
-        <g className='three tags' onMouseEnter={ () => setContent(contentRoute[2]) }>
-          <g id="Ellipse_9_2_" transform="translate(26 293)">
-            <circle className="st2" cx="167.4" cy="166.9" r="33"/>
-            <circle className="st8" cx="167.4" cy="166.9" r="33"/>
-          </g>
-          <text transform="matrix(1 0 0 1 187.15 467.4)" className="st9 st4 st5">3</text>
-        </g>
-
-      </g>
-
-      <g id="Calque_4">
-        <g id="Ellipse_11" transform="translate(0 17)">
-          <circle className="st0" cx="332.3" cy="318" r="128.5"/>
-          <circle className="st10" cx="332.3" cy="318" r="126"/>
-        </g>
-        <g className='two tags' onMouseEnter={ () => setContent(contentRoute[1]) }>
-          <g id="Ellipse_9_3_" transform="translate(37 5)">
-            <circle className="st2" cx="234.3" cy="220" r="33"/>
-            <circle className="st10" cx="234.3" cy="220" r="33"/>
-          </g>
-          <text transform="matrix(1 0 0 1 265.3 231.5)" className="st11 st4 st5">2</text>
-        </g>
-
-      </g>
-      <g id="Calque_5" className="one tags" onMouseEnter={ () => setContent(contentRoute[0]) }>
-        <g id="Ellipse_9_4_" transform="translate(5 5)">
-          <circle className="st2" cx="326.4" cy="325.9" r="33"/>
-          <circle className="st12" cx="326.4" cy="325.9" r="33"/>
-        </g>
-        <text transform="matrix(1 0 0 1 324.9 338.9)" className="st13 st4 st5">1</text>
-      </g>
-        </svg>
+      <section id='featuresIconContainer'>
+        {contentRoute.map( (item,i) => <span key={item.type+i} onMouseEnter={ () => setContent(contentRoute[i]) } data-type={item.type}></span> ) }
       </section>
       <section style={{flexBasis: '50%', marginTop:'3%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <div id="ft_circle_infobox">
             { content &&
               <>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence mode='wait'>
                   <motion.section
                       key={'feature_infobox'+content.title}
                       initial={{opacity:0, y:30}}
@@ -128,14 +56,14 @@ const FeaturesCircles = () => {
                   >
                     <span className='app' style={{backgroundImage:"url("+content.icon+")"}}></span>
 
-                    <section>
-                      <h4>{content.title}</h4>
-                      <p className='infobox_desc'>{content.summary}</p>
-                    </section>
+                    <h5>{content.title}</h5>
+                    <br/>
+                    <small className='infobox_desc'>{content.summary}</small>
+
 
                 </motion.section>
               </AnimatePresence>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence mode='wait'>
                 <motion.img
                   key={'feature_pix'+content.title}
                   initial={{opacity:0}}
@@ -159,10 +87,10 @@ const KeyShapes = () => (
 
     <tbody>
       <tr>
-        <td><img src="/assets/projects/LAOS/lotus.png" /></td>
-        <td><img src="/assets/projects/LAOS/yin.png" /></td>
-        <td><img src="/assets/projects/LAOS/fire.png" /></td>
-        <td><img src="/assets/projects/LAOS/chakra.png" /></td>
+        <td><img src="/assets/projects/laos/lotus.webp" /></td>
+        <td><img src="/assets/projects/laos/yin.webp" /></td>
+        <td><img src="/assets/projects/laos/fire.webp" /></td>
+        <td><img src="/assets/projects/laos/chakra.webp" /></td>
       </tr>
 
       <tr id="blueprint">
@@ -170,7 +98,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/square.svg" />
+            <img src="/assets/projects/laos/square.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#4EBAFD'}} cx="50" cy="50" r="40"/>
@@ -181,7 +109,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/semicircle.svg" />
+            <img src="/assets/projects/laos/semicircle.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#FF1473'}} cx="50" cy="50" r="40"/>
@@ -192,7 +120,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/triangle.svg" />
+            <img src="/assets/projects/laos/triangle.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#FFA613'}} cx="50" cy="50" r="40"/>
@@ -203,7 +131,7 @@ const KeyShapes = () => (
         <td>
           <section className='keyexplain'>
             <span className='connector'></span>
-            <img src="/assets/projects/LAOS/circle.svg" />
+            <img src="/assets/projects/laos/circle.svg" />
             <span className='connector'></span>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle style={{fill:'#BF38DE'}} cx="50" cy="50" r="40"/>
@@ -251,16 +179,16 @@ const Charts = () => (
   <Masonry columnsCount={ window.innerWidth > window.innerHeight ? 2 : 1} gutter='20px'>
   <div className="infobox guidesheet" key='chart_1'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/laos_logo.svg')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/laos_logo.svg')" }}></span>
       <section>
-        <h4>Hover Popup</h4>
+        <h5>Hover Popup</h5>
       </section>
     </section>
     <table>
       <tbody>
       <tr>
         <td>Primary color</td>
-        <td className="guide_prim round" colSpan="1" style={{backgroundColor:'#ECECEC'}}>#ECECEC</td>
+        <td className="guide_prim round" colSpan="1" style={{backgroundColor:'#ECECEC'}}><small>#ECECEC</small></td>
       </tr>
 
       <tr className="tspace">
@@ -329,16 +257,16 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_2'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/lotus.png')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/lotus.webp')" }}></span>
       <section>
-        <h4>List mode</h4>
+        <h5>List mode</h5>
       </section>
     </section>
     <table>
       <tbody>
       <tr>
         <td>Primary color</td>
-        <td className="guide_prim round" colSpan="2" style={{color:'white', backgroundColor:'#04B3FF'}}>#04B3FF</td>
+        <td className="guide_prim round" colSpan="2" style={{color:'white', backgroundColor:'#04B3FF'}}><small>#04B3FF</small></td>
       </tr>
 
       <tr className="tspace">
@@ -349,7 +277,7 @@ const Charts = () => (
         <td>Background</td>
         <td className="guide_bkg round" colSpan="2" style={{backgroundImage:'linear-gradient(-45deg, #b3dfff 0%, #f8eaff 100%)'}}>&emsp;</td>
         <td>&emsp;</td>
-        <td colSpan="2" className="guide_bkg round" style={{backgroundColor:'#222222', color:'white'}}>#222222</td>
+        <td colSpan="2" className="guide_bkg round" style={{backgroundColor:'#222222', color:'white'}}><small>#222222</small></td>
       </tr>
 
       <tr className="tspace">
@@ -409,9 +337,9 @@ const Charts = () => (
       </tr>
       <tr>
         <td>Default</td>
-        <td colSpan="2" className="guide_case round" style={{backgroundColor:'#FFFFFF'}}>#FFFFFF</td>
+        <td colSpan="2" className="guide_case round" style={{backgroundColor:'#FFFFFF'}}><small>#FFFFFF</small></td>
         <td></td>
-        <td colSpan="2" className="darkmode"><span  className="guide_case white round" style={{display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center', width: '100%', backgroundColor:'#888888'}}>#888888</span></td>
+        <td colSpan="2" className="darkmode"><span  className="guide_case white round" style={{display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center', width: '100%', backgroundColor:'#888888'}}><small>#888888</small></span></td>
       </tr>
 
       <tr className="tspace">
@@ -441,16 +369,16 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_3'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/yin.png')" }}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/yin.webp')" }}></span>
       <section>
-        <h4>Flashcards</h4>
+        <h5>Flashcards</h5>
       </section>
     </section>
     <table>
       <tbody>
       <tr>
         <td>Primary color</td>
-        <td className="guide_prim round" colSpan="1" style={{backgroundColor:'#EB3467', color:'white' }}>#EB3467</td>
+        <td className="guide_prim round" colSpan="1" style={{backgroundColor:'#EB3467', color:'white' }}><small>#EB3467</small></td>
       </tr>
 
       <tr className="tspace">
@@ -514,16 +442,16 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_4'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/fire.png')"}}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/fire.webp')"}}></span>
       <section>
-        <h4>Fast type</h4>
+        <h5>Fast type</h5>
       </section>
     </section>
     <table>
       <tbody>
       <tr>
         <td>Primary color</td>
-        <td className="guide_prim round" style={{backgroundColor:'#FF9600', color:'white' }}>#FF9600</td>
+        <td className="guide_prim round" style={{backgroundColor:'#FF9600', color:'white' }}><small>#FF9600</small></td>
       </tr>
 
       <tr className="tspace">
@@ -567,16 +495,16 @@ const Charts = () => (
 
   <div className="infobox guidesheet" key='chart_5'>
     <section className="header">
-      <span className='app' style={{backgroundImage: "url('/assets/projects/LAOS/chakra.png')"}}></span>
+      <span className='app' style={{backgroundImage: "url('/assets/projects/laos/chakra.webp')"}}></span>
       <section>
-        <h4>Fill the blank</h4>
+        <h5>Fill the blank</h5>
       </section>
     </section>
     <table>
       <tbody>
       <tr>
         <td>Primary color</td>
-        <td className="guide_prim round" colSpan="1" style={{color:'white', backgroundColor:'#FF00EB'}}>#FF00EB</td>
+        <td className="guide_prim round" colSpan="1" style={{color:'white', backgroundColor:'#FF00EB'}}><small>#FF00EB</small></td>
       </tr>
 
       <tr className="tspace">
@@ -678,9 +606,9 @@ const Slicer = () => {
 
 
   return(
-    <div id="slicer" ref={slicerRef}>
-      <img src="/assets/projects/LAOS/Flashcard.jpg" />
-      <img src="/assets/projects/LAOS/simplelayout.svg" ref={maskRef} />
+    <div id="slicer" ref={slicerRef} className='round'>
+      <img src="/assets/projects/laos/flashcard.webp" />
+      <img src="/assets/projects/laos/simplelayout.svg" ref={maskRef} />
       <span ref={barRef}></span>
     </div>
   );
@@ -689,19 +617,19 @@ const SideMenu = () => {
 
   const routeItem = [
     {
-      app: '/assets/projects/LAOS/lotus.png',
+      app: '/assets/projects/laos/lotus.webp',
       icons: ['ico_pen', 'ico_rand', 'ico_moon']
     },
     {
-      app: '/assets/projects/LAOS/yin.png',
+      app: '/assets/projects/laos/yin.webp',
       icons: ['ico_pinyin', 'ico_rand']
     },
     {
-      app: '/assets/projects/LAOS/fire.png',
+      app: '/assets/projects/laos/fire.webp',
       icons: ['ico_pen', 'ico_english']
     },
     {
-      app: '/assets/projects/LAOS/chakra.png',
+      app: '/assets/projects/laos/chakra.webp',
       icons: ['ico_pinyin', 'ico_english', 'ico_rand']
     }
   ];
@@ -817,48 +745,54 @@ export default () => (
   <>
 
     <Article id='laos_intro' spaced={true} name='Showreel'>
-      <Video id={605841479} placeholder={'/assets/thumbnails/laos2.jpg'}/>
+      <Video id={605841479} />
     </Article>
 
     <Article id="laos_tpt" spaced={true} name="What's Laos">
       <Body flexDirection='horizontal' flexAlignement='centered'>
-        <section style={{flexBasis:'30%'}}>
-          <h2>It’s a translator,<br />a personal dico <br /> and a trainer !</h2>
-          <p>&emsp;
+        <section style={{flexBasis:'20%'}} className='padright'>
+          <h2>It’s a translator, a personal dico and a trainer !</h2>
+          <p>
             The app not only offers an elegant pop-up translator but also a personal dictionary and various exercises.<br /><br />
             It is through a process of gamification that LAOS acts as a user-friendly toolbox to learn mandarin.<br />
             By using LAOS, the user is invited to use various games for a smoother and more enjoyable learning experience.
           </p>
         </section>
         <section style={{flexBasis:'50%'}} className='stickToRight'>
-          <img src='/assets/projects/laos/board_cut.png' alt='board'/>
+          <img src='/assets/projects/laos/mockups/hero.webp' alt='board'/>
         </section>
       </Body>
     </Article>
 
 
-    <Article spaced={true} name='The features'>
-      <Body title='The features' id='laos_features'>
+    <Article name='The features'>
+    <Title label='The features' summary="LAOS offers many features and exercises to enhance the user journey to learn mandarin. Interact with the icons to discovers them!" className='half'/>
+      <Body id='laos_features' >
           <FeaturesCircles />
       </Body>
     </Article>
 
     <Article spaced={true} name='Four modes'>
-      <Title label='4 modes, 4 worlds' className='half' summary={<>
+      <Title label='4 modes, 4 worlds' summary={<>
         Each of 4 LAOS modes have been thought as distinct universes with singular dominant color, layout and mechanics, while still being anchored in the global aesthetic.
         <br /><br />
         A dynamic throwing the user in an eye-candy and reviving environment each click, preventing the interaction to become too monotonous.
-        </>}/>
+        </>} className='half'/>
       <Body flexAlignement='vertical'>
-        <Gallery galleries={{snapshots:[{type:'window', folder:'/LAOS/', pictures:['clean_list', 'clean_card','clean_type','clean_blank']}]}} galleryKey='snapshots'/>
+        <Gallery galleries={{snapshots:[{type:'window', folder:'/laos/', pictures:['clean_list', 'clean_card','clean_type','clean_blank']}]}} galleryKey='snapshots'/>
       </Body>
-      <Space />
+      <Space type='small'/>
     </Article>
 
 
     <Article name='Inconography'>
-      <Title label='The Style Guide' summary={<>On top of relying on a joyful and appealing color scheme,  LAOS also dig its inspiration in East-Asia iconography.<br /> Allowing the user to choose between up to four exercises modes  symbolised by distinctive key shapes and color contrasts.</>} className='half' />
-      <Body flexDirection='vertical' flexAlignement='centered'>
+      {/*<Title label='The Style Guide' summary={<>On top of relying on a joyful and appealing color scheme,  LAOS also dig its inspiration in East-Asia iconography.<br /> Allowing the user to choose between up to four exercises modes  symbolised by distinctive key shapes and color contrasts.</>} />
+      */}
+      <Body flexDirection='horizontal' style={{justifyContent:'space-between'}}>
+          <div style={{flexBasis:'30%'}}>
+            <h2>The Style Guide</h2>
+            <p>On top of relying on a joyful and appealing color scheme,  LAOS also dig its inspiration in East-Asia iconography.<br /> Allowing the user to choose between up to four exercises modes  symbolised by distinctive key shapes and color contrasts.</p>
+          </div>
           <KeyShapes />
       </Body>
     </Article>
@@ -866,112 +800,116 @@ export default () => (
 
   <Article spaced={true} name='Popup'>
     <Body id='laos_pop'>
-      <section id="juede" className='body compress hori'>
+      <section id="juede" className='body hori'>
         <div className='flexblank'></div>
         <div>
           <h1 style={{fontFamily: 'noto-reg', whiteSpace: 'nowrap', position:'relative', visibility:'hidden'}}>覺得</h1>
-          <h1 style={{fontFamily: 'noto-reg', whiteSpace: 'nowrap', backgroundColor: '#b2d1ff', color:'#2f2f2f', top:0, transform: 'translate(23%, 40%)', width: 'fit-content', position:'absolute'}}>覺得</h1>
+          <h1 style={{fontFamily: 'noto-reg', whiteSpace: 'nowrap', backgroundColor: '#b2d1ff', color:'#2f2f2f', top:0, transform: 'translate(0%, 40%)', width: 'fit-content', position:'absolute'}}>覺得</h1>
         </div>
         <div className='flexblank'></div>
       </section>
     </Body>
-    <Body className='reverse'>
-      <div className='flexblank' style={{flexBasis:'60%'}}></div>
+    <Body>
+      <div className='flexblank' style={{flexBasis:'30%'}}></div>
       <div> <PopUp /> </div>
       <div>
         <h2>The popup</h2>
-        <p>&emsp;The popup translator also uses a dedicated color scheme in order to highlight the different tones and characters contained within the words </p>
+        <p>The popup translator also uses a dedicated color scheme in order to highlight the different tones and characters contained within the words </p>
       </div>
     </Body>
   </Article>
 
   <Article id='laos_typo' spaced={true} name='Font'>
     <Body style={{overflow:'hidden'}}>
+    <section>
+      <h2>The font</h2>
+      <p>Cursive writting can be tedious for beginners to make a clear distinction between the numerous and sometimes complex mandarin characters.<br />
+        As a result LAOS uses a sans-serif font to make the characters easily readable for the user.</p>
+        <br />
+      <p>Compatible with Simplified, Traditional, Roman and Zhuyin characters,
+        Noto Sans is a flexible font ensuring a cohesion depending on the user wishes to learn either Traditional or Simplified.</p>
+    </section>
       <section>
           <div id="laos_typo_switch">
             <img src="/assets/projects/laos/hai.svg" />
             <h1>嗨</h1>
           </div>
       </section>
-      <section>
-        <h2>The font</h2>
-        <p>Cursive writting can be tedious for beginners to make a clear distinction between the numerous and sometimes complex mandarin characters.<br />
-          As a result LAOS uses a sans-serif font to make the characters easily readable for the user.</p>
-          <br />
-          <br />
-        <p>Compatible with Simplified, Traditional, Roman and Zhuyin characters,
-          Noto Sans is a flexible font ensuring a cohesion depending on the user wishes to learn either Traditional or Simplified.</p>
-        <img style={{width:'80%', opacity:'0.6', marginTop:'100px'}} src="/assets/projects/laos/typeface.svg" />
-      </section>
-
-
     </Body>
-    <Space />
+    <Space type='small'/>
   </Article>
 
   <Article id='guidesheet' spaced={true} name='Graphic chart'>
-    <Body title='The gaphic chart' flexAlignement='centered'>
+    <Body flexDirection='vertical' flexAlignement='centered'>
+        <h2>The guide style</h2>
+        <p className='half' style={{textAlign:'center', marginBottom:'5vh'}} >LAOS' various exercises own distrinct workspace with their own visual hierarchy to optimize and enhance the learning process for the user</p>
       <Charts />
     </Body>
   </Article>
 
-  <Article name='Userflow' spaced={true}>
-    <Title label='Userflow'/>
-    <Body style={{display: 'block'}}>
-        <img src="/assets/projects/laos/user_flow_laos.svg"/>
+  <Article name='Userflow' spaced={false}>
+    <Body flexDirection='vertical' style={{textAlign:'center'}}>
+        <h2>The userflow</h2>
+        <br/><br/>
+        <img className='infobox' src="/assets/projects/laos/user_flow_laos.svg"/>
     </Body>
     <Space />
   </Article>
 
 
+  <Article spaced={true} name='Ergonomy' id='laos_ergonomy' className='backdrop'>
+  <Title 
+    label='Ergonomy first!'
+    summary="For the sake of user's comfort, 
+    LAOS has been designed to be as direct as possible while providing the user the right amount of settings to offer a full personal experience that fit the user wishes and preferences: such as a dark mode and other easy accessible mechanics." 
+    className='half'
+    />
 
-  <Article spaced={true} name='Minimalism'>
-    <Body title='When minimalism dismiss austerity' summary={<>&emsp;LAOS aims for a minimalist environment emphasising <br /> on the essentials while still providing an engaging and colourful <br /> learning experience to the user.</>} flexDirection='vertical' id='laos_layout'>
-      <Slicer />
-      <div style={{display:'none'}}>
-        <p>&emsp;On one hand, the idea was to give the user a sense of comfort and ease through a classic and refined flat-design aesthetic and a simple layout without nested parametters. </p>
-        <p>&emsp;And on the other, to add visual dynamics through vibrants elements such as saturated gradients, neuemorphic icons or even animated background. </p>
-      </div>
-      <div style={{display:'none'}}>
-        <p>As a result LAOS interface lies between a casual website with its known rules and layout; and a fully-themed, eccentric video-game interface with strong and unusual visual identities.</p>
-      </div>
-    </Body>
+      <Img alt='laos dark theme screenshot' src='/assets/projects/laos/mockups/dark_theme.webp' />
 
   </Article>
-
 
 
   <Article name='Navigation'>
-    <Body id='laos_sidebar_main' style={{columnGap:'5%'}}>
-      <div style={{flexBasis:'50%'}} className="flexblank"></div>
-      <div style={{flexBasis:'10%'}}>
-        <div style={{height:'100%'}}><SideMenu /></div>
-      </div>
-      <div style={{flexBasis:'50%'}}>
-        <h2>One sidebar to control it all</h2>
-        <p>LAOS has been designed to be as direct as possible while providing the user the right amount of settings to offer a full personal experience that fit the user wishes and preferences.
-          <br /><br />
-          Its intuitive and ludic sidebar makes the user emphasise on learning words rather than spend energy figuring how the app works.</p>
-      </div>
+    <Body id='laos_sidebar_main' className='flex vcenter'>
+      <Pointer 
+      style={{flexBasis:'50%'}} 
+      title='One sidebar to control it all' 
+      description={<>
+          Its intuitive and ludic sidebar makes the user emphasise on learning words rather than spend energy figuring how the app works.
+          </>}
+      side='right'
+      />
+      <Img alt='laos sidebar screenshot' src='/assets/projects/laos/mockups/sidebar.webp' />
     </Body>
   </Article>
 
 
-  <Article name='Settings'>
-    <Body>
-      <div>
-        <h2>Quick settings access</h2>
-        <p> &emsp; As LAOS aims to be straightforward, avoiding nested parameters,
-          the extension offers a quick setting access pannel.
-          Allowing the user to quickly access and switch between the essentials settings
-        </p>
-      </div>
+  <Article spaced={true} name='Settings'>
+    <Body className='reverse vcenter'>
+    <Img alt='laos options screenshot' src='/assets/projects/laos/mockups/options.webp' />
+    <Pointer 
+      style={{flexBasis:'50%'}} 
+      title='Quick settings access' 
+      description='As LAOS aims to be straightforward, avoiding nested parameters,
+      the extension offers a quick setting access pannel.
+      Allowing the user to quickly access and switch between the essentials settings'
+      />
+    </Body>
+    <Space type='small'/>
+  </Article>
 
-      <div style={{display:'flex', justifyContent:'center'}}>
-          <LaosOptions />
-      </div>
 
-      <div></div>
+  <Article name='Mantra' id='laos_mantra' className='backdrop'>
+    <Body flexAlignement='vertical' className='centered'>
+    <h2 style={{textAlign:'center'}}>Take LAOS everywhere in your pocket !</h2>
+    <p className='half' style={{textAlign:'center', marginBottom: '5vh'}} ><br/>Since Google Chrome on mobile doesn’t support Web Extensions yet. 
+      LAOS offers a solution to any reader who’d like to translate words on a single touch with <b>Mantra</b>. 
+      The app translates any articles to an easily readable transcript in which the user can choose his reading pace, as well as translating any words
+      </p>
+      <div className='compress'>
+        <Img alt='laos options screenshots' src='/assets/projects/laos/mockups/mantra.webp' className='compress'/>
+      </div>
 
     </Body>
   </Article>

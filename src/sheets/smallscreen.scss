@@ -1,37 +1,117 @@
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 525px){
 
   .cat{
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-right: 0;
     }
 
-    .projects img {
-      max-width: 100%;
+    *.cta{
+      padding: 10px 15px;
+    }
+
+    #showreel{
+      padding: 10%;
+      .vimeo{ width: 100%; }
+    }
+
+    .projects{
       box-sizing: border-box;
-      padding: 0 5%;
+
+      .project_desc{
+        & > *{
+          margin: 2% 3%;
+          opacity: 1;
+          clip-path: inset(0 0 0 0);
+        }
+      }
     }
 
     #frameWrapper{
       h2{
         font-size: 12em;
-        writing-mode: vertical-lr;
-        top: 50%;
-        transform: translateY(-50%);
       }
+    }
+
+    #project_banner{
+      padding: 10vh 10%;
+    }
+
+    #project{
+      margin-top: 90vh;
+    }
+
+
+    #letterbox {
+      display: grid;
+      gap: 30px;
+
+      #iframewrapper{
+        width: 90vw;
+        height: calc(90vw*9/16);
+
+        #viewshowreel{display: none;}
+      }
+      #tagline{ 
+        font-size: 5em;
+        text-align: center;
+      }
+      #textLetterbox{
+        margin-top: 15%;
+        justify-content: space-evenly;
+        & > section{ 
+          span{ display: none; }
+
+          h1{ 
+            font-size: 20px; 
+            margin-bottom: 10px;
+          }
+          h1,p{
+            br{ display: none;  }
+          }
+          h2{
+            font-size: clamp(70px, 4vw, 120px); 
+          }
+        }
+
+      }
+    }
+
+    #menuPanel{
+       #labelContent{
+          box-sizing: border-box;
+          top: 0px;
+          transform: translate(0px, 0px);
+          flex-direction: column;
+          font-size: 12px;
+          margin: auto;
+          & > *{margin: 0;}
+          height: 100%;
+          justify-content: space-evenly;
+          padding: 50px 0;
+       }
+    }
+    
+    #resume{
+      display: block;
+    }
+
+    #resumeSettings{
+      bottom: 0;
+      height: fit-content;
+      padding-top: 3%;
+      top: auto;
+      padding: 2% 0;
+      align-items: center;
+    }
+
+    .tableGroup{
+      width: 100%;
     }
 
 }
 @media only screen and (max-width: 425px) {
 
-
-  #project .projectWrapper {
-    padding: 10px;
-    box-sizing: border-box;
-    float: none;
-  }
 
   #letterBox {
     & > div{ top:10%; }
@@ -42,6 +122,27 @@
       top: 4%;
     }
   }
+
+  #viewshowreel{
+    display: none;
+    animation: none;
+  }
+
+  #project_banner{ 
+    position: relative; 
+    max-width: 100vh;
+  }
+  #project{
+    margin: 0;
+    .projectWrapper {
+      padding: 10px;
+      padding-top: 10%;
+      box-sizing: border-box;
+      float: none;
+    }
+  }
+
+
 
   #bottomTitle, #mainTitle{  display: none; }
 
@@ -56,9 +157,8 @@
   #viewerjs_mainframe{ width: 100%; }
 
   #menu{
-    right: 8vw;
     #bars.active{
-      margin-top: 6vw !important;
+      margin-top: 2vw;
     }
   }
 
@@ -89,19 +189,29 @@
      &> h1 {
        font-size: 5em;
         margin-left: 40px;
+        margin-top: 20%;
      }
+  }
+
+  #resumeWrapper{
+    margin-top: 0;
+    padding: 10%;
   }
 
   #resume{
     padding: 0;
+    & > div{ 
+      &:last-of-type, &:first-of-type{ padding: 0;}
+    }
   }
 
   #resumeHeader{
-    margin-top: 20vh;
     h2{
       font-size: 3.5em;
+      line-height: 2em;
     }
   }
+
 
   /*_____________________________________________*/
   /*_____________________________________________*/
@@ -117,7 +227,7 @@
   }
 
 
-
+  .hidmobile{ display: none; }
   .blank.mobile{ display:none; }
 
   .story > section{
@@ -133,13 +243,7 @@
 
 
   .article {
-
-    .hori, .horizontal, .body{
-      flex-direction: column !important;
-    }
-    .half{ width:100% !important; }
-    .reverse{ flex-direction: column-reverse;}
-    &.spaced{ margin-bottom: 40% !important; }
+    &.spaced{ margin-bottom: 10%; }
   }
 
 
@@ -147,16 +251,14 @@
 
   #keyshape{ width:90%; }
 
-  h2{ font-size: 4em; }
-
   #laos_layout .body > div:not(#slicer){
     flex-direction: column;
   }
 
+
   #laos_typo .body{ flex-direction: column-reverse;  }
 
   #laos_sidebar .app{ width: 30%;  }
-  #laos_sidebar_main{ flex-direction: column-reverse; }
   #laos_layout{padding: 0; }
 
   #laos_typo .header {
@@ -184,8 +286,6 @@
   /*.article .padded{ padding-left: 0; padding-right: 0; }*/
 
   .projectContainer #VIEWER { padding: 0; }
-
-  #Terrorcore img.round, #cinegogue .window{ border-radius:0; }
 
   #rosas_dotty{ display: none; }
 
@@ -217,9 +317,6 @@
     border-radius: 20px;
   }
 
-
-
-  #gotoStore > img { width: 100%; }
 
   #creatool{display: inline-block;}
   #creatool > div{ margin-bottom: 100px;}

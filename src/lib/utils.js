@@ -1,10 +1,10 @@
 
-import PROJECTS, { THEMES } from './projects';
+import CATEGORIES, { THEMES } from './projects';
 
 
 export function cleanCategoryName(key){ return key.replace('<br>',''); }
 
-export function getCategories(projects){ return Object.keys(projects); }
+export function getCategories(cat=CATEGORIES){ return Object.keys(cat); }
 
 export function getColorOfCategory(category){ return THEMES[category]; }
 
@@ -18,8 +18,8 @@ export function getProjectFromTitle(title){
 
   var project = null;
 
-  getCategories(PROJECTS).map( category => {
-      const filtered = PROJECTS[category].filter( project => project.title === title);
+  getCategories().map( category => {
+      const filtered = CATEGORIES[category].projects.filter( project => project.title === title);
       if( filtered.length > 0 ){ project = filtered[0]; }
     }
   );
@@ -31,8 +31,8 @@ export function getProjectFromTitle(title){
 export function getCategoryOfProject(project){
   var ctg = null;
 
-  getCategories(PROJECTS).map( category => {
-    const filtered = PROJECTS[category].filter( prj => prj.title === project.title );
+  getCategories().map( category => {
+    const filtered = CATEGORIES[category].projects.filter( prj => prj.title === project.title );
     if(filtered.length > 0){ ctg = category; }
   });
 
@@ -42,16 +42,15 @@ export function getCategoryOfProject(project){
 
 export function getColorFromProject(project){ return THEMES[ getCategoryOfProject(project) ]; }
 
-
-export function getRandomProject({number, category, project}){
+export function getRandomProject({number, project}){
 
   number  = number || 3;
-  if(PROJECTS[category]){
-
-      let proj_ar = PROJECTS[category].filter( prj => prj.title !== project.title);
+  const category = getCategoryOfProject(project);
+  
+  if(CATEGORIES[category]){
+      let proj_ar = CATEGORIES[category].projects.filter( prj => prj.title !== project.title);
       proj_ar = proj_ar.sort( () => 0.5 - Math.random() );
       return proj_ar.slice(0, number);
-
   }else{
     console.log("couldn't find category: " +category );
     return [];
@@ -59,6 +58,8 @@ export function getRandomProject({number, category, project}){
 
   return [];
 }
+
+export function getProjectsOfCategory(cat){ return CATEGORIES[cat].projects || []; }
 
 export function  getPageTitleFromLocation(location){
 
@@ -69,11 +70,12 @@ export function  getPageTitleFromLocation(location){
     ]
 
     const filtered = routes.filter( route =>  pathname.match(route.string) );
-
     if( filtered && filtered.length > 0){ return filtered[0].title(pathname) }
 
     return '';
 }
+
+export function getZhongwenOfCategory(category){ return CATEGORIES[category]?.zhongwen }
 
 export function scrollTo(offset, callback) {
     const fixedOffset = offset.toFixed();
@@ -97,26 +99,8 @@ export function getSkinFromProject(project){ return project.skin || 'default'; }
 
 export function getCustomColorFromProject(project){ return project.color || null; }
 
-export function pictureToFullPath({folder, picture, extension='jpg'}){ return '/assets/projects'+folder+'/'+picture+'.'+extension; }
+export function pictureToFullPath({folder, picture, extension='webp'}){ return '/assets/projects'+folder+'/'+picture+'.'+extension; }
 
-export function concatGalleries({galleries, galleryKey, selectedPicture}){
-
-  //return a flatened version on the galleries, and the index of selected picture
-  let index = 0;
-  let indexFound = false;
-  const pictures = [];
-
-  for(const gl of galleries[galleryKey]){
-      for(const pic of gl.pictures){
-        pictures.push(pictureToFullPath({folder:gl.folder, picture:pic, extension:gl.extension}));
-
-        if( pic === selectedPicture ){ indexFound = true; }
-        else if(pic !== selectedPicture && !indexFound ){ index++; }
-      }
-  }
-
-  return { index:index, pictures:pictures };
-}
 
 export function filenameFromPath(path){
   return path.split('/').reverse()[0].split('.')[0];
@@ -154,3 +138,13 @@ export function smoothScroll(offsetTop, offset = 0) {
 export function isMobile(){ return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
 
 export function setFaviconColor(favicon, color='red'){ return favicon.href = process.env.PUBLIC_URL + '/favicon_'+color+'.ico' ; }
+
+export function changeHashTo(hash){ 
+
+  if(!hash || !hash.length || !hash.trim().length ){
+    return window.history.pushState(null, "The Art of Nassim El Khantour","/");
+  }else{
+    return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash);
+  }
+
+}

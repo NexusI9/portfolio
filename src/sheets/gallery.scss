@@ -1,4 +1,3 @@
-@charset "UTF-8";
 
 @mixin frameMargin(){
   box-sizing: border-box;
@@ -9,21 +8,31 @@
 .gallery {
 
   $gap:5px;
-  margin: calc($gap/2) 0;
+  margin: calc($gap/2) 0 !important;
 
   overflow: hidden;
 
   img{
+    transition: transform 0.3s ease-in-out;
     object-fit: cover !important;
     width: 100% !important;
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
+    cursor: pointer;
+    
+    @media(hover:hover){
+      transform: scale3d(1,1,1);
+      &:hover{
+        transform: scale3d(1.1,1.1,1.1);
+      }
+    }
   }
+
+  .imgWrapper{ margin: 0;}
 
   &.split, &.base{
     display: grid;
-    //rid-auto-rows: calc(100vh/3);
     grid-gap: $gap;
     box-sizing: border-box;
     grid-auto-flow: column;
@@ -36,7 +45,7 @@
     align-items: center;
   }
 
-  &.split{    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr)); }
+  &.split{ grid-template-columns: repeat(auto-fit,minmax(100px, 1fr)); }
 
   &.window{
     display: grid;
@@ -66,16 +75,19 @@
     height: 100%;
   }
 
+  & > section{
+    border: solid 1px #ebebec;
+  }
+
   section{
     box-sizing: border-box;
     position: relative;
-
+    overflow: hidden;
   }
 
 }
 
 .fullview{
-
   position: fixed;
   top: 0;
   left: 0;
@@ -104,11 +116,13 @@
     z-index: 3;
     top: 0;
     right: 0;
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     display: flex;
     margin: 35px 30px;
     span{
+      cursor: pointer;
+      border-radius: 10em;
       width: 100%;
       height: 2px;
       background-color: white;
@@ -132,8 +146,10 @@
     box-sizing: border-box;
     padding-bottom: 3%;
     height: 75vh;
+    pointer-events: none;
 
     img{
+      pointer-events: auto;
       position: absolute;
       cursor: pointer;
     }
@@ -149,8 +165,42 @@
     img{pointer-events: auto;}
     &.center{ justify-content: center; }
 
-    & > *{ margin: 0 10px; }
+    & > *{ 
+      overflow: hidden;
+      margin: 0 10px; 
+      border-radius: 5px;
 
+      @media(hover:hover){
+        img{ transform: scale3d(1,1,1); }
+        &:hover{
+          img{
+            transform: scale3d(1.1,1.1,1.1);
+          }
+        }
+      }
+      img{ 
+        border-radius: 5px; 
+        transition: transform 0.2s ease-out;
+      }
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 825px){
+
+  
+  .gallery{
+    &.split{
+      display: flex;
+      flex-direction: column;
+      grid-auto-flow: row;
+      grid-template-columns: none;
+    }
+
+
+    &.window{margin-bottom: 0px !important;}
   }
 
 }
@@ -161,18 +211,18 @@
   .gallery{
 
     &.window{
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: none;
-    }
-
-    &.split{
-      grid-auto-flow: row;
-      grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+      display: flex;
+      flex-direction: column;
       grid-template-columns: none;
     }
 
     &.base{
-      grid-auto-flow: row;
+      display: flex;
+      flex-direction: column;
+      .master{     
+        grid-column: span 1;
+        grid-row: span 1; 
+      }
     }
   }
 }

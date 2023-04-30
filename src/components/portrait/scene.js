@@ -2,30 +2,32 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { randomInt } from '../../lib/utils';
-
-const BACKGROUND = 0xf3f3f3;
-const INIT_WIDTH =  window.innerWidth / 3;
-const INIT_HEIGHT = window.innerHeight;
+import model from './model.gltf';
 
 export default class SCENE{
 
-  constructor(ob){
+  renderer = null;
+  scene = null;
+  camera = null;
+  effect = null;
+  clock = null;
+  head = null;
+  mixer = null;
+  material = null;
+  show = true;
+  lastDiv = null;
+  mousePos = {x:0,y:0};
+  loader = new GLTFLoader();
+  moveBone = null;
+  width = () => this.container?.getBoundingClientRect().width;
+  height = () => this.container?.getBoundingClientRect().height;
+  playFlag=true;
 
-    this.renderer = null;
-    this.scene = null;
-    this.camera = null;
-    this.effect = null;
-    this.clock = null;
-    this.head = null;
-    this.mixer = null;
-    this.material = null;
-    this.show = true;
-    this.lastDiv = null;
-    this.mousePos = {x:0,y:0}
-    this.loader = new GLTFLoader();
-    this.moveBone = null;
+  constructor({onLoad=()=>0, container=undefined, background=0xf5f7f9}){
 
-    this.onLoad = ob.onLoad || null;
+    this.onLoad = onLoad;
+    this.container = container;
+    this.background = background;
     this.timeline = gsap.timeline({onComplete: () => this.noiseMove(this.moveBone) });
     this.timeout = null;
 
@@ -43,7 +45,6 @@ export default class SCENE{
 }
 
   events(){
-      window.addEventListener( 'scroll', this.onScroll.bind(this) );
       window.addEventListener( 'resize', this.onWindowResize.bind(this) );
       window.addEventListener('mousemove', this.onMouseMove.bind(this) );
       document.getElementById('squareabout').addEventListener('touchmove', this.touchMove.bind(this) );
@@ -54,23 +55,22 @@ export default class SCENE{
   _init_(){
 
     this.setCanvasSize();
-    this.renderer = new THREE.WebGLRenderer({ alpha: false });
+    this.renderer = new THREE.WebGLRenderer({ alpha: true });
+    this.renderer.outputEncoding = THREE.sRGBEncoding;
     this.renderer.setPixelRatio( window.devicePixelRatio );
-    this.renderer.setClearColor( 0x000000, 0 );
-    this.renderer.setSize(this.width,this.height);
+    this.renderer.setClearColor( 0xf5f7f9, 0 );
+    this.renderer.setSize(this.width(),this.height());
     document.getElementById("squareabout").appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(BACKGROUND);
+    //this.scene.background = new THREE.Color(this.background);
 
-    this.camera = new THREE.PerspectiveCamera(16, this.width / this.height, 0.1, 1000 );
+    this.camera = new THREE.PerspectiveCamera(16, this.width() / this.height(), 0.1, 1000 );
     this.camera.focalLength = 125;
     this.setCanvasSize();
 
-    const light = new THREE.AmbientLight(0xFFFFFF, 1);
+    const light = new THREE.AmbientLight(0xF5F7F9, 1);
     this.scene.add(light);
-
-    this.material = new THREE.MeshBasicMaterial( {color: BACKGROUND, side:THREE.DoubleSide} );
 
     this.importModel();
 
@@ -81,8 +81,15 @@ export default class SCENE{
   importModel(){
 
     this.loader.load(
-      require('./model.gltf'),
+      model,
       (gltf) => {
+
+        gltf.scene.traverse( item => {
+          if(item.material){
+            item.material.flatShading = true;
+          }
+        });
+
 
         this.head = {
           group:gltf.scene.children[0],
@@ -94,7 +101,6 @@ export default class SCENE{
         this.head.bone.rotation.y = -1;
         this.head.group.position.y = -0.065;
 
-        this.head.mesh.material = this.material;
 
         this.scene.add(this.head.group);
         this.moveBone = this.head.bone;
@@ -116,45 +122,46 @@ export default class SCENE{
   }
 
   _render_(){
-    this.renderer.render( this.scene, this.camera );
-    if(this.show){ requestAnimationFrame( this._render_.bind(this) ); }
+    if(!this.playFlag){return;}
+    this.renderer?.render( this.scene, this.camera );
+    if(this.playFlag){ requestAnimationFrame( this._render_.bind(this) ); }
   }
 
   //events
 
   setCanvasSize(){
-    if(  window.innerWidth > window.innerHeight ){
-      this.width = INIT_WIDTH;
-      this.height = INIT_HEIGHT;
-      if(this.camera){
-        this.camera.position.z = 0.7;
-        this.camera.position.y = 0;
-      }
-    }else{ //vertical mode
-        this.width = window.innerWidth;
-        this.height = window.innerHeight/1.5;
-        if(this.camera){
-          this.camera.position.z = 0.5;
-          this.camera.position.y = 0.007;
-        }
+    if(!this.camera){ return; }
+
+    if( window.matchMedia('(orientation: landscape)').matches ){
+      this.camera.position.z = 0.55;
+      this.camera.position.y = 0.01;
+    }else{
+      this.camera.position.z = 0.6;
+      this.camera.position.y = 0.030;
     }
+
   }
 
   onWindowResize() {
 
-    this.camera.aspect = this.width / this.height;
-  	this.camera.updateProjectionMatrix();
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout( () => { 
 
+      this.camera.aspect = this.width() / this.height();
+      this.camera.updateProjectionMatrix();
+  
+  
+      this.renderer?.setSize( this.width(), this.height() );
+      this._render_();
+      this.setCanvasSize();
 
-    this.renderer.setSize( this.width, this.height );
-    this._render_();
-    this.setCanvasSize();
+    }, 200);
 
   }
 
   onMouseMove(e){
 
-    this.timeline.pause();
+    this.timeline.clear();
 
     this.mousePos.x = -1 + (e.clientX / window.innerWidth) + 0.2;
     this.mousePos.y = -1 + (e.clientY / window.innerHeight) + 0.2;
@@ -165,22 +172,29 @@ export default class SCENE{
     }
 
     clearTimeout(this.timeout);
-    this.timeout = setTimeout( () => this.noiseMove(this.moveBone), 200);
+    this.timeout = setTimeout( () => { 
+      this.noiseMove(this.moveBone);
+    }, 200);
 
 
   }
 
-  onScroll(){
-    /*
-    if(window.innerHeight < lastDiv.getBoundingClientRect().top && this.show == true){ this.show = false; }
-    else if(window.innerHeight > lastDiv.getBoundingClientRect().top && this.show == false){ this.show = true; this._render_(); }
-    */
+  pause(){
+    if(!this.playFlag){ return; }
+    this.playFlag=false;
+    this.timeline.pause();
+  }
+
+  play(){
+    if(this.playFlag){ return; }
+    this.playFlag=true;
+    this._render_();
+    this.noiseMove(this.moveBone);
   }
 
   noiseMove(bone,speed=randomInt(2,3)){
-
+    
     if(!bone){ return; }
-    this.timeline.play();
     this.timeline.to(bone.rotation,{
       duration:speed,
       overwrite:true,
@@ -189,11 +203,12 @@ export default class SCENE{
       z:bone.rotation.z,
       ease:'Power1.easeInOut'
     } );
+    this.timeline.play();
 
   }
 
   closeEyes(mesh){
-
+    if(!mesh || !mesh.morphTargetInfluences){ return; }
     const close = {value:0};
     const tl = gsap.timeline({
       duration: Math.random(0.1,0.4),

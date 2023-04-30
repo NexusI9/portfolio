@@ -1,0 +1,203 @@
+#laos_options{
+  color: #000;
+  width: max-content;
+  padding: 1em;
+  text-align: center;
+  background: #e8e8e8;
+  height: fit-content;
+  box-shadow: 3px 3px 10px rgba(0 0 0 / 19%);
+}
+
+#laos_options *{
+  font-family: 'Sora';
+}
+
+#options p{
+  margin: 0;
+}
+
+#op_topBanner{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  column-gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+
+}
+
+
+#op_tobBanner > *{
+  padding: 3em;
+}
+
+#laos_options #op_topBanner img{
+  max-width: 130px;
+
+}
+
+#laos_options #openLaos{
+  position: relative;
+  margin-bottom: 1em;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5em 0.7em;
+  background-color: #61b3ff;
+  border: none;
+  color: #fff;
+}
+
+#laos_options #openLaos:hover{  background: #1f73c8; }
+#laos_options #openLaos:active{  background-color: #14265c;  }
+
+#laos_options .sepbar{
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: #3c3c3c;
+  visibility: hidden;
+}
+
+#laos_options input{
+  display: none;
+}
+
+
+#laos_options .ui{
+  background-color:#d2d2d2;
+  border: solid #fff thin;
+  border-radius: 0.3em;
+}
+
+#laos_options label:focus{
+  background:#838383;
+}
+
+#laos_options .switch
+{
+  display: inline-block;
+  position: relative;
+  border-radius: 34px;
+}
+
+#laos_options .slider{
+  display: block;
+  width: 50px;
+  top: 0;
+  height: 24px;
+  border-radius: 34px;
+}
+
+#laos_options .slider::before{
+  position: absolute;
+  content: '';
+  background-color: #fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  top: 3px;
+  left: 3px;
+  cursor: pointer;
+}
+
+#laos_options .switch input:checked + .slider::before{
+  left:29px;
+}
+
+#laos_options .switch input:checked + .slider{
+  background-color: #61b3ff;
+}
+
+#laos_options .laos_setting{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  margin: 1em;
+  overflow: hidden;
+  column-gap: 20px;
+}
+
+#laos_options .radio{
+  width: 100%;
+  padding: 0;
+  display: flex;
+  height: 24px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#laos_options .radio span{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+#laos_options .radio:hover > span{
+  background: rgb(157, 157, 157);
+}
+
+#laos_options .radio p{
+  text-align: center;
+  position: absolute;
+  text-transform: lowercase;
+  font-size: 76%;
+  letter-spacing: 0.1em;
+}
+
+
+#laos_options .radio input:checked + span{
+  background-color: #61b3ff;
+}
+
+#laos_options .radio input:checked ~ p{
+  color:#fff;
+}
+
+#laos_options .round{
+  border-radius: 34px;
+}
+
+#laos_options .nogap{
+    column-gap: 0px;
+}
+
+#laos_options .setting_box{
+  display: inline-block;
+  background: #FFF;
+  border-radius: 0.3em;
+}
+
+
+#laos_options #donate{
+  margin-top: 1em;
+}
+
+#laos_options #donate p{
+  color:#666;
+  font-size: 0.7em;
+}
+
+#laos_options #about{
+    margin-top: 1em;
+    text-align: right;
+}
+
+#laos_options #about a{
+  color:#666;
+  font-size: 0.7em;
+  cursor: default;
+}
+
+#laos_options #about a:hover{
+  text-decoration: underline;
+}
