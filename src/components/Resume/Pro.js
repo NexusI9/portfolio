@@ -10,18 +10,17 @@ import logo_NEK from '@/assets/logos/NEK.png';
 const Pro = ({language}) => (
     <>
       <Content
-        header={<Label ico={logo_rdb.src}><Multi eng='Lead Designer: Motion, Web & Print productions' fr='Lead Designer: Motion, Web & Print design' zh='領導視覺計師 : 動態圖形設 、 網站 、 印刷製作' language={language}/></Label>}
-        body={<>
-          <small><Multi
-            eng='Design of visual and interactive content going from websites to print and motion design assets'
-            fr='Design de contenu visuel et interactifs allant de site web au print et motion design'
-            zh='視覺與互動式內容設計、從網站到平面與動態圖形材料'
+        icon={logo_rdb.src}
+        header={<Multi eng='Lead Designer: Motion, Web & Print productions' fr='Lead Designer: Motion, Web & Print design' zh='領導視覺計師 : 動態圖形設 、 網站 、 印刷製作' language={language}/>}
+        body={<><Multi
+            eng="Design of visual and interactive content going from websites to print and motion design assets. Involved in agency's project management and team coordination."
+            fr="Design de contenus visuels et interactifs allants de sites web au print et motion design. Gestion des projets internes et de coordination des équipes."
+            zh="視覺與互動式內容設計、從網站到平面與動態圖形材料. 參與代理公司的專案管理和 團隊協調工作"
             language={language}/>
-          </small>
           <List li={[
             <Multi
               eng='Production of motion design materials and sound design (Google, Meta, TikTok ads, marketing collaterals, as well as product showcases...)'
-              fr='Production de divers éléments Motion Design et Sound Design (Google, Meta, TikTok ads, matériel marketing, ainsi que la présentation de produits)'
+              fr='Production de divers éléments Motion Design et Sound Design (Google, Meta, TikTok ads, matériel marketing, ainsi que de la présentation de produits)'
               zh='動態圖形與聲音設計製作 ( 從Google、 Meta、 TikTok 廣告到產品文宣 )'
               language={language}/>,
               <Multi
@@ -52,16 +51,39 @@ const Pro = ({language}) => (
               eng='Setup and development of web apps and Adobe Extensions to enhance the agency workflow.'
               fr="Mise en place et développement d'applications web et extensions Adobe pour améliorer le workflow de l’agence."
               zh='為進步企業工作流製作Adobe Extensions與網絡應用程式'
+              language={language}/>,
+              <Multi
+              eng="Collaborating with the Tech Lead to improve agency’s technical stack."
+              fr="Collaboration avec le Tech Lead pour améliorer la stack de l’agence."
+              zh="與技術主管合作，以提升公司的技術堆疊"
+              language={language}/>,
+              <Multi
+              eng='Team training: introducing production tools to management and development team.'
+              fr="Formation et présentation d’outils de productions à l’équipe de management et développement."
+              zh='團隊培訓:向管理和開發團隊介紹生產工具'
+              language={language}/>,
+              <Multi
+              eng="Managing agency’s in-house projects (tasks scheduling, coordination of the production team)."
+              fr="Management de projets internes à l’agence (planification de tâches, coordination des équipes de production)."
+              zh="管理公司的內部專案 (任務排程、製作團隊協調)"
               language={language}/>
           ]}/>
           </>
         }
-
+        
+        date={
+            <Multi
+              eng="2022 - present"
+              fr="2022 - aujourd'hui"
+              zh="2022 — 在職中"
+            language={language}
+            />
+          }
         detail={
           <Multi
-            eng={<>Redbox Media Inc. <br /> 2022 - present :: Montréal, Canada </>}
-            fr={<>Redbox Media Inc. <br /> 2022 - aujourd'hui :: Montréal, Canada  </>}
-            zh={<>Redbox Media Inc. <br /> 2022 — 在職中  :: 蒙特婁，加拿大 </>}
+            eng="Redbox Media Inc. :: Montréal, Canada"
+            fr="Redbox Media Inc. :: Montréal, Canada"
+            zh="Redbox Media Inc. :: 蒙特婁，加拿大"
           language={language}
           />
         }
@@ -69,26 +91,27 @@ const Pro = ({language}) => (
 
 
       <Content
-        header={<Label ico={logo_N.src}><Multi eng='Freelance in audiovisual & Web Design' fr='Freelance en audiovisuel et Web Design' zh='網絡設計師與音像製作自由職業者' language={language}/></Label>}
+        icon={logo_N.src}
+        header={<Multi eng='Freelance in audiovisual & Web Design' fr='Freelance en audiovisuel et Web Design' zh='網絡設計師與音像製作自由職業者' language={language}/>}
         body={<>
           <List li={[
+              <Multi
+              eng='Development and UX/UI design of LAOS: a web browser extension to improve Mandarin learning (React, Redux, OCR technology).'
+              fr='Développement et UX/UI design de LAOS: une extension Google Chrome pour l’apprentissage du mandarin (React, Redux, OCR technology).'
+              zh='Google Chrome擴充功能開發與UI/UX設計 ( React, Redux, OCR 技術 )'
+              language={language}
+            />,
+            <Multi
+              eng='Development and UX/UI design of KINOJI: a website archiving various cinematographic content (NextJS, REST Api, MySQL).'
+              fr='Développement et UX/UI de Kinoji: un site d’archivage de contenu cinématographique (NextJS, REST Api, MySQL).'
+              zh='電影攝影的上網檔案館開發與UI/UX設計 ( NextJS, REST Api, MySQL )'
+              language={language}
+            />,
             <Multi
               eng='Development and Web Design of an e-commerce coupled with a dedicated SQL client for products management (LAMP stack).'
               fr='Développement et Web Design d’un e-commerce ainsi que d’un client SQL pour la gestion des produits (stack LAMP).'
               zh='電子商務開發與UI/UX設計、產品管理將SQL客戶機軟件開發 (LAMP stack)'
               language={language}/>,
-            <Multi
-              eng='Development and UX/UI design of a web browser extension to improve Mandarin learning (popup translator, OCR recognition).'
-              fr='Développement et UX/UI design d’une extension Google Chrome pour l’apprentissage du mandarin (traducteur popup, reconnaissance OCR).'
-              zh='Google Chrome擴充功能開發與UI/UX設計'
-              language={language}
-            />,
-            <Multi
-              eng='Development and UX/UI design of a website archiving various cinematographic content (MERN stack).'
-              fr='Développement et UX/UI d’un site d’archivage de contenu	cinématographique (MERN stack).'
-              zh='電影攝影的上網檔案館開發與UI/UX設計 (MERN stack)'
-              language={language}
-            />,
             <Multi
               eng='Art direction, background painting and animation for an animated short-movie (music video).'
               fr='Direction artistique, background painting et animation pour un court-métrage d’animation (clip musical).'
@@ -99,11 +122,19 @@ const Pro = ({language}) => (
           </>
         }
 
+        date={
+          <Multi
+            fr="2020 - 2021"
+            eng="2020 - 2021"
+            zh="2020 至 2020"
+          language={language}
+          />
+        }
         detail={
           <Multi
-            eng={<>Freelance <br /> 2020 - 2021 :: Strasbourg, France </>}
-            fr={<>Freelance <br /> 2020 - 2021 :: Strasbourg, France  </>}
-            zh={<>自由職業 <br /> 2019 至 2020 :: 斯特拉斯堡，法國 </>}
+            eng="Freelance :: Strasbourg, France"
+            fr="Freelance :: Strasbourg, France"
+            zh="自由職業 :: 斯特拉斯堡，法國"
           language={language}
           />
         }
@@ -112,14 +143,15 @@ const Pro = ({language}) => (
 
       <Content
         separator={false}
-        header={<Label ico={logo_NEK.src}><Multi eng='Graphic and Multimedia designer' fr='Designer Graphique et Multimédia' zh='視覺與多媒體設計師' language={language}/></Label>}
+        icon={logo_NEK.src}
+        header={<Multi eng='Graphic and Multimedia designer' fr='Designer Graphique et Multimédia' zh='視覺與多媒體設計師' language={language}/>}
         body={<>
-          <small><Multi
+        <Multi
             eng='Providing visuals for various cultural structures such as associations, music acts and soundsystem.'
             fr='Création de contenus visuels pour diverses structures culturelles telles que des associations, groupes de musique et soundsystems.'
             zh='提供多種文化機構( 社團、音樂活動、Soundsystem )多媒體材料'
             language={language}/>
-          </small>
+
           <List li={[
             <Multi eng='Spatial organisation and scenography of various video-mapping installations.'
                    fr='Mise en espace et scénographie de nombreuses installations vidéo-mapping.'
@@ -141,12 +173,18 @@ const Pro = ({language}) => (
           ]}/>
           </>
         }
-
+        date={
+          <Multi
+            eng="2016 - 2020"
+            fr="2016 - 2020"
+            zh="2016 至 2020"
+            language={language}/>
+        }
         detail={
           <Multi
-            eng={<>Independent Contractor <br /> 2016 - 2020 :: Nancy, France  </>}
-            fr={<>Prestataire indépendant <br /> 2016 - 2020 :: Nancy, France  </>}
-            zh={<>工讀生 <br /> 2016 至 2020 :: 南錫，法國 </>}
+            eng="Independent Contractor :: Nancy, France"
+            fr="Prestataire indépendant :: Nancy, France"
+            zh="工讀生 :: 南錫，法國"
             language={language}/>
         }
       />

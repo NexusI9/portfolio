@@ -1,144 +1,320 @@
 import Content from './Content';
 import { Multi } from '../Inputs';
+import event01 from '@/assets/resume/event01.webp';
+import event02 from '@/assets/resume/event02.webp';
+import event03 from '@/assets/resume/event03.webp';
+import event04 from '@/assets/resume/event04.webp';
+import event05 from '@/assets/resume/event05.webp';
+import event06 from '@/assets/resume/event06.webp';
+import event07 from '@/assets/resume/event07.webp';
+import event08 from '@/assets/resume/event08.webp';
+import event09 from '@/assets/resume/event09.webp';
+import event10 from '@/assets/resume/event10.webp';
+
 
 
 const Events = ({language}) =>(
-    <div id='perf'>
+    <div className='content event grid'>
     <Content
+      visual={event10.src}
+      card={true}
+      date={ 
+        <Multi eng="March 3rd, 2020" 
+                fr="3 Mars 2020" 
+                zh="2020年3月3日" 
+                language={language} 
+                /> 
+      }
       header={<b>Maison Mimir fête ses 10 ans</b>}
       body={
         <Multi
-          eng={<small>With Philip Pentacle and Epic Schmetterling.</small>}
-          fr={<small>With Philip Pentacle and Epic Schmetterling.</small>}
-          zh={<small>跟 Philip Pentacle 和 Epic Schmetterling</small>}
+          eng="With Philip Pentacle and Epic Schmetterling."
+          fr="With Philip Pentacle and Epic Schmetterling."
+          zh="跟 Philip Pentacle 和 Epic Schmetterling"
           language={language}
         />
       }
-      detail={ <Multi eng="March 3rd, 2020  :: MOLODOÏ, Strasbourg, France" fr="3 Mars 2020  :: MOLODOÏ, Strasbourg, France " zh="2020年3月3日 :: MOLODOÏ，斯特拉斯堡，法國 " language={language} /> }
+      detail={ 
+        <Multi eng="MOLODOÏ, Strasbourg, France" 
+               fr="MOLODOÏ, Strasbourg, France " 
+               zh="MOLODOÏ，斯特拉斯堡，法國 " 
+               language={language} 
+        /> 
+      }
      />
   
     <Content
+      card={true}
+      visual={event05.src}
       header={<b>ART’ung Live</b>}
+      date={ 
+        <Multi 
+          eng="February 15th, 2020" 
+          fr="15 février 2020" 
+          zh="2020年2月15日" 
+          language={language} 
+        /> }
       body={
         <Multi
-          eng={<small>With Philip Pentacle, Epic Schmetterling and Noyus.</small>}
-          fr={<small>Avec Philip Pentacle, Epic Schmetterling et Noyus.</small>}
-          zh={<small>跟 Philip Pentacle，Epic Schmetterling 和 Noyus</small>}
+          eng="With Philip Pentacle, Epic Schmetterling and Noyus."
+          fr="Avec Philip Pentacle, Epic Schmetterling et Noyus."
+          zh="跟 Philip Pentacle，Epic Schmetterling 和 Noyus"
           language={language}
         />
       }
-      detail={ <Multi eng="February 15th, 2020 :: Local ART’ung, Willerhoff, France " fr="15 février 2020 :: Local ART’ung, Willerhoff, France " zh="2020年2月15日 :: Local ART’ung，Willerhoff，法國" language={language} /> }
+      detail={ 
+        <Multi 
+          eng="Local ART’ung, Willerhoff, France " 
+          fr="Local ART’ung, Willerhoff, France " 
+          zh="Local ART’ung，Willerhoff，法國" 
+          language={language} 
+        /> }
      />
   
   
     <Content
+      card={true}
+      visual={event09.src}
+      date={ 
+          <Multi 
+            eng="February 15th, 2020" 
+            fr="15 février 2020" 
+            zh="2019年12月5日" 
+            language={language}
+          /> 
+      }
       header={<b>CELEBRATION</b>}
       body={
         <Multi
-          eng={<small>With Epic Schmetterling.</small>}
-          fr={<small>Avec Epic Schmetterling.</small>}
-          zh={<small>跟 Epic Schmetterling</small>}
+          eng="With Epic Schmetterling."
+          fr="Avec Epic Schmetterling."
+          zh="跟 Epic Schmetterling"
           language={language}
         />
       }
-      detail={ <Multi eng="February 15th, 2020 :: Local ART’ung, Willerhoff, France " fr="15 février 2020 :: Local ART’ung, Willerhoff, France " zh="2019年12月5日 :: ENSAD，南錫，法國 " language={language} /> }
+      detail={ 
+          <Multi 
+            eng="Local ART’ung, Willerhoff, France" 
+            fr="Local ART’ung, Willerhoff, France" 
+            zh="ENSAD，南錫，法國" 
+            language={language}
+          /> 
+      }
      />
   
   
     <Content
+      card={true}
+      visual={event04.src}
       header={<b>Limedia Party #1</b>}
+      date={ 
+        <Multi 
+          eng="April 14th, 2018" 
+          fr="14 avril 2018" 
+          zh="2018年14月4日" 
+          language={language} 
+          /> 
+      }
       body={
         <Multi
-          eng={<small>As part of the RING festival, with CTL! soundsystem.</small>}
-          fr={<small>Dans le cadre du RING festival, avec CTL! soundsystem.</small>}
-          zh={<small>RING音樂節的一部分，跟 CTL! soundsystem</small>}
+          eng="As part of the RING festival, with CTL! soundsystem."
+          fr="Dans le cadre du RING festival, avec CTL! soundsystem."
+          zh="RING音樂節的一部分，跟 CTL! soundsystem"
           language={language}
         />
       }
-      detail={ <Multi eng="April 14th, 2018 :: Théatre de la Manufacture, Nancy, France" fr="14 avril 2018 :: Théatre de la Manufacture, Nancy, France" zh="2018年14月4日 :: Théatre de la Manufacture，南錫，法國" language={language} /> }
+      detail={ 
+        <Multi 
+          eng="Théatre de la Manufacture, Nancy, France"
+          fr="Théatre de la Manufacture, Nancy, France"
+          zh="Théatre de la Manufacture，南錫，法國"
+          language={language} 
+        /> 
+      }
      />
   
   
     <Content
+      card={true}
+      visual={event08.src}
       header={<b>TECHNO</b>}
+      date={ 
+        <Multi 
+          eng="February 22nd, 2018" 
+          fr="22 février 2018" 
+          zh="2018年2月22日" 
+          language={language} 
+          /> 
+      }
       body={
         <Multi
-          eng={<small>with ENSAD (BDE).</small>}
-          fr={<small>avec ENSAD (BDE).</small>}
-          zh={<small>跟 ENSAD (BDE)</small>}
+          eng="with ENSAD (BDE)."
+          fr="avec ENSAD (BDE)."
+          zh="跟 ENSAD (BDE)"
           language={language}
         />
       }
-      detail={ <Multi eng="February 22nd, 2018 :: LNVRS club, Nancy, France " fr="22 février 2018 :: LNVRS club, Nancy, France" zh="2018年2月22日 :: LNVRS 夜店，南錫，法國 " language={language} /> }
+      detail={ 
+        <Multi 
+          eng="LNVRS club, Nancy, France " 
+          fr="LNVRS club, Nancy, France" 
+          zh="LNVRS 夜店，南錫，法國 " 
+          language={language} 
+          /> 
+      }
      />
   
     <Content
+      card={true}
+      visual={event03.src}
       header={<b>CTL PARTY!</b>}
+      date={ 
+        <Multi 
+          eng="November 4th, 2017" 
+          fr="4 novembre 2017" 
+          zh="2017年11月4日" 
+          language={language} 
+          /> 
+      }
       body={
         <Multi
-          eng={<small>With CTL! soundsystem.</small>}
-          fr={<small>Avec CTL! soundsystem.</small>}
-          zh={<small>跟 CTL! soundsystem</small>}
+          eng="With CTL! soundsystem."
+          fr="Avec CTL! soundsystem."
+          zh="跟 CTL! soundsystem"
           language={language}
         />
       }
-      detail={ <Multi eng="November 4th, 2017 :: Ostra club, Nancy, France " fr="4 novembre 2017 :: Ostra club, Nancy, France " zh="2017年11月4日 :: Ostra 夜店，南錫，法國" language={language} /> }
+      detail={ 
+        <Multi 
+          eng="Ostra club, Nancy, France " 
+          fr="Ostra club, Nancy, France " 
+          zh="Ostra 夜店，南錫，法國" 
+          language={language} 
+          /> 
+      }
      />
   
   
     <Content
+      card={true}
+      visual={event07.src}
       header={<b>Ph pas neutre : Jaquarius</b>}
+      date={ 
+        <Multi 
+          eng="October 6th, 2017" 
+          fr="6 octobre 2017"  
+          zh="2017年10月6日" 
+          language={language} 
+          /> 
+      }
       body={
         <Multi
-          eng={<small>With CTL! soundsystem.</small>}
-          fr={<small>Avec CTL! soundsystem.</small>}
-          zh={<small>跟 CTL! soundsystem</small>}
+          eng="With CTL! soundsystem."
+          fr="Avec CTL! soundsystem."
+          zh="跟 CTL! soundsystem"
           language={language}
         />
       }
-      detail={ <Multi eng="October 6th, 2017 :: LNVRS club, Nancy, France" fr="6 octobre 2017 :: LNVRS club, Nancy, France"  zh="2017年10月6日 :: LNVRS 夜店，南錫，法國 " language={language} /> }
+      detail={ 
+        <Multi 
+          eng="LNVRS club, Nancy, France" 
+          fr="LNVRS club, Nancy, France"  
+          zh="LNVRS 夜店，南錫，法國 " 
+          language={language} 
+          /> 
+      }
      />
   
   
     <Content
+      card={true}
+      visual={event02.src}
+      date={
+        <Multi 
+          eng="May 7th, 2017"
+          fr="7 mai 2017"  
+          zh="2017年5月7日" 
+          language={language} 
+          /> 
+      }
       header={<b>Festival Moumouth Fest</b>}
       body={
         <Multi
-          eng={<small>With Epic Schmetterling.</small>}
-          fr={<small>Avec Epic Schmetterling.</small>}
-          zh={<small>跟 Epic Schmetterling</small>}
+          eng="With Epic Schmetterling."
+          fr="Avec Epic Schmetterling."
+          zh="跟 Epic Schmetterling"
           language={language}
         />
       }
-      detail={ <Multi eng="May 7th, 2017 :: Tanneries, Dijon, France" fr="7 mai 2017 :: Tanneries, Dijon, France "  zh="2017年5月7日 :: Tanneries，迪戎，法國" language={language} /> }
+      detail={
+         <Multi 
+          eng="Tanneries, Dijon, France"
+          fr="Tanneries, Dijon, France "  
+          zh="Tanneries，迪戎，法國" 
+          language={language} 
+          /> 
+      }
      />
   
     <Content
+      card={true}
+      visual={event06.src}
       header={<b>ARK4-Artem</b>}
+      date={ 
+        <Multi 
+          eng="Januray 19th, 2017" 
+          fr="19 janvier 2017"  
+          zh="2017年1月19日" 
+          language={language} 
+          /> 
+        }
       body={
         <Multi
-          eng={<small>With Latitudes 5.4.</small>}
-          fr={<small>Avec Latitudes 5.4.</small>}
-          zh={<small>跟 Latitudes 5.4</small>}
+          eng="With Latitudes 5.4."
+          fr="Avec Latitudes 5.4."
+          zh="跟 Latitudes 5.4"
           language={language}
         />
       }
-      detail={ <Multi eng="Januray 19th, 2017 :: CCAM, Vandoeuvre-les-Nancy, France" fr="19 janvier 2017 :: CCAM, Vandoeuvre-les-Nancy, France"  zh="2017年1月19日 :: CCAM，旺多厄夫爾萊南西，法國" language={language} /> }
+      detail={ 
+        <Multi 
+          eng="CCAM, Vandoeuvre-les-Nancy, France" 
+          fr="CCAM, Vandoeuvre-les-Nancy, France"  
+          zh="CCAM，旺多厄夫爾萊南西，法國" 
+          language={language} 
+          /> 
+        }
      />
   
   
     <Content
-      separator={false}
+      card={true}
+      visual={event01.src}
       header={<b>Freshmen homecoming</b>}
+      date={
+        <Multi 
+           eng="December 8th, 2016" 
+           fr="8 décembre 2016"  
+           zh="2016年12月8日" 
+           language={language} 
+         /> 
+       }
       body={
         <Multi
-          eng={<small>With ENSAD (BDE).</small>}
-          fr={<small>Avec ENSAD (BDE).</small>}
-          zh={<small>跟 ENSAD (BDE)</small>}
+          eng="With ENSAD (BDE)."
+          fr="Avec ENSAD (BDE)."
+          zh="跟 ENSAD (BDE)"
           language={language}
         />
       }
-      detail={ <Multi eng="December 8th, 2016 :: Appart club, Nancy, France " fr="8 décembre 2016 :: Appart club, Nancy, France "  zh="2016年12月8日 :: Appart 夜店，南錫，法國 " language={language} /> }
+      detail={
+         <Multi 
+            eng="Appart club, Nancy, France " 
+            fr="Appart club, Nancy, France "  
+            zh="Appart 夜店，南錫，法國 " 
+            language={language} 
+          /> 
+        }
      />
   
     </div>

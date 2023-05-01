@@ -1,6 +1,6 @@
 const List = ({li}) => (
   <ul>
-    {li.map( (item,i) => <li key={Math.random()+i}><small>{item}</small></li>)}
+    {li.map( (item,i) => <li key={Math.random()+i}>{item}</li>)}
   </ul>
 );
 
