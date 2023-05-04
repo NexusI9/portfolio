@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef  } from "react";
 import { motion } from 'framer-motion';
 import { default as Masonry } from 'react-responsive-masonry';
-import { toProjectVariant, variant } from './Flow.constants';
+import { variant } from './Flow.constants';
 import { getProjectsOfCategory, cleanCategoryName } from '../../lib/utils';
 import ProjectThumbnails from "./ProjectThumbnails";
 

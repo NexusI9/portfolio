@@ -7,3 +7,5 @@ export {default as MailAddress} from './MailAddress';
 export {default as Multi} from './Multi';
 export {default as SocialsIcons} from './SocialsIcons';
 export {default as ViewShowreel} from './ViewShowreel';
+export {default as ContactForm} from './ContactForm';
+export {default as Input} from './Input';

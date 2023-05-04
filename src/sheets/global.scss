@@ -232,6 +232,13 @@ button, input, label, a{
   &, & *{ cursor: pointer;  }
 }
 
+.container{
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
 *.cta{
   display: flex;
   flex-direction: row;
@@ -823,7 +830,7 @@ footer{
   max-width: 1920px;
 
   & > div{
-    $gap:70px;
+    $gap:120px;
     border: solid 1px var(--black);
     height: 100%;
     gap:$gap;
@@ -844,15 +851,6 @@ footer{
       display: flex;
       align-items: center;
 
-      &::after{
-        content: '';
-        display: block;
-        background-color: var(--black);
-        position: absolute;
-        width: 1px;
-        height: 90%;
-        right: calc(-1 * $gap/2);
-      }
     }
 
   }
@@ -3348,11 +3346,13 @@ img.gradientImg{
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  display: block;
   background-size: cover;
   background-position: bottom;
-  max-width: 1920px;
   margin: auto;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5% 10%;
 
   #signature{
     position: fixed;
@@ -3360,21 +3360,108 @@ img.gradientImg{
     width: 100%;
     left: 0;
   }
-  & > h1{
-    color:var(--black);
-    margin: 100px 70px;
-    font-size: clamp(30px, 12vw, 245px);
+  h1{
+    color:var(--purple);
+    font-size: clamp(30px, 8vw, 245px);
   }
+
   #contactLinks{
-    position: absolute;
-    left: 50%;
-    top: 55%;
-    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
     a{ cursor: pointer; }
     section{
       margin-top: 20px;
       & > *:first-child{ margin-bottom: 10px; }
       & > *:last-child{ margin-left: 40px;}
+    }
+  }
+
+  form{
+    display: grid;
+    grid-template-rows: 1fr 1fr 3fr 1fr;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    box-sizing: border-box;
+    border: solid 1px var(--purple);
+    padding: 30px;
+    justify-items: center;
+    gap: 5px;
+
+    label:has(input[type="text"]),
+    label:has(input[type="email"]), 
+    label:has(textarea)
+    { 
+      width: 100%; 
+    }
+
+    label:has(textarea){
+      height: initial;
+      align-items: flex-start;
+      textarea{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+
+  }
+}
+
+textarea{
+  font-family: 'Sora', sans-serif;
+}
+
+form{
+  input{
+    display: block;
+    background: transparent;
+    box-sizing: border-box;
+    &[type='text']{ cursor: text; }
+    &[type="submit"]{ font-weight: bold; }
+  }
+
+  textarea{
+    border: none;
+    background: transparent;
+    resize: none;
+  }
+}
+
+label.customInput{
+
+  color: var(--black);
+  position: relative;
+  cursor: text;
+  border: solid 1px var(--purple-30);
+  padding: 5px 5px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 42px;
+
+  &.focus{
+    .placeholder{
+      transform: translate3d(-12px, -27px, 0px) scale3d(0.7,0.7,0.7);
+    }
+  }
+
+
+  .placeholder{
+    position: absolute;
+    pointer-events: none;
+    background: var(--white);
+    color: var(--purple-30);
+    transition: transform 0.3s cubic-bezier(.37,.35,.38,.98);
+    transform: translate3d(0, 0, 0) scale3d(1,1,1);
+
+    &.required{
+      &::after{
+        content: '*';
+        font-weight: 500;
+        color: var(--purple);
+      }
     }
   }
 }
