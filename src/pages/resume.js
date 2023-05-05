@@ -222,7 +222,7 @@ function Resume(){
       <section>
 
         <motion.span key='letsWerk' variants={popUp} id="dlresume">
-            <Cta href='mailto:nassim.elkhantour@gmail.com' type='primary'>
+            <Cta to='/contact' type='primary'>
               <small>Let's work together</small>
             </Cta> 
         </motion.span>

@@ -5,7 +5,7 @@ import Input from "./Input";
 const ContactForm = () => {
     
     const [mailPath, setMailPath] = useState();
-    
+
     const sendMessage = () => {
 
     }
@@ -17,13 +17,17 @@ const ContactForm = () => {
     return( mailPath && 
      
      <form action={mailPath} className="round">
-        <Input name='name' placeholder="Your name" type='text'/>
-        <Input name='email' placeholder="Your email" type='email'/>
-        <Input name='content' placeholder="What's on your mind?" type='textarea'/>
+        <fieldset>
+            <Input name='name' placeholder="Your name" type='text'/>
+            <Input name='email' placeholder="Your email" type='email'/>
+            <Input name='content' placeholder="What's on your mind?" type='textarea'/>
+        </fieldset>
 
-        <label className="cta primary">
-            <input type='submit' value='submit'/>
-        </label>
+        <fieldset>
+            <label className="cta primary">
+                <input type='submit' value='submit'/>
+            </label>
+        </fieldset>
     </form>
     );
 

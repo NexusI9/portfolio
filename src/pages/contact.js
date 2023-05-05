@@ -17,8 +17,8 @@ export default function Contact(){
 
   const variantContact = {
     initial:{y:'100px', opacity:0},
-    animate:{y:'0', opacity:1,transition:{type:'tween', ease:'easeOut'}},
-    exit:{y:'-200%', opacity:0}
+    animate:{y:'0', opacity:1,transition:{duration: 0.3, type:'tween', ease:'easeOut'}},
+    exit:{y:'-200%', opacity:0, transition:{duration: 0.3, type:'tween', ease:'easeOut'}}
   };
 
 
@@ -40,7 +40,7 @@ export default function Contact(){
       <motion.div id='contactLinks' key='contactLinks' variants={variantContact}>
           <div>
             <h1 key='letsgetintouch'>Let's get in touch!</h1>
-            <h4>Interested in working with me, or simply want to say hi? Feel free to reach out using the form or my email below. </h4>
+            <h2>Interested in working with me, or simply want to say hi? Feel free to reach out using the form or my email below. </h2>
           </div>
 
           <div>

@@ -45,7 +45,7 @@ const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
         <section>
           <ResumeHeader />
           <div className='aligncta'>
-            <Cta href='mailto:nassim.elkhantour@gmail.com'><small><b>let's create together</b></small></Cta>
+            <Cta to='/contact'><small><b>let's create together</b></small></Cta>
             <Cta to='/resume' type='secondary'><small><b>see my resume</b></small></Cta>
           </div>
         </section>
