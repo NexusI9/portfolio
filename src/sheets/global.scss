@@ -2200,14 +2200,27 @@ span.lineSeparator{
 
           &:has(.contentIcon){
             grid-template-columns: 1fr minmax(300px, 10fr);
-            .contentBody{
-              grid-column: 2;
+          }
+
+          &:not(:last-of-type){
+            span.path-stroke{
+              display: block;
+              height: 100%;
+              border-left: solid;
+              border-color: var(--purple-30);
+              border-left-style: dashed;
+              
+              width: 1px;
+              align-self: center;
+              justify-self: center;
             }
           }
   
           .contentIcon{
             width: 30px;
             object-fit: contain;
+            align-self: center;
+            justify-self: center;
           }
   
           small{ display: block;}

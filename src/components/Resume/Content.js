@@ -6,8 +6,9 @@ const Content = ({header, body, detail, icon, card, date, visual }) => (
             {date && <small className="contentDate color-primary"><b>{date}</b></small>}
             {header && header}
             {detail && <small className='discrete detail'>{detail}</small> } 
-            </div>
-          {body && <div className='contentBody'>{body}</div> }
+          </div>
+        {icon && <span className="path-stroke"></span> }
+        {body && <div className='contentBody'>{body}</div> }
       </div>
 );
 
