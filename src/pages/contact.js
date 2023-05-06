@@ -42,14 +42,14 @@ export default function Contact(){
     <motion.div
     id='contactContainer'
     className='container'
-    variants={variantContainer}
+    variants={variantContact}
     initial='initial'
     animate='animate'
     exit='exit'
     > 
       {/*<Spheros />*/}
 
-      <motion.div id='contactLinks' key='contactLinks' variants={variantContact}>
+      <div id='contactLinks'>
           <div>
             <h1 key='letsgetintouch'>Let's get in touch!</h1>
             <h2>Interested in working with me, or simply want to say hi? Feel free to reach out using the form or my email below. </h2>
@@ -76,9 +76,10 @@ export default function Contact(){
               <SocialsIcons />
             </section>
           </div>
-      </motion.div>
+      </div>
 
-      {mailPath && <ContactForm inputs={mapFields} sendTo={mailPath} /> }
+        {mailPath && <ContactForm inputs={mapFields} sendTo={mailPath} /> }
+
 
       <Signature />
     </motion.div>
