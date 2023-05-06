@@ -11,14 +11,16 @@ import {
   import { connect } from 'react-redux';
 
 const mapStateToPorps = (state) => ({
-  _category: state.flow.category
+  _category: state.flow.category,
+  _userClick: state.flow.userClick
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  _onCategoryChange: (cat) => dispatch({type: 'CHANGE_CATEGORY', category:cat})
+  _onCategoryChange: (cat) => dispatch({type: 'CHANGE_CATEGORY', category:cat}),
+  _setUserClick: (e) => dispatch({type:'SET_USER_CLICK', state:e})
 });
 
-const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
+const Flow = ({projects, _onCategoryChange=(e)=>0, _setUserClick=(e)=>0, _category, _userClick}) => {
 
     const containerRef = useRef([]);
     const categories = useRef( getCategories() );
@@ -41,7 +43,10 @@ const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
           const scrollTop = window.pageYOffset;
           const windowHeight = window.innerHeight;
           
-          if( (scrollTop < windowHeight) || ( c === containerRef.current.length-1 && bottom < window.innerHeight/3 ) ){ 
+          if( 
+            (scrollTop < windowHeight) || 
+            ( c === containerRef.current.length-1 && bottom < window.innerHeight/3 ) 
+            ){
             _onCategoryChange(" ");
           }
   
@@ -87,11 +92,10 @@ const Flow = ({projects, _onCategoryChange=(e)=>0, _category}) => {
         mq.removeEventListener('change', onResize);
       };
   
-    }, []);
+    }, [_userClick]);
 
     useEffect(() => { setCategory(_category); },[_category]);
     useEffect(() => { setCategory(''); }, [router.pathname]);
-
   
     return (
       <>

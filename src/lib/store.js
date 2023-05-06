@@ -47,6 +47,12 @@ const flowReducer = (state={}, action) => {
             href: action.href
         }
 
+        case 'SET_USER_CLICK':
+        return{
+            ...state,
+            userClick:action.state
+        }
+
         case 'GET_LAST_HREF':
         return{
             ...state

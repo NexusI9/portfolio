@@ -11,10 +11,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   _setLatestHref: (e) => dispatch({type:'SET_LAST_HREF', href:e}),
+  _setUserClick: (e) => dispatch({type:'SET_USER_CLICK', state:e}),
   _onCategoryChange: (e) => dispatch({type:'CHANGE_CATEGORY', category:e}),
 });
 
-const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange}) => {
+const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange, _setUserClick}) => {
 
     const [active, setActive] = useState(_category);
     const lastHref =  useRef(_latestHref);
@@ -30,6 +31,7 @@ const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange
     
     const onCategoryClick = (e) => {
       goToCategory(e);
+      _setUserClick(true);
       window.gtag('event',`click_menu_category_${e}`,{event_category:'click', event_label:`Click on category menu: ${e}`});
     }
   
@@ -41,6 +43,7 @@ const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() =>  { 
           lastInteraction.current = null;
+          _setUserClick(false);
         }, 100);
       }
   
