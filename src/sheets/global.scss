@@ -587,15 +587,14 @@ footer{
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
   .ico{
     display: flex;
     align-items: center;
   }
 
   .ico img, svg{
-    width: 0.8em;
-    height: 0.8em;
+    width: 24px;
+    height: 24px;
     margin: 0;
     vertical-align: middle;
     object-fit: contain;
@@ -3365,6 +3364,10 @@ img.gradientImg{
   grid-template-columns: 1fr 1fr;
   padding: 5% 10%;
 
+  & > *{
+    max-height: 800px;
+  }
+
   #signature{
     position: fixed;
     bottom: 0;  
@@ -3411,6 +3414,7 @@ img.gradientImg{
       display: flex;
       align-items: center;
       flex-direction: column;
+      gap: 10px;
     }
 
     .errorMessage{
@@ -3453,13 +3457,72 @@ textarea{
   font-family: 'Sora', sans-serif;
 }
 
-form{
+.rotate{
+  animation-name: rotate;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+
+
+form.contactForm{
+
+  position: relative;
+
   input{
     display: block;
     background: transparent;
     box-sizing: border-box;
+    width: 100%;
     &[type='text']{ cursor: text; }
-    &[type="submit"]{ font-weight: bold; }
+    &[type="submit"]{ 
+      font-weight: bold; 
+      padding: 0;
+    }
+  }
+
+  fieldset{
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  }
+
+  &.sent{
+    fieldset{
+      opacity: 0;
+      pointer-events: none;
+      transform: translate3d(0px, -100px, 0px);
+    }
+
+    .confirmMessage{
+      opacity: 1;
+      transform: translate3d(0px, 0px, 0px);
+    }
+  }
+
+  .confirmMessage{
+    line-height: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    pointer-events:none;
+    opacity: 0;
+    transform: translate3d(0px, 100px, 0px);
+    transition: opacity 0.5s cubic-bezier(.06,.44,.18,.98), transform 0.5s cubic-bezier(.06,.44,.18,.98);
+    a{
+      pointer-events: auto;
+      color: var(--purple);
+    }
+    svg{
+      fill:var(--purple);
+    }
   }
 
   textarea{

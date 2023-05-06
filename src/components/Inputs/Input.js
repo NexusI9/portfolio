@@ -29,18 +29,17 @@ const Input = ({required=true, children, name='name', placeholder='placeholder',
             onChange={ handleChange }
             >
             {type !== 'textarea' ? 
-                <input name={name} type={type} ref={input}/>
+                <input name={name} type={type} ref={ e => { input.current = e; innerRef(e); } }/>
                 :
-                <textarea ref={input} >   
+                <textarea name={name} ref={ e => { input.current = e; innerRef(e); } }>   
                 </textarea>
             }
 
             {children && children} 
             <p className={`placeholder ${required ? 'required' : ''}`}><small><b>{placeholder}</b></small></p>
         </label>
-            {errorMessage && !value && 
-                
-                <p className="errorMessage"><small>This field is required</small></p>
+            { (errorMessage && !value) ?  
+                <p className="errorMessage"><small>This field is required</small></p> : <></>
             }
         </>
     );

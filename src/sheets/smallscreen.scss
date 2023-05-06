@@ -175,6 +175,11 @@
   #mainBack{ display: none; }
   #suggest > section{ height: auto; }
   #contactContainer {
+
+    .contactForm{
+      margin: 0;
+      width: 100%;
+    }
      &> h1 {
        font-size: 5em;
         margin-left: 40px;

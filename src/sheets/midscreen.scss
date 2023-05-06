@@ -195,6 +195,7 @@
   }
 
 
+
   #socials{
     position: relative;
     width: 100%;
@@ -286,6 +287,27 @@
   }
 
   #contactContainer{
+
+    grid-template-rows: auto 2fr;
+    grid-template-columns: auto;
+    padding-top: 15%;
+    gap: 100px;
+    height: fit-content;
+
+    #signature{
+      position: relative;
+    }
+
+    .contactForm{
+      margin-top: 0;
+    }
+
+    #contactLinks{
+      justify-content: flex-start;
+      gap: 50px;
+    }
+
+
     & > h1 {
       font-size: 9em;
     }

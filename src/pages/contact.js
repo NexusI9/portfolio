@@ -1,12 +1,19 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MailAddress, SocialsIcons, ContactForm } from '@/components/Inputs';
 import { Signature } from '@/components/Statics';
 import { Spheros } from '@/components/Props';
 
 export default function Contact(){
 
+  const [mailPath, setMailPath] = useState();
+
+  const mapFields = [
+    {name: 'name', type:'text', placeholder:'Your name'},
+    {name: 'email', type:'email', placeholder:'Your email'},
+    {name: 'content', type:'textarea', placeholder:'What\'s on your mind?'}
+  ];
 
   const variantContainer = {
     initial:{opacity:0},
@@ -18,8 +25,13 @@ export default function Contact(){
   const variantContact = {
     initial:{y:'100px', opacity:0},
     animate:{y:'0', opacity:1,transition:{duration: 0.3, type:'tween', ease:'easeOut'}},
-    exit:{y:'-200%', opacity:0, transition:{duration: 0.3, type:'tween', ease:'easeOut'}}
+    exit:{y:'-200px', opacity:0, transition:{duration: 0.3, type:'tween', ease:'easeOut'}}
   };
+
+  useEffect(() => {
+    const { protocol, hostname } =  window.location;
+    setMailPath(  protocol +'//'+hostname +(window.location.hostname.includes('localhost') ? '/elkhantour/public/mail/index.php' : '/mail/index.php') );
+}, []);
 
 
   return(
@@ -66,7 +78,7 @@ export default function Contact(){
           </div>
       </motion.div>
 
-      <ContactForm />
+      {mailPath && <ContactForm inputs={mapFields} sendTo={mailPath} /> }
 
       <Signature />
     </motion.div>
