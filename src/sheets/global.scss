@@ -2204,13 +2204,12 @@ span.lineSeparator{
 
           &:not(:last-of-type){
             span.path-stroke{
-              display: block;
               height: 100%;
-              border-left: solid;
-              border-color: var(--purple-30);
-              border-left-style: dashed;
-              
-              width: 1px;
+              display: block;
+              //border-right: solid;
+              margin: 10%;
+              //border-image-source: url("../assets/connector.gif");
+              border-image-slice: 1 4;
               align-self: center;
               justify-self: center;
             }
