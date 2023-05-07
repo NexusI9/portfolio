@@ -15,7 +15,7 @@ const Multi = ({eng, fr, zh, language}) => {
           break;
   
           case 'zhongwen':
-            setContent(<span className='zhg'>{zh}</span>);
+            setContent(zh);
           break;
   
           default:

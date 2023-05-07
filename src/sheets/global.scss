@@ -2206,12 +2206,18 @@ span.lineSeparator{
             span.path-stroke{
               height: 100%;
               display: block;
-              //border-right: solid;
-              margin: 10%;
-              //border-image-source: url("../assets/connector.gif");
-              border-image-slice: 1 4;
+              width: 2px;
+              background: linear-gradient(0deg, var(--purple-30) 50%, transparent 50%);
+              background-repeat: repeat-y;
+              background-size: 1px 9px;
               align-self: center;
               justify-self: center;
+
+              animation: movebkg 20s linear infinite;
+
+              @keyframes movebkg{
+                to{ background-position-y: calc(-1 * 9 * 20px) }
+              }
             }
           }
   

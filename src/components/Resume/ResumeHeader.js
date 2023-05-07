@@ -11,8 +11,7 @@ const ResumeHeader = ({innerRef=(e)=>0, language='english'}) => (
                  zh='多媒體設計師  ::  藝術總監  ::  網站工程師'
                  language={language}/>
              </p>
- 
-             <small>
+
              <Multi eng={<>I am a French creative with an expertise in Web and Motion Design, but also proficiencies in development, 3D design, and illustration.
              An extended skill set I put at work in various projects for the past 5 years such as music videos, web apps, as well as audiovisual interactive setups.
              </>}
@@ -26,7 +25,7 @@ const ResumeHeader = ({innerRef=(e)=>0, language='english'}) => (
                  </>}
                  language={language}
              />
-             </small>
+
              </div>
          </section>
  );
