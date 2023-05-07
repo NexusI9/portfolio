@@ -1,5 +1,5 @@
 import { Multi } from '../Inputs';
-import Content from './Content';
+
 
 const skillsList = {
   eng: ["Illustration","Visual development","Web design","Concept art","Motion graphic","Photography","Video compositing","Video editing","Sound design"],
