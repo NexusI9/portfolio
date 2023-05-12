@@ -38,7 +38,6 @@ const App = ({ Component, pageProps }) => {
     return (
         <>
             <Head lang='en'>
-                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6BRRN05LJJ" />
                 <meta charSet="utf-8" />
                 <link rel="icon" id='favicon' href="/favicon.ico" />
                 <link rel="apple-touch-icon" href="/logo192.png" />
@@ -55,6 +54,7 @@ const App = ({ Component, pageProps }) => {
                 <link rel="manifest" href="/manifest.json" />
                 <title>The Art of Nassim El Khantour</title>
             </Head>
+            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6BRRN05LJJ" />
             <Provider store={store}>
                 <SkinProvider>
                         <main id='wrapper' >
