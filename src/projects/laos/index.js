@@ -176,7 +176,7 @@ const PopUp = () => (
     </div>
 );
 const Charts = () => (
-  <Masonry columnsCount={ (typeof window !== 'undefined' && window.innerWidth > window.innerHeight) ? 2 : 1} gutter='20px'>
+  <Masonry columnsCount={2} gutter='20px'>
   <div className="infobox guidesheet" key='chart_1'>
     <section className="header">
       <span className='app' style={{backgroundImage: "url('/assets/projects/laos/laos_logo.svg')" }}></span>

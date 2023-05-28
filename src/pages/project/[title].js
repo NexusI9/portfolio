@@ -2,8 +2,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
-  getProjectFromTitle,
-  getCategoryOfProject,
   getRandomProject,
   getProjects
 } from '@/lib/utils';
@@ -21,22 +19,21 @@ const mapDispatchToProps = (dispatch) => ({
   _setSkin: (e) => dispatch({type:'SWITCH_SKIN', skin:e}),
 });
 
-const projectsList = {};
-getProjects().map( pj => {
-  projectsList[pj.title] = dynamic( () => import(`../../projects/${pj.folder}`) );
-});
+//can't add dynamically imports
+const projectsList = {
+  ACAB: dynamic( () => import('../../projects/acab') )
+};
+
 
 function Project({_setHomeButton, _setSkin, ...props}){
 
-  const router = useRouter();
+  const {project} = props;
+  const Index = project && projectsList['ACAB'];
 
   //elements
-  const [project, setProject] = useState();
-  const [headerTitle, setHeaderTitle]=useState('');
   const suggestions = useRef();
 
   //project content
-  const [htmlContent, setHtmlContent ] = useState();
   const [projectContainer, setProjectContainer]= useState();
 
   //css / transitions
@@ -46,8 +43,7 @@ function Project({_setHomeButton, _setSkin, ...props}){
   const [whiteMenu, setWhiteMenu] = useState(true);
   const [displayHeader, setDisplayHeader] = useState(true);
 
-  const staticIndex = props.project && projectsList[props.project.title];
-  console.log(staticIndex);
+
 
   const handleLoadComplete = () => {
     setLoadComplete(true); 
@@ -58,26 +54,13 @@ function Project({_setHomeButton, _setSkin, ...props}){
   useEffect( () => { 
 
     _setHomeButton(false); 
-    setProject(undefined);
-
     //project
-    const {title} = router.query;
+    const {title} = project;
     if(title){
-      const currentProject = getProjectFromTitle(title);
-      if(!currentProject){ return router.push('/'); }
-      const data = {
-        project: currentProject,
-        color: currentProject.color,
-        category:getCategoryOfProject(currentProject),
-        skin: currentProject.skin
-      }
-
       setLoadComplete(false); 
-      setProject(data.project);
-      setHeaderTitle(data.project.title);
     }
 
-  },[router.query.title]);
+  },[project.title]);
 
 
   useEffect( () => {
@@ -104,11 +87,10 @@ function Project({_setHomeButton, _setSkin, ...props}){
 
     }
 
-    const Index = dynamic(() => import('../../projects/'+project.folder));
+
     window.addEventListener('scroll', onScroll);
     _setSkin(project.skin);
     onScroll();
-    setHtmlContent(<Index />);
 
 
   return () => window.removeEventListener('scroll', onScroll);
@@ -131,35 +113,33 @@ function Project({_setHomeButton, _setSkin, ...props}){
   return(
     <>
       <Head>
-        <title>{ `${(props.project.title || headerTitle)} by Nassim El Khantour` }</title>
+        <title>{`${project.title} by Nassim El Khantour`}</title>
       </Head>
 
       <AnimatePresence mode='wait'> 
-          { (props.project  || (!loadComplete && project)) &&  <Loader 
-              key={'LOADER' + (props.project.title || project.title) } 
-              title={(props.project.title || project.title)}
-              background={(props.project.banner || project.banner)}
-              font={(props.project.font || project?.font || null)}
+          { (!loadComplete && project) && <Loader 
+              key={'LOADER' + project.title } 
+              title={project.title}
+              background={project.banner}
+              font={project.font}
               onLoadComplete={handleLoadComplete}
               /> 
           }
         </AnimatePresence>
 
         <AnimatePresence mode='wait'> 
-          { (props.project || (loadComplete &&  project && displayHeader)) &&  <Header project={(props.project || project)} />}  
+          { (loadComplete && project && displayHeader) &&  <Header project={project} />}  
         </AnimatePresence>
-
         <AnimatePresence mode='wait'> 
-        { (props.project || (project && loadComplete)) &&
+        { project &&
           <>
             <motion.div 
               id='project'
-              key={ 'projectContainer' + (props.project.title || project.title) }
+              key={ 'projectContainer' + project.title }
               exit={{opacity:0, transition:{duration:0.3}}}
             > 
                 {showSideBar && <PercentBar />}
-                {staticIndex && <Content innerRef={ (e) => setProjectContainer(e) } >{staticIndex.render() }</Content>}
-                {htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content>}
+                { project && <Content innerRef={ (e) => setProjectContainer(e) } ><Index/></Content>}
             </motion.div>
 
             {suggestions.current && <Suggestion projects={suggestions.current} display={!showSideBar} /> }
