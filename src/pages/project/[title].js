@@ -1,11 +1,11 @@
 
 import { useRouter } from 'next/router';
-import CATEGORIES from '@/lib/projects';
 import Head from 'next/head';
 import {
   getProjectFromTitle,
   getCategoryOfProject,
   getRandomProject,
+  getProjects
 } from '@/lib/utils';
 import { Suggestion, Content, Header } from '@/components/Projects';
 import { PercentBar } from '@/components/Props';
@@ -19,6 +19,11 @@ import dynamic from 'next/dynamic';
 const mapDispatchToProps = (dispatch) => ({
   _setHomeButton: (e) => dispatch({type: 'TOGGLE_BACK_BUTTON', active:e}),
   _setSkin: (e) => dispatch({type:'SWITCH_SKIN', skin:e}),
+});
+
+const projectsList = {};
+getProjects().map( pj => {
+  projectsList[pj.title] = dynamic( () => import(`../../projects/${pj.folder}`) );
 });
 
 function Project({_setHomeButton, _setSkin, ...props}){
@@ -40,6 +45,9 @@ function Project({_setHomeButton, _setSkin, ...props}){
 
   const [whiteMenu, setWhiteMenu] = useState(true);
   const [displayHeader, setDisplayHeader] = useState(true);
+
+  const staticIndex = props.project && projectsList[props.project.title];
+  console.log(staticIndex);
 
   const handleLoadComplete = () => {
     setLoadComplete(true); 
@@ -150,7 +158,7 @@ function Project({_setHomeButton, _setSkin, ...props}){
               exit={{opacity:0, transition:{duration:0.3}}}
             > 
                 {showSideBar && <PercentBar />}
-                {props.project && <Content innerRef={ (e) => setProjectContainer(e) } >{}</Content>}
+                {staticIndex && <Content innerRef={ (e) => setProjectContainer(e) } >{staticIndex.render() }</Content>}
                 {htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content>}
             </motion.div>
 
@@ -169,21 +177,22 @@ export default connect(null, mapDispatchToProps)(Project);
 
 // Generates `/movies/1` and `/movies/2`
 export async function getStaticPaths() {
-  const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
+  const projects = getProjects();
 
   return {
     paths: projects.map( ({title}) => ({ params: { title: title.toString() } }) ),
     fallback: false, // can also be true or 'blocking'
   }
 }
+
+
 // `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps({params}) {
 
-  const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
+  const projects = getProjects();
   const project = projects.filter( ({title}) => title.toString() == params.title.toString())[0];
-  const content =  dynamic( () => import('../../projects/'+project.folder).then( e => console.log(e.get) ));
 
   return {
-    props: {project: project } // Passed to the page component as props
+    props: {project:project} // Passed to the page component as props
   }
 }

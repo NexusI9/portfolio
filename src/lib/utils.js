@@ -106,6 +106,8 @@ export function filenameFromPath(path){
   return path.split('/').reverse()[0].split('.')[0];
 }
 
+export function getProjects(){ return Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat(); }
+
 export function smoothScroll(offsetTop, offset = 0) {
   let targetPosition = Math.floor( offsetTop );
   window.scrollTo({
