@@ -43,7 +43,7 @@ const Edu = ({language}) => (
           <Multi
           eng="2018 - 2019"
           fr="2018 - 2019"
-          zh="2019 至 2010"
+          zh="2018 至 2019"
           language={language}/>
         }
         icon={logo_iup.src}
