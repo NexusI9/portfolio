@@ -66,7 +66,7 @@ function Project({_setHomeButton, _setSkin, ...props}){
 
       setLoadComplete(false); 
       setProject(data.project);
-      setHeaderTitle(data.project.title + ' on Nassim El Khantour');
+      setHeaderTitle(data.project.title);
     }
 
   },[router.query.title]);
@@ -123,30 +123,30 @@ function Project({_setHomeButton, _setSkin, ...props}){
   return(
     <>
       <Head>
-        <title>{headerTitle}</title>
+        <title>{ `${(props.project.title || headerTitle)} by Nassim El Khantour` }</title>
       </Head>
 
       <AnimatePresence mode='wait'> 
-          { (!loadComplete && project) &&  <Loader 
-              key={'LOADER' + project.title} 
-              title={project.title}
-              background={project.banner}
-              font={project.font}
+          { (props.project  || (!loadComplete && project)) &&  <Loader 
+              key={'LOADER' + (props.project.title || project.title) } 
+              title={(props.project.title || project.title)}
+              background={(props.project.banner || project.banner)}
+              font={(props.project.font || project?.font || null)}
               onLoadComplete={handleLoadComplete}
               /> 
           }
         </AnimatePresence>
 
         <AnimatePresence mode='wait'> 
-          {loadComplete && project && displayHeader &&  <Header project={project} />}  
+          { (props.project || (loadComplete &&  project && displayHeader)) &&  <Header project={(props.project || project)} />}  
         </AnimatePresence>
 
         <AnimatePresence mode='wait'> 
-        {project && loadComplete &&
+        { (props.project || (project && loadComplete)) &&
           <>
             <motion.div 
               id='project'
-              key={ 'projectContainer' + project.title }
+              key={ 'projectContainer' + (props.project.title || project.title) }
               exit={{opacity:0, transition:{duration:0.3}}}
             > 
                 {showSideBar && <PercentBar />}
@@ -169,7 +169,7 @@ export default connect(null, mapDispatchToProps)(Project);
 // Generates `/movies/1` and `/movies/2`
 export async function getStaticPaths() {
   const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
-  console.log(projects);
+
   return {
     paths: projects.map( ({title}) => ({ params: { title: title.toString() } }) ),
     fallback: false, // can also be true or 'blocking'
@@ -179,9 +179,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
 
   const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
-  const project = projects.filter(pj => pj.title.toString() == params.title.toString());
-  
+  const project = projects.filter( ({title}) => title.toString() == params.title.toString())[0];
+
   return {
-    props: {title:project.title} // Passed to the page component as props
+    props: {project: project} // Passed to the page component as props
   }
 }
