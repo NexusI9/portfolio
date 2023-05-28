@@ -1,5 +1,6 @@
 
 import { useRouter } from 'next/router';
+import CATEGORIES from '@/lib/projects';
 import Head from 'next/head';
 import {
   getProjectFromTitle,
@@ -20,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
   _setSkin: (e) => dispatch({type:'SWITCH_SKIN', skin:e}),
 });
 
-function Project({_setHomeButton, _setSkin}){
+function Project({_setHomeButton, _setSkin, ...props}){
 
   const router = useRouter();
 
@@ -163,3 +164,24 @@ function Project({_setHomeButton, _setSkin}){
 }
 
 export default connect(null, mapDispatchToProps)(Project);
+
+
+// Generates `/movies/1` and `/movies/2`
+export async function getStaticPaths() {
+  const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
+  console.log(projects);
+  return {
+    paths: projects.map( ({title}) => ({ params: { title: title.toString() } }) ),
+    fallback: false, // can also be true or 'blocking'
+  }
+}
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps({params}) {
+
+  const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
+  const project = projects.filter(pj => pj.title.toString() == params.title.toString());
+  
+  return {
+    props: {title:project.title} // Passed to the page component as props
+  }
+}
