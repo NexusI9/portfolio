@@ -150,6 +150,7 @@ function Project({_setHomeButton, _setSkin, ...props}){
               exit={{opacity:0, transition:{duration:0.3}}}
             > 
                 {showSideBar && <PercentBar />}
+                {props.project && <Content innerRef={ (e) => setProjectContainer(e) } >{}</Content>}
                 {htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content>}
             </motion.div>
 
@@ -180,8 +181,9 @@ export async function getStaticProps({params}) {
 
   const projects = Object.keys(CATEGORIES).map( key => CATEGORIES[key].projects).flat();
   const project = projects.filter( ({title}) => title.toString() == params.title.toString())[0];
+  const content =  dynamic( () => import('../../projects/'+project.folder).then( e => console.log(e.get) ));
 
   return {
-    props: {project: project} // Passed to the page component as props
+    props: {project: project } // Passed to the page component as props
   }
 }
