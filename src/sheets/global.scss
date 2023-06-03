@@ -381,7 +381,7 @@ b .zhg{ font-weight: bold; }
     overflow: hidden;
     pointer-events: auto;
     cursor: pointer;
-    background-color: var(--black);
+    background-color: var(--darkbkg);
     background-clip: content-box;
     
 
@@ -431,8 +431,8 @@ b .zhg{ font-weight: bold; }
     .loadIco{
       position: absolute;
       margin: 15px 20px;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
 
       img{
         object-fit: cover;
