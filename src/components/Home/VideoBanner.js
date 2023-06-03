@@ -127,7 +127,7 @@ const VideoBanner = ({_setCategory}) => {
             <section>
                 <h2>Nassim <br/> El Khantour</h2>
                 <p>Web Design&nbsp;::&nbsp;Motion Design&nbsp;::&nbsp;Development</p>
-                <h1><b>The powerful blend of art and code, with a French Touch.</b></h1>
+                <h1><b>The powerful blend of Art & Code, with a French Touch.</b></h1>
             </section>
             <div className='aligncta'>
             <Cta type='primary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
