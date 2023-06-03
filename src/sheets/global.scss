@@ -3157,6 +3157,7 @@ img.gradientImg{
     transform-origin: left;
     height: calc(17vw + 20px);
     position: relative;
+
     //@each $name, $color in $mapColor{
     //  h2[data-color='#{$name}']{ color:$color !important;  }
     //}
@@ -3207,6 +3208,7 @@ img.gradientImg{
         top:0;
         /*width: calc($title/2);*/
         align-items: center;
+        white-space: pre-wrap;
       }
   
       section > h1:first-of-type{
