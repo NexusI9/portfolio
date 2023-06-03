@@ -28,3 +28,4 @@ yarn-error.log*
 
 #assets
 /public/assets/projects
+/public/assets/pdf
