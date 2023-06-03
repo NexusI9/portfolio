@@ -256,17 +256,6 @@ button, input, label, a{
 
   @include ctashadow();
 
-  border: 1px solid;
-  border-image: 
-  linear-gradient(
-    to bottom, 
-    rgb(255, 255, 255), 
-    #5d47ff00
-  ) 1 100%;
-
-  &.loading{
-
-  }
   &::before{
     content: '';
     position: absolute;
