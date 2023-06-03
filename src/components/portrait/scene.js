@@ -38,7 +38,7 @@ export default class SCENE{
 
   init(){
 
-    if( document.querySelectorAll('#squareabout canvas').length > 0 ){ return; }
+    if( document.querySelectorAll('#resume-portrait canvas').length > 0 ){ return; }
     this._init_();
     this._render_();
     this.events();
@@ -47,7 +47,7 @@ export default class SCENE{
   events(){
       window.addEventListener( 'resize', this.onWindowResize.bind(this) );
       window.addEventListener('mousemove', this.onMouseMove.bind(this) );
-      document.getElementById('squareabout').addEventListener('touchmove', this.touchMove.bind(this) );
+      document.getElementById('resume-portrait').addEventListener('touchmove', this.touchMove.bind(this) );
   }
 
 //WebGL
@@ -60,7 +60,7 @@ export default class SCENE{
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setClearColor( 0xf5f7f9, 0 );
     this.renderer.setSize(this.width(),this.height());
-    document.getElementById("squareabout").appendChild(this.renderer.domElement);
+    document.getElementById("resume-portrait").appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
     //this.scene.background = new THREE.Color(this.background);

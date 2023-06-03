@@ -4,6 +4,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 10px 0;
+      &:last-of-type{
+        padding-bottom: 100px;
+      }
     }
 
     #showreel{
@@ -187,24 +191,29 @@
      }
   }
 
-  #resumeWrapper{
-    margin-top: 0;
-    padding: 10%;
-  }
-
   #resume{
-    padding: 0;
-    & > div{ 
-      &:last-of-type, &:first-of-type{ padding: 0;}
+
+    &-wrapper{
+      margin-top: 0;
+      padding: 10%;
+    }
+
+    &-header{
+      h2{
+        font-size: 3.5em;
+        line-height: 2em;
+      }
+    }
+
+    &-content{
+      padding: 0;
+      & > div{ 
+        &:last-of-type, &:first-of-type{ padding: 0;}
+      }
     }
   }
 
-  #resumeHeader{
-    h2{
-      font-size: 3.5em;
-      line-height: 2em;
-    }
-  }
+
 
 
   /*_____________________________________________*/

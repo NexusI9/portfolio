@@ -34,17 +34,18 @@
       grid-template-rows: 1fr auto;
       height: fit-content;
 
-      #resumeHeader{
+      #resume-header{
         padding: 0;
       }
       & > section{
         padding: 5%;
       }
 
-      #squareabout{ 
+      #resume-portrait{ 
         max-width: none;
         height: 70vh;
         justify-content: center;
+        max-height: 450px;
         &::after{
           width: 90%;
           height: 1px;
@@ -55,13 +56,13 @@
     }
 
 
-    #resumeHeader{
+    #resume-header{
       flex-basis: auto;
     }
 
   }
 
-  #resume{
+  #resume-container{
     .resumeSection{
       display: flex;
       flex-direction: column;
@@ -145,11 +146,9 @@
 
   }
 
-  #squareabout{
+  #resume-portrait{
     width: 100%;
     position: relative;
-    height: 50vh;
-    margin-top: 20%;
   }
 
   #suggest {
@@ -257,11 +256,11 @@
 
   }
 
-  #resumeWrapper{
+  #resume-wrapper{
     width: 100%;
   }
 
-  #resumeSettings{
+  #resume-settings{
     bottom: 0;
     height: 100%;
     flex-direction: column;
