@@ -15,7 +15,7 @@ const Video = ({id, onLoad, autoplay=false, style={}, defaultQuality, placeholde
           <img className='picPlaceholder' src={placeholder} /> 
           :
           <div className='loadIco'> <Dotty /> </div> }
-        { playIco && <img className='playIco round' src={play}/>}
+        { playIco && <img className='playIco round' src={play.src}/>}
       </div>
     );
   

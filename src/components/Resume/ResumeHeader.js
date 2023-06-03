@@ -1,7 +1,7 @@
 import { Multi } from '../Inputs';
 
 const ResumeHeader = ({innerRef=(e)=>0, language='english'}) => (
-    <section ref={ e => innerRef(e) } id="resumeHeader">
+    <section ref={ e => innerRef(e) } id="resume-header">
              <div>
              <h2>Nassim El Khantour</h2>
              <p style={{fontSize:'1.3em'}}>
@@ -19,9 +19,9 @@ const ResumeHeader = ({innerRef=(e)=>0, language='english'}) => (
              d’applications web, mais aussi au sein d’installations audiovisuelles interactives.
              </>}
                      zh={<>
-                       我是一個法國人的多媒體設計帥，擅長網站與動態圖形設計。
-                       也製作3D設計，網站開發以及插圖的內容。
-                       已有4年以上視覺設計師相關經歷。
+                    我是一個法國人的多媒體設計帥，擅長網站與動態圖形設計。也製作
+                    3D設計，網站開發以及插圖的內容。已有五年以上視覺設計師相關經
+                    歷。我現在要去台灣定居
                  </>}
                  language={language}
              />

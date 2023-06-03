@@ -41,7 +41,7 @@ const Portrait = ({innerRef = e => e}) => {
       initial={{y:80,opacity:0}}
       animate={{y:0, opacity:1, transition:{duration:0.8}}}
       exit={{opacity:0, transition:{duration:0.3}}}
-      id="squareabout" style={{opacity:0}}>
+      id="resume-portrait" style={{opacity:0}}>
         <h2>视觉设计师</h2>
         <h2>视觉设计师</h2>
       </motion.div> );

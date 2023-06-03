@@ -47,7 +47,7 @@ const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) =
               key={letter+i+'subletter'}
               className='case'
               variants={caseVariant}
-              >
+              > 
                 <h2></h2>
                 <h2>{letter}</h2>
                 <h2></h2>

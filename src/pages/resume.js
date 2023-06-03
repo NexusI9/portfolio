@@ -199,8 +199,10 @@ function Resume(){
     <Head>
       <title>{headTitle}</title>
     </Head>
+
+
     <motion.div
-      id='resumeSettings'
+      id='resume-settings'
       key='buttonWrappResume'
       variants={stagger}
       initial='initial'
@@ -218,7 +220,7 @@ function Resume(){
           </>
           }
       </section>
-
+        
       <section>
 
         <motion.span key='letsWerk' variants={popUp} id="dlresume">
@@ -242,21 +244,25 @@ function Resume(){
     </motion.div>
 
 
-    <Portrait innerRef={e => portrait.current = e}/>
+    <div id='resume-grid' className='container'>
+        
+      <Portrait innerRef={e => portrait.current = e}/>
 
-    <AnimatePresence mode='wait'>
-      <motion.div id='resumeWrapper'
-      variants={slideUp}
-      initial='initial'
-      animate='animate'
-      exit='exit'
-      key={'resumeWrapper'+language} >
-        <ResumeHeader language={language} innerRef={ e => banner.current = e}/>
-        <div id="resume">
-            { listRoute.map( ({id, name, ico, content}) => <Section key={'section'+id} title={name} ico={ico} content={content}/> ) }
-        </div>
-      </motion.div>
-    </AnimatePresence>
+      <AnimatePresence mode='wait'>
+        <motion.div id='resume-wrapper'
+        variants={slideUp}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        key={'resumeWrapper'+language} >
+          <ResumeHeader language={language} innerRef={ e => banner.current = e}/>
+          <div id="resume-content">
+              { listRoute.map( ({id, name, ico, content}) => <Section key={'section'+id} title={name} ico={ico} content={content}/> ) }
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+    </div>
 
     <Socials minify={true}/>
   </>
