@@ -218,7 +218,7 @@ function Resume(){
           </>
           }
       </section>
-
+        
       <section>
 
         <motion.span key='letsWerk' variants={popUp} id="dlresume">
@@ -240,8 +240,7 @@ function Resume(){
       </section>
 
     </motion.div>
-
-
+        
     <Portrait innerRef={e => portrait.current = e}/>
 
     <AnimatePresence mode='wait'>

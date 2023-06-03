@@ -829,12 +829,11 @@ footer{
   height: 75vh;
   position: relative;
   box-sizing: border-box;
-  margin: auto;
   padding: 0 5%;
   margin-top: 6%;
   margin-bottom: 3%;
   max-height: 800px;
-  max-width: 1920px;
+  @include maxWidth();
 
   & > div{
     $gap:120px;
@@ -950,12 +949,11 @@ footer{
   pointer-events: none;
 
   & > div{
-    max-width: 1920px;
     width: 100%;
     display: flex;
     align-items: center;
-    margin: auto;
     pointer-events: none;
+    @include maxWidth();
   }
 
   & *{
@@ -1926,8 +1924,7 @@ span.lineSeparator{
     padding-left: 8%;
     padding-top: 15vh;
     width: 100%;
-    max-width: 1920px;
-    margin: auto;
+    @include maxWidth();
     /*img{
       max-width: 100%;
       object-fit: contain;
@@ -1954,14 +1951,12 @@ span.lineSeparator{
 
 #projects{
   position: relative;
-  margin-top: 130vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
+  @include maxWidth();
+  margin-top: 130vh;
 }
 
 #resumeSettings, #resumeWrapper{
@@ -2337,7 +2332,7 @@ span.lineSeparator{
   padding: 3%;
   top: 50%;
   transform: translate(-50%, -50%);
-  max-width: 1920px;
+  @include maxWidth();
   left: 50%;
   display: flex;
   flex-direction: row;
@@ -3143,10 +3138,6 @@ img.gradientImg{
   justify-content: center;
   width: calc(100%/3);
   pointer-events: none;
-
-  @media only screen and (min-width: 1920px){
-   left: 8vw;
-  }
 
 
   #zhongwenName{
