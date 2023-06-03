@@ -253,8 +253,7 @@ button, input, label, a{
   border-radius: 2.5px;
   text-align: center;
   height: 42px;
-
-  @include ctashadow();
+  overflow: hidden;
 
   &::before{
     content: '';
@@ -266,8 +265,7 @@ button, input, label, a{
     background-color: var(--ctahover);
     z-index: 0;
     opacity: 0;
-    transition: opacity 0.3s ease-out;
-    border-radius: 2.5px;
+    transition: opacity 0.2s ease-out;
   }
   & > *{ position: relative;}
 
@@ -283,12 +281,16 @@ button, input, label, a{
   }
 
   &.secondary{
-    border: solid 1px var(--card-stroke);
+    border: solid 1px var(--purple);
+    background: transparent;
   }
 
 
   @media(hover:hover){
     &:hover{  
+      &.secondary{
+        border-color: var(--ctahover);
+      }
       &, *{ color:var(--white); }
       &::before{ opacity: 1;  }
       svg{ fill: var(--white); }
@@ -833,7 +835,7 @@ footer{
     display: grid;
     grid-template-columns: 1fr 2fr;
 
-    #resumeHeader{
+    #resume-header{
       padding-right: 10%;
     }
 
@@ -2505,6 +2507,7 @@ span.lineSeparator{
     h1{ 
       font-family: 'sora'; 
       font-size: 20px;
+      color: var(--purple);
     }
 
     h2{ 
