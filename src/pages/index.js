@@ -6,6 +6,7 @@ import { Socials,Signature } from '@/components/Statics';
 import { CategoryMenu } from '@/components/Inputs';
 import { About, VideoBanner } from '@/components/Home';
 import { connect } from 'react-redux';
+import { ContactLayout } from '@/components/Layout';
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -82,6 +83,7 @@ const Home = ({_setHomeButton, _setSkin}) => {
       <VideoBanner />
       <Flow />
       <About onEnterView={ () => setAboutView(true) } onExitView={ () => setAboutView(false) }/>
+      <ContactLayout />
       <Signature />
       <AnimatePresence mode='wait'>
         {social && <Socials minify={true}/>}
