@@ -529,9 +529,8 @@ b .zhg {
     }
 
     #NLogo {
-      svg {
-        fill: var(--white);
-      }
+      p{ color: var(--white); }
+      svg { fill: var(--white); }
     }
   }
 
@@ -1163,6 +1162,16 @@ footer {
   }
 
   #NLogo {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+
+    p{
+      width: max-content;
+      font-size: 0.7em;
+      line-height: 1.2em;
+    }
     svg {
       transition: fill 0.15s ease;
       fill: var(--black);
@@ -1189,23 +1198,20 @@ footer {
         animation-direction: alternate;
       }
 
-      @media(hover:hover) {
-        &:hover {
+    }
+
+    @media(hover:hover) {
+      &:hover {
+        p{ color: var(--purple); }
+        svg{
           fill: var(--purple);
-
           rect {
-            &:first-of-type {
-              animation-name: floatPos;
-            }
-
-            &:last-of-type {
-              animation-name: floatNeg;
-            }
-
+            &:first-of-type { animation-name: floatPos; }
+            &:last-of-type { animation-name: floatNeg; }
           }
+
         }
       }
-
     }
 
   }
@@ -1237,9 +1243,8 @@ footer {
 
   &.white {
     #NLogo {
-      svg {
-        fill: var(--white);
-      }
+      p{ color: var(--white); }
+      svg { fill: var(--white); }
     }
 
     .topArea {
@@ -1352,9 +1357,6 @@ footer {
 
 
   a.active {
-    p::before {
-      height: 100%;
-    }
 
     #windowIco {
       @include setWindowColor();
@@ -1363,34 +1365,7 @@ footer {
   }
 
 
-  p {
-    padding: 0;
-    margin: 0;
-    z-index: 90;
-    writing-mode: vertical-lr;
-    position: relative;
-    transform: scale(1);
-    transition: transform 0.3s ease;
 
-    &::before {
-      content: '';
-      position: absolute;
-      display: block;
-      width: 10%;
-      margin: -6px 0 0 -1px;
-      height: 0%;
-      left: 0;
-      top: 0;
-      background: var(--purple);
-      z-index: -2;
-      transition: height 0.2s ease, background 0.2s ease;
-
-    }
-
-    &:hover::before {
-      height: 100%;
-    }
-  }
 
   #windowIco {
     padding-top: 15px;
