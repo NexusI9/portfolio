@@ -36,13 +36,18 @@
   }
 
   #homeAbout {
-    min-height: 100vh;
+    min-height: 80vh;
     height: fit-content;
     max-height: none;
+
+    .aligncta{
+      justify-content: center;
+    }
 
     &>div {
       grid-template-columns: none;
       grid-template-rows: 1fr auto;
+      gap: 20px;
       height: fit-content;
 
       #resume-header {
@@ -96,6 +101,23 @@
         &.grid {
           grid-template-columns: auto;
         }
+      }
+    }
+
+  }
+
+  .inspire {
+    margin-top: 80px;
+    &>div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      height: auto;
+      justify-content: center;
+
+      img {
+        flex-basis: 45%;
+        &:nth-of-type(2n) { margin-top: 0; }
       }
     }
 
@@ -465,9 +487,10 @@
       }
     }
 
-    #kinoji_layouts, #kinoji_guidestyle{
-      &.backdrop::before{
-        top:-10px;
+    #kinoji_layouts,
+    #kinoji_guidestyle {
+      &.backdrop::before {
+        top: -10px;
       }
     }
   }

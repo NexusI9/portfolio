@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import {  AnimatePresence } from 'framer-motion';
 import { Socials,Signature } from '@/components/Statics';
 import { CategoryMenu } from '@/components/Inputs';
-import { About, VideoBanner } from '@/components/Home';
+import { About, Inspire, VideoBanner } from '@/components/Home';
 import { connect } from 'react-redux';
 import { ContactLayout } from '@/components/Layout';
 
@@ -52,7 +52,7 @@ const Home = ({_setHomeButton, _setSkin}) => {
 
     window.addEventListener('scroll', onScroll);
 
-    const mq = window.matchMedia('(max-width:525px)');
+    const mq = window.matchMedia('(max-width:825px)');
     onMatchMedia(mq);
     mq.addEventListener('change', onMatchMedia);
 
@@ -83,6 +83,7 @@ const Home = ({_setHomeButton, _setSkin}) => {
       <VideoBanner />
       <Flow />
       <About onEnterView={ () => setAboutView(true) } onExitView={ () => setAboutView(false) }/>
+      <Inspire/>
       <ContactLayout />
       <Signature />
       <AnimatePresence mode='wait'>

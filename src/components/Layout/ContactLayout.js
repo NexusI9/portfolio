@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { MailAddress, SocialsIcons, ContactForm } from '@/components/Inputs';
 import { Signature } from '@/components/Statics';
 
-export default () => {
+export default ({ main = true }) => {
 
     const [mailPath, setMailPath] = useState();
 
@@ -44,8 +44,16 @@ export default () => {
 
         <div id='contactLinks'>
             <div>
-                <h1 key='letsgetintouch'>Let's get in touch!</h1>
-                <h2>Interested in working with me, or simply want to say hi? Feel free to reach out using the form or my email below. </h2>
+                {main && <>
+                    <h1>Let's get <wbr /> in touch!</h1>
+                    <h2>Interested in working with me? Simply want to say hi? <br/> Feel free to reach out using the form or my email below. </h2>
+                </>}
+                {!main && <>
+                    <h3>Let's get <wbr /> in touch!</h3>
+                    <h4>Interested in working with me, or simply want to say hi? Feel free to reach out using the form or my email below. </h4>
+                </>
+                }
+
             </div>
 
             <div>
@@ -73,8 +81,6 @@ export default () => {
 
         {mailPath && <ContactForm inputs={mapFields} sendTo={mailPath} />}
 
-
-        <Signature />
     </motion.section>);
 
 

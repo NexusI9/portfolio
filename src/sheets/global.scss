@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@use 'utils';
 
 :root {
 
@@ -1018,7 +1018,21 @@ footer {
   margin-top: 6%;
   margin-bottom: 3%;
   max-height: 800px;
+  background: var(--white);
   @include maxWidth();
+
+  &::before{
+    $height: 200px;
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    left: 0;
+    height: $height;
+    background: linear-gradient(0deg, #e0e6ed00 0%, var(--white) 83%);
+    background: linear-gradient(180deg, rgba(224, 230, 237, 0) 0%, var(--white) 83%);
+    top: calc(-1 * $height);
+  }
 
   &>div {
     $gap: 120px;
@@ -1042,6 +1056,7 @@ footer {
       align-items: center;
 
     }
+
 
   }
 
@@ -2416,7 +2431,7 @@ span.lineSeparator {
 
     h2 {
       margin-bottom: 10px;
-      font-size: 8em;
+      font-size: utils.clamped(70px, 128px);
       font-family: 'murmure';
     }
 
@@ -3923,7 +3938,7 @@ img.gradientImg {
 #contactContainer {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
   background-size: cover;
   background-position: bottom;
@@ -3944,9 +3959,9 @@ img.gradientImg {
     left: 0;
   }
 
-  h1 {
+  h1,h3 {
     color: var(--purple);
-    font-size: clamp(30px, 8vw, 245px);
+    font-size: utils.clamped(70px, 128px);
   }
 
   h2 {
@@ -4143,7 +4158,9 @@ label.customInput {
 
 
   &.focus {
+    border-color: var(--purple);
     .placeholder {
+      color: var(--purple);
       transform: translate3d(-10px, -27px, 0px) scale3d(0.8, 0.8, 0.8);
     }
 
@@ -4188,6 +4205,46 @@ label.customInput {
 }
 
 
+
+.inspire{
+  margin-top:200px;
+  overflow: hidden;
+  background-color: var(--white);
+  h3{
+    text-align: right;
+    font-size: utils.clamped(30px, 50px);
+    strong{ color: var(--purple); }
+  }
+  & > div{
+    position: relative;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    height: 530px;
+
+    img{ 
+      width: 100%;
+      &:nth-of-type(2n){
+        margin-top: 80px;
+      }
+    }
+
+    &::before{
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background: linear-gradient(180deg, rgba(245, 247, 249, 0.00) 51.56%, var(--white) 83.85%);
+    }
+  }
+}
+
+
 @media screen and (orientation:portrait) {
 
   #resume {
@@ -4226,10 +4283,6 @@ label.customInput {
     }
 
     &-header {
-      h2 {
-        font-size: 6em;
-      }
-
       p {
         white-space: normal;
       }
