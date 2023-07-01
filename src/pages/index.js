@@ -84,7 +84,7 @@ const Home = ({_setHomeButton, _setSkin}) => {
       <Flow />
       <About onEnterView={ () => setAboutView(true) } onExitView={ () => setAboutView(false) }/>
       <Inspire/>
-      <ContactLayout />
+      <ContactLayout main={false}/>
       <Signature />
       <AnimatePresence mode='wait'>
         {social && <Socials minify={true}/>}

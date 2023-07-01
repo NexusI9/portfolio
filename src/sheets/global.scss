@@ -3960,11 +3960,12 @@ img.gradientImg {
   }
 
   h1,h3 {
+    font-family: 'murmure';
     color: var(--purple);
     font-size: utils.clamped(70px, 128px);
   }
 
-  h2 {
+  h2, h4 {
     font-size: medium;
   }
 
