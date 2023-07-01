@@ -828,7 +828,9 @@ footer{
 
   & > div{
     $gap:120px;
-    border: solid 1px var(--black);
+    //border: solid 1px var(--black);
+    background-color: #EFF1F3;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.08) inset;
     height: 100%;
     gap:$gap;
     align-items: center;
@@ -3604,7 +3606,7 @@ label.customInput{
       grid-template-rows: auto auto;
       grid-template-columns: none;
       justify-items: center;
-      padding-right: 0;
+      padding: 0;
       width: 100%;
     }
 
