@@ -30,6 +30,7 @@ $xtragradient: linear-gradient(104.68deg, #132534 0.98%, #050101 107.45%);
          border-collapse: collapse;
          margin: auto;
          margin-top: 80px;
+         width: 100%;
          img{ max-width: 300px; }
          thead{
             border-bottom: solid 1px #444d6660;
@@ -45,7 +46,7 @@ $xtragradient: linear-gradient(104.68deg, #132534 0.98%, #050101 107.45%);
             padding: 0 20px;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             gap: 10px;
             .colorswatch{
                 display: block;

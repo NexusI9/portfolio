@@ -429,7 +429,7 @@ const Charts = () => (
       </tr>
 
 
-      <tr className="card">
+      <tr className="laos_card">
         <td>Cards</td>
         <td></td>
         <td>&emsp;</td>
@@ -851,7 +851,7 @@ export default () => (
     <Body flexDirection='vertical' style={{textAlign:'center'}}>
         <h2>The userflow</h2>
         <br/><br/>
-        <img className='infobox' src="/assets/projects/laos/user_flow_laos.svg"/>
+        <img className='infobox' src="/assets/projects/laos/userflow.svg"/>
     </Body>
     <Space />
   </Article>

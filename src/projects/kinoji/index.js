@@ -527,19 +527,14 @@ export default () => (
       <Body>
           <div>
             <h2 className='step'>A tool for creatives</h2>
-            <p>As an illustrator it seemed essential to me to emphasize on the visual aspects of movies. <br />
-              Hence, the library binds data from two distinct databases offering a filtering system targeted for a creative approach.
-              <br /><br />
-              On one hand it retrieves basic data via the TMDB API such a the director's name, the date of release and so on.
-              <br /><br />
-              And on the other, it uses a local databases to fetch more artistic data such as the dominants aesthetics, color scheme or genre.
-              <br />
-              The user can search movies depending on their primary color, mood and main visual subjects.
+            <p>As an illustrator it seemed essential to me to emphasize on the visual aspects of movies.
+            <br/>Hence, the library binds data from various databases and sources offering a filtering system targeted for a creative and research approach.
+            <br/><br/>It combines TMDB api, homemade Web scrappers, localy processed data, as well as AI api to offer the utmost complete and accurate user exeprience.
            </p>
          </div>
 
          <div style={{flexBasis:'80%'}}>
-          <img src="/assets/projects/kinoji/doubledtb.svg" />
+          <img src="/assets/projects/kinoji/multidtb.svg" />
         </div>
       </Body>
       <Space type='small' />

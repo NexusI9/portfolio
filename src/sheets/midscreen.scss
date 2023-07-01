@@ -75,24 +75,25 @@
 
   }
 
-  #resume-header{
+  #resume-header {
     text-align: center;
   }
 
-  #resume-content{
+  #resume-content {
     max-width: 100vw;
+
     .resumeSection {
       grid-template-columns: auto;
       gap: 0;
-  
+
       .sectionHeader {
         width: 100%;
         position: relative;
         top: 0;
       }
 
-      .content{
-        &.grid{
+      .content {
+        &.grid {
           grid-template-columns: auto;
         }
       }
@@ -382,7 +383,6 @@
     }
 
     .parallax {
-      left: -3vw;
       width: 101vw;
       height: 25vh;
     }
@@ -457,9 +457,18 @@
     grid-template-rows: $size $size !important;
   }
 
-  #diffuse_lumino {
-    &::before {
-      top: 0;
+  .projectWrapper {
+    #diffuse_lumino.backdrop {
+      &::before {
+        top: 0;
+        height: 100%;
+      }
+    }
+
+    #kinoji_layouts, #kinoji_guidestyle{
+      &.backdrop::before{
+        top:-10px;
+      }
     }
   }
 
