@@ -44,16 +44,13 @@ export default ({ main = true }) => {
 
         <div id='contactLinks'>
             <div>
-                {main && <>
+                {main ? <>
                     <h1>Let's get <wbr /> in touch!</h1>
                     <h2>Interested in working with me? Simply want to say hi?<br/>Feel free to reach out using the form or my email below.</h2>
-                </>}
-                {!main && <>
+                </> : <>
                     <h3>Let's get <wbr /> in touch!</h3>
                     <h4>Interested in working with me? Simply want to say hi?<br/>Feel free to reach out using the form or my email below.</h4>
-                </>
-                }
-
+                </>}
             </div>
 
             <div>
