@@ -4222,7 +4222,7 @@ label.customInput {
   h3{
     text-align: right;
     font-size: utils.clamped(30px, 50px);
-    strong{ color: var(--purple); }
+    .purple{ color: var(--purple); }
   }
   & > div{
     position: relative;
