@@ -40,13 +40,13 @@ export default function Article({children, name, spaced, id, className, style}){
     },[]);
   
     return(
-      <div 
+      <section 
         id={id ? id : ''} 
         ref={article}
         style={ style ? style : {} } 
         className={"article " + (spaced ? 'spaced ' : ' ') + (className ? className : '')} 
         data-board-name={name || ''}>
           {children}
-      </div> 
+      </section> 
     );
   }

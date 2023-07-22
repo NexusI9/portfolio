@@ -2335,16 +2335,6 @@ span.lineSeparator {
   border-top-right-radius: 35px;*/
 
   .projectWrapper {
-    @include frameMargin;
-    padding-right: 8%;
-    padding-left: 8%;
-    padding-top: 15vh;
-    width: 100%;
-    @include maxWidth();
-    /*img{
-      max-width: 100%;
-      object-fit: contain;
-    }*/
 
     .vimeo {
       .iframePlaceholder {
