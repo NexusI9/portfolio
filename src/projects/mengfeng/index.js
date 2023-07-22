@@ -1,4 +1,5 @@
 import { Article, Body, Gallery, Title, Img, Video, Parallax, Persona } from '@/components/Folio';
+import PersonaSlider from '@/components/Folio/PersonaSlider';
 
 const galleryRoutes = {
   product: [
@@ -68,7 +69,8 @@ const personaMap = [
       "Reliable source of inspiration and relaxation.",
       "Creative and supportive community for collaboration and feedback.",
       "Personal growth and mindfulness enhancement."
-    ]
+    ],
+    headerColor:'#3C0D58'
   },
   {
     name: "Elise Wu",
@@ -96,7 +98,8 @@ const personaMap = [
     coreNeeds: [
       "Time-efficient solutions for daily tasks.",
       "Improvement of overall well-being through fitness and holistic health practices.",
-    ]
+    ],
+    headerColor:'#0E2824'
   }
 ];
 
@@ -117,10 +120,7 @@ export default () => (
 
     <Article name='persona' spaced={true} className='plain'>
       <Title label='User personas' />
-      <div className='persona-slider'>
-        {personaMap.map(perso => <Persona key={`${perso.name}personacard`} {...perso} />)}
-      </div>
-
+      <PersonaSlider personas={personaMap}/>
     </Article>
 
 

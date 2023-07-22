@@ -1,8 +1,8 @@
 const Title = ({label, summary,id, className, style}) => (
-    <section id={id || ''} className={"header compress "+ (className || '')} style={style || {}}>
+    <header id={id || ''} className={"header compress "+ (className || '')} style={style || {}}>
       <h2>{label}</h2>
-      <p>{summary}</p>
-    </section>
+      {summary && <p>{summary}</p>}
+    </header>
   );
 
 

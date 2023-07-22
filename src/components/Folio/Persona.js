@@ -11,11 +11,12 @@ export default ({
     motivations = [],
     goals = [],
     painPoints = [],
-    coreNeeds = []
+    coreNeeds = [],
+    headerColor
 }) => (
 
     <article className="card persona">
-        <header>
+        <header style={headerColor && {backgroundColor:headerColor}}>
             <picture>
                 <img alt={`${name} portrait`} src={portrait} />
             </picture>
