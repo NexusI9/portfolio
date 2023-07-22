@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import Link  from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
-import { HoverSquare } from '../Props';
+import { HoverSquare, ScrollDownIcon } from '../Props';
 import { HomeButton, Logo } from '../Inputs';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -23,6 +23,7 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
   const [labelBar, setLabelBar] = useState();
   const [labelWrapper, setLabelWrapper] = useState();
   const [animationDone, setAnimationDone] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const labelNode = useCallback( node => setLabelBar(node));
   const wrapperNode = useCallback( node => setLabelWrapper(node));
@@ -59,6 +60,8 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
 
     let initMargin;
     const onScroll = () => {
+
+      setScrolled(true);
       if(labelBar && labelWrapper){
 
         const
@@ -162,6 +165,10 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
                 {children && children}
               </AnimatePresence>
             </motion.div>
+            <AnimatePresence>
+              {!scrolled && <ScrollDownIcon/>}
+            </AnimatePresence>
+
           </motion.div>
         }
       </AnimatePresence>

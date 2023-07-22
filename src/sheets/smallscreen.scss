@@ -240,6 +240,11 @@
     h2{ margin-bottom: 0 !important; }
   }
 
+  article.persona{
+    .persona-grid{
+      grid-template-columns: auto;
+    }
+  }
 
 
 

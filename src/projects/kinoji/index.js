@@ -494,7 +494,10 @@ export default () => (
       />
       <Body flexDirection='vertical'>
 
-      <Gallery galleries={{ gallery_2: [{type:'base', folder:'/kinoji/Screenshots/', pictures:['worldmap', 'glossaire', 'tags']}]}} galleryKey='gallery_2'/>
+      <Gallery galleries={{ gallery_2: [
+        {type:'base', folder:'/kinoji/Screenshots/', pictures:['worldmap']},
+        {type:'base', folder:'/kinoji/Screenshots/', pictures:['worldmap_1', 'glossaire', 'tags']}
+        ]}} galleryKey='gallery_2'/>
 
       </Body>
 

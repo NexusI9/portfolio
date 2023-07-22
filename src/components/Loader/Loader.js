@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
-import { useRouter } from 'next/router';
 import { useRef, useEffect, useState } from 'react';
 import zhConvertor from 'zhconvertor';
 import Dotty from './Dotty';
@@ -32,7 +31,7 @@ const variantWrapper={
 
 const Loader = ({title, background, font, onLoadComplete=()=>0}) => {
 
-    const router = useRouter();
+
     const label = useRef();
     const [startAnim, setStartAnim] = useState(false);
     const [percent, setPercent] = useState(0);
@@ -45,7 +44,7 @@ const Loader = ({title, background, font, onLoadComplete=()=>0}) => {
       const fakepercent = {percent:0};
       gsap.to(fakepercent, {
         percent:100,
-        duration: 0.7,
+        duration: 0.4,
         onUpdate: () => setPercent(fakepercent.percent),
         onComplete: onLoadComplete
       } );
