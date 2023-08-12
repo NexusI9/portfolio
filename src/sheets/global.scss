@@ -2762,7 +2762,6 @@ span.lineSeparator {
 .quotes{
 
   margin-top: 200px;
-  min-height: 70vh;
 
   & > div{
     margin-top:50px;
@@ -4295,7 +4294,7 @@ label.customInput {
   padding-top: 200px;
   overflow: hidden;
   background-color: var(--white);
-
+  
   h3 {
     text-align: right;
     font-size: utils.clamped(30px, 50px);

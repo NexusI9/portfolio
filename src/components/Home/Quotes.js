@@ -3,13 +3,15 @@ import louhann from '@/assets/quotes/louhann-portrait.webp';
 import matteo from '@/assets/quotes/matteo-portrait.webp';
 import { Quote } from '../Props';
 import { Viewport } from '../Statics';
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { forwardRef } from 'react';
 
 const MotionQuote = motion(forwardRef((props, ref) => <Quote {...props} innerRef={ref} />));
 
 export default () => {
+
+    const control = useAnimation();
 
     const [container, setContainer] = useState();
     const [active, setActive] = useState();
@@ -39,6 +41,12 @@ export default () => {
 
     ];
 
+    useEffect( () => {
+        if(active){
+            control.start({ y:0, opacity: 1 });
+        }
+    }, [active]);
+
     return (
         <Viewport
             container={container}
@@ -53,11 +61,11 @@ export default () => {
 
                 <div>
                     <AnimatePresence>
-                        {active && quotesMap.map((quote, i) =>
+                        {quotesMap.map((quote, i) =>
                             <MotionQuote
                                 key={'quote' + i}
                                 initial={{ y:200, opacity: 0 }}
-                                animate={{ y:0, opacity: 1 }}
+                                animate={control}
                                 transition={{duration: 1.2, delay: i / 10, type:'spring'}}
                                 {...quote}
                             />
