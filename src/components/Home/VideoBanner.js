@@ -89,7 +89,7 @@ const VideoBanner = ({ _setCategory }) => {
 
       } else {
         setDisplayVideo(false);
-        if (firstplan.current.style.opacity !== 0) {
+        if (firstplan.current?.style.opacity !== 0) {
           firstplan.current.style.opacity = 0;
         }
 

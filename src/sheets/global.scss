@@ -1024,7 +1024,9 @@ footer {
   margin-bottom: 3%;
   max-height: 800px;
   background: var(--white);
-  @include maxWidth();
+  margin: auto;
+  max-width: 1000px;
+  
 
   &::before {
     $height: 200px;
@@ -1040,12 +1042,12 @@ footer {
   }
 
   &>div {
-    $gap: 120px;
+    $gap: 50px;
     height: 100%;
     gap: $gap;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
 
     #resume-header {
       padding-right: 10%;
@@ -1055,7 +1057,8 @@ footer {
       max-width: 50vw;
       position: relative;
       width: 100%;
-      height: 100%;
+      height: auto;
+      aspect-ratio: 3/4;
       top: 0;
       display: flex;
       align-items: center;

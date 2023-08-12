@@ -1,16 +1,16 @@
 import { Multi } from '../Inputs';
 
-const ResumeHeader = ({innerRef=(e)=>0, language='english'}) => (
+const ResumeHeader = ({innerRef=(e)=>0, language='english', header="Nassim El Khantour", subtitle=true}) => (
     <section ref={ e => innerRef(e) } id="resume-header">
              <div>
-             <h2>Nassim El Khantour</h2>
-             <p style={{fontSize:'1.3em'}}>
+             <h2>{header}</h2>
+             {subtitle && <p style={{fontSize:'1.3em'}}>
                <Multi
                  eng='Multimedia Designer :: Art Director :: Developer'
                  fr='Designer Multimédia :: Directeur Artistique :: Développeur'
                  zh='多媒體設計師  ::  藝術總監  ::  網站工程師'
                  language={language}/>
-             </p>
+             </p>}
 
              <Multi eng={<>I am a French creative with an expertise in Web and Motion Design, but also proficiencies in development, 3D design, and illustration.
              An extended skill set I put at work in various projects for the past 5 years such as music videos, web apps, as well as audiovisual interactive setups.

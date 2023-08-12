@@ -43,7 +43,7 @@ const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
       <div className='round'>
         <Portrait />
         <section>
-          <ResumeHeader />
+          <ResumeHeader header="About me" subtitle={false} />
           <div className='aligncta'>
             <Cta to='/contact'><small><b>let's create together</b></small></Cta>
             <Cta to='/resume' type='secondary'><small><b>see my resume</b></small></Cta>
