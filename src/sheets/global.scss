@@ -349,6 +349,10 @@ a {
 
 }
 
+.purple {
+  color: var(--purple);
+}
+
 .whitecolor {
   color: var(--white);
 }
@@ -2758,6 +2762,7 @@ span.lineSeparator {
 .quotes{
 
   margin-top: 200px;
+  min-height: 70vh;
 
   & > div{
     margin-top:50px;
@@ -2782,7 +2787,7 @@ span.lineSeparator {
 
     h5{
       padding-left: 10px;
-      border-left: solid 2px var(--purple);
+      border-left: solid 3px var(--purple);
     }
 
     .quote-profile{
@@ -4294,10 +4299,6 @@ label.customInput {
   h3 {
     text-align: right;
     font-size: utils.clamped(30px, 50px);
-
-    .purple {
-      color: var(--purple);
-    }
   }
 
   &>div {

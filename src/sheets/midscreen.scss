@@ -80,6 +80,12 @@
 
   }
 
+  .quotes{
+    & > div{
+      grid-template-columns: auto;
+    }
+  }
+
   #resume-header {
     text-align: center;
   }
@@ -383,6 +389,11 @@
     }
   }
 
+  .container{
+    padding-left:50px;
+    padding-right: 50px;
+  }
+
   #contactContainer {
 
     grid-template-rows: auto 2fr;
@@ -397,6 +408,7 @@
 
     .contactForm {
       margin-top: 0;
+      width: 100%;
     }
 
     #contactLinks {
