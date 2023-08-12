@@ -1,0 +1,6 @@
+@use '../utils';
+
+@mixin h1(){
+    font-size: utils.clamped(70px, 120px);
+    font-family: 'murmure';
+};

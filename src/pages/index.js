@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import {  AnimatePresence } from 'framer-motion';
 import { Socials,Signature } from '@/components/Statics';
 import { CategoryMenu } from '@/components/Inputs';
-import { About, Inspire, VideoBanner } from '@/components/Home';
+import { About, Inspire, Quotes, VideoBanner } from '@/components/Home';
 import { connect } from 'react-redux';
 import { ContactLayout } from '@/components/Layout';
 
@@ -83,6 +83,7 @@ const Home = ({_setHomeButton, _setSkin}) => {
       <VideoBanner />
       <Flow />
       <About onEnterView={ () => setAboutView(true) } onExitView={ () => setAboutView(false) }/>
+      <Quotes/>
       <Inspire/>
       <ContactLayout main={false}/>
       <Signature />

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @use 'utils';
+@use 'components/fonts';
 
 :root {
 
@@ -264,7 +265,7 @@ a {
 .container {
   max-width: 1440px;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 100px;
   box-sizing: border-box;
 }
 
@@ -1024,9 +1025,8 @@ footer {
   margin-bottom: 3%;
   max-height: 800px;
   background: var(--white);
-  margin: auto;
-  max-width: 1000px;
-  
+  @include maxWidth();
+
 
   &::before {
     $height: 200px;
@@ -1048,6 +1048,8 @@ footer {
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
+    margin: auto;
 
     #resume-header {
       padding-right: 10%;
@@ -2446,8 +2448,7 @@ span.lineSeparator {
 
     h2 {
       margin-bottom: 10px;
-      font-size: utils.clamped(70px, 128px);
-      font-family: 'murmure';
+      @include fonts.h1;
     }
 
     p {
@@ -2753,6 +2754,52 @@ span.lineSeparator {
   }
 }
 
+
+.quotes{
+
+  margin-top: 200px;
+
+  & > div{
+    margin-top:50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+  }
+
+  h2{
+    @include fonts.h1;
+    svg{ fill: var(--black); }
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  blockquote{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h5{
+      padding-left: 10px;
+      border-left: solid 2px var(--purple);
+    }
+
+    .quote-profile{
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      p{
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+    img{
+      border-radius: 100%;
+    }
+  }
+}
 
 
 .card {
@@ -3782,7 +3829,7 @@ img.gradientImg {
       float: left;
       text-transform: none;
       text-align: center;
-      font-size: clamp(50px, $title, 180px);
+      @include fonts.h1;
     }
 
 
