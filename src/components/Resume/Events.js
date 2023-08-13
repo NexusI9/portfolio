@@ -27,12 +27,12 @@ const Events = ({language}) =>(
       }
       header={<b>Maison Mimir fête ses 10 ans</b>}
       body={
-        <Multi
+        <small><Multi
           eng="With Philip Pentacle and Epic Schmetterling."
           fr="With Philip Pentacle and Epic Schmetterling."
           zh="跟 Philip Pentacle 和 Epic Schmetterling"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi eng="MOLODOÏ, Strasbourg, France" 
@@ -55,12 +55,12 @@ const Events = ({language}) =>(
           language={language} 
         /> }
       body={
-        <Multi
+        <small><Multi
           eng="With Philip Pentacle, Epic Schmetterling and Noyus."
           fr="Avec Philip Pentacle, Epic Schmetterling et Noyus."
           zh="跟 Philip Pentacle，Epic Schmetterling 和 Noyus"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi 
@@ -85,12 +85,12 @@ const Events = ({language}) =>(
       }
       header={<b>CELEBRATION</b>}
       body={
-        <Multi
+        <small><Multi
           eng="With Epic Schmetterling."
           fr="Avec Epic Schmetterling."
           zh="跟 Epic Schmetterling"
           language={language}
-        />
+        /></small>
       }
       detail={ 
           <Multi 
@@ -116,12 +116,12 @@ const Events = ({language}) =>(
           /> 
       }
       body={
-        <Multi
+        <small><Multi
           eng="As part of the RING festival, with CTL! soundsystem."
           fr="Dans le cadre du RING festival, avec CTL! soundsystem."
           zh="RING音樂節的一部分，跟 CTL! soundsystem"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi 
@@ -147,12 +147,12 @@ const Events = ({language}) =>(
           /> 
       }
       body={
-        <Multi
+        <small><Multi
           eng="with ENSAD (BDE)."
           fr="avec ENSAD (BDE)."
           zh="跟 ENSAD (BDE)"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi 
@@ -177,12 +177,12 @@ const Events = ({language}) =>(
           /> 
       }
       body={
-        <Multi
+        <small><Multi
           eng="With CTL! soundsystem."
           fr="Avec CTL! soundsystem."
           zh="跟 CTL! soundsystem"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi 
@@ -208,12 +208,12 @@ const Events = ({language}) =>(
           /> 
       }
       body={
-        <Multi
+        <small><Multi
           eng="With CTL! soundsystem."
           fr="Avec CTL! soundsystem."
           zh="跟 CTL! soundsystem"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi 
@@ -239,12 +239,12 @@ const Events = ({language}) =>(
       }
       header={<b>Festival Moumouth Fest</b>}
       body={
-        <Multi
+        <small><Multi
           eng="With Epic Schmetterling."
           fr="Avec Epic Schmetterling."
           zh="跟 Epic Schmetterling"
           language={language}
-        />
+        /></small>
       }
       detail={
          <Multi 
@@ -269,12 +269,12 @@ const Events = ({language}) =>(
           /> 
         }
       body={
-        <Multi
+        <small><Multi
           eng="With Latitudes 5.4."
           fr="Avec Latitudes 5.4."
           zh="跟 Latitudes 5.4"
           language={language}
-        />
+        /></small>
       }
       detail={ 
         <Multi 
@@ -300,12 +300,12 @@ const Events = ({language}) =>(
          /> 
        }
       body={
-        <Multi
+        <small><Multi
           eng="With ENSAD (BDE)."
           fr="Avec ENSAD (BDE)."
           zh="跟 ENSAD (BDE)"
           language={language}
-        />
+        /></small>
       }
       detail={
          <Multi 

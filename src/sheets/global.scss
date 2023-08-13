@@ -2618,13 +2618,14 @@ span.lineSeparator {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
-          gap: 15px;
+          gap: 10px;
 
           small {
             word-wrap: unset;
             display: inline;
             padding: 5px 15px;
-            background: var(--card-bkg);
+            background: var(--darkgrey);
+            color: var(--white);
             gap: 10px;
             border-radius: 15em;
           }
@@ -2817,7 +2818,11 @@ span.lineSeparator {
   //filter: drop-shadow(0px 10px 12px rgba(27, 35, 59, 0.04)) drop-shadow(0px 6.92711px 7.61982px rgba(27, 35, 59, 0.0314869)) drop-shadow(0px 4.51895px 4.58309px rgba(27, 35, 59, 0.0257726)) drop-shadow(0px 2.70554px 2.61691px rgba(27, 35, 59, 0.0217376)) drop-shadow(0px 1.41691px 1.4484px rgba(27, 35, 59, 0.0182624)) drop-shadow(0px 0.58309px 0.804665px rgba(27, 35, 59, 0.0142274)) drop-shadow(0px 0.134111px 0.412828px rgba(27, 35, 59, 0.00851312));
   box-shadow: 0px 0.5259868502616882px 1.6187700033187866px 0px rgba(14, 10, 76, 0.01), 0px 2.3143422603607178px 3.351806163787842px 0px rgba(14, 10, 76, 0.02), 0px 5.68065881729126px 6.684567928314209px 0px rgba(14, 10, 76, 0.03), 0px 10.940526962280273px 13.10251522064209px 0px rgba(14, 10, 76, 0.04), 0px 18.409542083740234px 24.091106414794922px 0px rgba(14, 10, 76, 0.05), 0px 28.403291702270508px 41.13580322265625px 0px rgba(14, 10, 76, 0.06);
 
-
+  .contentHeader, .contentBody{
+    padding: 12px 8px;
+    box-sizing: border-box;
+  }
+  
   &:has(.contentBody) {
     .contentHeader {
       padding-bottom: 0;
