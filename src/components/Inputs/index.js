@@ -9,3 +9,4 @@ export {default as SocialsIcons} from './SocialsIcons';
 export {default as ViewShowreel} from './ViewShowreel';
 export {default as ContactForm} from './ContactForm';
 export {default as Input} from './Input';
+export {default as Dropdown} from './Dropdown';

@@ -1,6 +1,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Multi, Cta } from '@/components/Inputs';
+import { Button, Multi, Cta, Dropdown } from '@/components/Inputs';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { Socials } from '@/components/Statics';
@@ -29,6 +29,7 @@ import press from '@/assets/icons/press.svg';
 import tools from '@/assets/icons/tools.svg';
 
 import { Portrait } from '@/components/Portrait';
+
 
 const slideUp = {
   initial: { y: 100, opacity: 0 },
@@ -82,9 +83,21 @@ function Resume() {
 
   const changeLang = (lang) => {
 
+    //convert label to language value
+    try{
+      lang = LANG_MAP.filter( item => item.label === lang)[0]['language'];
+    }catch(_){
+      lang = 'english';
+    }
+
+    console.log(lang);
+
+
+    //update Gtag & State
     window.gtag('event', `click_resume_language_${lang}`, { event_category: 'click', event_label: `Switch resume language to ${lang}` });
     setLanguage(lang);
 
+    //update URL
     switch (lang) {
 
       case 'french':
@@ -111,7 +124,14 @@ function Resume() {
     }
   };
 
-  const listRoute = [
+
+  const LANG_MAP = [
+    {label: 'EN', language: 'english'},
+    {label: 'FR', language: 'french'},
+    {label: '中文', language: 'zhongwen'},
+  ]
+
+  const LIST_MAP = [
     {
       id: 'professional',
       name: <Multi eng='Professional experiences' fr='Expériences professionn&shy;elles' zh='工作經驗' language={language} />,
@@ -231,15 +251,7 @@ function Resume() {
 
         </section>
         <section>
-          {
-            language &&
-            <>
-              <motion.small key='langLabel' variants={popUp} className='discrete light'>Language: </motion.small>
-              <motion.span key='buttonEng' variants={popUp}><Button label='ENG' id='radioEng' type='radio' name='language' active={language === 'english'} onClick={() => changeLang('english')} /></motion.span>
-              <motion.span key='buttonFr' variants={popUp}><Button label='FR' id='radioFr' type='radio' name='language' active={language === 'french'} onClick={() => changeLang('french')} /></motion.span>
-              <motion.span key='buttonZh' variants={popUp}><Button label='中文' id='radioZhg' type='radio' name='language' active={language === 'zhongwen'} onClick={() => changeLang('zhongwen')} /></motion.span>
-            </>
-          }
+          { language && <Dropdown entries={ LANG_MAP.map(item => item.label) } onChange={ (e) => changeLang(e.active) }/> }
         </section>
 
 
@@ -259,7 +271,7 @@ function Resume() {
             key={'resumeWrapper' + language} >
             <ResumeHeader language={language} innerRef={e => banner.current = e} />
             <div id="resume-content">
-              {listRoute.map(({ id, name, ico, content }) => <Section key={'section' + id} title={name} ico={ico} content={content} />)}
+              {LIST_MAP.map(({ id, name, ico, content }) => <Section key={'section' + id} title={name} ico={ico} content={content} />)}
             </div>
           </motion.div>
         </AnimatePresence>

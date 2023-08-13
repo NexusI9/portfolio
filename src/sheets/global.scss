@@ -2668,8 +2668,9 @@ span.lineSeparator {
 
   &-settings {
     top: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: flex-end;
+    gap: 32px;
     position: fixed;
     z-index: 2;
     padding-top: 20px;
@@ -2682,9 +2683,6 @@ span.lineSeparator {
     width: 100%;
     @include maxWidth();
 
-    &::before {
-      content: '';
-    }
 
     &>section {
       pointer-events: auto;
@@ -2759,6 +2757,59 @@ span.lineSeparator {
   }
 }
 
+.dropdown{
+
+  position: relative;
+
+  &.active{
+    p svg{
+      transform: rotate(-180deg);
+    }
+    ul{
+      pointer-events: auto;
+    }
+  }
+  ul{ 
+    pointer-events: none;
+    list-style: none; 
+    padding: 0;
+    position: absolute;
+    width: max-content;
+    min-width: 70px;
+    padding: 5px 10px;
+    z-index: 4;
+
+    li{
+      box-sizing: border-box;
+      padding: 4px 2px;
+      transition: color 0.2s ease;
+      @media(hover:'hover'){
+        &:hover{
+          color:var(--purple);
+        }
+      }
+      &:not(:last-of-type){
+        border-bottom: solid 1px var(--card-stroke);
+      }
+    }
+  }
+
+  p{ 
+    color: var(--purple);
+    text-decoration: underline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    svg{ 
+      fill: var(--purple); 
+      transform: rotate(0deg);
+      transition: transform 0.2s ease-out;
+    }
+   }
+  p, li{
+    cursor: pointer;
+  }
+}
 
 .quotes{
 
