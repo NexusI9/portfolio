@@ -532,7 +532,7 @@ export default () => (
             <h2 className='step'>A tool for creatives</h2>
             <p>As an illustrator it seemed essential to me to emphasize on the visual aspects of movies.
             <br/>Hence, the library binds data from various databases and sources offering a filtering system targeted for a creative and research approach.
-            <br/><br/>It combines TMDB api, homemade Web scrappers, localy processed data, as well as AI api to offer the utmost complete and accurate user exeprience.
+            <br/><br/>It combines TMDB api, homemade Web scrappers, localy processed data, as well as AI api to offer the utmost complete and accurate user experience.
            </p>
          </div>
 
