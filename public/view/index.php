@@ -52,7 +52,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:16px 0">I would be very interested in a position as a Visual Designer at agencyName, where I wish to bring my extensive skill set and passion for innovative design in order to contribute to your team&#x27;s success.</p>
+                    <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:16px 0">I would be very interested in a position as a Visual Designer, where I wish to bring my extensive skill set and passion for innovative design in order to contribute to your team&#x27;s success.</p>
                   </td>
                 </tr>
               </tbody>
