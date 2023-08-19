@@ -52,7 +52,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:16px 0">I would be very interested in a position as a Visual Designer, where I wish to bring my extensive skill set and passion for innovative design in order to contribute to your team&#x27;s success.</p>
+                    <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:16px 0">I would be very interested in a position as a Visual Designer at agencyName, where I wish to bring my extensive skill set and passion for innovative design in order to contribute to your team&#x27;s success.</p>
                   </td>
                 </tr>
               </tbody>
@@ -207,7 +207,7 @@
                           <td data-id="__react-email-column" style="vertical-align:top"><img data-id="react-email-img" src="https://elkhantour.com/assets/newsletter/quote/pa.jpg" width="32" style="display:block;outline:none;border:none;text-decoration:none;margin-right:5px;margin-top:5px" /></td>
                           <td data-id="__react-email-column">
                             <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:0">Paul-André C.</p>
-                            <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0;font-weight:bold">Associate &amp; Business development at Celisus Communication</p>
+                            <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0;font-weight:bold;color:#5D47FF">Associate &amp; Business development at Celisus Communication</p>
                             <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0">Montréal, Canada</p>
                           </td>
                   </td>
@@ -252,7 +252,7 @@
                   <td data-id="__react-email-column" style="vertical-align:top"><img data-id="react-email-img" src="https://elkhantour.com/assets/newsletter/quote/louhann.jpg" width="32" style="display:block;outline:none;border:none;text-decoration:none;margin-right:5px;margin-top:5px" /></td>
                   <td data-id="__react-email-column">
                     <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:0">Louhann M.</p>
-                    <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0;font-weight:bold">Former Journalist &amp; Copywriter at Grazia Magazine</p>
+                    <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0;font-weight:bold;color:#5D47FF">Former Journalist &amp; Copywriter at Grazia Magazine</p>
                     <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0">Paris, France</p>
                   </td>
           </td>
@@ -297,7 +297,7 @@
                   <td data-id="__react-email-column" style="vertical-align:top"><img data-id="react-email-img" src="https://elkhantour.com/assets/newsletter/quote/matteo.jpg" width="32" style="display:block;outline:none;border:none;text-decoration:none;margin-right:5px;margin-top:5px" /></td>
                   <td data-id="__react-email-column">
                     <p data-id="react-email-text" style="font-size:20px;line-height:24px;margin:0">Matteo M.</p>
-                    <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0;font-weight:bold">Project Manager &amp; SEM Campaign Specialist </p>
+                    <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0;font-weight:bold;color:#5D47FF">Project Manager &amp; SEM Campaign Specialist </p>
                     <p data-id="react-email-text" style="font-size:15px;line-height:24px;margin:0">Marseille, France</p>
                   </td>
           </td>
