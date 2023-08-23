@@ -69,8 +69,7 @@ const personaMap = [
       "Reliable source of inspiration and relaxation.",
       "Creative and supportive community for collaboration and feedback.",
       "Personal growth and mindfulness enhancement."
-    ],
-    headerColor:'#3C0D58'
+    ]
   },
   {
     name: "Elise Wu",
@@ -98,8 +97,7 @@ const personaMap = [
     coreNeeds: [
       "Time-efficient solutions for daily tasks.",
       "Improvement of overall well-being through fitness and holistic health practices.",
-    ],
-    headerColor:'#0E2824'
+    ]
   }
 ];
 

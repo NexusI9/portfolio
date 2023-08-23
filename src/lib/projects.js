@@ -93,7 +93,7 @@ const CATEGORIES = {
         },
         "banner":"/assets/banners/mengfeng.webp",
         "desc":"A personal project covering the different steps of product design.",
-        "longdesc":"梦风 is a connected oil diffuser and audio speaker. The pod (or diffuser) is linked to a mobile app in which the user can program various routines, listen to relaxing playlist, and take part yoga exercises.",
+        "longdesc":"夢風 is a connected oil diffuser and audio speaker. The pod (or diffuser) is linked to a mobile app in which the user can program various routines, listen to relaxing playlist, and take part yoga exercises.",
         "category":["Product Design", "UX/UI", "Branding"],
         "stack":["Photoshop","Illustrator","Blender","After Effects"],
         "date":2021,

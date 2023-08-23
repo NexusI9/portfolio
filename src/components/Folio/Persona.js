@@ -21,7 +21,7 @@ export default ({
                 <img alt={`${name} portrait`} src={portrait} />
             </picture>
             <div className="persona-biography">
-                <h5 className="persona-subtitle">{name}</h5>
+                <h4>{name}</h4>
                 <ul>
                     <li>
                         <strong>
@@ -81,25 +81,25 @@ export default ({
                 <div>
                     <h5 className="persona-subtitle">Goals</h5>
                     <ul>
-                        {goals.map(item => <li key={`${item}goals`}>{item}</li>)}
+                        {goals.map(item => <li key={`${item}goals`}><small>{item}</small></li>)}
                     </ul>
                 </div>
                 <div>
                     <h5 className="persona-subtitle">Pain points</h5>
                     <ul>
-                        {painPoints.map(item => <li key={`${item}painPoints`}>{item}</li>)}
+                        {painPoints.map(item => <li key={`${item}painPoints`}><small>{item}</small></li>)}
                     </ul>
                 </div>
                 <div>
                     <h5 className="persona-subtitle">Core needs</h5>
                     <ul>
-                        {coreNeeds.map(item => <li key={`${item}coreNeeds`}>{item}</li>)}
+                        {coreNeeds.map(item => <li key={`${item}coreNeeds`}><small>{item}</small></li>)}
                     </ul>
                 </div>
                 <div>
                     <h5 className="persona-subtitle">Motivations</h5>
                     <ul>
-                        {motivations.map(item => <li key={`${item}motivation`}>{item}</li>)}
+                        {motivations.map(item => <li key={`${item}motivation`}><small>{item}</small></li>)}
                     </ul>
                 </div>
             </div>

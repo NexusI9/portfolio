@@ -651,16 +651,22 @@ object {
     display: flex;
     min-width: 270px;
     justify-content: center;
-    max-width: 350px;
+    max-width: 320px;
     box-sizing: border-box;
     padding: 15px 20px 40px;
 
     div.persona-biography {
       width: 100%;
-      margin-top: 150px;
+      margin-top: 130px;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 10px;
+    }
+
+    h4{
+      font-size: 32px;
+      align-self: center;
+      text-align: center;
     }
 
     picture {
@@ -740,7 +746,7 @@ object {
     .persona-details{
       max-width: 800px;
       li{
-        margin: 10px 0;
+        margin: 5px 0;
       }
     }
     .persona-interperso{
