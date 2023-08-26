@@ -625,17 +625,14 @@ object {
     
   }
   &-subtitle {
-    margin-left: 20px;
     position: relative;
     line-height: 1.2em;
-
-    &::after {
-      content: '';
-      height: 2px;
-      width: 50px;
-      background: var(--purple);
-      display: block;
-      transform: translateX(-10px);
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    svg{
+      width: 28px;
+      fill: var(--purple);
     }
   }
 
@@ -654,6 +651,8 @@ object {
     max-width: 320px;
     box-sizing: border-box;
     padding: 15px 20px 40px;
+
+    background-size: cover;
 
     div.persona-biography {
       width: 100%;
@@ -697,7 +696,7 @@ object {
 
     background-color: var(--black);
     color: var(--white);
-    border-radius: 10px;
+    border-radius: 10px 0px 0 10px;
 
     ul {
       list-style: none;
@@ -705,31 +704,21 @@ object {
 
       li {
         margin: 10px 0;
+        gap: 10px;
 
-        span,
+        &,
         strong {
           display: flex;
           flex-direction: row;
           align-items: center;
         }
 
-        strong {
-          gap: 10px;
+        strong{
+          gap: 5px;
         }
 
-        svg {
-          fill: var(--purple);
-        }
+        svg{fill:var(--white);}
 
-        color: var(--purple);
-
-        span {
-          &:last-child {
-            color: var(--white);
-          }
-
-          gap: 3px;
-        }
       }
     }
 
@@ -745,6 +734,9 @@ object {
 
     .persona-details{
       max-width: 800px;
+      ul{
+        list-style: square;
+      }
       li{
         margin: 5px 0;
       }
