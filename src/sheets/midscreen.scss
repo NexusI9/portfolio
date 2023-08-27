@@ -390,8 +390,8 @@
   }
 
   .container{
-    padding-left:50px;
-    padding-right: 50px;
+    padding-left:3rem;
+    padding-right: 3rem;
   }
 
   #contactContainer {
@@ -433,8 +433,25 @@
     }
 
     .parallax {
-      width: 101vw;
-      height: 25vh;
+      flex-direction: column;
+      height: max-content;
+      gap: 2rem;
+      width: 100vw;
+
+      &-picture{
+        height: 40vh;
+        overflow: hidden;
+      }
+
+
+      &-header{
+        position: relative;
+        header.card{
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+        }
+      }
     }
 
     section.horizontal {
@@ -446,8 +463,14 @@
     }
 
 
+    /*Remove desktop/ row layout relevant propreties (hald width, padding)*/
+
     .half {
       width: 100% !important;
+    }
+
+    .compress{
+      padding: 0;
     }
 
     .pointer {
@@ -490,6 +513,7 @@
 
   .musicWave {
     left: -7vw;
+    background-position-y: 75%;
   }
 
   #sidemenu {
@@ -531,6 +555,7 @@
     flex-direction: column;
     header{
       max-width: none;
+      border-radius: 10px;
     }
   }
 

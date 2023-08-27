@@ -147,6 +147,7 @@ function Project({_setHomeButton, _setSkin}){
               id='project'
               key={ 'projectContainer' + project.title }
               exit={{opacity:0, transition:{duration:0.3}}}
+              
             > 
                 {showSideBar && <PercentBar />}
                 {htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content>}

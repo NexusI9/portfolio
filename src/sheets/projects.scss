@@ -15,6 +15,7 @@ h2,
 h3,
 h4 {
   margin: 0;
+  margin-bottom: 1.3rem;
 }
 
 
@@ -323,16 +324,38 @@ object {
   width: 110vw;
   height: 80vh;
   left: 50%;
+  position: relative;
   transform: translateX(-50%);
 
-  img {
-    will-change: transform;
-    transition: transform 0.1s ease;
-    transform: translate3d(0, -15%, 0);
-    object-fit: cover;
-    max-width: none;
-    width: 160%;
-    object-fit: cover;
+
+  &-picture{
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    img {
+      transition: transform 0.1s ease;
+      transform: translate3d(0, -15%, 0);
+      object-fit: cover;
+      max-width: none;
+      width: 160%;
+      object-fit: cover;
+    }
+
+  }
+
+  &-header{
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    header{
+      box-sizing: border-box;
+      padding: 2rem 3rem;
+    }
   }
 }
 
@@ -411,7 +434,7 @@ object {
     left: 50%;
     transform: translateX(-50%);
     height: 90%;
-    top: -10%;
+    top: 0%;
     display: block;
   }
 }
@@ -422,7 +445,8 @@ object {
 
 .article {
 
-  @include frameMargin;
+  box-sizing: border-box;
+  padding-top: 100px;
   padding-right: 8%;
   padding-left: 8%;
   width: 100%;
@@ -449,7 +473,11 @@ object {
   }
 
   &.spaced {
-    margin-bottom: 10%;
+    margin-bottom: 3rem;
+  }
+
+  &.backdrop{
+    margin-top:10%;
   }
 
   img {
@@ -538,10 +566,6 @@ object {
   }
 
   &>.header {
-    h2 {
-      margin-bottom: 10px;
-    }
-
     margin-bottom: 30px;
     padding-left: 1em;
     padding-right: 1em;
@@ -774,7 +798,7 @@ object {
     }
 
     hr{
-      border: dashed 1px var(--purple-10);
+      border: solid 1px var(--purple-10);
     }
   }
 

@@ -4,6 +4,7 @@
 
 :root {
 
+  //colours
   --card-bkg: #fcfdff;
   --card-stroke: #EFF4FF;
   --purple: #5d47ff;
@@ -15,12 +16,20 @@
   --purple-30: #C5BEF8;
   --ctahover: #8170ff;
 
+  //shapes
+  --border-radius: 10px;
+
+
+  //effects
+  --shadow-color: 210deg 7% 65%;
+  --shadow-elevation-medium:
+    0.1px 0.5px 0.6px hsl(var(--shadow-color) / 0.28),
+    0.1px 1.1px 1.2px -0.7px hsl(var(--shadow-color) / 0.27),
+    0.3px 2.2px 2.4px -1.4px hsl(var(--shadow-color) / 0.26),
+    0.6px 4.5px 4.9px -2.1px hsl(var(--shadow-color) / 0.25),
+    1.2px 8.7px 9.6px -2.7px hsl(var(--shadow-color) / 0.24);
+
 }
-
-/*colors*/
-
-
-$border-radius: 10px;
 
 /*values*/
 $frameMargin: 45px;
@@ -73,16 +82,6 @@ $arrowDist: 10px;
     transform: translateY($arrowDist);
     opacity: 0;
   }
-}
-
-:root {
-  --shadow-color: 210deg 7% 65%;
-  --shadow-elevation-medium:
-    0.1px 0.5px 0.6px hsl(var(--shadow-color) / 0.28),
-    0.1px 1.1px 1.2px -0.7px hsl(var(--shadow-color) / 0.27),
-    0.3px 2.2px 2.4px -1.4px hsl(var(--shadow-color) / 0.26),
-    0.6px 4.5px 4.9px -2.1px hsl(var(--shadow-color) / 0.25),
-    1.2px 8.7px 9.6px -2.7px hsl(var(--shadow-color) / 0.24);
 }
 
 
@@ -199,6 +198,11 @@ $mapFilter: (
   font-size: 1em;
   margin: 0;
 }
+
+p {
+  text-wrap: balance;
+}
+
 
 p,
 li {
@@ -411,7 +415,7 @@ b .zhg {
 
 
 .round {
-  border-radius: $border-radius;
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
@@ -1104,7 +1108,7 @@ footer {
   }
 
   span {
-    border-radius: $border-radius/2;
+    border-radius: calc(var(--border-radius)/2);
     width: 100%;
     height: 100%;
     display: block;
@@ -3022,7 +3026,7 @@ span.lineSeparator {
 
     &>div {
       overflow: hidden;
-      border-radius: $border-radius;
+      border-radius: var(--border-radius);
     }
 
     .vimeo {
@@ -3566,7 +3570,7 @@ span.lineSeparator {
   }
 
   .overlay {
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
 
     .thumb {
       position: absolute;
@@ -3575,7 +3579,6 @@ span.lineSeparator {
       max-width: none;
       max-height: none;
       height: 100%;
-      cursor: pointer;
     }
 
     .vimeo {
