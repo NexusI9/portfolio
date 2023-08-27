@@ -1,290 +1,217 @@
-import {Article, Body, Gallery, Title, Space, Pointer, Img, Parallax} from '../../components/Folio';
+import { Article, Body, Gallery, Title, Space, Pointer, Img, Parallax } from '../../components/Folio';
 
 import logo from './assets/xtralogo.svg';
 import baijam from './assets/baijam.svg';
 
-const personaMap = [
-  {
-    name: "Sarah Thomson",
-    portrait: "/assets/projects/mengfeng/persona/sarah.webp",
-    age: 32,
-    job: "Marketing Manager",
-    status: "Single",
-    summary: "Sarah is a successful marketing manager at a tech company. She leads a fast-paced, demanding lifestyle and often experiences stress and anxiety. She values her health and well-being, and she has incorporated daily yoga and meditation sessions to find some balance. Sarah loves using essential oils and aromatherapy to relax and unwind. She lives alone in a small apartment and enjoys hosting small gatherings with close friends. Financially, she is stable and can afford premium products.",
-    personality: ["Ambitious", "Organized", "Extraverted"],
-    interests: ["Yoga", "Meditation", "Aromatherapy"],
-    goals: [
-      "Advance to the position of a senior marketing executive within the next two years.",
-      "Start teaching yoga and meditation classes on weekends.",
-      "Improve her mindfulness practice to achieve better work-life balance."
-    ],
-    painPoints: [
-      "Lack of time for self-care, leading to increased stress levels and occasional burnout.",
-      "Struggling to maintain a proper work-life balance."
-    ],
-    motivations: [
-      "Enhancing productivity and relaxation in her career and personal life.",
-      "Nurturing her well-being through meditation and aromatherapy.",
-      "Developing a deeper connection with herself."
-    ],
-    coreNeeds: [
-      "Effective stress relief methods.",
-      "Automation product for convenience and ease of use.",
-      "Personal growth and mindfulness enhancement."
-    ]
-  },
-  {
-    name: "Michael Rodriguez",
-    portrait: "/assets/projects/mengfeng/persona/michael.webp",
-    age: 28,
-    job: "Freelance Writer",
-    status: "Engaged",
-    summary: "Michael is a freelance writer who works from home. He has a passion for music and loves exploring different genres and discovering new artists. Writing often leaves him mentally drained, and he seeks ways to rejuvenate himself. He is also interested in holistic health and natural remedies. Michael lives in a small studio apartment with his cat. He enjoys a simple, minimalistic lifestyle and manages his finances carefully.",
-    personality: ["Creative", "Curious", "Introverted"],
-    interests: ["Music", "Writing", "Holistic Health"],
-    goals: [
-      "Publish a best-selling book within the next three years.",
-      "Collaborate with a well-known musician to write lyrics for an album.",
-      "Achieve a healthy work-life balance to prevent blues and depression due to excessive creation."
-    ],
-    painPoints: [
-      "Creative blocks and mental fatigue hindering consistent quality content creation.",
-      "Feeling isolated as an introvert and struggling to find an inspiring environment."
-    ],
-    motivations: [
-      "Optimizing creative environment and routines to explore his creativity further.",
-      "Improving overall well-being and mental clarity to fuel his writing career.",
-      "Achieving recognition for his writing and creative endeavors."
-    ],
-    coreNeeds: [
-      "Reliable source of inspiration and relaxation.",
-      "Creative and supportive community for collaboration and feedback.",
-      "Personal growth and mindfulness enhancement."
-    ],
-    headerColor:'#3C0D58'
-  },
-  {
-    name: "Elise Wu",
-    portrait: "/assets/projects/mengfeng/persona/elise.webp",
-    age: 40,
-    job: "Physician",
-    status: "Married with children",
-    summary: "Emily is a dedicated physician, working long hours in a busy hospital. She's passionate about promoting health and wellness, not only for her patients but also for herself. She's an early adopter of new technologies and loves exploring gadgets that can enhance her well-being. Emily enjoys staying active and regularly works out at home or goes for runs in the park. She lives with her partner and two children, and they have a comfortable financial status.",
-    personality: ["Compassionate", "Tech-savvy", "Proactive"],
-    interests: ["Wellness", "Technology", "Fitness"],
-    goals: [
-      "Introduce telemedicine services in her practice to reach more patients in rural areas.",
-      "Complete a marathon within the next two years.",
-      "Strike a better work-life balance to spend more quality time with her family."
-    ],
-    painPoints: [
-      "High-stress job with limited personal time for passions and family.",
-      "Feeling overwhelmed by managing family and professional responsibilities."
-    ],
-    motivations: [
-      "Providing better healthcare access through telemedicine services.",
-      "Achieving personal fitness goals and maintaining overall well-being.",
-      "Creating a positive impact on her family's lives and finding effective ways to balance her priorities."
-    ],
-    coreNeeds: [
-      "Time-efficient solutions for daily tasks.",
-      "Improvement of overall well-being through fitness and holistic health practices.",
-    ],
-    headerColor:'#0E2824'
-  }
-];
+
 
 export default () => (
-    <>
-      <Article spaced={true} name='Introduction'>
-        <Space type='small' />
-        <Body style={{columnGap:'10%'}} className='flex' >
-          <div style={{flexBasis: '50%', boxSizing:'border-box'}}>
-            <h2>An <i><b>XTRA</b></i> project</h2>
-            <br/>
-            <p>
-                XTRA is a data privacy company providing many services such as cybersecurity analysis as well as server installation and infranet setups. The company also offers awareness programs to help business educates their employees on best practices.
-                <br /><br/>
-                Hence, the following websites gather a certain amount of services and functionalities to bring out XTRA wealth of services in the most efficient way. 
-            </p>
-          </div>
-          <div style={{flexBasis: '70%'}} >
-            <Img src='/assets/projects/xtra/homepage.webp' />
-          </div>
-        </Body>
-        <Space type='small'/>
-        <Body flexDirection='vertical'>
-          <Gallery galleries={
-            {
-              gallery_1: [
-                {type:'base', folder:'/xtra/g1/', pictures:['xtra_0','xtra_1', 'xtra_3']},
-                {type:'split', folder:'/xtra/g2/', pictures:['xtra_5','xtra_6']},
-                {type:'invertedbase', folder:'/xtra/g3/', pictures:['xtra_4','xtra_7', 'xtra_8']},
-                {type:'split', folder:'/xtra/g4/', pictures:['xtra_9','xtra_10', 'xtra_11']},
-                {type:'split', folder:'/xtra/g5/', pictures:['xtra_12','xtra_13', 'xtra_14']},
-                ]}} galleryKey='gallery_1'/>
-        </Body>
-      </Article>
-  
-  
-      <Article spaced={true}>
-         <Parallax src='/assets/projects/xtra/wide_parallax_xtra.webp'/>
-      </Article>
+  <>
+    <Article spaced={true} name='Introduction'>
+      <Space type='small' />
+      <Body style={{ columnGap: '10%' }} className='flex' >
+        <div style={{ flexBasis: '50%', boxSizing: 'border-box' }}>
+          <h2>An <i><b>XTRA</b></i> project</h2>
+          <br />
+          <p>
+            XTRA is a data privacy company providing many services such as cybersecurity analysis as well as server installation and infranet setups. The company also offers awareness programs to help business educates their employees on best practices.
+            <br /><br />
+            Hence, the following websites gather a certain amount of services and functionalities to bring out XTRA wealth of services in the most efficient way.
+          </p>
+        </div>
+        <div style={{ flexBasis: '70%' }} >
+          <Img src='/assets/projects/xtra/homepage.webp' />
+        </div>
+      </Body>
+    </Article>
 
-  
-      <Article name='Infinity scroll' spaced={true} className='backdrop center fill'>
-        <Title label="Overall aesthetic" className='half' summary='The brand heavily rely on tech and cybernetics illustrations to break the usual austerity and sometimes complex Data Privacy semantic, giving the customer a sense of comfort as his journey is supported by visuals.' />
-        <Space type='small'/>
-        <Body flexDirection='horizontal' className='reverse vcenter'>
-          <Img className='stickToLeft' alt='poster mode' src='/assets/projects/xtra/cybernetic.webp'/>
-          <Pointer style={{flexBasis:'40%'}} title='Cybernetic visuals' description='In order to enhance user’s navigation, each XTRA’s page use a themed cybernetic illustration to give customer hints about what to except on this page on top of making his experience visually richer.'/>
-        </Body>
-        <Space type='small'/>
-        <Body flexDirection='horizontal' className='vcenter'>
-          <Pointer style={{flexBasis:'40%'}} side='right' title='Material textures' description={
-            <>
-            By providing server installations for customers or businesses, XTRA’s services not only live in the digital world but also within the physical one. 
-            <br/>It thus felt important to inject some materiality in the website by the use of abstract textures to expand the art direction out of the digital world boundaries.
-            </>
-          }/>
-          <Img className='stickToRight' alt='poster mode' src='/assets/projects/xtra/textures.webp' />
-        </Body>
-        <Space type='small'/>
-      </Article>
+    <Article spaced={false}>
+      <Parallax
+        src='/assets/projects/xtra/wide_parallax_xtra.webp'
+        title='The Website'
+        description={<>
+          The XTRA website serves as a comprehensive platform to showcase the brand's extensive range of B2C and B2B services and products. In an era where data privacy is of paramount importance, the brand's strategic approach focuses on not only educating customers about the significance and necessity of cybersecurity but also on highlighting why XTRA stands out as a reliable expert in secure IT equipment setup.
+          <br />This strategic direction aims to foster trust among prospects as they navigate the site.
+          A notable challenge was crafting inclusive content that caters to both individuals seeking small-scale solutions and established businesses looking to scale their infranet. The site's design ensures accessibility while addressing the diverse needs of users.
+        </>}
+      />
+    </Article>
+
+    <Article spaced={true} name='snapshots'>
+      <Space type='small' />
+      <Body flexDirection='vertical'>
+        <Gallery galleries={
+          {
+            gallery_1: [
+              { type: 'split', folder: '/xtra/g0/', pictures: ['xtra_15'] },
+              { type: 'split', folder: '/xtra/g0/', pictures: ['xtra_16'] },
+              { type: 'split', folder: '/xtra/g1/', pictures: ['xtra_0', 'xtra_1', 'xtra_3', 'xtra_5'] },
+              { type: 'split', folder: '/xtra/g3/', pictures: ['xtra_6', 'xtra_4', 'xtra_7', 'xtra_8'] },
+              { type: 'split', folder: '/xtra/g4/', pictures: ['xtra_9', 'xtra_10', 'xtra_11', 'xtra_12'] },
+              { type: 'split', folder: '/xtra/g5/', pictures: ['xtra_13', 'xtra_14'] },
+            ]
+          }
+        } galleryKey='gallery_1' />
+      </Body>
+    </Article>
 
 
-
-      <Article id='xtraLogo_introduce' spaced={true} className='backdrop center fill whitecolor'>
-        <Title label="The guidestyle" className='compressed' style={{textAlign:'center'}}/>
-        <Space type='small'/>
-        <Body flexDirection='vertical'>
-                <section className='half'>
-                    <h5>The logotype</h5>
-                    <p>
-                        XTRA’s logo borrows futuristic elements such as diagonals and streamlined curves to convey a sense of speed, strength but also stability. 
-                        Similar to a flight company that will skyrocket your business with its powerful and secure tools.
-                    </p>
-                </section>
-                <img alt='xtra logo' src={logo.src}/>
-            </Body>
-            <Body flexDirection='vertical' id='xtra_typecolor'>
-            <section className='half' >
-              <h5>Typeface & Color swatch</h5>
-              <p>XTRA branding mainly takes inspiration in science-fiction’s aesthetic, wether in its typeface or choice of colors. <br/> The design also put in contrast darker areas brighten up by visuals, with white-themed sections for a clear and segmented navigation.</p>
-            </section>
-            <div className='tableGroup'>
-            <table>
-                <thead>
-                  <tr>
-                    <td>
-                      <h5>Typeface</h5>
-                    </td>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  <tr>
-                    <td>
-                      <img src={baijam.src} />
-                    </td>
-                  </tr>
-                    
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                  <tr>
-                    <td>
-                      <h5>Colors</h5>
-                    </td>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  <tr>
-                    <td>
-                      <p>Primary swatch</p>
-                      <div className='packColor'>
-                        <span className='colorswatch primaryColor' style={{backgroundColor: '#F8F7F4'}}></span>
-                        <span className='colorswatch primaryColor' style={{backgroundColor: '#D74545'}}></span>
-                        <span className='colorswatch primaryColor' style={{backgroundColor: '#132534'}}></span>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <p>Secondary swatch</p>
-                      <div className='packColor'>
-                        <span className='colorswatch' style={{backgroundColor: '#E6E7F4'}} ></span>
-                        <span className='colorswatch' style={{backgroundColor: '#DFDDE6'}} ></span>
-                        <span className='colorswatch' style={{backgroundColor: '#D8A6A6'}} ></span>
-                        <span className='colorswatch' style={{backgroundColor: '#C02C41'}} ></span>
-                        <span className='colorswatch' style={{backgroundColor: '#4F5465'}} ></span>
-                        <span className='colorswatch' style={{backgroundColor: '#050101',border: 'solid 1px #444d6660'}} ></span>
-                      </div>
-                    </td>
-                  </tr>
-                    
-                </tbody>
-            </table>
-
-            </div>
-            </Body>
-            <Space type='small'/>
-      </Article>
-  
+    <Article name='Infinity scroll' spaced={true} className='backdrop center fill'>
+      <Title label="Overall aesthetic" className='half' summary='The brand heavily rely on tech and cybernetics illustrations to break the usual austerity and sometimes complex Data Privacy semantic, giving the customer a sense of comfort as his journey is supported by visuals.' />
+      <Space type='small' />
+      <Body flexDirection='horizontal' className='reverse vcenter'>
+        <Img className='stickToLeft' alt='poster mode' src='/assets/projects/xtra/cybernetic.webp' />
+        <Pointer style={{ flexBasis: '40%' }} title='Cybernetic visuals' description='In order to enhance user’s navigation, each XTRA’s page use a themed cybernetic illustration to give customer hints about what to except on this page on top of making his experience visually richer.' />
+      </Body>
+      <Space type='small' />
+      <Body flexDirection='horizontal' className='vcenter'>
+        <Pointer style={{ flexBasis: '40%' }} side='right' title='Material textures' description={
+          <>
+            By providing server installations for customers or businesses, XTRA’s services not only live in the digital world but also within the physical one.
+            <br />It thus felt important to inject some materiality in the website by the use of abstract textures to expand the art direction out of the digital world boundaries.
+          </>
+        } />
+        <Img className='stickToRight' alt='poster mode' src='/assets/projects/xtra/textures.webp' />
+      </Body>
+      <Space type='small' />
+    </Article>
 
 
-      <Article name='Blog'>
-        <Body style={{columnGap:'10%'}} className='flex vcenter' >
-          <div>
-            <h2>A blog to enhance customers awareness</h2>
-            <br/>
-            <p>
-              In order to stay relevant SEO wise as well as positioning themselves as experts in the field, XTRA has also a blog where they can share news about the cyberworld but also sharing their latests installations and webinars.
-              <br/><br/>
-              The customer can search specific articles either by keywords of by categories (such as Data Privacy, Infranet, Webinars...) 
-            </p>
-          </div>
-          <div style={{flexBasis:'110%'}}>
-            <Img src='/assets/projects/xtra/blog.webp' />
-          </div>
-        </Body>
-        <Space type='small'/>
-      </Article>
 
-      <Article name='Newsletter' spaced={true}>
-        <Space type='small'/>
-        <Body style={{columnGap:'10%'}} className='reverse'>
-        <div style={{flexBasis:'50%'}}>
-            <Img src='/assets/projects/xtra/newsletter.webp' />
-          </div>
-          <div>
-            <h2>Lead magnet & newsletter</h2>
-            <br/>
-            <p>
-              For every businesses but especially small ones, it is important to start building a database of qualified leads for loyalty concerns.
-              <br/>
-              As a result, each pages conclude with a form inviting the customer to subscribe to the company’s newsletter.
-              </p>
-          </div>
-        </Body>
-      </Article>
+    <Article id='xtraLogo_introduce' spaced={true} className='backdrop center fill whitecolor'>
+      <Title label="The guidestyle" className='compressed' style={{ textAlign: 'center' }} />
+      <Space type='small' />
+      <Body flexAlignement='centered'>
+        <section className='half'>
+          <h5>The logotype</h5>
+          <p>
+            XTRA’s logo borrows futuristic elements such as diagonals and streamlined curves to convey a sense of speed, strength but also stability.
+            Similar to a flight company that will skyrocket your business with its powerful and secure tools.
+          </p>
+        </section>
+        <img alt='xtra logo' src={logo.src} />
+      </Body>
+      <Body flexDirection='vertical' id='xtra_typecolor'>
+        <section className='half' >
+          <h5>Typeface & Color swatch</h5>
+          <p>XTRA branding mainly takes inspiration in science-fiction’s aesthetic, wether in its typeface or choice of colors. <br /> The design also put in contrast darker areas brighten up by visuals, with white-themed sections for a clear and segmented navigation.</p>
+        </section>
+        <div className='tableGroup'>
+          <table>
+            <thead>
+              <tr>
+                <td>
+                  <h5>Typeface</h5>
+                </td>
+              </tr>
+            </thead>
 
-      <Article spaced={true} name='The map' id='xtra_map' className='backdrop whitecolor'>
-      <Title 
-        label='The map'
-        summary="As a local business it felt important for the company to make sure its customer will be able to be serviced by the company. Thus XTRA’s website also has a map with a location filtering system, allowing the customer to know if his district or area is serviced by XTRA." 
+            <tbody>
+
+              <tr>
+                <td>
+                  <img src={baijam.src} />
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <table>
+            <thead>
+              <tr>
+                <td>
+                  <h5>Colors</h5>
+                </td>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <p>Primary swatch</p>
+                  <div className='packColor'>
+                    <span className='colorswatch primaryColor' style={{ backgroundColor: '#F3F7FC' }}></span>
+                    <span className='colorswatch primaryColor' style={{ backgroundColor: '#D74545' }}></span>
+                    <span className='colorswatch primaryColor' style={{ backgroundColor: '#132534' }}></span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <p>Secondary swatch</p>
+                  <div className='packColor'>
+                    <span className='colorswatch' style={{ backgroundColor: '#E6E7F4' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#DFDDE6' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#D8A6A6' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#C02C41' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#4F5465' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#050101', border: 'solid 1px #444d6660' }} ></span>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </Body>
+      <Space type='small' />
+    </Article>
+
+
+
+    <Article name='Blog'>
+      <Body style={{ columnGap: '5%' }} className='flex vcenter' >
+        <div>
+          <h2>Nurturing the SEO through a content strategy</h2>
+          <br />
+          <p>
+            The blog page serves as a multi-purpose platform for XTRA to share their latest cybersecurity installations and updates.
+            From a strategy standpoint, it's a space where the brand establishes itself as a thought leader and expert in the field, bolstering their inbound marketing efforts and enhancing their organic search visibility.
+            <br />This dual functionality also encompasses archiving webinars, offering valuable resources for users seeking deeper insights into cybersecurity trends and practices.</p>
+        </div>
+        <div style={{ flexBasis: '90%' }}>
+          <Img src='/assets/projects/xtra/blog.webp' />
+        </div>
+      </Body>
+      <Space type='small' />
+    </Article>
+
+    <Article name='Newsletter' spaced={true}>
+      <Space type='small' />
+      <Body style={{ columnGap: '10%' }} className='reverse'>
+        <div style={{ flexBasis: '50%' }}>
+          <Img src='/assets/projects/xtra/newsletter.webp' />
+        </div>
+        <div>
+          <h2>Lead generation form</h2>
+          <br />
+          <p>
+            As an emerging brand working to establish its presence, XTRA recognizes the importance of adopting a lead generation strategy alongside their inbound approach.
+            <br /> Throughout most of the pages, the newsletter subscription form allows leads to receive the latest promotions and updates on cybersecurity.
+            This strategy not only enhances user engagement but also lays the foundation for a growing community of individuals interested in staying informed about the evolving landscape of information security.
+          </p>
+        </div>
+      </Body>
+    </Article>
+
+    <Article spaced={true} name='The map' id='xtra_map' className='backdrop whitecolor'>
+      <Title
+        label='Interactive map'
+        summary={
+          <>
+            An interactive map feature on the site empowers users to quickly determine whether XTRA's installation services extend to their city or region.
+            This innovative addition greatly enhances user experience, providing a seamless way for potential customers to ascertain the brand's service availability.
+            <br />By incorporating digital tools like this map, XTRA illustrates its commitment to making cybersecurity services accessible and tailored to individual or business needs.
+          </>}
         className='half'
-        />
-        <Space type='small'/>
-        <Img alt='laos dark theme screenshot' src='/assets/projects/xtra/map.webp' />
-      </Article>
+      />
+      <Space type='small' />
+      <Img alt='laos dark theme screenshot' src='/assets/projects/xtra/map.webp' />
+    </Article>
 
-  
+
   </>
-  );
-  
+);
