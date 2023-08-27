@@ -166,7 +166,7 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
               </AnimatePresence>
             </motion.div>
             <AnimatePresence>
-              {!scrolled && <ScrollDownIcon/>}
+              {!scrolled && window.matchMedia("(min-width: 825px)").matches && <ScrollDownIcon/>}
             </AnimatePresence>
 
           </motion.div>

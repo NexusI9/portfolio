@@ -1541,6 +1541,10 @@ footer {
       }
     }
 
+    h1{
+      font-weight: 200;
+    }
+
     h1,
     a {
       display: inline;
@@ -3129,6 +3133,7 @@ span.lineSeparator {
     h2 {
       font-family: 'murmure';
       font-size: clamp(80px, 7vw, 120px);
+      margin: 0;
     }
 
     p {

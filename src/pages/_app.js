@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
-import { Menu, Filter, SkinProvider } from '@/components/Statics';
+import { Menu, SkinProvider } from '@/components/Statics';
 import { Provider } from 'react-redux';
 import store from '@/lib/store';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import '@/sheets/styles.scss';
@@ -62,7 +62,6 @@ const App = ({ Component, pageProps }) => {
                                     <Component {...pageProps} key={router.pathname} />
                             </AnimatePresence>
                         </main>
-                        <Filter />
                         <Menu />
                 </SkinProvider>
             </Provider>
