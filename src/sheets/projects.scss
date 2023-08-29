@@ -637,14 +637,21 @@ object {
   flex-shrink: 0;
 
   &-slider {
-    display: flex;
-    flex-direction: row;
-    overflow: auto;
-    gap: 50px;
-    width: 100vw;
+
+    display: inline-flex;
+    overflow: scroll;
+    width: max-content;
     left: 0;
     padding: 0px 8% 50px 8%;
     box-sizing: border-box;
+
+    & > div{
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      cursor: ew-resize;
+    }
+ 
 
     &::-webkit-scrollbar {
       display: none;
