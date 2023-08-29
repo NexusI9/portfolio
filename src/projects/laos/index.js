@@ -790,7 +790,7 @@ export default () => (
       */}
       <Body flexDirection='horizontal' style={{justifyContent:'space-between'}}>
           <div style={{flexBasis:'30%'}}>
-            <h2>The Style Guide</h2>
+            <h2>Iconography</h2>
             <p>On top of relying on a joyful and appealing color scheme,  LAOS also dig its inspiration in East-Asia iconography.<br /> Allowing the user to choose between up to four exercises modes  symbolised by distinctive key shapes and color contrasts.</p>
           </div>
           <KeyShapes />
