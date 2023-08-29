@@ -328,7 +328,7 @@ object {
   transform: translateX(-50%);
 
 
-  &-picture{
+  &-picture {
 
     display: flex;
     align-items: flex-start;
@@ -345,14 +345,15 @@ object {
 
   }
 
-  &-header{
+  &-header {
     position: absolute;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding: 0 calc(100px + 5%);
 
-    header{
+    header {
       box-sizing: border-box;
       padding: 2rem 3rem;
     }
@@ -459,15 +460,17 @@ object {
   max-width: 1440px;
   margin: auto;
 
-  &.plain{
+  &.plain {
     max-width: none;
     padding-left: 0;
     padding-right: 0;
-    .compress{
+
+    .compress {
       padding-left: 12%;
       padding-right: 12%;
     }
   }
+
   &.appear {
     opacity: 1;
   }
@@ -476,8 +479,8 @@ object {
     margin-bottom: 3rem;
   }
 
-  &.backdrop{
-    margin-top:10%;
+  &.backdrop {
+    margin-top: 10%;
   }
 
   img {
@@ -633,28 +636,30 @@ object {
   width: max-content;
   flex-shrink: 0;
 
-  &-slider{
+  &-slider {
     display: flex;
     flex-direction: row;
     overflow: auto;
     gap: 50px;
     width: 100vw;
     left: 0;
-    padding: 0px 8% 50px 8% ;
+    padding: 0px 8% 50px 8%;
     box-sizing: border-box;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
-    
+
   }
+
   &-subtitle {
     position: relative;
     line-height: 1.2em;
     display: flex;
     flex-direction: row;
-    gap:10px;
-    svg{
+    gap: 10px;
+
+    svg {
       width: 28px;
       fill: var(--purple);
     }
@@ -686,7 +691,7 @@ object {
       gap: 10px;
     }
 
-    h4{
+    h4 {
       font-size: 32px;
       align-self: center;
       text-align: center;
@@ -730,25 +735,26 @@ object {
         margin: 10px 0;
         gap: 10px;
 
-        &,
-        strong {
+        &, strong {
           display: flex;
           flex-direction: row;
           align-items: center;
         }
 
-        strong{
+        strong {
           gap: 5px;
         }
 
-        svg{fill:var(--white);}
+        svg {
+          fill: var(--white);
+        }
 
       }
     }
 
   }
 
-  &-body{
+  &-body {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -756,17 +762,20 @@ object {
     box-sizing: border-box;
     padding: 15px 20px;
 
-    .persona-details{
+    .persona-details {
       max-width: 800px;
-      ul{
+
+      ul {
         list-style: square;
       }
-      li{
+
+      li {
         margin: 5px 0;
       }
     }
-    .persona-interperso{
-      ul{
+
+    .persona-interperso {
+      ul {
         padding: 0;
         list-style: none;
         color: var(--purple);
@@ -774,15 +783,15 @@ object {
         flex-direction: row;
         flex-wrap: wrap;
 
-        li{
-          &:not(:last-of-type){
+        li {
+          &:not(:last-of-type) {
             display: flex;
             flex-direction: row;
             align-items: center;
 
-            &::after{
+            &::after {
               margin: 0 10px;
-              content:'';
+              content: '';
               display: block;
               width: 8px;
               height: 8px;
@@ -793,11 +802,12 @@ object {
         }
       }
     }
-    .persona-subtitle{
+
+    .persona-subtitle {
       margin-bottom: 10px;
     }
 
-    hr{
+    hr {
       border: solid 1px var(--purple-10);
     }
   }
@@ -811,6 +821,15 @@ object {
   justify-items: start;
   align-items: center;
   height: fit-content;
+
+  &[data-theme="dark"] {
+    span {
+      background-color: var(--white);
+      &::before {
+        background: var(--white);
+      }
+    }
+  }
 
   &[data-side="right"] {
     grid-template-columns: 2fr 1fr;

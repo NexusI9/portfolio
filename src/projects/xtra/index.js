@@ -1,7 +1,9 @@
 import { Article, Body, Gallery, Title, Space, Pointer, Img, Parallax } from '../../components/Folio';
-
+import PersonaSlider from '@/components/Folio/PersonaSlider';
 import logo from './assets/xtralogo.svg';
 import baijam from './assets/baijam.svg';
+import persona from './persona';
+import gallery from './gallery';
 
 
 
@@ -40,57 +42,29 @@ export default () => (
     <Article spaced={true} name='snapshots'>
       <Space type='small' />
       <Body flexDirection='vertical'>
-        <Gallery galleries={
-          {
-            gallery_1: [
-              { type: 'split', folder: '/xtra/g0/', pictures: ['xtra_15'] },
-              { type: 'split', folder: '/xtra/g0/', pictures: ['xtra_16'] },
-              { type: 'split', folder: '/xtra/g1/', pictures: ['xtra_0', 'xtra_1', 'xtra_3', 'xtra_5'] },
-              { type: 'split', folder: '/xtra/g3/', pictures: ['xtra_6', 'xtra_4', 'xtra_7', 'xtra_8'] },
-              { type: 'split', folder: '/xtra/g4/', pictures: ['xtra_9', 'xtra_10', 'xtra_11', 'xtra_12'] },
-              { type: 'split', folder: '/xtra/g5/', pictures: ['xtra_13', 'xtra_14'] },
-            ]
-          }
-        } galleryKey='gallery_1' />
+        <Gallery galleries={gallery} galleryKey='gallery_1' />
       </Body>
     </Article>
-
-
-    <Article name='Infinity scroll' spaced={true} className='backdrop center fill'>
-      <Title label="Overall aesthetic" className='half' summary='The brand heavily rely on tech and cybernetics illustrations to break the usual austerity and sometimes complex Data Privacy semantic, giving the customer a sense of comfort as his journey is supported by visuals.' />
-      <Space type='small' />
-      <Body flexDirection='horizontal' className='reverse vcenter'>
-        <Img className='stickToLeft' alt='poster mode' src='/assets/projects/xtra/cybernetic.webp' />
-        <Pointer style={{ flexBasis: '40%' }} title='Cybernetic visuals' description='In order to enhance user’s navigation, each XTRA’s page use a themed cybernetic illustration to give customer hints about what to except on this page on top of making his experience visually richer.' />
-      </Body>
-      <Space type='small' />
-      <Body flexDirection='horizontal' className='vcenter'>
-        <Pointer style={{ flexBasis: '40%' }} side='right' title='Material textures' description={
-          <>
-            By providing server installations for customers or businesses, XTRA’s services not only live in the digital world but also within the physical one.
-            <br />It thus felt important to inject some materiality in the website by the use of abstract textures to expand the art direction out of the digital world boundaries.
-          </>
-        } />
-        <Img className='stickToRight' alt='poster mode' src='/assets/projects/xtra/textures.webp' />
-      </Body>
-      <Space type='small' />
-    </Article>
-
 
 
     <Article id='xtraLogo_introduce' spaced={true} className='backdrop center fill whitecolor'>
-      <Title label="The guidestyle" className='compressed' style={{ textAlign: 'center' }} />
+      <Title
+        label="The guidestyle"
+        className='compressed'
+        style={{ textAlign: 'center' }} />
       <Space type='small' />
       <Body flexAlignement='centered'>
         <section className='half'>
           <h5>The logotype</h5>
           <p>
-            XTRA’s logo borrows futuristic elements such as diagonals and streamlined curves to convey a sense of speed, strength but also stability.
-            Similar to a flight company that will skyrocket your business with its powerful and secure tools.
+            XTRA’s logo borrows futuristic visual language such as diagonals and streamlined curves to convey a sense of speed, strength but also stability.
+            Echoing a shield or a flight company that will skyrocket your business with its powerful and secure tools.
           </p>
         </section>
         <img alt='xtra logo' src={logo.src} />
       </Body>
+      <hr />
+      <Space type='small' />
       <Body flexDirection='vertical' id='xtra_typecolor'>
         <section className='half' >
           <h5>Typeface & Color swatch</h5>
@@ -157,15 +131,71 @@ export default () => (
 
         </div>
       </Body>
+      <hr />
       <Space type='small' />
+      <Body flexDirection='vertical'>
+        <section className='half'>
+          <h5>Visual semantic</h5>
+          <p>
+            The brand heavily rely on tech and cybernetics illustrations to break the usual austerity and sometimes complex Data Privacy semantic, giving the customer a sense of comfort as his journey is enlightened by appealing visuals.
+          </p>
+        </section>
+      </Body>
+      <Body flexDirection='horizontal' className='reverse vcenter'>
+        <Img alt='poster mode' src='/assets/projects/xtra/cybernetic.webp' />
+        <Pointer style={{ flexBasis: '40%' }} title='Cybernetic visuals' theme='dark' description='In order to enhance user’s navigation, each XTRA’s page use a themed cybernetic illustration to give customer hints about what to except on this page on top of making his experience visually richer.' />
+      </Body>
+      <Space type='small' />
+      <Body flexDirection='horizontal' className='vcenter'>
+        <Pointer style={{ flexBasis: '40%' }} side='right' theme='dark' title='Material textures' description={
+          <>
+            By providing server installations for customers or businesses, XTRA’s services not only live in the digital world but also within the physical one.
+            <br />It thus felt important to inject some materiality in the website by the use of abstract textures to expand the art direction out of the digital world boundaries.
+          </>
+        } />
+        <Img alt='poster mode' src='/assets/projects/xtra/textures.webp' />
+      </Body>
+      <hr />
+      <Space type='small' />
+      <Body flexDirection='vertical'>
+        <section className='half'>
+          <h5>Collaterals & Signage</h5>
+          <p>
+            XTRA's holistic branding strategy extends beyond the digital realm, creating a 360-degree experience that permeates various touchpoints.
+            This comprehensive approach includes a range of collaterals designed to reinforce the brand's identity and message, both within the digital landscape and in physical spaces.
+          </p>
+        </section>
+      </Body>
+    </Article>
+
+    <Article name='Strategy'>
+      <Body flexAlignement='centered' flexDirection='vertical' style={{ textAlign: 'center' }}>
+        <div>
+          <h2>Digital strategy</h2>
+        </div>
+      </Body>
     </Article>
 
 
-
+    <Article name='Persona' className='plain'>
+      <Body flexDirection='vertical'>
+        <div>
+          <h5>User personas</h5>
+          <p>
+            The following personas offer insights into the diverse needs and motivations of different types of customers that XTRA might encounter,
+            whether they are B2B corporate entities or individual entrepreneurs.
+            This understanding can guide XTRA in tailoring their cybersecurity services to effectively address the specific challenges faced by each persona.
+          </p>
+        </div>
+      </Body>
+      <Space type='small' />
+      <PersonaSlider personas={persona} />
+    </Article>
     <Article name='Blog'>
+      <Space />
       <Body style={{ columnGap: '5%' }} className='flex vcenter' >
         <div>
-          <h2>Nurturing the SEO through a content strategy</h2>
+          <h5>Nurturing the SEO through a content strategy</h5>
           <br />
           <p>
             The blog page serves as a multi-purpose platform for XTRA to share their latest cybersecurity installations and updates.
@@ -186,7 +216,7 @@ export default () => (
           <Img src='/assets/projects/xtra/newsletter.webp' />
         </div>
         <div>
-          <h2>Lead generation form</h2>
+          <h5>Lead generation form</h5>
           <br />
           <p>
             As an emerging brand working to establish its presence, XTRA recognizes the importance of adopting a lead generation strategy alongside their inbound approach.

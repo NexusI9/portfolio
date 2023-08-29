@@ -27,7 +27,7 @@ export default () => {
 
             <Article spaced={true}>
                 <Body>
-                    <Video id={787395416} />
+                    <Video id={787395416} autoplay={true} controls={false}/>
                 </Body>
             </Article>
 

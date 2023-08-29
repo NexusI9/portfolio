@@ -17,8 +17,11 @@ $xtragradient: linear-gradient(104.68deg, #132534 0.98%, #050101 107.45%);
         margin-bottom: 60px;
     }
 
+    hr{
+        border: solid 1px #444d6660; 
+    }
+
     & > .body{
-       &:not(:last-of-type){ border-bottom: solid 1px #444d6660;         margin-bottom: 100px; }
         padding-bottom: 100px;
     }
 }
