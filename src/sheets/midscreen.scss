@@ -133,10 +133,13 @@
   #project_banner {
     padding: 5% 10%;
     height: fit-content;
-
+    position: relative;
     &>div {
       grid-template-columns: none;
       row-gap: 30px;
+      section{
+        width: 100%;
+      }
     }
   }
 
@@ -326,6 +329,7 @@
 
   #project {
     align-items: center;
+    margin-top: 0;
 
     #desc {
       width: 100%;
@@ -345,6 +349,9 @@
     box-sizing: border-box;
     padding: 0 30px;
   }
+
+
+  #juede{ display: none; }
 
   #resume-settings {
 
@@ -457,8 +464,17 @@
       }
     }
 
+    #guidesheet{
+      .body{
+         p{
+           text-align: left;
+         }
+        }
+      }
+
     section.horizontal {
       flex-direction: column;
+      gap: 1.3rem;
 
       &.reverse {
         flex-direction: column-reverse;
@@ -478,6 +494,7 @@
 
     .pointer {
       display: block;
+      margin-bottom: 1.3rem;
 
       span {
         display: none;

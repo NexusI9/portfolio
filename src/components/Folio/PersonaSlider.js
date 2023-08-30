@@ -10,7 +10,13 @@ export default ({ personas }) => {
 
     useEffect(() => {
        if(slider.current){
-        setWidth( slider.current.getBoundingClientRect().width );
+        let { width } = slider.current.getBoundingClientRect();
+        if(window.matchMedia('(min-width: 825px)').matches){
+            setWidth( -1*width/1.55 );
+        }else{
+            setWidth( -1*width/1.4 );
+        }
+     
        }
     }, []);
 
@@ -19,10 +25,10 @@ export default ({ personas }) => {
             className='persona-slider'
             ref={slider}
         >
-            {       console.log(width)}
             <motion.div
                 drag='x'
-                dragConstraints={{left:-1*width/1.55, right: 0}}
+                dragConstraints={{left:width, right: 0}}
+                dragTransition={{ bounceStiffness: 600, bounceDamping: 30 }}
             >
                 {personas.map((p, i) => <Persona key={`${p.name || i}personacard`} {...p} />)}
             </motion.div>

@@ -176,7 +176,7 @@ const PopUp = () => (
     </div>
 );
 const Charts = () => (
-  <Masonry columnsCount={ window.innerWidth > window.innerHeight ? 2 : 1} gutter='20px'>
+  <Masonry columnsCount={ window.matchMedia('(min-width:825px').matches ? 2 : 1} gutter='20px'>
   <div className="infobox guidesheet" key='chart_1'>
     <section className="header">
       <span className='app' style={{backgroundImage: "url('/assets/projects/laos/laos_logo.svg')" }}></span>
@@ -809,7 +809,7 @@ export default () => (
         <div className='flexblank'></div>
       </section>
     </Body>
-    <Body>
+    <Body flexDirection='horizontal' className='reverse'>
       <div className='flexblank' style={{flexBasis:'30%'}}></div>
       <div> <PopUp /> </div>
       <div>
@@ -842,7 +842,7 @@ export default () => (
   <Article id='guidesheet' spaced={true} name='Graphic chart'>
     <Body flexDirection='vertical' flexAlignement='centered'>
         <h2>The guide style</h2>
-        <p className='half' style={{textAlign:'center', marginBottom:'5vh'}} >LAOS' various exercises own distrinct workspace with their own visual hierarchy to optimize and enhance the learning process for the user</p>
+        <p className='half'>LAOS' various exercises own distrinct workspace with their own visual hierarchy to optimize and enhance the learning process for the user</p>
       <Charts />
     </Body>
   </Article>

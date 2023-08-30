@@ -200,7 +200,7 @@ $mapFilter: (
 }
 
 p {
-  text-wrap: balance;
+  //text-wrap: balance;
 }
 
 
@@ -2632,8 +2632,8 @@ span.lineSeparator {
             word-wrap: unset;
             display: inline;
             padding: 5px 15px;
-            background: var(--darkgrey);
-            color: var(--white);
+            border: solid 1px var(--purple);
+            color: var(--purple);
             gap: 10px;
             border-radius: 15em;
           }

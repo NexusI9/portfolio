@@ -90,7 +90,7 @@ function Project({_setHomeButton, _setSkin}){
         setDisplayHeader(true); 
       }else{
         setWhiteMenu(false);
-        if( !window.matchMedia('(max-width:425px)').matches ){ setDisplayHeader(false); }
+        if( !window.matchMedia('(max-width:825px)').matches ){ setDisplayHeader(false); }
       }
 
     }
