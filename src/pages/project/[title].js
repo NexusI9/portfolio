@@ -5,6 +5,7 @@ import {
   getProjectFromTitle,
   getCategoryOfProject,
   getRandomProject,
+  getAllProjects
 } from '@/lib/utils';
 import { Suggestion, Content, Header } from '@/components/Projects';
 import { PercentBar } from '@/components/Props';
@@ -14,20 +15,27 @@ import { Loader } from '@/components/Loader';
 import {motion, AnimatePresence} from 'framer-motion';
 import { connect } from 'react-redux';
 import dynamic from 'next/dynamic';
+import { STATIC_IMPORTS } from '@/lib/projects';
 
 const mapDispatchToProps = (dispatch) => ({
   _setHomeButton: (e) => dispatch({type: 'TOGGLE_BACK_BUTTON', active:e}),
   _setSkin: (e) => dispatch({type:'SWITCH_SKIN', skin:e}),
 });
 
-function Project({_setHomeButton, _setSkin}){
+
+function Project({_setHomeButton, _setSkin, staticProject}){
 
   const router = useRouter();
 
   //elements
   const [project, setProject] = useState();
   const [headerTitle, setHeaderTitle]=useState('');
-  const suggestions = useRef();
+  const suggestions = (staticProject && {current: getRandomProject({ number:3, project:staticProject[0] })}) || useRef();
+
+  const staticIndex = staticProject?.map( ({folder}) => STATIC_IMPORTS[folder] );
+  //staticProject && dynamic(() => import('../../projects/'+staticProject.folder));
+  //https://github.com/vercel/next.js/discussions/11291
+  //https://nextjs.org/docs/messages/react-hydration-error
 
   //project content
   const [htmlContent, setHtmlContent ] = useState();
@@ -43,7 +51,9 @@ function Project({_setHomeButton, _setSkin}){
   const handleLoadComplete = () => {
     setLoadComplete(true); 
     _setHomeButton(true);
-    suggestions.current = getRandomProject({ number:3, project:project });
+    if(project){
+      suggestions.current = getRandomProject({ number:3, project:project });
+    }
   }
 
   useEffect( () => { 
@@ -65,7 +75,7 @@ function Project({_setHomeButton, _setSkin}){
 
       setLoadComplete(false); 
       setProject(data.project);
-      setHeaderTitle(data.project.title + ' on Nassim El Khantour');
+      setHeaderTitle(data.project.title + ' | Nassim El Khantour');
     }
 
   },[router.query.title]);
@@ -122,11 +132,11 @@ function Project({_setHomeButton, _setSkin}){
   return(
     <>
       <Head>
-        <title>{headerTitle}</title>
+        <title>{(staticProject && `${staticProject[0].title} | Nassim El Khantour`) || headerTitle}</title>
       </Head>
 
       <AnimatePresence mode='wait'> 
-          { (!loadComplete && project) &&  <Loader 
+          { (!staticProject && !loadComplete && project) &&  <Loader 
               key={'LOADER' + project.title} 
               title={project.title}
               background={project.banner}
@@ -137,20 +147,20 @@ function Project({_setHomeButton, _setSkin}){
         </AnimatePresence>
 
         <AnimatePresence mode='wait'> 
-          {loadComplete && project && displayHeader &&  <Header project={project} />}  
+          { (staticProject || (loadComplete && project && displayHeader)) &&  <Header project={staticProject[0] || project} />}  
         </AnimatePresence>
 
         <AnimatePresence mode='wait'> 
-        {project && loadComplete &&
+        { (staticProject || (project && loadComplete)) &&
           <>
             <motion.div 
               id='project'
-              key={ 'projectContainer' + project.title }
+              key={ 'projectContainer' + (staticProject[0] || project).title }
               exit={{opacity:0, transition:{duration:0.3}}}
               
             > 
                 {showSideBar && <PercentBar />}
-                {htmlContent && <Content innerRef={ (e) => setProjectContainer(e) } >{htmlContent}</Content>}
+                { (staticIndex || htmlContent) && <Content innerRef={ (e) => setProjectContainer(e) } >{staticIndex || htmlContent}</Content>}
             </motion.div>
 
             {suggestions.current && <Suggestion projects={suggestions.current} display={!showSideBar} /> }
@@ -161,6 +171,28 @@ function Project({_setHomeButton, _setSkin}){
         </AnimatePresence> 
     </>);
 
+}
+
+
+// Generates `/movies/1` and `/movies/2`
+export async function getStaticPaths() {
+  const projects = getAllProjects();
+  console.log(projects);
+  return {
+    paths: projects.map( ({title}) => ({ params: { title: title.toString() } }) ),
+    fallback: false, // can also be true or 'blocking'
+  }
+}
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps({params}) {
+  const projects = getAllProjects();
+  const staticProject = projects.filter(pj => pj.title.toString() == params.title.toString());
+
+  return {
+    props: {
+      staticProject:staticProject
+    } // Passed to the page component as props
+  }
 }
 
 export default connect(null, mapDispatchToProps)(Project);

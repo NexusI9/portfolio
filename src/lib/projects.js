@@ -1,4 +1,6 @@
-const CATEGORIES = {
+import dynamic from 'next/dynamic';
+
+export default {
 
   "Design":{
     "zhongwen":"设计",
@@ -318,9 +320,39 @@ const CATEGORIES = {
     ]
   }
 
+};
+
+export const STATIC_IMPORTS = {
+  //design
+  "XTRA": dynamic(() => import('@/projects/xtra')),
+  "Kinoji": dynamic(() => import('@/projects/kinoji')),
+  "ACID DESIGN":  dynamic(() => import('@/projects/aciddesign')),
+  "LAOS": dynamic(() => import('@/projects/laos')),
+  "夢風": dynamic(() => import('@/projects/mengfeng')),
+  "商品設計合集":  dynamic(() => import('@/projects/shangpin')),
+  //animation
+  "ACAB": dynamic(() => import('@/projects/acab')),
+  "Kaiser Throne": dynamic(() => import('@/projects/kaiserthrone')),
+  "NEOM":  dynamic(() => import('@/projects/neom')),
+  "Aftermath":  dynamic(() => import('@/projects/aftermath')),
+  //illustration
+  "The Lone harvester": dynamic(() => import('@/projects/harvester')),
+  "AZUSA": dynamic(() => import('@/projects/azusa')),
+  "Stylized Scenery":  dynamic(() => import('@/projects/stylized')),
+  "ECHO":  dynamic(() => import('@/projects/echo')),
+  "CYB3R T3CHN0 R4VE":  dynamic(() => import('@/projects/cyberrave')),
+  //creative code
+  "UrbEXE":  dynamic(() => import('@/projects/urbexe')),
+  "NTK":  dynamic(() => import('@/projects/ntk')),
+  "Various Work":  dynamic(() => import('@/projects/variouswork'))
+
 }
 
-export default CATEGORIES;
+
+
+/*
+
+//Illustrations
 
 export const THEMES =
 {
@@ -330,12 +362,6 @@ export const THEMES =
   'Illustrations':'purple',
   'Creative Code':'yellow'
 };
-
-
-
-/*
-
-//Illustrations
 {
   "title":"兔儿神",
   "thumbnail":"/assets/thumbnails/rabbit.webp",
