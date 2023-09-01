@@ -1,6 +1,5 @@
 import { 
     getCategories, 
-    getColorOfCategory, 
     getZhongwenOfCategory
   } from '../../lib/utils';
   import CategoryContainer from './CategoryContainer';
@@ -105,7 +104,7 @@ const Flow = ({projects, _onCategoryChange=(e)=>0, _setUserClick=(e)=>0, _catego
             id="categorySuper"
             key={'catsuper'+category}
             >
-              <BackgroundHeader title={category} zhongwen={getZhongwenOfCategory(category)} color={ getColorOfCategory(category) || '#000000' }/>
+              <BackgroundHeader title={category} zhongwen={getZhongwenOfCategory(category)}/>
           </motion.div>
           }
       </AnimatePresence>
