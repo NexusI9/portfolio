@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const BackgroundHeader = ({title="", zhongwen="", color, speed=1, delay=0.02}) => {
+const BackgroundHeader = ({title="", zhongwen="", speed=1, delay=0.02}) => {
 
     const TEXT_SIZE = 2;
     const containVariant = {

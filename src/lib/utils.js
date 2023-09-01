@@ -1,12 +1,10 @@
 
-import CATEGORIES, { THEMES } from './projects';
+import CATEGORIES from './projects';
 
 
 export function cleanCategoryName(key){ return key.replace('<br>',''); }
 
 export function getCategories(cat=CATEGORIES){ return Object.keys(cat); }
-
-export function getColorOfCategory(category){ return THEMES[category]; }
 
 export function randomInt(mn, mx) { // min and max included
   mn = parseInt(mn);
@@ -40,8 +38,6 @@ export function getCategoryOfProject(project){
 
 }
 
-export function getColorFromProject(project){ return THEMES[ getCategoryOfProject(project) ]; }
-
 export function getRandomProject({number, project}){
 
   number  = number || 3;
@@ -61,7 +57,7 @@ export function getRandomProject({number, project}){
 
 export function getProjectsOfCategory(cat){ return CATEGORIES[cat].projects || []; }
 
-export function  getPageTitleFromLocation(location){
+export function getPageTitleFromLocation(location){
 
     const pathname = location.pathname;
     const routes  = [
@@ -104,6 +100,10 @@ export function pictureToFullPath({folder, picture, extension='webp'}){ return '
 
 export function filenameFromPath(path){
   return path.split('/').reverse()[0].split('.')[0];
+}
+
+export function getAllProjects(){
+  return Object.keys(CATEGORIES).map( cat => CATEGORIES[cat].projects ).flat();
 }
 
 export function smoothScroll(offsetTop, offset = 0) {

@@ -42,7 +42,7 @@ export default () => (
     <Article spaced={true} name='snapshots'>
       <Space type='small' />
       <Body flexDirection='vertical'>
-        <Gallery galleries={gallery} galleryKey='gallery_1' />
+        <Gallery galleries={gallery} galleryKey='website' />
       </Body>
     </Article>
 
@@ -157,7 +157,7 @@ export default () => (
       </Body>
       {/*<hr />*/}
       <Space type='small' />
-      {/*<Body flexDirection='vertical'>
+      <Body flexDirection='vertical'>
         <section className='half'>
           <h5>Collaterals & Signage</h5>
           <p>
@@ -165,7 +165,8 @@ export default () => (
             This comprehensive approach includes a range of collaterals designed to reinforce the brand's identity and message, both within the digital landscape and in physical spaces.
           </p>
         </section>
-      </Body>*/}
+        <Gallery galleries={gallery} galleryKey='brand' />
+      </Body>
     </Article>
 
     <Article name='Strategy'>
