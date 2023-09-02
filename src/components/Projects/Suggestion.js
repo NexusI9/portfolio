@@ -30,13 +30,13 @@ const Suggestion = ({projects, display}) =>{
           exit='exit'
         >
           <motion.h2 key='suggestSeeAlso' variants={variantChild} > 
-              See other { getCategoryOfProject(projects[0]).toLowerCase() } projects 
+              See other { getCategoryOfProject(projects[0])?.toLowerCase() } projects 
           </motion.h2>
           <motion.section
             key={ 'suggestSection'}
             variants={variantChild}
           >
-            { projects.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={true} /> ) }
+            { projects?.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={true} /> ) }
           </motion.section>
         </motion.div>
       </AnimatePresence>
