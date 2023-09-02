@@ -67,7 +67,7 @@ function Project({ _setHomeButton, _setSkin, project, req }) {
 
     }
 
-    project.map(({skin}) => _setSkin(skin));
+    project.map(({ skin }) => _setSkin(skin));
 
     window.addEventListener('scroll', onScroll);
     onScroll();
@@ -96,33 +96,36 @@ function Project({ _setHomeButton, _setSkin, project, req }) {
       </Head>
 
       {project?.map(pj =>
-        <Loader
-          key={'LOADER' + pj.title}
-          title={pj.title}
-          background={pj.banner}
-          font={pj.font}
-          onLoadComplete={handleLoadComplete}
-        >
-          <AnimatePresence mode='wait'>
-            {displayHeader && <Header project={pj} />}
-          </AnimatePresence>
-
-          <motion.div
-            id='project'
-            key={`projectContainer${pj.title}`}
-            exit={{ opacity: 0, transition: { duration: 0.3 } }}
-            ref={(e) => setProjectContainer(e)}
+        <AnimatePresence mode='wait'>
+          <Loader
+            key={'LOADER' + pj.title}
+            title={pj.title}
+            background={pj.banner}
+            font={pj.font}
+            onLoadComplete={handleLoadComplete}
           >
-            {showSideBar && <PercentBar />}
-            {Index && <Index />}
-          </motion.div>
-          
-          <Suggestion projects={suggestions.current} display={!showSideBar} />
+            <AnimatePresence mode='wait'>
+              {displayHeader && <Header project={pj} />}
+            </AnimatePresence>
 
-          <Signature />
-          <Socials minify={true} />
+            <motion.div
+              id='project'
+              key={`projectContainer${pj.title}`}
+              exit={{ opacity: 0, transition: { duration: 0.3 } }}
+              ref={(e) => setProjectContainer(e)}
+            >
+              {showSideBar && <PercentBar />}
+              {Index && <Index />}
+            </motion.div>
 
-        </Loader>)}
+            <Suggestion projects={suggestions.current} display={!showSideBar} />
+
+            <Signature />
+            <Socials minify={true} />
+
+          </Loader>
+        </AnimatePresence>
+      )}
 
     </>);
 

@@ -155,7 +155,7 @@ export default () => (
         } />
         <Img alt='poster mode' src='/assets/projects/xtra/textures.webp' />
       </Body>
-      {/*<hr />*/}
+      <hr />
       <Space type='small' />
       <Body flexDirection='vertical'>
         <section className='half'>
@@ -163,6 +163,7 @@ export default () => (
           <p>
             XTRA's holistic branding strategy extends beyond the digital realm, creating a 360-degree experience that permeates various touchpoints.
             This comprehensive approach includes a range of collaterals designed to reinforce the brand's identity and message, both within the digital landscape and in physical spaces.
+            <br/><br/>
           </p>
         </section>
         <Gallery galleries={gallery} galleryKey='brand' />
@@ -222,7 +223,7 @@ export default () => (
           <p>
             As an emerging brand working to establish its presence, XTRA recognizes the importance of adopting a lead generation strategy alongside their inbound approach.
             <br /> Throughout most of the pages, the newsletter subscription form allows leads to receive the latest promotions and updates on cybersecurity.
-            This strategy not only enhances user engagement but also lays the foundation for a growing community of individuals interested in staying informed about the evolving landscape of information security.
+            <br />This strategy not only enhances user engagement but also lays the foundation for a growing community of individuals interested in staying informed about the evolving landscape of information security.
           </p>
         </div>
       </Body>

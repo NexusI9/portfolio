@@ -12,7 +12,7 @@ export const variantPlaneTwo = {
 
 export const variantFrame = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { delay: 0.7, duration: 1, type: "tween", ease: "easeOut" } },
+    animate: { opacity: 1, transition: { delay: 0.7, duration: 0.3, type: "tween", ease: "easeOut" } },
     exit: { opacity: 0, transition: { duration: 0.3 } }
 }
 
