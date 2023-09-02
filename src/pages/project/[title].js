@@ -15,14 +15,11 @@ import { connect } from 'react-redux';
 import { STATIC_IMPORTS } from '@/lib/projects';
 
 const mapDispatchToProps = (dispatch) => ({
-  _setHomeButton: (e) => dispatch({ type: 'TOGGLE_BACK_BUTTON', active: e }),
   _setSkin: (e) => dispatch({ type: 'SWITCH_SKIN', skin: e }),
 });
 
 
-function Project({ _setHomeButton, _setSkin, project, req }) {
-
-  const router = useRouter();
+function Project({_setSkin, project, req }) {
 
   //elements
   const suggestions = (project && { current: getRandomProject({ number: 3, project: project[0] }) }) || useRef();
@@ -38,7 +35,6 @@ function Project({ _setHomeButton, _setSkin, project, req }) {
   const [displayHeader, setDisplayHeader] = useState(true);
 
   const handleLoadComplete = () => {
-    _setHomeButton(true);
     suggestions.current = getRandomProject({ number: 3, project: project });
   }
 
@@ -51,8 +47,10 @@ function Project({ _setHomeButton, _setSkin, project, req }) {
 
       const scrollPos = window.pageYOffset;
       //sidebar & suggestion
-
-      if (scrollPos > projectContainer?.offsetHeight - 400) { setShowSideBar(false); }
+      
+      console.log(projectContainer?.offsetHeight);
+      console.log(scrollPos);
+      if (scrollPos > projectContainer?.offsetHeight) { setShowSideBar(false); }
       else { setShowSideBar(true); }
 
       if (!projectContainer) { return; }
@@ -102,7 +100,6 @@ function Project({ _setHomeButton, _setSkin, project, req }) {
             title={pj.title}
             background={pj.banner}
             font={pj.font}
-            onLoadComplete={handleLoadComplete}
           >
             <AnimatePresence mode='wait'>
               {displayHeader && <Header project={pj} />}
@@ -135,7 +132,7 @@ function Project({ _setHomeButton, _setSkin, project, req }) {
 // Generates `/movies/1` and `/movies/2`
 export async function getStaticPaths() {
   const projects = getAllProjects();
-  console.log(projects);
+
   return {
     paths: projects.map(({ title }) => ({ params: { title: title.toString() } })),
     fallback: false, // can also be true or 'blocking'

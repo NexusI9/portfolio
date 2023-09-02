@@ -9,12 +9,11 @@ import {
   variantFrame,
   variantWrapper
 } from './Loader.variants';
-
-import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 
 export default ({ title, background, font, children }) => {
 
-  const router = useRouter();
+  const dispatch = useDispatch();
   const label = useRef();
   const [startAnim, setStartAnim] = useState(false);
   const [percent, setPercent] = useState(0);
@@ -25,6 +24,7 @@ export default ({ title, background, font, children }) => {
   //check if user direct access
   useEffect(() => {
     setTimeout( () => setStartAnim(true),1000);
+    dispatch({ type: 'TOGGLE_BACK_BUTTON', active: true });
   }, []);
 
   //start gradient animation
