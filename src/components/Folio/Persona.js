@@ -16,7 +16,6 @@ export default ({
 }) => (
 
     <article className="card persona">
-        {console.log(headerColor)}
         <header style={headerColor && { backgroundImage: `url(${headerColor})`}}>
             <picture>
                 <img alt={`${name} portrait`} src={portrait} />

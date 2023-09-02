@@ -112,7 +112,6 @@ $arrowDist: 10px;
 }
 
 @mixin mainFont {
-
   font-family: 'Sora';
 }
 
@@ -4488,9 +4487,51 @@ label.customInput {
 
 }
 
+section.not-found{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  max-width: 1200px;
+
+  img{
+    max-width: 300px;
+  }
+
+  *{
+    margin: 0;
+    text-wrap:balance;
+  }
+
+  h1{
+    @include mainFont();
+    font-size: 1.3rem;
+    color:var(--purple);
+  }
+  h2{
+    font-size: 3rem;
+    line-height: 3rem;
+    margin: 20px 0;
+  }
+  h3{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  a{
+    margin-top: 100px;
+  }
+}
+
 
 @media screen and (orientation:portrait) {
 
+
+  section.not-found{
+    flex-direction: column-reverse;
+  }
   #resume {
 
     &-grid {

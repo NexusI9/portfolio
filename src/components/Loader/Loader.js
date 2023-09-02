@@ -10,18 +10,29 @@ import {
   variantWrapper
 } from './Loader.variants';
 
-const Loader = ({ title, background, font, onLoadComplete = () => 0, children }) => {
+import { useRouter } from 'next/router';
 
+export default ({ title, background, font, onLoadComplete = () => 0, children, req }) => {
 
+  const router = useRouter();
   const label = useRef();
   const [startAnim, setStartAnim] = useState(false);
   const [percent, setPercent] = useState(0);
   const [complete, setComplete] = useState(false);
+  const [direct, setDirect] = useState(false);
 
+
+  //check if user direct access
+  useEffect(() => {
+    console.log(router.beforePopState());
+    setDirect(!document.referrer.length)
+
+  }, [router]);
+
+  //start gradient animation
   useEffect(() => {
 
     if (!startAnim) { return; }
-
     window.scrollTo(0, 0);
     const fakepercent = { percent: 0 };
     gsap.to(fakepercent, {
@@ -34,6 +45,7 @@ const Loader = ({ title, background, font, onLoadComplete = () => 0, children })
 
   }, [startAnim]);
 
+  //update on percent changes
   useEffect(() => {
 
     let labelFontSize = parseInt(window.getComputedStyle(label.current, null).getPropertyValue('font-size'));
@@ -75,7 +87,7 @@ const Loader = ({ title, background, font, onLoadComplete = () => 0, children })
           key='loaderPage'
           id="loaderPage"
           variants={variantWrapper}
-          initial='initial'
+          initial={!direct && 'initial'}
           animate='animate'
           exit='exit'
         >
@@ -96,6 +108,4 @@ const Loader = ({ title, background, font, onLoadComplete = () => 0, children })
       </AnimatePresence>
     </>
   );
-}
-
-export default Loader;
+};
