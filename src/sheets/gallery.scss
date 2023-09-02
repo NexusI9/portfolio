@@ -1,20 +1,19 @@
-
-@mixin frameMargin(){
+@mixin frameMargin() {
   box-sizing: border-box;
   padding: 40px 45px;
   padding-right: 60px;
 }
 
-.article{
+.article {
 
   .gallery {
 
-    $gap:5px;
+    $gap: 5px;
     margin: calc($gap/2) 0;
-  
+
     overflow: hidden;
-  
-    img{
+
+    img {
       transition: transform 0.75s cubic-bezier(0.220, 0.375, 0.205, 1.000);
       object-fit: cover;
       width: 100%;
@@ -22,76 +21,84 @@
       max-width: none;
       max-height: none;
       cursor: pointer;
-      
-      @media(hover:hover){
-        transform: scale3d(1,1,1);
-        &:hover{
-          transform: scale3d(1.06,1.06,1.06);
+
+      @media(hover:hover) {
+        transform: scale3d(1, 1, 1);
+
+        &:hover {
+          transform: scale3d(1.06, 1.06, 1.06);
         }
       }
     }
-  
-    .imgWrapper{ margin: 0;}
-  
-    &.split, &.base{
+
+    .imgWrapper {
+      margin: 0;
+    }
+
+    &.split,
+    &.base {
       display: grid;
       grid-gap: $gap;
       box-sizing: border-box;
       grid-auto-flow: column;
     }
-  
-    &.base{
+
+    &.base {
       display: grid;
       //grid-template-columns: repeat(3, minmax(100px,1fr));
       justify-items: center;
       align-items: center;
     }
-  
-    &.split{ grid-template-columns: repeat(auto-fit,minmax(100px, 1fr)); }
-  
-    &.window{
+
+    &.split {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    &.window {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap:$gap;
-      row-gap:$gap;
+      grid-gap: $gap;
+      row-gap: $gap;
       margin-bottom: $gap;
     }
-  
-    &.column{
+
+    &.column {
       display: flex;
       flex-direction: column;
     }
-  
-    .master{
+
+    .master {
       grid-column: span 2;
       grid-row: span 2;
     }
-  
-    &.split > *, &.base > * {
-      flex:1;
+
+    &.split>*,
+    &.base>* {
+      flex: 1;
       flex-basis: 50%;
     }
-  
-    & > *, section{
+
+    &>*,
+    section {
       width: 100%;
       height: 100%;
     }
-  
-    & > section{
+
+    &>section {
       border: solid 1px #ebebec;
     }
-  
-    section{
+
+    section {
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
     }
-  
+
   }
 }
 
 
-.fullview{
+.fullview {
   position: fixed;
   top: 0;
   left: 0;
@@ -105,7 +112,7 @@
   align-content: space-between;
   @include frameMargin;
 
-  .fullview_bkg{
+  .fullview_bkg {
     background: #000000e3;
     width: 100%;
     height: 100%;
@@ -114,7 +121,7 @@
     z-index: 0;
   }
 
-  .close{
+  .close {
     cursor: pointer;
     position: absolute;
     z-index: 3;
@@ -124,7 +131,8 @@
     height: 20px;
     display: flex;
     margin: 35px 30px;
-    span{
+
+    span {
       cursor: pointer;
       border-radius: 10em;
       width: 100%;
@@ -132,17 +140,33 @@
       background-color: white;
       display: block;
       position: relative;
-      &:first-of-type{ transform: rotate(45deg); }
-      &:last-of-type{ position: absolute; transform: rotate(-45deg);}
+
+      &:first-of-type {
+        transform: rotate(45deg);
+      }
+
+      &:last-of-type {
+        position: absolute;
+        transform: rotate(-45deg);
+      }
     }
   }
 
-  &::-webkit-scrollbar { height: 0 !important; display: none; }
-  &::-webkit-scrollbar { height: 0 !important; display: none; }
+  &::-webkit-scrollbar {
+    height: 0 !important;
+    display: none;
+  }
 
-  img{ height: 100%; }
+  &::-webkit-scrollbar {
+    height: 0 !important;
+    display: none;
+  }
 
-  .mainframe{
+  img {
+    height: 100%;
+  }
+
+  .mainframe {
     position: relative;
     display: flex;
     align-content: center;
@@ -152,38 +176,48 @@
     height: 75vh;
     pointer-events: none;
 
-    img{
+    img {
       pointer-events: auto;
       position: absolute;
       cursor: pointer;
     }
   }
 
-  .thumbnails{
+  .thumbnails {
     position: relative;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     max-height: 25vh;
     box-sizing: border-box;
     pointer-events: none;
-    img{pointer-events: auto;}
-    &.center{ justify-content: center; }
 
-    & > *{ 
+    img {
+      pointer-events: auto;
+    }
+
+    &.center {
+      justify-content: center;
+    }
+
+    &>* {
       overflow: hidden;
-      margin: 0 10px; 
+      margin: 0 10px;
       border-radius: 5px;
 
-      @media(hover:hover){
-        img{ transform: scale3d(1,1,1); }
-        &:hover{
-          img{
-            transform: scale3d(1.1,1.1,1.1);
+      @media(hover:hover) {
+        img {
+          transform: scale3d(1, 1, 1);
+        }
+
+        &:hover {
+          img {
+            transform: scale3d(1.1, 1.1, 1.1);
           }
         }
       }
-      img{ 
-        border-radius: 5px; 
+
+      img {
+        border-radius: 5px;
         transition: transform 0.2s ease-out;
       }
     }
@@ -192,11 +226,12 @@
 
 }
 
-@media only screen and (max-width: 825px){
 
-  
-  .gallery{
-    &.split{
+@media only screen and (max-width: 825px) {
+
+
+  .gallery {
+    &.split {
       display: flex;
       flex-direction: column;
       grid-auto-flow: row;
@@ -204,28 +239,31 @@
     }
 
 
-    &.window{margin-bottom: 0px !important;}
+    &.window {
+      margin-bottom: 0px !important;
+    }
   }
 
 }
 
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 500px) {
 
-  .gallery{
+  .gallery {
 
-    &.window{
+    &.window {
       display: flex;
       flex-direction: column;
       grid-template-columns: none;
     }
 
-    &.base{
+    &.base {
       display: flex;
       flex-direction: column;
-      .master{     
+
+      .master {
         grid-column: span 1;
-        grid-row: span 1; 
+        grid-row: span 1;
       }
     }
   }

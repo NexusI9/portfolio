@@ -70,7 +70,7 @@ export default () => (
           <h5>Typeface & Color swatch</h5>
           <p>XTRA branding mainly takes inspiration in science-fiction’s aesthetic, wether in its typeface or choice of colors. <br /> The design also put in contrast darker areas brighten up by visuals, with white-themed sections for a clear and segmented navigation.</p>
         </section>
-        <div className='tableGroup'>
+        <div className='tableGroup guidestyle'>
           <table>
             <thead>
               <tr>
@@ -105,9 +105,9 @@ export default () => (
                 <td>
                   <p>Primary swatch</p>
                   <div className='packColor'>
-                    <span className='colorswatch primaryColor' style={{ backgroundColor: '#F3F7FC' }}></span>
-                    <span className='colorswatch primaryColor' style={{ backgroundColor: '#D74545' }}></span>
-                    <span className='colorswatch primaryColor' style={{ backgroundColor: '#132534' }}></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#F3F7FC' }}></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#D74545' }}></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#132534' }}></span>
                   </div>
                 </td>
               </tr>
@@ -121,7 +121,7 @@ export default () => (
                     <span className='colorswatch' style={{ backgroundColor: '#D8A6A6' }} ></span>
                     <span className='colorswatch' style={{ backgroundColor: '#C02C41' }} ></span>
                     <span className='colorswatch' style={{ backgroundColor: '#4F5465' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#050101', border: 'solid 1px #444d6660' }} ></span>
+                    <span className='colorswatch lightStroke' style={{ backgroundColor: '#050101'}} ></span>
                   </div>
                 </td>
               </tr>

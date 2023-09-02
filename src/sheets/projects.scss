@@ -627,6 +627,54 @@ object {
 }
 
 
+.guidestyle {
+
+  table {
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 80px;
+    width: 100%;
+
+    img {
+      max-width: 300px;
+    }
+
+    thead {
+      border-bottom: solid 1px #444d6660;
+    }
+
+    td {
+      box-sizing: border-box;
+      padding: 15px 20px;
+
+    }
+
+
+    .packColor {
+      margin-top: 10px;
+      box-sizing: border-box;
+      padding: 0 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minMax(20px, 1fr));
+
+      .colorswatch {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1/1;
+        height: auto;
+        &.lightStroke{
+          border: solid 1px #252a39;
+        }
+      }
+    }
+  }
+}
+
+
 
 .persona {
   border-radius: 10px;

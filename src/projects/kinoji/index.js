@@ -1,350 +1,74 @@
 import { Article, Body, Gallery, Title, Space, Pointer, Img, Video } from '@/components/Folio';
 
-import {
-  SearchBar,
-  Switcher,
-  DropDown,
-  Card,
-  MicroFilters
-} from './inputs';
-
 import logo from './assets/logo.svg';
+import fira from './assets/fira.svg';
 
 
-const picsArray = {
-  duvidha: fetchPicFromLength({ folder: 'Duvidha', name: 'duvidha', length: 24 }),
-  happy: fetchPicFromLength({ folder: 'Happy Together', name: 'happytogether', length: 40 }),
-  branded: fetchPicFromLength({ folder: 'Branded To Kill', name: 'brandedtokill', length: 18 }),
-  mountain: fetchPicFromLength({ folder: 'Mountains May Depart', name: 'mountainsmaydepart', length: 15 }),
-  tokyo: fetchPicFromLength({ folder: 'Neo Tokyo', name: 'neotokyo', length: 15 })
-}
-
-
-function fetchPicFromLength({ folder, name, length }) {
-
-  const ar = [];
-  for (var i = 1; i < length + 1; i++) {
-    var str = "" + i;
-    var pad = "00000";
-    str = pad.substring(0, pad.length - str.length) + str;
-    ar.push('/assets/projects/kinoji/' + folder + '/' + name + '_' + str + '.webp');
-  }
-  return ar;
-
-}
-
-/*const GraphicChart = () => (
-<>
-  <Body>
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>h1</td>
-            <td id="oswald"  className="leftborder"><img src="/assets/projects/kinoji/staatliches.svg" /></td>
-            <td>2em</td>
-          </tr>
-          <tr>
-            <td>p</td>
-            <td id="strait"  className="leftborder"><img src="/assets/projects/kinoji/strait.svg" /></td>
-            <td>1em</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </Body>
-
-  <Body>
-    <div id="tableKino">
-    <table>
-      <tbody>
-        <tr>
-          <th></th>
-          <th>&emsp;</th>
-          <th><li><img src="/assets/projects/kinoji/icons/clapperboard.svg" />&ensp;Homepage</li></th>
-          <th>&emsp;</th>
-          <th>&emsp;</th>
-          <th><li><img src="/assets/projects/kinoji/settings.svg" />&ensp;Settings</li></th>
-        </tr>
-
-          <tr className="tspace">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td className="leftborder"></td>
-            <td></td>
-          </tr>
-
-
-        <tr>
-          <td>Generic guideline &emsp;</td>
-          <td></td>
-          <td className="guide_bkg" style={{backgroundColor:'black'}}>Flat</td>
-          <td></td>
-          <td className="leftborder"></td>
-          <td className="guide_bkg round" style={{backgroundColor:'#dddddd', color:'black', boxShadow: '0 0 3px rgb(0 0 0 / 55%) inset'}}>Carved</td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td className="leftborder"></td>
-          <td></td>
-        </tr>
-
-
-        <tr>
-          <td>Background &emsp;</td>
-          <td></td>
-          <td className="guide_bkg " style={{backgroundColor:'black'}}></td>
-          <td></td>
-          <td className="leftborder"></td>
-          <td className="guide_bkg round" style={{backgroundColor:'#dddddd', color:'black'}}></td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td className="leftborder"></td>
-          <td></td>
-        </tr>
-
-        <tr>
-          <td>Interactive elements &emsp;</td>
-          <td></td>
-          <td className="guide_case round" style={{backgroundColor:'#AFAFAF', backgroundSize:'contain'}}></td>
-          <td></td>
-          <td className="leftborder"></td>
-          <td className="guide_case round" style={{background:'#C72222'}}></td>
-        </tr>
-
-        <tr>
-          <td></td>
-          <td></td>
-          <td className="guide_case" style={{color:'#AFAFAF'}}><i>highlight</i></td>
-          <td></td>
-          <td className="leftborder"></td>
-          <td></td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-
-        <tr>
-          <td>Iconography &emsp;</td>
-          <td></td>
-          <td colspan="5">
-
-            <section className="iconsboard">
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/clapperboard.svg')"}}></span>
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/clock.svg')"}}></span>
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/tag.svg')"}}></span>
-              <span className="round icons" style={{backgroundImage:"url('/assets/projects/kinoji/icons/search.svg')"}}></span>
-              <span className="round icons" style={{backgroundImage:"url('/assets/projects/kinoji/icons/az.svg')"}}></span>
-              <span className="round icons" style={{backgroundImage:"url('/assets/projects/kinoji/icons/calendar.svg')"}}></span>
-              <span className="round icons" style={{backgroundImage:"url('/assets/projects/kinoji/icons/globe.svg')"}}></span>
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/arrowback.svg')"}}></span>
-            </section>
-
-            <section className="iconsboard">
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/poster.svg')"}}></span>
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/mosaic.svg')"}}></span>
-              <span className="round icons"  style={{backgroundImage:"url('/assets/projects/kinoji/icons/close.svg')"}}></span>
-            </section>
-
-            <section className="iconsboard">
-              <div id="miniLoader" className="flex hori centered" style={{background:'#D4D4D4'}}></div>
-            </section>
-
-          </td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr className="tspace">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Color scheme &emsp;</td>
-          <td></td>
-          <td colspan="5">
-
-
-            <section id='kino_color'>
-              <div>
-                <span style={{backgroundColor:'#C72222'}}></span>
-                <p>#C72222</p>
-              </div>
-              <div>
-                <span style={{backgroundColor:'#222222'}}></span>
-                <p>#222222</p>
-              </div>
-              <div>
-                <span style={{backgroundColor:'#D4D4D4'}}></span>
-                <p>#D4D4D4</p>
-              </div>
-            </section>
-
-          </td>
-        </tr>
-
-
-      </tbody>
-    </table>
-
-    </div>
-  </Body>
-
-  </>
-);*/
 const GraphicChart = () => (
   <>
 
-    <div id='graphic_chart'>
-      <table id='table_font' className='round'>
+    <div className='tableGroup guidestyle'>
+      <table id='table_font'>
         <thead>
           <tr>
             <td colSpan='2'>
-              <h4 className='discrete'>The fonts</h4>
+              <h5 className='discrete'>Typeface</h5>
             </td>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td colSpan='2'>
-              <p>Barlow Semi Condensed</p>
-              <img src='/assets/projects/kinoji/fonts/Semi Bold.svg' alt='font' />
-            </td>
-          </tr>
           <tr>
             <td>
-              <p>Barlow</p>
-              <img src='/assets/projects/kinoji/fonts/barlow.svg' alt='font' />
-            </td>
-            <td>
-              <p>Strait</p>
-              <img src='/assets/projects/kinoji/fonts/strait.svg' alt='font' />
+              <img src={fira.src} alt='fira font specimen' />
             </td>
           </tr>
         </tbody>
       </table>
 
-      <table id='table_color' className='round'>
-        <thead>
-          <tr>
-            <td colSpan='4'>
-              <h4 className='discrete'>Color scheme</h4>
-            </td>
-          </tr>
-        </thead>
+      <table>
+            <thead>
+              <tr>
+                <td>
+                  <h5>Colors</h5>
+                </td>
+              </tr>
+            </thead>
 
-        <tbody>
-          <tr>
-            <td className='round greyborder' style={{ backgroundColor: '#111111' }}></td>
-            <td className='round' style={{ backgroundColor: '#E03434' }}></td>
-            <td className='round' style={{ backgroundColor: '#4989FF' }}></td>
-            <td className='round' style={{ backgroundColor: '#B740E6' }}></td>
-          </tr>
-          <tr>
-            <td className='round' style={{ backgroundColor: '#D4D4D4' }}></td>
-            <td className='round' style={{ backgroundColor: '#717171' }}></td>
-            <td className='round' style={{ backgroundColor: '#3C4658' }}></td>
-            <td className='round' style={{ backgroundColor: '#1B222A' }}></td>
-          </tr>
+            <tbody>
 
-        </tbody>
-      </table>
+            <tr>
+                <td>
+                  <p>Primary swatch</p>
+                  <div className='packColor'>
+                    <span className='colorswatch' style={{ backgroundColor: '#F2F7FF' }}></span>
+                    <span className='colorswatch lightStroke' style={{ backgroundColor: '#131319' }}></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#B81E1E' }}></span>
+                  </div>
+                </td>
+              </tr>
 
-      <table id='table_inputs' style={{ display: 'none' }} className='round'>
-        <thead>
-          <tr>
-            <td colSpan='4'>
-              <h4 className='discrete'>Inputs & CTA</h4>
-            </td>
-          </tr>
-        </thead>
+              <tr>
+                <td>
+                  <p>Secondary swatch</p>
+                  <div className='packColor'>
+                    <span className='colorswatch' style={{ backgroundColor: '#DBE4F2' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#C8D3E8' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#66799D' }} ></span>
+                    <span className='colorswatch' style={{ backgroundColor: '#3C4658' }} ></span>
+                    <span className='colorswatch lightStroke' style={{ backgroundColor: '#1B222A' }} ></span>
+                  </div>
+                </td>
+              </tr>
 
-        <tbody>
-          <tr>
-            <td colSpan='4'> <SearchBar /> </td>
-          </tr>
-          <tr>
-            <td><MicroFilters id='year' label='year' name='radio' /></td>
-            <td><DropDown /></td>
-            <td><Switcher /></td>
-          </tr>
-          <tr>
-            <td colSpan='4'>
-              <Card visual={<img src='/assets/projects/kinoji/YimouZhang.webp' alt='YimouZhang' />} label='Zhang Yimou' subtext={<small>1951-today</small>} summary={<small style={{ fontSize: '0.7em', lineHeight: '1.4em' }}><br />Zhang Yimou is a Chinese film director, producer, writer and actor, and former cinematographer.</small>} />
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
+            </tbody>
+          </table>
 
       <table id='table_icono' className='round'>
         <thead>
           <tr>
             <td colSpan='4'>
-              <h4 className='discrete'>Iconography</h4>
+              <h5 className='discrete'>Iconography</h5>
             </td>
           </tr>
         </thead>
@@ -355,15 +79,11 @@ const GraphicChart = () => (
               <img src='/assets/projects/kinoji/icons/az.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/calendar.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/clapperboard.svg' alt='icon' />
-              <img src='/assets/projects/kinoji/icons/clock.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/globe.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/search.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/tag.svg' alt='icon' />
-              <img src='/assets/projects/kinoji/icons/arrowback.svg' alt='icon' />
-            </td>
-          </tr>
-          <tr>
-            <td>
+              <img src='/assets/projects/kinoji/icons/list.svg' alt='icon' />
+              <img src='/assets/projects/kinoji/icons/shot.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/mosaic.svg' alt='icon' />
               <img src='/assets/projects/kinoji/icons/poster.svg' alt='icon' />
             </td>
@@ -453,10 +173,10 @@ export default () => (
         label='The website'
         summary={
           <>
-          The main challenge designing Kinoji website was to create an interface that seamlessly blends attractiveness, usability, and functionality, ensuring users enjoy a comfortable navigation experience through the vast cinematic archives. 
-          The primary focus was on precisely and thoughtfully targeting the number of options presented, striking a balance to avoid overwhelming users with an overly complex and daunting array of features.
-          <br/><br/>
-          From a visual standpoint, the goal was to immerse users in the realm of cinema by employing a predominantly black theme that serves to accentuate the prominence of film frames. The website's aesthetic prioritized capturing the essence of the cinematic world, with the dark backdrop providing a canvas for the vibrant movie stills and directorial captures to shine through. This approach not only enhances the overall experience but also draws visitors into the intriguing world of East Asian cinema.
+            The main challenge designing Kinoji website was to create an interface that seamlessly blends attractiveness, usability, and functionality, ensuring users enjoy a comfortable navigation experience through the vast cinematic archives.
+            The primary focus was on precisely and thoughtfully targeting the number of options presented, striking a balance to avoid overwhelming users with an overly complex and daunting array of features.
+            <br /><br />
+            From a visual standpoint, the goal was to immerse users in the realm of cinema by employing a predominantly black theme that serves to accentuate the prominence of film frames. The website's aesthetic prioritized capturing the essence of the cinematic world, with the dark backdrop providing a canvas for the vibrant movie stills and directorial captures to shine through. This approach not only enhances the overall experience but also draws visitors into the intriguing world of East Asian cinema.
           </>
         }
       />
@@ -519,7 +239,7 @@ export default () => (
 
     </Article>
 
-    <Article spaced={true} name='The style guide' id='kinoji_guidestyle' className='backdrop center fill'>
+    <Article spaced={true} name='The style guide' id='kinoji-guidestyle' className='backdrop center fill'>
 
       <Body title="The style guide" flexDirection='vertical'>
         <section id='logointroduce' >

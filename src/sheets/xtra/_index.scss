@@ -27,46 +27,6 @@ $xtragradient: linear-gradient(104.68deg, #132534 0.98%, #050101 107.45%);
 }
 
 
-#xtra_typecolor{
-    table{
-        text-align: center;
-         border-collapse: collapse;
-         margin: auto;
-         margin-top: 80px;
-         width: 100%;
-         img{ max-width: 300px; }
-         thead{
-            border-bottom: solid 1px #444d6660;
-         }
-         td{ 
-            box-sizing: border-box;
-            padding: 15px 20px;
-
-        }
-         .packColor{
-            margin-top: 10px;
-            box-sizing: border-box;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            .colorswatch{
-                display: block;
-                width: 50px;
-                height: 50px;
-                &.primaryColor{
-                    width: 100px;
-                    height: 100px;
-                }
-             }
-         }
-    }
-
-}
-
-
 #xtra_map{
     img{ width: 700px; }
     &::before{
