@@ -47,9 +47,7 @@ function Project({_setSkin, project, req }) {
 
       const scrollPos = window.pageYOffset;
       //sidebar & suggestion
-      
-      console.log(projectContainer?.offsetHeight);
-      console.log(scrollPos);
+    
       if (scrollPos > projectContainer?.offsetHeight) { setShowSideBar(false); }
       else { setShowSideBar(true); }
 
