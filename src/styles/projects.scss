@@ -1136,6 +1136,21 @@ table .tspace td {
 
 .cartography{
 
+  overflow: hidden;
+  &.active{
+    .cartography-label{
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    cursor: grab;
+  }
+
+  img{
+    transition: transform 1s ease;
+    pointer-events: none; 
+    user-select: none;
+  }
+
   position:relative;
   display: flex;
   align-items: center;
@@ -1150,6 +1165,10 @@ table .tspace td {
     padding: 15px 20px;
     background: #00000080;
     font-weight: 500;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    z-index: 1;
   }
 
 }
