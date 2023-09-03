@@ -22,7 +22,7 @@
         "@/lib/*": ["src/lib/*"],
         "@/assets/*": ["src/assets/*"],
         "@/projects/*": ["src/projects/*"],
-        "@/sheets/*": ["src/sheets/*"]
+        "@/styles/*": ["src/styles/*"]
       }
     },
     "include": ["next-env.d.js", "**/*.js", "**/*.jsx"],

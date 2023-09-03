@@ -148,3 +148,7 @@ export function changeHashTo(hash){
   }
 
 }
+
+export function os(){
+  return navigator.userAgent.toUpperCase().indexOf('MAC') != -1 ? "MAC" : "WIN";
+}

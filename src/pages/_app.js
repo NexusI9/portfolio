@@ -7,7 +7,7 @@ import store from '@/lib/store';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-import '@/sheets/styles.scss';
+import '@/styles/index.scss';
 
 
 const App = ({ Component, pageProps }) => {

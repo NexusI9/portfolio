@@ -10,3 +10,4 @@ export {default as Title} from './Title';
 export {default as Video} from './Video';
 export {default as Img} from './Img';
 export {default as Persona} from './Persona';
+export {default as Cartography} from './Cartography';

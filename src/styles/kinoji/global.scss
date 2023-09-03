@@ -16,20 +16,25 @@
 
 #kinoji-guidestyle {
 
+  $borderColor: rgba(221, 221, 221, 0.368627451);
   .guidestyle{
     thead{
-      border-color: rgba(221, 221, 221, 0.368627451);
+      border-color: $borderColor;
     }
+  }
+
+  .cartography{
+    border-color:  $borderColor;
   }
 
   header{
     text-align: center;
   }
 
-  &>.body:not(:last-of-type) {
-    border-bottom: solid 1px #dddddd5e;
-    margin-bottom: 100px;
-    padding-bottom: 100px;
+  hr{
+    border: solid 1px $borderColor;
+    border-bottom: none;
+    margin: 100px 0;
   }
 
   #logointroduce {

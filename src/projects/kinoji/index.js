@@ -1,4 +1,5 @@
-import { Article, Body, Gallery, Title, Space, Pointer, Img, Video } from '@/components/Folio';
+import { Article, Body, Gallery, Title, Space, Pointer, Img, Video, Cartography } from '@/components/Folio';
+import gallery from './gallery';
 
 import logo from './assets/logo.svg';
 import fira from './assets/fira.svg';
@@ -27,42 +28,42 @@ const GraphicChart = () => (
       </table>
 
       <table>
-            <thead>
-              <tr>
-                <td>
-                  <h5>Colors</h5>
-                </td>
-              </tr>
-            </thead>
+        <thead>
+          <tr>
+            <td>
+              <h5>Colors</h5>
+            </td>
+          </tr>
+        </thead>
 
-            <tbody>
+        <tbody>
 
-            <tr>
-                <td>
-                  <p>Primary swatch</p>
-                  <div className='packColor'>
-                    <span className='colorswatch' style={{ backgroundColor: '#F2F7FF' }}></span>
-                    <span className='colorswatch lightStroke' style={{ backgroundColor: '#131319' }}></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#B81E1E' }}></span>
-                  </div>
-                </td>
-              </tr>
+          <tr>
+            <td>
+              <p>Primary swatch</p>
+              <div className='packColor'>
+                <span className='colorswatch' style={{ backgroundColor: '#F2F7FF' }}></span>
+                <span className='colorswatch lightStroke' style={{ backgroundColor: '#131319' }}></span>
+                <span className='colorswatch' style={{ backgroundColor: '#B81E1E' }}></span>
+              </div>
+            </td>
+          </tr>
 
-              <tr>
-                <td>
-                  <p>Secondary swatch</p>
-                  <div className='packColor'>
-                    <span className='colorswatch' style={{ backgroundColor: '#DBE4F2' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#C8D3E8' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#66799D' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#3C4658' }} ></span>
-                    <span className='colorswatch lightStroke' style={{ backgroundColor: '#1B222A' }} ></span>
-                  </div>
-                </td>
-              </tr>
+          <tr>
+            <td>
+              <p>Secondary swatch</p>
+              <div className='packColor'>
+                <span className='colorswatch' style={{ backgroundColor: '#DBE4F2' }} ></span>
+                <span className='colorswatch' style={{ backgroundColor: '#C8D3E8' }} ></span>
+                <span className='colorswatch' style={{ backgroundColor: '#66799D' }} ></span>
+                <span className='colorswatch' style={{ backgroundColor: '#3C4658' }} ></span>
+                <span className='colorswatch lightStroke' style={{ backgroundColor: '#1B222A' }} ></span>
+              </div>
+            </td>
+          </tr>
 
-            </tbody>
-          </table>
+        </tbody>
+      </table>
 
       <table id='table_icono' className='round'>
         <thead>
@@ -95,58 +96,6 @@ const GraphicChart = () => (
     </div>
   </>
 );
-const Quote = ({ text, author }) => (
-  <div className='quote'>
-    <h4 className='discrete'>{text}</h4>
-    <p className='discrete'>{author}</p>
-  </div>
-);
-const MovieMason = ({ pictures, fade = false }) => (
-  <section className="moviemason">
-    <section className={"thumbcontain " + (fade ? 'deg' : '')}>
-      {pictures.map(pic => <img class='moviethumb' src={pic} />)}
-    </section>
-  </section>
-);
-const DatabaseQuery = () => {
-
-  const queryRoute = [
-    {
-      filters: ['Monochrome', 'Figure', 'Composition'],
-      pictures: picsArray.branded,
-      title: 'Branded to Kill, 1967, Seijun Suzuki'
-    },
-    {
-      filters: ['Urban', 'Neon', 'Anime'],
-      pictures: picsArray.tokyo,
-      title: 'Neo Tokyo, 1989, Rintaro'
-    },
-    {
-      filters: ['Asia', 'Naturalistic', 'Colorful'],
-      pictures: picsArray.mountain,
-      title: 'Mountains may depart, 2015, Jia Zhangke'
-    },
-  ];
-
-  const Column = ({ filters, pictures, title }) => (
-    <div>
-      <section className="taglabel">
-        <span className="icons"></span>
-        {filters && filters.map(fl => <><span className='connector'></span><p className="round">{fl}</p></>)}
-        <span className='connector' ></span>
-      </section>
-      <MovieMason pictures={pictures} fade={true} />
-      <small className='discrete'>{title}</small>
-    </div>
-  );
-
-  return (
-    <>
-      {queryRoute.map(query => <Column filters={query.filters} pictures={query.pictures} title={query.title} />)}
-    </>
-  );
-
-}
 
 export default () => (
   <>
@@ -182,16 +131,7 @@ export default () => (
       />
       <Body flexDirection='vertical'>
         <br />
-        <Gallery galleries={
-          {
-            gallery_1: [
-              { type: 'split', folder: '/kinoji/', pictures: ['boards'] },
-              { type: 'base', folder: '/kinoji/Screenshots/', pictures: ['moviepage', 'fullview', 'discover'] },
-              { type: 'split', folder: '/kinoji/Screenshots', pictures: ['genres', 'genrepage'] }
-            ]
-          }}
-          galleryKey='gallery_1'
-        />
+        <Gallery galleries={gallery} galleryKey='gallery_1' />
       </Body>
     </Article>
 
@@ -229,11 +169,7 @@ export default () => (
       <Body flexDirection='vertical'>
 
         <Video id="858466948" autoplay={true} controls={false} />
-        <Gallery galleries={{
-          gallery_2: [
-            { type: 'base', folder: '/kinoji/Screenshots/', pictures: ['worldmap_1', 'glossaire', 'tags'] }
-          ]
-        }} galleryKey='gallery_2' />
+        <Gallery galleries={gallery} galleryKey='gallery_2' />
 
       </Body>
 
@@ -254,8 +190,13 @@ export default () => (
         <GraphicChart />
       </Body>
 
-      <Body title='Userflow' flexDirection='vertical'>
-        <img src="/assets/projects/kinoji/userflow.svg" className='round' />
+        <hr/>
+      <Body title='The userflow' flexDirection='vertical'>
+
+        <Cartography
+          src="/assets/projects/kinoji/userflow.svg"
+          className='round'
+        />
       </Body>
     </Article>
 
