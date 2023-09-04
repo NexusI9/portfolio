@@ -12,7 +12,7 @@ const Press = ({language}) => (
         href="https://www.fedelab.fr/philip-pentacle-animal-chamber-apocalypse-beat-october-tone/"
         visual={press01.src}
         date="2021"
-        header={<a href='https://www.fedelab.fr/philip-pentacle-animal-chamber-apocalypse-beat-october-tone/' target='_blank' rel="noreferrer">PHILIP PENTACLE – ANIMAL CHAMBER APOCALYPSE BEAT [OCTOBER TONE]</a>}
+        header={<p>PHILIP PENTACLE – ANIMAL CHAMBER APOCALYPSE BEAT [OCTOBER TONE]</p>}
         detail="Fedelab.fr"
        />
   
@@ -28,7 +28,7 @@ const Press = ({language}) => (
             language={language} 
             /> 
           }
-        header={<a rel="noreferrer" href='https://www.lalsace.fr/culture-loisirs/2021/04/19/un-nouveau-clip-tres-anime-pour-philip-pentacle?fbclid=IwAR1678dXucyRIkv5ItoE2wi3ena8-KaOiQTVzDe32l8zNvTJe_XqVm1ij94' target='_blank'>Un nouveau clip très animé pour Philip Pentacle</a>}
+        header={<p>Un nouveau clip très animé pour Philip Pentacle</p>}
         detail="Lalsace.fr"
        />
   
@@ -44,7 +44,7 @@ const Press = ({language}) => (
             language={language} 
           /> 
         }
-        header={<a rel="noreferrer" href='https://www.mesenceintesfontdefaut.com/2021/03/03/nouveaute-philip-pentacle-animal-chamber-apocalypse-beat/' target='_blank'>[NOUVEAUTÉ] PHILIP PENTACLE – ANIMAL CHAMBER APOCALYPSE BEAT</a>}
+        header={<p>[NOUVEAUTÉ] PHILIP PENTACLE – ANIMAL CHAMBER APOCALYPSE BEAT</p>}
         detail="Mesenceintesfontdefaut.com"/>
   
       <Content
@@ -59,7 +59,7 @@ const Press = ({language}) => (
             language={language} 
             /> 
           }
-        header={<a rel="noreferrer" href='https://phenixwebtv.com/2019/12/14/les-clips-de-la-semaine-39/' target='_blank'>Les clips de la semaine #39</a>}
+        header={<p>Les clips de la semaine #39</p>}
         detail="Phenixwebtv.com"
        />
     </div>
