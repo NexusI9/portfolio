@@ -1,5 +1,5 @@
 const Story = ({paragraphs, dark=false}) => (
-    <div class={'story' + (dark ? ' dark' : '') }>
+    <div className={'story' + (dark ? ' dark' : '') }>
       <h2><span></span> The Story </h2>
       <section>{paragraphs.map( p => <p key={'story'+Math.random()}>{p}</p>)}
     </section></div>

@@ -381,6 +381,10 @@
         box-sizing: border-box;
         justify-content: flex-end;
         width: 100%;
+        pointer-events: none;
+        .dropdown{
+          pointer-events: auto;
+        }
         & > small{
           display: none;
         }

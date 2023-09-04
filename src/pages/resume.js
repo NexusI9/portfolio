@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { Socials } from '@/components/Statics';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 import {
   Pro,
@@ -58,6 +59,7 @@ function Resume() {
   const [dlUrl, setDlUrl] = useState();
   const [hide, setHide] = useState(false);
   const [headTitle, setHeadtitle] = useState('Resume | Nassim El Khantour');
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -81,6 +83,7 @@ function Resume() {
   ];
 
 
+
   const changeLang = (lang) => {
 
     //convert label to language value
@@ -90,9 +93,6 @@ function Resume() {
       lang = 'english';
     }
 
-    console.log(lang);
-
-
     //update Gtag & State
     window.gtag('event', `click_resume_language_${lang}`, { event_category: 'click', event_label: `Switch resume language to ${lang}` });
     setLanguage(lang);
@@ -101,14 +101,14 @@ function Resume() {
     switch (lang) {
 
       case 'french':
-        router.push({
+        router.replace({
           pathname: router.pathname,
           query: { lang: 'fr' }
         });
         break;
 
       case 'zhongwen':
-        router.push({
+        router.replace({
           pathname: router.pathname,
           query: { lang: 'zhg' }
         });
@@ -117,7 +117,7 @@ function Resume() {
       case 'english':
 
       default:
-        router.push({
+        router.replace({
           pathname: router.pathname,
           query: { lang: 'eng' }
         });
@@ -210,6 +210,8 @@ function Resume() {
   }, [router]);
 
   useEffect(() => {
+    dispatch({type:'SWITCH_SKIN',skin:'default'});
+    dispatch({type:'TOGGLE_BACK_BUTTON',active:false});
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 

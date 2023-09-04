@@ -34,6 +34,10 @@ const App = ({ Component, pageProps }) => {
 
     },[]);
 
+    useEffect(() =>{
+        console.log(router.pathname);
+    },[router.pathname])
+
 
     return (
         <>
