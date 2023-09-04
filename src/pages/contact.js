@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Nassim El Khantour - Contact</title>
+        <title>Contact | Nassim El Khantour</title>
       </Head>
       <ContactLayout />
       <Signature />

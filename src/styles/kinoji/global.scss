@@ -4,13 +4,10 @@
   background-size: 20%;
 }
 
-#kinoji_layouts,
 #kinoji-guidestyle {
   &::before {
     background-image: linear-gradient(104.78deg, #0E0E0E 18.85%, #700028 97.5%);
-    top: -3%;
     padding: 5% 0;
-
   }
 }
 

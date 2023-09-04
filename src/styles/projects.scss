@@ -1143,12 +1143,38 @@ table .tspace td {
       transition: opacity 0.2s ease;
     }
     cursor: grab;
+
+    .hints{
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+  }
+
+  &.drag{
+    img{
+      transition: none;
+    }
+  }
+
+  .hints{
+    font-size: 0.8em;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    margin: 10px;
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+    transition: transform, opacity, 0.25s ease-out;
   }
 
   img{
     transition: transform 1s ease;
     pointer-events: none; 
     user-select: none;
+    user-drag: none;
+    
   }
 
   position:relative;

@@ -20,7 +20,7 @@ const Showreel = ({_setSkin, _setHomeButton}) => {
   return(
     <>
         <Head>
-          <title>Nassim El Khantour - Showreel</title>
+          <title>Showreel | Nassim El Khantour </title>
         </Head>
         <motion.div
         id='showreel'

@@ -44,9 +44,9 @@ const Pro = ({language}) => (
               zh='企業活動攝影和攝像、後處理 ( 視頻與照片剪輯 )'
               language={language}/>,
             <Multi
-              eng='Providing web developers JS libraries to improve websites user experience (3D WebGL interactive content, SVG/CSS/GSAP animations...)'
-              fr='Assistance aux web developers en leur fournissant des bibliothèques JavaScript pour améliorer l’expérience utilisateur des sites (intégration 3D WebGL, animations CSS/SVG/GSAP…)'
-              zh='上級網站工程師助理，開發3D WebGL的內容 、 SVG/CSS/GSAP 互動式動畫' language={language}/>,
+              eng='Developing tailor-made JavaScript animations to improve websites user experience (3D WebGL interactive content, SVG/SCSS/GSAP animation...)'
+              fr="Développement d'animations JavaScript sur mesure pour améliorer l’expérience utilisateur des sites (intégration 3D WebGL, animations SCSS/SVG/GSAP…)"
+              zh='以改善網站用戶體驗 、開發定制的JavaScript動畫（3D WebGL 互動內容，SVG/SCSS/GSAP 動畫...）' language={language}/>,
             <Multi
               eng='Setup and development of web apps and Adobe Extensions to enhance the agency workflow.'
               fr="Mise en place et développement d'applications web et extensions Adobe pour améliorer le workflow de l’agence."

@@ -558,13 +558,6 @@
         height: 100%;
       }
     }
-
-    #kinoji_layouts,
-    #kinoji_guidestyle {
-      &.backdrop::before {
-        top: -10px;
-      }
-    }
   }
 
   #kinoji_first_mockup {

@@ -57,7 +57,7 @@ function Resume() {
   const [language, setLanguage] = useState();
   const [dlUrl, setDlUrl] = useState();
   const [hide, setHide] = useState(false);
-  const [headTitle, setHeadtitle] = useState('Nassim El Khantour - Resume (english)');
+  const [headTitle, setHeadtitle] = useState('Resume | Nassim El Khantour');
 
   const router = useRouter();
 
@@ -184,25 +184,25 @@ function Resume() {
 
     switch (langParam) {
       case 'eng':
-        setHeadtitle('Nassim El Khantour - Resume (english)');
+        setHeadtitle(' Resume | Nassim El Khantour');
         setLanguage('english');
         setDlUrl('/assets/pdf/Resume-Nassim_El_Khantour.pdf');
         break;
 
       case 'fr':
-        setHeadtitle('Nassim El Khantour - Resume (français)');
+        setHeadtitle('CV | Nassim El Khantour');
         setLanguage('french');
         setDlUrl('/assets/pdf/CV-Nassim_El_Khantour.pdf');
         break;
 
       case 'zhg':
-        setHeadtitle('Nassim El Khantour - Resume (中文)');
+        setHeadtitle('簡歷 | Nassim El Khantour ');
         setLanguage('zhongwen');
         setDlUrl('/assets/pdf/簡歷-Nassim_El_Khantour.pdf');
         break;
 
       default:
-        setHeadtitle('Nassim El Khantour - Resume (english)');
+        setHeadtitle('Resume | Nassim El Khantour');
         setLanguage('english');
         setDlUrl('/assets/pdf/Resume-Nassim_El_Khantour.pdf');
     }
