@@ -141,10 +141,13 @@ export function setFaviconColor(favicon, color='red'){ return favicon.href = pro
 
 export function changeHashTo(hash){ 
 
+
   if(!hash || !hash.length || !hash.trim().length ){
-    return window.history.pushState(null, "The Art of Nassim El Khantour","/");
+    return "/";
+    //return window.history.pushState(null, "The Art of Nassim El Khantour","/");
   }else{
-    return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash);
+    return "/#"+hash;
+    //return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash);
   }
 
 }

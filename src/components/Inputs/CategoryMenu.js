@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { getCategories, changeHashTo } from '../../lib/utils';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const mapStateToProps = (state) => ({
   _category: state.flow.category,
@@ -57,7 +58,8 @@ const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange
       let realCategory = lastHref.current ? lastHref.current : _category; //lastHref take over
       _setLatestHref(realCategory);
       setActive(realCategory);
-      changeHashTo(realCategory);
+      //router.replace( changeHashTo(realCategory) );
+
     },[_category]);
   
     useEffect( () => { 
@@ -79,10 +81,10 @@ const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange
                 {getCategories().map( (cat,i) => 
                 <Fragment key={`categoryMenu_${cat}`}>
                   <li className={ active === cat ? 'active' : undefined }>
-                    <a onClick={ () => onCategoryClick(cat) } >
+                    <Link onClick={ () => onCategoryClick(cat) } href={changeHashTo(cat)} scroll={false} replace>
                       <small className='cacheBold'><b>{cat}</b></small>
                       <small>{cat}</small>
-                      </a>
+                      </Link>
                   </li>
                   {i < getCategories().length-1 && <span className='lineSeparator'></span>}
                 </Fragment>
