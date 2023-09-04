@@ -1189,12 +1189,13 @@ table .tspace td {
     position: absolute;
     box-sizing: border-box;
     padding: 15px 20px;
-    background: #00000080;
+    background: #0f0f2fc0;
     font-weight: 500;
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.5s ease;
     z-index: 1;
+    color:var(--white);
   }
 
 }

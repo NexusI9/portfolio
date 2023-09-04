@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {Article, Body, Gallery, Title, Space, Pointer, Img, Video} from '@/components/Folio';
+import {Article, Body, Gallery, Title, Space, Pointer, Img, Video, Cartography} from '@/components/Folio';
 import { gsap } from 'gsap';
 import Masonry from 'react-responsive-masonry';
 
@@ -848,10 +848,10 @@ export default () => (
   </Article>
 
   <Article name='Userflow' spaced={false}>
-    <Body flexDirection='vertical' style={{textAlign:'center'}}>
+    <Body id="laos-userflow" flexDirection='vertical' style={{textAlign:'center'}}>
         <h2>The userflow</h2>
         <br/><br/>
-        <img className='infobox' src="/assets/projects/laos/userflow.svg"/>
+        <Cartography className='infobox' src="/assets/projects/laos/userflow.svg" />
     </Body>
     <Space />
   </Article>

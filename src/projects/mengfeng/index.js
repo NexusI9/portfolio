@@ -1,4 +1,4 @@
-import { Article, Body, Gallery, Title, Img, Video, Parallax, Persona } from '@/components/Folio';
+import { Article, Body, Gallery, Title, Img, Video, Parallax, Persona, Cartography } from '@/components/Folio';
 import PersonaSlider from '@/components/Folio/PersonaSlider';
 import personaMap from './persona';
 import galleryRoutes from './gallery';
@@ -59,9 +59,11 @@ export default () => (
     </Article>
 
     <Article name='Userflow' spaced={true} className='purpleBkg round'>
-      <Body flexDirection='vertical' title='Userflow'>
+      <Body flexDirection='vertical' title='The userflow'>
         <div id='userflow'>
-          <Img src="/assets/projects/mengfeng/userflow.svg" />
+          <Cartography
+            src="/assets/projects/mengfeng/userflow.svg"
+          />
         </div>
       </Body>
     </Article>

@@ -7,7 +7,8 @@ import STORE from './Cartography.store';
 export default ({
     label = `to start navigating the userflow`,
     src,
-    zoom = 1.4
+    zoom = 1.4,
+    className
 }) => {
 
     const [active, setActive] = useState();
@@ -114,7 +115,7 @@ export default ({
 
 
     return (<div
-        className={`cartography round ${active && 'active'} ${drag && 'drag'}`}
+        className={`cartography ${className && className} round ${active && 'active'} ${drag && 'drag'}`}
         ref={container}
         onMouseEnter={device() === "desktop" && onMouseEnter}
     >
