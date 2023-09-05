@@ -15,7 +15,7 @@ export default () => (
         </>}
       />
       <Body flexDirection='vertical'>
-        <Video id={632750562} placeholder={'/assets/thumbnails/mengfeng.webp'} />
+        <Video title='MengFeng product showcase' id={632750562} placeholder={'/assets/thumbnails/mengfeng.webp'} />
         <Gallery galleries={galleryRoutes} galleryKey='product' />
       </Body>
     </Article>

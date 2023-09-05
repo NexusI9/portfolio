@@ -47,7 +47,7 @@ export default class SCENE{
   events(){
       window.addEventListener( 'resize', this.onWindowResize.bind(this) );
       window.addEventListener('mousemove', this.onMouseMove.bind(this) );
-      document.getElementById('resume-portrait').addEventListener('touchmove', this.touchMove.bind(this) );
+      document.getElementById('resume-portrait').addEventListener('touchmove', this.touchMove.bind(this), {passive:true} );
   }
 
 //WebGL

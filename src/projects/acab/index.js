@@ -18,7 +18,7 @@ export default () => (
   <>
     <Article name='Music video'>
       <Body flexDirection='vertical' flexAlignement='centered'>
-       <Video id={502583843}/>
+       <Video title='ACAB music video' id={502583843}/>
       </Body>
     </Article>
     <Article>

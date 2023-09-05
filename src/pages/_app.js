@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Html } from 'next/document';
 import Script from 'next/script';
 import { useEffect } from 'react';
 import { Menu, SkinProvider } from '@/components/Statics';
@@ -36,7 +37,8 @@ const App = ({ Component, pageProps }) => {
 
     return (
         <>
-            <Head lang='en'>
+            <Head>
+                <html lang='en' /> 
                 <meta charSet="utf-8" />
                 <link rel="icon" id='favicon' href="/favicon.ico" />
                 <link rel="apple-touch-icon" href="/logo192.png" />

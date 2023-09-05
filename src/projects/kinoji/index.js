@@ -168,7 +168,7 @@ export default () => (
       />
       <Body flexDirection='vertical'>
 
-        <Video id="858466948" autoplay={true} controls={false} />
+        <Video title='Earth filter showcase' id="858466948" autoplay={true} controls={false} />
         <Gallery galleries={gallery} galleryKey='gallery_2' />
 
       </Body>

@@ -4,7 +4,7 @@ export default () => (
   <>
    <Article>
     <Body flexDirection='vertical' flexAlignement='centered'>
-      <Video id={510782114} placeholder={'/assets/thumbnails/urbexe.webp'}/>
+      <Video title='UrbEXE live performance' id={510782114} placeholder={'/assets/thumbnails/urbexe.webp'}/>
     </Body>
     </Article>
 

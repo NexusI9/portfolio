@@ -146,7 +146,7 @@ const VideoBanner = ({ _setCategory }) => {
           <img src={viewshowreel.src} />
         </div>
         <div style={{ position: 'relative', width: '100%', height: '100%', display: 'inline-block' }} onMouseMove={onVideoEnter} onMouseLeave={onVideoLeave} >
-          <Video id={502648300} autoplay={true} resize={false} playIco={false} defaultQuality='720p' controls={false} />
+          <Video title='showreel' id={502648300} autoplay={true} resize={false} playIco={false} defaultQuality='720p' controls={false} />
           <Link href='/showreel'></Link>
         </div>
       </div>

@@ -745,7 +745,7 @@ export default () => (
   <>
 
     <Article id='laos_intro' spaced={true} name='Showreel'>
-      <Video id={605841479} />
+      <Video title='LAOS promo video' id={605841479} />
     </Article>
 
     <Article id="laos_tpt" spaced={true} name="What's Laos">

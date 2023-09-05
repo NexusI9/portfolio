@@ -173,7 +173,7 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
             >
   
             <section className='move overlay'>
-                {<img className='thumb' src={thumbnail} />}
+                {<img className='thumb' src={thumbnail} alt={`Thumbnail of ${project.title} project`}/>}
                 {overlay && overlay}
             </section>
   
@@ -183,7 +183,7 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
                 { project.desc && <p><small><b>{project.desc}</b></small></p> }
             </div>
           }
-           <img className='move thumb' src={thumbnail}  ref={thumbnailImg} style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${ yPos }px,0)` }} />
+           <img className='move thumb' src={thumbnail}  alt={`Thumbnail of ${project.title} project`} ref={thumbnailImg} style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${ yPos }px,0)` }} />
           </motion.section>
     );
   }

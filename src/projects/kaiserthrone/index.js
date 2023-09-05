@@ -4,7 +4,7 @@ export default () => (
   <>
     <Article data-board-name='Music video'>
       <Body flexDirection='vertical' flexAlignement='centered'>
-        <Video id={502594756} />
+        <Video title='Kaiser Throne music video' id={502594756} />
       </Body>
     </Article>
 

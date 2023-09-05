@@ -1,9 +1,9 @@
 export default ({ name, job, location, quote, detail, avatar, innerRef}) => (
         <blockquote ref={innerRef}>
-            <div>
+            <hgroup>
                 <h5>{quote}</h5>
                 {detail && <p><small className="discrete">{detail}</small></p>}
-            </div>
+            </hgroup>
             <div className="quote-profile">
                 <img src={avatar} alt={`${name} portrait`} width={32} height={32} />
                 <div>

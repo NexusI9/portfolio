@@ -21,13 +21,13 @@ export default () => (
 
     <Article spaced={true}>
       <Body flexDirection='vertical'>
-          <div><Video id={503762124} /></div>
+          <div><Video title='Cyber Techno rave Video 1' id={503762124} /></div>
       </Body>
     </Article>
 
     <Article spaced={true}>
       <Body flexDirection='vertical'>
-          <div><Video id={503762148} /></div>
+          <div><Video title='Cyber Techno rave Video 1' id={503762148} /></div>
       </Body>
     </Article>
 

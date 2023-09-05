@@ -28,7 +28,7 @@ const Showreel = ({_setSkin, _setHomeButton}) => {
         animate={{opacity:1, transition:{duration:0.5, type:'tween', ease:'easeOut'}}}
         exit={{y:-80, opacity:0, transition:{duration:0.3}}}
         >
-        <Video id='502699503' playIco={false} autoplay={true} forceUnmute={true} forceStop={true}/>
+        <Video title='showreel' id='502699503' playIco={false} autoplay={true} forceUnmute={true} forceStop={true}/>
       </motion.div>
       <Socials minify={true}/>
     </>

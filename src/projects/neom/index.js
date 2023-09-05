@@ -3,7 +3,7 @@ import {Article, Img, Video} from '@/components/Folio';
 export default () => (
   <>
 	<Article spaced={true} >
-      <Video id={503057732} />
+      <Video title='Neom showcase' id={503057732} />
     </Article>
 
 		<Article id="desc">
