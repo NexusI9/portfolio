@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-function Project({_setSkin, project, req }) {
+function Project({ _setSkin, project, req }) {
 
   //elements
   const suggestions = (project && { current: getRandomProject({ number: 3, project: project[0] }) }) || useRef();
@@ -47,7 +47,7 @@ function Project({_setSkin, project, req }) {
 
       const scrollPos = window.pageYOffset;
       //sidebar & suggestion
-    
+
       if (scrollPos > projectContainer?.offsetHeight) { setShowSideBar(false); }
       else { setShowSideBar(true); }
 
@@ -92,7 +92,7 @@ function Project({_setSkin, project, req }) {
       </Head>
 
       {project?.map(pj =>
-        <AnimatePresence key={pj.folder} mode='wait'>
+        <AnimatePresence mode='wait'>
           <Loader
             key={'LOADER' + pj.title}
             title={pj.title}
@@ -103,15 +103,18 @@ function Project({_setSkin, project, req }) {
               {displayHeader && <Header project={pj} />}
             </AnimatePresence>
 
-            <motion.div
-              id='project'
-              key={`projectContainer${pj.title}`}
-              exit={{ opacity: 0, transition: { duration: 0.3 } }}
-              ref={(e) => setProjectContainer(e)}
-            >
-              {showSideBar && <PercentBar />}
-              {Index && <Index />}
-            </motion.div>
+
+              <motion.div
+                id='project'
+                key={`projectContainer${pj.title}`}
+                exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                ref={(e) => setProjectContainer(e)}
+              >
+                {showSideBar && <PercentBar />}
+                {Index && <Index />}
+              </motion.div>
+
+
 
             <Suggestion projects={suggestions.current} display={!showSideBar} />
 
