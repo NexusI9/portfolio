@@ -162,7 +162,7 @@ const Pro = ({language}) => (
                    fr='Direction artistique et animation pour un court-métrage d’animation (clip musical).'
                    zh='短片打造 (藝術總監、動畫師)'
                    language={language}/>,
-            <Multi eng='3D modeling, animation and compositing of more than a 100 visual samples made to be projected during cultural events.'
+            <Multi eng='3D modelling, animation and compositing of more than a 100 visual samples made to be projected during cultural events.'
                    fr='Modélisation, animation et compositing de plus de 100 samples visuels visés à être projetés lors d’évènements culturels.'
                    zh='為多種文化話動進行更多一百視頻樣本製作 ( 3D設計、動畫、視頻合成 )'
                    language={language}/>,
