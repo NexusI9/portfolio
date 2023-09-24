@@ -375,6 +375,9 @@ a {
   display: flex;
   flex-direction: row;
   gap: 15px;
+  *{
+    flex-shrink: 0;
+  }
 }
 
 
@@ -1029,7 +1032,7 @@ footer {
 }
 
 #homeAbout {
-  height: 75vh;
+  height: max-content;
   position: relative;
   box-sizing: border-box;
   padding: 0 5%;

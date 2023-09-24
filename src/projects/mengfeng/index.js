@@ -49,7 +49,7 @@ export default () => (
 
     <Article name='UI Overview' spaced={true} className='purpleBkg'>
       <Parallax
-        src='/assets/projects/mengfeng/wide_parallax.webp'
+        src='/assets/projects/mengfeng/wide-parallax.webp'
         title='Mobile application'
         description={<>
           MengFeng's electronic device seamlessly integrates with a comprehensive application, offering users an array of functionalities to curate their well-being experience.

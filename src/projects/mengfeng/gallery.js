@@ -6,6 +6,7 @@ export default {
     ],
     logo: [
       { type: 'split', folder: '/mengfeng/', pictures: ['logo_black', 'logo_mid', 'logo_AIO'] },
+      { type: 'split', folder: '/mengfeng/', pictures: ['font'] },
       { type: 'split', folder: '/mengfeng/', pictures: ['brandpack', 'visitcard'] },
       { type: 'split', folder: '/mengfeng/', pictures: ['collateral_1', 'collateral_2', 'collateral_3'] }
     ]

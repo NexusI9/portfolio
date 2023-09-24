@@ -29,7 +29,7 @@ export default () => (
 
     <Article spaced={false}>
       <Parallax
-        src='/assets/projects/xtra/wide_parallax_xtra.webp'
+        src='/assets/projects/xtra/wide-parallax_xtra.webp'
         title='The Website'
         description={<>
           The XTRA website serves as a comprehensive platform to showcase the brand's extensive range of B2C and B2B services and products. In an era where data privacy is of paramount importance, the brand's strategic approach focuses on not only educating customers about the significance and necessity of cybersecurity but also on highlighting why XTRA stands out as a reliable expert in secure IT equipment setup.
