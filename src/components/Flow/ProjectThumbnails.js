@@ -172,16 +172,16 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
             variants={toProjectVariant}
             >
   
-            <section className='move overlay'>
+            <div className='move overlay'>
                 {<img className='thumb' src={thumbnail} alt={`Thumbnail of ${project.title} project`}/>}
                 {overlay && overlay}
-            </section>
+            </div>
   
             { innerDesc &&
-              <div className='project_desc'>
+              <header className='project_desc'>
                 <h2 className={project.font ? project.font : ''}>{project.title}</h2>
                 { project.desc && <p><small><b>{project.desc}</b></small></p> }
-            </div>
+            </header>
           }
            <img className='move thumb' src={thumbnail}  alt={`Thumbnail of ${project.title} project`} ref={thumbnailImg} style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${ yPos }px,0)` }} />
           </motion.section>
