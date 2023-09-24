@@ -24,13 +24,18 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
           return () => clearInterval(interval);
   
       },[pictures,index]);
+
+      console.log(pictures[index]);
   
       return (
         <AnimatePresence initial={ !(index === 0) }>
           <motion.img
             className='thumb'
+            srcSet={`
+              ${pictures[index]} 700w,
+              ${pictures[index]} 450w,
+            `}
             key={pictures[index]}
-            src={pictures[index]}
             initial={{opacity:0}}
             animate={{opacity:1,transition:{duration:0.25}}}
             exit={{opacity:1,transition:{duration:0.25}}}
