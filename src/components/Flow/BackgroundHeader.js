@@ -34,7 +34,7 @@ const BackgroundHeader = ({title="", zhongwen="", speed=1, delay=0.02}) => {
           {[...zhongwen].map( (letter,i) => <h2 key={`zhongwen${i}`}>{letter}</h2> )}
         </motion.div>
         <motion.div
-          key={"mainTitle"}
+          key={"mainTitle"+title}
           variants={containVariant}
           initial='initial'
           animate='animate'
@@ -44,7 +44,7 @@ const BackgroundHeader = ({title="", zhongwen="", speed=1, delay=0.02}) => {
           {
           [...title].map( (letter,i) =>
             <motion.section
-              key={letter+i+'subletter'}
+              key={letter+i+'subletter'+title}
               className='case'
               variants={caseVariant}
               > 

@@ -57,8 +57,7 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
   }
 
   useEffect(() => {
-
-    let initMargin;
+    
     const onScroll = () => {
 
       setScrolled(true);

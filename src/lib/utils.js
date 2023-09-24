@@ -2,7 +2,7 @@
 import CATEGORIES from './projects';
 
 
-export function cleanCategoryName(key){ return key.replace('<br>',''); }
+export function cleanCategoryName(key){ return key.trim().length && key.replace('<br>','').replace(' ','-') || key; }
 
 export function getCategories(cat=CATEGORIES){ return Object.keys(cat); }
 
@@ -77,13 +77,13 @@ export function scrollTo(offset, callback) {
     const fixedOffset = offset.toFixed();
     const onScroll = function () {
             if (window.pageYOffset.toFixed() === fixedOffset) {
-                window.removeEventListener('scroll', onScroll)
-                callback()
+                window.removeEventListener('scroll', onScroll);
+                callback();
             }
         }
 
-    window.addEventListener('scroll', onScroll)
-    onScroll()
+    window.addEventListener('scroll', onScroll);
+    onScroll();
     window.scrollTo({
         top: offset,
         behavior: 'smooth'
@@ -141,15 +141,29 @@ export function setFaviconColor(favicon, color='red'){ return favicon.href = pro
 
 export function changeHashTo(hash){ 
 
-
   if(!hash || !hash.length || !hash.trim().length ){
     return "/";
-    //return window.history.pushState(null, "The Art of Nassim El Khantour","/");
   }else{
     return "/#"+hash;
-    //return window.history.pushState(null, "The Art of Nassim El Khantour - "+hash, "/#"+hash);
   }
 
+}
+
+export function currentHash(router){
+  
+  try{
+    const href = decodeURI(router.asPath.split('/#')[1]);
+    return href;
+  }catch(_){
+    return null
+  }
+
+}
+
+export function scrollToCategory (cat, behavior={behavior:'smooth'}, callback=()=>{}){ 
+  //listen to click change, so we store the new category in ref and set it active in Scroll event listener below
+  document.getElementById(cat)?.scrollIntoView(behavior);
+  callback(cat);
 }
 
 export function os(){

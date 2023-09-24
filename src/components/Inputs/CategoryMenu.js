@@ -1,8 +1,12 @@
-import { useEffect, useState, useRef, Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import { motion } from 'framer-motion';
-import { getCategories, changeHashTo } from '../../lib/utils';
+import { 
+  getCategories, 
+  changeHashTo, 
+  scrollToCategory,
+  cleanCategoryName
+} from '@/lib/utils';
 import { connect } from 'react-redux';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const mapStateToProps = (state) => ({
@@ -11,30 +15,20 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  _setLatestHref: (e) => dispatch({type:'SET_LAST_HREF', href:e}),
-  _setUserClick: (e) => dispatch({type:'SET_USER_CLICK', state:e}),
+  _setLastAction: (e) => dispatch({type:'SET_LAST_ACTION', state:e}),
   _onCategoryChange: (e) => dispatch({type:'CHANGE_CATEGORY', category:e}),
 });
 
-const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange, _setUserClick}) => {
+const CategoryMenu = ({_category, _onCategoryChange, _setLastAction}) => {
 
     const [active, setActive] = useState(_category);
-    const lastHref =  useRef(_latestHref);
-    const lastInteraction = useRef();
-    const router = useRouter();
-  
-    const goToCategory = (cat, behavior={behavior:'smooth'}) => { 
-      //listen to click change, so we store the new category in ref and set it active in Scroll event listener below
-      lastInteraction.current = 'click';
-      _onCategoryChange(cat);
-      document.getElementById(cat)?.scrollIntoView(behavior);
-    }
-    
+
     const onCategoryClick = (e) => {
-      goToCategory(e);
-      _setUserClick(true);
+      _setLastAction('click');
+      scrollToCategory(e,{behavior:'smooth'},_onCategoryChange);
       window.gtag('event',`click_menu_category_${e}`,{event_category:'click', event_label:`Click on category menu: ${e}`});
     }
+
   
     useEffect(()=>{
   
@@ -43,31 +37,16 @@ const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange
         //only setActive when scroll is done;
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() =>  { 
-          lastInteraction.current = null;
-          _setUserClick(false);
+          _setLastAction(null);
         }, 100);
       }
   
       window.addEventListener('scroll', onScroll);
-  
       return () => window.removeEventListener('scroll', onScroll);
   
     },[]);
 
-    useEffect( () => { 
-      let realCategory = lastHref.current ? lastHref.current : _category; //lastHref take over
-      _setLatestHref(realCategory);
-      setActive(realCategory);
-      //router.replace( changeHashTo(realCategory) );
-
-    },[_category]);
-  
-    useEffect( () => { 
-      if(lastHref.current){ 
-        goToCategory(lastHref.current, {behavior:'instant'}); 
-        lastHref.current = undefined;
-      } 
-    },[lastHref] );
+    useEffect( () => { setActive(_category); },[_category]); //upadte category menu active category
   
     return( 
       <motion.div 
@@ -81,7 +60,7 @@ const CategoryMenu = ({_category, _latestHref, _setLatestHref, _onCategoryChange
                 {getCategories().map( (cat,i) => 
                 <Fragment key={`categoryMenu_${cat}`}>
                   <li className={ active === cat ? 'active' : undefined }>
-                    <Link onClick={ () => onCategoryClick(cat) } href={changeHashTo(cat)} scroll={false} replace>
+                    <Link onClick={ () => onCategoryClick(cat) } href={changeHashTo(cleanCategoryName(cat))} scroll={false} replace>
                       <small className='cacheBold'><b>{cat}</b></small>
                       <small>{cat}</small>
                       </Link>
