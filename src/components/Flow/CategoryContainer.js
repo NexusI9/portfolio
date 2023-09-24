@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { default as Masonry } from 'react-responsive-masonry';
 import { variant } from './Flow.constants';
 import { getProjectsOfCategory, cleanCategoryName } from '../../lib/utils';
-import ProjectThumbnails from "./ProjectThumbnails";
+import Thumbnail from "./Thumbnail";
 
 const CategoryContainer = ({projects ,category, innerRef}) => {
 
@@ -47,7 +47,7 @@ const CategoryContainer = ({projects ,category, innerRef}) => {
           id={cleanCategoryName(category)}
           className="cat">
             <Masonry columnsCount={ columnsCount } gutter='20px'>
-                { getProjectsOfCategory(category).map( (project,c) => <ProjectThumbnails key={project.title} project={project} animated={true} /> ) }
+                { getProjectsOfCategory(category).map( (project,c) => <Thumbnail key={project.title} project={project} animated={true} /> ) }
             </Masonry>
         </motion.div>
   

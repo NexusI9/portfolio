@@ -38,7 +38,6 @@ const App = ({ Component, pageProps }) => {
     return (
         <>
             <Head>
-                <html lang='en' /> 
                 <meta charSet="utf-8" />
                 <link rel="icon" id='favicon' href="/favicon.ico" />
                 <link rel="apple-touch-icon" href="/logo192.png" />

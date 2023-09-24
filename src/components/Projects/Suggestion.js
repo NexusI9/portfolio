@@ -1,4 +1,4 @@
-import { ProjectThumbnails } from '../Flow';
+import { Thumbnail } from '../Flow';
 import { AnimatePresence, motion } from 'framer-motion';
 import {  getCategoryOfProject } from '../../lib/utils';
 import { useRouter } from 'next/router';
@@ -36,7 +36,7 @@ const Suggestion = ({projects, display}) =>{
             key={ 'suggestSection'}
             variants={variantChild}
           >
-            { projects?.map( (selected,i) => <ProjectThumbnails key={'suggest-'+i} project={selected} animated={true} /> ) }
+            { projects?.map( (selected,i) => <Thumbnail key={'suggest-'+i} project={selected} animated={true} /> ) }
           </motion.section>
         </motion.div>
       </AnimatePresence>

@@ -1,48 +1,14 @@
 import { toProjectVariant } from './Flow.constants';
 import { useRouter } from 'next/router';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { Video } from '../Folio';
+import SlideOverlay from './Thumbnail.slider';
+import { srcSetFromPath } from './Thumbnail.helper';
   
 const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
 
-    const SlideOverlay = ({pictures}) => {
-  
-      const [index,setIndex] = useState(0);
-  
-      useEffect(() => {
-  
-          const changeIndex = () => {
-              let currentIndex = index;
-              if( index === pictures.length-1 ){ return setIndex(0); }
-              currentIndex++;
-              setIndex(currentIndex);
-          };
-  
-          const interval = setInterval( changeIndex, 700 );
-  
-          return () => clearInterval(interval);
-  
-      },[pictures,index]);
-
-      console.log(pictures[index]);
-  
-      return (
-        <AnimatePresence initial={ !(index === 0) }>
-          <motion.img
-            className='thumb'
-            srcSet={`
-              ${pictures[index]} 700w,
-              ${pictures[index]} 450w,
-            `}
-            key={pictures[index]}
-            initial={{opacity:0}}
-            animate={{opacity:1,transition:{duration:0.25}}}
-            exit={{opacity:1,transition:{duration:0.25}}}
-          />
-        </AnimatePresence>
-      );
-    }
+    
     const { thumbnail } = project;
     const router = useRouter();
   
@@ -82,18 +48,6 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
   
       let lastScroll = -200;
       let lastVelo = 0
-  
-      function scrollVelocity(max = 20){
-  
-          let velocity = lastScroll - window.pageYOffset;
-          if( velocity > max){ velocity = max; }
-          if( velocity < -1*max){ velocity = -1*max; }
-          if( velocity == -1 || velocity == 1){ velocity=0;}
-          if(velocity != lastVelo){ return velocity; }
-  
-          lastVelo = velocity;
-          return 0;
-      }
   
       function scaleVideo(){
   
@@ -178,7 +132,11 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
             >
   
             <div className='move overlay'>
-                {<img className='thumb' src={thumbnail} alt={`Thumbnail of ${project.title} project`}/>}
+                {<img 
+                  className='thumb' 
+                  {...srcSetFromPath(thumbnail)}
+                  alt={`Thumbnail of ${project.title} project`}
+                  />}
                 {overlay && overlay}
             </div>
   
@@ -188,7 +146,12 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
                 { project.desc && <p><small><b>{project.desc}</b></small></p> }
             </header>
           }
-           <img className='move thumb' src={thumbnail}  alt={`Thumbnail of ${project.title} project`} ref={thumbnailImg} style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${ yPos }px,0)` }} />
+           <img   
+            className='move thumb' 
+            {...srcSetFromPath(thumbnail)}
+            alt={`Thumbnail of ${project.title} project`} 
+            ref={thumbnailImg} 
+            style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${ yPos }px,0)` }} />
           </motion.section>
     );
   }
