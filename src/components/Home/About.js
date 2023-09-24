@@ -34,7 +34,7 @@ const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
   },[inView, onEnterView, onExitView]);
 
   return(
-    <motion.div 
+    <motion.section 
       id='homeAbout'
       ref={container}
       animate={{opacity:1, y:0}}
@@ -50,7 +50,7 @@ const About = ({onEnterView = () => 0, onExitView = () => 0}) => {
           </div>
         </section>
       </div>
-    </motion.div>
+    </motion.section>
   )
 }
 

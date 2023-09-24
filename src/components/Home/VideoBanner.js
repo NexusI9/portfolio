@@ -8,10 +8,11 @@ import { HoverSquare } from '../Props';
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({
-  _setCategory: (e) => dispatch({ type: "CHANGE_CATEGORY", category: e })
+  _setCategory: (e) => dispatch({ type: "CHANGE_CATEGORY", category: e }),
+  _setLastAction: (e) => dispatch({ type: "SET_LAST_ACTION", state: e })
 });
 
-const VideoBanner = ({ _setCategory }) => {
+const VideoBanner = ({ _setCategory, _setLastAction }) => {
 
   const [hoverActive, setHoverActive] = useState(false);
 
@@ -40,9 +41,10 @@ const VideoBanner = ({ _setCategory }) => {
   }
 
   const onViewClick = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    //document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
     window.gtag('event', 'click_view_work', { event_category: 'click', event_label: 'Click on view my work' });
-    //_setCategory("Design");
+    _setLastAction("click");
+    setTimeout( () => _setCategory("Design"), 200);
   }
 
   const letterVar = {
@@ -109,7 +111,7 @@ const VideoBanner = ({ _setCategory }) => {
   }, []);
 
   return (
-    <motion.div
+    <motion.section
       key='motionLetterbox'
       id="letterbox"
       ref={firstplan}
@@ -162,7 +164,7 @@ const VideoBanner = ({ _setCategory }) => {
 
       {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
 
-    </motion.div>
+    </motion.section>
   );
 }
 

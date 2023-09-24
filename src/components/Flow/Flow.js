@@ -96,7 +96,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
 
   //on scroll action
   useEffect(() => {
-
+    console.log(_lastAction);
     if (_lastAction === 'scroll') {
       router.replace(changeHashTo(cleanCategoryName(_category)), undefined, {scroll:false});
     }
@@ -128,14 +128,14 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
         {displaySuper &&
           <motion.div
             id="categorySuper"
-            key={'catsuper' + category + router.asPath}
+            key={'catsuper' + category}
           >
             {router.pathname === "/" && <BackgroundHeader title={category} zhongwen={getZhongwenOfCategory(category)} />}
           </motion.div>
         }
       </AnimatePresence>
 
-      <div id="projects">
+      <section id="projects">
         {
           categories.current.map((cat, c) =>
             <CategoryContainer
@@ -144,7 +144,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
               projects={projects}
               innerRef={el => containerRef.current[c] = el}
             />)}
-      </div>
+      </section>
 
     </>
   );
