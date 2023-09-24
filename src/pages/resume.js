@@ -233,7 +233,7 @@ function Resume() {
       >
 
 
-        <section>
+        <div>
 
           <motion.span key='letsWerk' variants={popUp} id="dlresume">
             <Cta href='/contact' type='primary'>
@@ -251,10 +251,10 @@ function Resume() {
             </Cta>
           </motion.span>
 
-        </section>
-        <section>
+        </div>
+        <div>
           { language && <Dropdown entries={ LANG_MAP.map(item => item.label) } onChange={ (e) => changeLang(e.active) }/> }
-        </section>
+        </div>
 
 
       </motion.div>
