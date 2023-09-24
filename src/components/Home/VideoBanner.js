@@ -124,14 +124,14 @@ const VideoBanner = ({ _setCategory }) => {
       exit={{ opacity: 0, transition: { duration: 0.5, type: 'tween', ease: 'easeInOut' } }}
     >
       <motion.div id='textLetterbox' ref={name} style={{ display: displayVideo ? null : 'none' }}>
-        <section>
+        <header>
           <h2>Nassim <br /> El Khantour</h2>
           <p>Web Design&nbsp;::&nbsp;Motion Design&nbsp;::&nbsp;Development</p>
           <h1><b>The powerful blend of Art & Code, with a French Touch.</b></h1>
-        </section>
+        </header>
         <div className='aligncta'>
-          <Cta type='primary' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
-          <Cta type='secondary' to='/resume'><small><b>see my resume</b></small></Cta>
+          <Cta type='primary' href='/#Design' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
+          <Cta type='secondary' href='/resume'><small><b>see my resume</b></small></Cta>
         </div>
       </motion.div>
       <div
