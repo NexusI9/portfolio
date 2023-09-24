@@ -90,7 +90,7 @@ function Project({ _setSkin, project, req }) {
       <Head>
         <title>{(project.map(({ title }) => `${title} | Nassim El Khantour`))}</title>
       </Head>
-
+      <AnimatePresence mode='wait'>
       {project?.map(pj =>
         <Loader
           key={'LOADER' + pj.title}
@@ -111,6 +111,7 @@ function Project({ _setSkin, project, req }) {
             {Index && <Index />}
           </motion.div>
 
+
           <Suggestion projects={suggestions.current} display={!showSideBar} title={pj.title} />
           <Signature />
           <Socials minify={true} />
@@ -119,6 +120,7 @@ function Project({ _setSkin, project, req }) {
         </Loader>
       )
       }
+      </AnimatePresence>
 
     </>);
 

@@ -1,5 +1,5 @@
 import { Thumbnail } from '../Flow';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { getCategoryOfProject } from '../../lib/utils';
 
 const Suggestion = ({ projects, display, title }) => {
@@ -32,7 +32,7 @@ const Suggestion = ({ projects, display, title }) => {
             key={ 'suggestSection'+title}
             variants={variantChild}
           >
-            { projects?.map( (selected,i) => <Thumbnail key={'suggest-'+i} project={selected} animated={true} /> ) }
+            { projects?.map( (selected,i) => <Thumbnail key={'suggest-'+i+title} project={selected} animated={true} /> ) }
           </motion.section>
         </motion.div>);
 }

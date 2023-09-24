@@ -23,7 +23,7 @@ export default ({ title, background, font, children }) => {
 
   //check if user direct access
   useEffect(() => {
-    setTimeout( () => setStartAnim(true),1000);
+    setTimeout(() => setStartAnim(true), 1000);
     dispatch({ type: 'TOGGLE_BACK_BUTTON', active: true });
   }, []);
 
@@ -46,6 +46,7 @@ export default ({ title, background, font, children }) => {
   //update on percent changes
   useEffect(() => {
 
+    if (!label.current) { return; }
     let labelFontSize = parseInt(window?.getComputedStyle(label.current, null).getPropertyValue('font-size'));
 
     const resizeToFit = () => {
