@@ -2704,7 +2704,7 @@ span.lineSeparator {
     @include maxWidth();
 
 
-    &>section {
+    &>div {
       pointer-events: auto;
       display: flex;
       flex-direction: row;

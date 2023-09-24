@@ -233,7 +233,7 @@ function Resume() {
       >
 
 
-        <div>
+        <div className='aligncta'>
 
           <motion.span key='letsWerk' variants={popUp} id="dlresume">
             <Cta href='/contact' type='primary'>

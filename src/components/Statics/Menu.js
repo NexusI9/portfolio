@@ -80,7 +80,7 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
 
     const onResize = () => {
       if(labelWrapper && labelBar && animationDone && window.innerWidth > 500){
-        initMargin = labelBar.getBoundingClientRect().x;
+        let initMargin = labelBar.getBoundingClientRect().x;
         labelWrapper.removeEventListener('scroll', onScroll);
         labelWrapper.addEventListener('scroll', onScroll);
       }else{
