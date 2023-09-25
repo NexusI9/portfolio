@@ -41,6 +41,7 @@ const VideoBanner = ({ _setCategory, _setLastAction }) => {
   }
 
   const onViewClick = () => {
+    console.log("view");
     //document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
     window.gtag('event', 'click_view_work', { event_category: 'click', event_label: 'Click on view my work' });
     _setLastAction("click");
@@ -153,13 +154,13 @@ const VideoBanner = ({ _setCategory, _setLastAction }) => {
         </div>
       </div>
 
-      <a onClick={onViewClick} id="arrowScroll" style={{ display: displayVideo ? null : 'none' }}>
+      <Link onClick={onViewClick} href="/#Design" id="arrowScroll" style={{ display: displayVideo ? null : 'none' }}>
         <HoverSquare name='arrow_down' size='25px'>
           <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2.69998 0.899994L9.19998 7.4L15.7 0.899995L18.3 2.19999L9.19998 11.3L0.0999798 2.19999L2.69998 0.899994Z" fill="#070812" />
           </svg>
         </HoverSquare>
-      </a>
+      </Link>
 
 
       {/*!mobile && thumbs.map( (item,i) => <ThumbTagline key={'thmbquote'+i} {...item} />)*/}
