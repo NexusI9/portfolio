@@ -47,8 +47,11 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
         const windowHeight = window.innerHeight;
         
         if (
-          ( (scrollTop < windowHeight) ||
-          (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3) )
+          ( ( (scrollTop < windowHeight) ||
+          (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3) ) && 
+          _lastAction !== 'click'
+          )
+          
         ) {
           _onCategoryChange(" ");
         }
@@ -108,7 +111,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
       switch (_lastAction) {
 
         case 'click': // come back from project or internal page
-          scrollToCategory(currentCategory, { behavior: 'auto' });
+          scrollToCategory(currentCategory, { behavior: 'instant' });
           break;
 
         default:

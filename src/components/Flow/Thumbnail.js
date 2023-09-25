@@ -5,10 +5,12 @@ import { useEffect, useState, useRef } from 'react';
 import { Video } from '../Folio';
 import SlideOverlay from './Thumbnail.slider';
 import { srcSetFromPath } from './Thumbnail.helper';
+import { useDispatch } from 'react-redux';
+
   
 const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
 
-    
+    const dispatch = useDispatch();
     const { thumbnail } = project;
     const router = useRouter();
   
@@ -25,6 +27,11 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
     //video resize
     const thumbnailImg = useRef();
     const videoCtnr = useRef();
+
+    const onProjectClick = () => {
+      router.push({ pathname: '/project/'+project.title,  query:{} },  undefined, { scroll:false} );
+      dispatch({type:'SET_LAST_ACTION', state:'click'});
+    }
   
     const overlayContent = () => {
   
@@ -120,13 +127,7 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
             ref={elt}
             onMouseEnter = { () => setOverlay( overlayContent ) }
             onMouseLeave = { () => setOverlay() }
-            onClick={ () => router.push({
-              pathname: '/project/'+project.title,
-              query:{}
-            }, 
-            undefined,
-            { scroll:false}
-            ) }
+            onClick={ onProjectClick }
             key={'thumbnail'+project.title}
             variants={toProjectVariant}
             >
