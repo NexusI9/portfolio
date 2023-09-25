@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
+import { useDispatch } from 'react-redux';
 const MotionLink = motion(Link);
 
-const Logo = ({ location = 'Taipei, Taiwan' }) => (
+const Logo = ({ location = 'Taipei, Taiwan' }) => {
+
+  const dispatch = useDispatch();
+
+  return(
   <MotionLink
     href='/'
     id='NLogo'
@@ -11,6 +15,10 @@ const Logo = ({ location = 'Taipei, Taiwan' }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1, transition: { duration: 0.3 } }}
     exit={{ opacity: 0, transition: { duration: 0.3 } }}
+    onClick={ () => {
+      dispatch({type:'SET_LAST_ACTION', state:"click"});
+      dispatch({type:'CHANGE_CATEGORY', state:" "});
+  }}
   >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <g id="Layer_2" data-name="Layer 2">
@@ -29,5 +37,7 @@ const Logo = ({ location = 'Taipei, Taiwan' }) => (
     }
   </MotionLink>
 );
+
+};
 
 export default Logo;

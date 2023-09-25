@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
 const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 0, _category, _lastAction }) => {
 
   const containerRef = useRef([]);
+  const [firstLoad, setFirstLoad] = useState(true);
   const categories = useRef(getCategories());
   const router = useRouter();
   const [displaySuper, setDisplaySuper] = useState(true);
@@ -36,6 +37,8 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
   useEffect(() => {
     
     const checkViewportDiv = () => {
+
+      if(_lastAction !== 'scroll'){return;}
 
       getCategories().forEach((cat, c) => {
         if (!containerRef.current.length) { return; }
@@ -47,10 +50,9 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
         const windowHeight = window.innerHeight;
         
         if (
-          ( ( (scrollTop < windowHeight) ||
-          (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3) ) && 
-          _lastAction !== 'click'
-          )
+          ( (scrollTop < windowHeight) ||
+          (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3) ) 
+
           
         ) {
           _onCategoryChange(" ");
@@ -59,8 +61,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
         if (
           top < window.innerHeight / 4 &&
           bottom > window.innerHeight &&
-          category !== title &&
-          _lastAction === 'scroll'
+          category !== title
         ) {
           _onCategoryChange(title);
         }
@@ -92,13 +93,12 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
       mq.removeEventListener('change', onResize);
     };
 
-  }, [_lastAction]);
+  }, [_lastAction, firstLoad]);
 
   //on scroll action
   useEffect(() => {
-    console.log(_category);
     if (_lastAction === 'scroll') {
-      router.replace(changeHashTo(cleanCategoryName(_category)), undefined, {scroll:false});
+      setTimeout( () => router.replace(changeHashTo(cleanCategoryName(_category)), undefined, {scroll:false}), 200);
     }
     setCategory(_category);
   }, [_category]);

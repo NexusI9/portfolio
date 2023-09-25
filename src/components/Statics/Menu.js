@@ -18,7 +18,6 @@ const mapStateToProps = (state) => ({
 const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
 
   const router = useRouter(); 
-
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
   const [labelBar, setLabelBar] = useState();

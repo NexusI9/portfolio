@@ -3573,14 +3573,16 @@ span.lineSeparator {
       clip-path: inset(0 100% 0 0);
       transform: translate3d(-10px, 0, 0);
       border-radius: 2.5px;
-      background-color: #ffffff;
-      border: solid 1px #e0e6ed;
-      color: var(--purple);
-      box-shadow: 0 0 1px #0000003b inset;
+      background: #18244982;
+      backdrop-filter: blur(10px);
+      color: var(--white);
       letter-spacing: 0.1px;
     }
 
-    & h2 {
+    small{
+      font-weight: 500;
+    }
+    h2 {
       font-size: 2em;
       padding-bottom: -10px;
     }
@@ -3856,7 +3858,7 @@ img.gradientImg {
     margin-top: 10%;
 
     &>* {
-      font-size: clamp(80px, 13vw, 150px);
+      font-size: clamp(70px, 10vw, 150px);
       font-family: 'murmure';
       opacity: 0.6;
       color: transparent;

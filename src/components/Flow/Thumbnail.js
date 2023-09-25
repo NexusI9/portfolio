@@ -144,7 +144,7 @@ const ProjectThumbnails = ({project, animated=true, innerDesc=true}) => {
             { innerDesc &&
               <header className='project_desc'>
                 <h2 className={project.font ? project.font : ''}>{project.title}</h2>
-                { project.desc && <p><small><b>{project.desc}</b></small></p> }
+                { project.desc && <p><small>{project.desc}</small></p> }
             </header>
           }
            <img   
