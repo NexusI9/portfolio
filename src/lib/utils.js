@@ -162,7 +162,7 @@ export function currentHash(router){
 
 export function scrollToCategory (cat, options={behavior:'smooth'}, callback=()=>{}){ 
   //listen to click change, so we store the new category in ref and set it active in Scroll event listener below
-  document.getElementById(cat)?.scrollIntoView(options);
+  document.getElementById(cleanCategoryName(cat))?.scrollIntoView(options);
   callback(cat);
 }
 

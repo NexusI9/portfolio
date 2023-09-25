@@ -8,6 +8,7 @@ import {
 } from '@/lib/utils';
 import { connect } from 'react-redux';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const mapStateToProps = (state) => ({
   _category: state.flow.category,
@@ -21,12 +22,15 @@ const mapDispatchToProps = (dispatch) => ({
 
 const CategoryMenu = ({_category, _onCategoryChange, _setLastAction}) => {
 
+    const router = useRouter();
     const [active, setActive] = useState(_category);
 
-    const onCategoryClick = (e) => {
+    const onCategoryClick = ({event, category}) => {
+      event.preventDefault();
       _setLastAction('click');
-      scrollToCategory(e,{behavior:'smooth'},_onCategoryChange);
-      window.gtag('event',`click_menu_category_${e}`,{event_category:'click', event_label:`Click on category menu: ${e}`});
+      scrollToCategory(category, {behavior:'smooth'},_onCategoryChange);
+      router.replace(changeHashTo(cleanCategoryName(category)), undefined, {scroll:false});
+      window.gtag('event',`click_menu_category_${category}`,{event_category:'click', event_label:`Click on category menu: ${category}`});
     }
 
     useEffect( () => { setActive(_category); },[_category]); //upadte category menu active category
@@ -43,7 +47,7 @@ const CategoryMenu = ({_category, _onCategoryChange, _setLastAction}) => {
                 {getCategories().map( (cat,i) => 
                 <Fragment key={`categoryMenu_${cat}`}>
                   <li className={ active === cat ? 'active' : undefined }>
-                    <Link onClick={ () => onCategoryClick(cat) } href={changeHashTo(cleanCategoryName(cat))} scroll={false} replace>
+                    <Link onClick={ (e) => onCategoryClick({event:e, category:cat}) } href={changeHashTo(cleanCategoryName(cat))} scroll={false} replace>
                       <small className='cacheBold'><b>{cat}</b></small>
                       <small>{cat}</small>
                       </Link>

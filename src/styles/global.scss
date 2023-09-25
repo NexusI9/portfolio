@@ -3022,7 +3022,7 @@ span.lineSeparator {
         height: 120%;
         position: absolute;
         display: block;
-        background-color: #ffffff;
+        background-color: white;
       }
 
 
@@ -3554,10 +3554,9 @@ span.lineSeparator {
     left: 0;
     transition: transform 0.2s ease-out, opacity 0.2s ease;
     box-sizing: border-box;
-    padding: 2.5%;
+    padding: 0.5em 0.8em;
     opacity: 1;
     overflow: hidden;
-    color: white;
 
     &>* {
       line-height: initial;
@@ -3573,9 +3572,9 @@ span.lineSeparator {
       clip-path: inset(0 100% 0 0);
       transform: translate3d(-10px, 0, 0);
       border-radius: 2.5px;
-      background: #18244982;
-      backdrop-filter: blur(10px);
-      color: var(--white);
+      border: none;
+      background: var(--white);
+      color: var(--purple);
       letter-spacing: 0.1px;
     }
 
