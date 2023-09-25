@@ -6,6 +6,7 @@ import { HoverSquare, ScrollDownIcon } from '../Props';
 import { HomeButton, Logo } from '../Inputs';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
+import { cleanCategoryName } from '@/lib/utils';
 
 const mapStateToProps = (state) => ({
   _background: state.menu.background,
@@ -80,7 +81,6 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
 
     const onResize = () => {
       if(labelWrapper && labelBar && animationDone && window.innerWidth > 500){
-        let initMargin = labelBar.getBoundingClientRect().x;
         labelWrapper.removeEventListener('scroll', onScroll);
         labelWrapper.addEventListener('scroll', onScroll);
       }else{
@@ -136,7 +136,7 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
       <nav id="menu" className={(active ? 'active' : '') +' '+ (_background ? '' : 'transparent') }>
         <div>
           <AnimatePresence mode='wait'>
-            {!active && _homebutton && <HomeButton key='_homebuttonpresence' latestHref={_latestHref} /> }
+            {!active && _homebutton && <HomeButton key='_homebuttonpresence' latestHref={cleanCategoryName(_latestHref)} /> }
             {!active && !_homebutton && <Logo location='Montreal, Canada (soon 臺北市)'/> }
           </AnimatePresence>
           <div className='topArea'>
