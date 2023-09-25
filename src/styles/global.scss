@@ -3854,7 +3854,6 @@ img.gradientImg {
     position: absolute;
     height: max-content;
     margin-top: 10%;
-    line-height: 9.2rem;
 
     &>* {
       font-size: clamp(80px, 13vw, 150px);
@@ -3863,9 +3862,10 @@ img.gradientImg {
       color: transparent;
       -webkit-text-stroke: 1px var(--black);
       text-stroke: 1px var(--black);
+      line-height: 10rem;
 
       @media only screen and (min-width: 1920px) {
-        font-size: clamp(80px, 13vw, 250px);
+        font-size: clamp(80px, 13vw, 160px);
       }
     }
   }
