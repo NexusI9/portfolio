@@ -44,7 +44,7 @@ const BackgroundHeader = ({title="", zhongwen="", speed=1, delay=0.02}) => {
           {
           [...title].map( (letter,i) =>
             <motion.section
-              key={letter+i+'subletter'+title}
+              key={letter+i+'subletter'}
               className='case'
               variants={caseVariant}
               > 

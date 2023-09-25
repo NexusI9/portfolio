@@ -3854,6 +3854,7 @@ img.gradientImg {
     position: absolute;
     height: max-content;
     margin-top: 10%;
+    line-height: 9.2rem;
 
     &>* {
       font-size: clamp(80px, 13vw, 150px);

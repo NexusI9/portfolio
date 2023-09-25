@@ -29,23 +29,6 @@ const CategoryMenu = ({_category, _onCategoryChange, _setLastAction}) => {
       window.gtag('event',`click_menu_category_${e}`,{event_category:'click', event_label:`Click on category menu: ${e}`});
     }
 
-  
-    useEffect(()=>{
-  
-      let scrollTimeout;
-      const onScroll = () => {
-        //only setActive when scroll is done;
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() =>  { 
-          _setLastAction(null);
-        }, 100);
-      }
-  
-      window.addEventListener('scroll', onScroll);
-      return () => window.removeEventListener('scroll', onScroll);
-  
-    },[]);
-
     useEffect( () => { setActive(_category); },[_category]); //upadte category menu active category
   
     return( 

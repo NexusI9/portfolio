@@ -37,8 +37,6 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
     
     const checkViewportDiv = () => {
 
-      if (_lastAction !== 'scroll') { return; }
-
       getCategories().forEach((cat, c) => {
         if (!containerRef.current.length) { return; }
         const container = containerRef.current[c];
@@ -47,10 +45,10 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
 
         const scrollTop = window.pageYOffset;
         const windowHeight = window.innerHeight;
-
+        
         if (
-          (scrollTop < windowHeight) ||
-          (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3)
+          ( (scrollTop < windowHeight) ||
+          (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3) )
         ) {
           _onCategoryChange(" ");
         }
@@ -58,7 +56,8 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
         if (
           top < window.innerHeight / 4 &&
           bottom > window.innerHeight &&
-          category !== title
+          category !== title &&
+          _lastAction === 'scroll'
         ) {
           _onCategoryChange(title);
         }
@@ -74,8 +73,6 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
     };
     const onMouseWheel = () => _setLastAction('scroll');
     const onResize = (e) => setDisplaySuper(e.matches);
-
-    checkViewportDiv();
 
     window.addEventListener('scroll', checkViewportDiv, { passive: true });
     window.addEventListener('click', onClick);
@@ -96,7 +93,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
 
   //on scroll action
   useEffect(() => {
-    console.log(_lastAction);
+    console.log(_category);
     if (_lastAction === 'scroll') {
       router.replace(changeHashTo(cleanCategoryName(_category)), undefined, {scroll:false});
     }
@@ -115,7 +112,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
           break;
 
         default:
-          getCategories().map(cat => cleanCategoryName(cat) === currentCategory && _onCategoryChange(cat));
+          getCategories().map(cat => cleanCategoryName(cat) === currentCategory && _onCategoryChange(cat) );
       }
     }
 
