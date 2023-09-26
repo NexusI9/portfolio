@@ -52,8 +52,6 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
         if (
           ( (scrollTop < windowHeight) ||
           (c === containerRef.current.length - 1 && bottom < window.innerHeight / 3) ) 
-
-          
         ) {
           _onCategoryChange(" ");
         }

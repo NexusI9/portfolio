@@ -31,7 +31,7 @@ const Gallery = ({galleries, galleryKey}) => {
   
     const onImgClick = (e) => {
       window.gtag('event','click_gallery_picture',{event_category:'click', event_label:'Click gallery picture'})
-      router.push({
+      router.replace({
         pathname: router.pathname, 
         query: {...router.query, gallery:galleryKey, picture:e.name}
       },undefined,{scroll:false});
