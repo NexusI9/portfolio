@@ -11,7 +11,7 @@ const Pro = ({language}) => (
     <>
       <Content
         icon={logo_rdb.src}
-        header={<Multi eng='Lead Designer: Motion, Web & Print productions' fr='Lead Designer: Motion, Web & Print design' zh='領導視覺計師 : 動態圖形設 、 網站 、 印刷製作' language={language}/>}
+        header={<Multi eng='Lead Designer: Motion, Web & Print productions' fr='Lead Designer: Motion, Web & Print design' zh='領導視覺設計師 : 動態圖形設 、 網站 、 印刷製作' language={language}/>}
         body={<><Multi
             eng="Design of visual and interactive content going from websites to print and motion design assets. Involved in agency's project management and team coordination."
             fr="Design de contenus visuels et interactifs allants de sites web au print et motion design. Gestion des projets internes et de coordination des équipes."
