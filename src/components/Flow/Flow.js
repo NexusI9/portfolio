@@ -98,7 +98,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
   //on scroll action
   useEffect(() => {
     if (_lastAction === 'scroll') {
-      setTimeout( () => router.replace(changeHashTo(cleanCategoryName(_category)), undefined, {scroll:false}), 200);
+       router.replace(changeHashTo(cleanCategoryName(_category)), undefined, {scroll:false, shallow:true});
     }
     setCategory(_category);
   }, [_category]);

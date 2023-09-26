@@ -28,8 +28,9 @@ const CategoryMenu = ({_category, _onCategoryChange, _setLastAction}) => {
     const onCategoryClick = ({event, category}) => {
       event.preventDefault();
       _setLastAction('click');
+      setActive(category);
       scrollToCategory(category, {behavior:'smooth'},_onCategoryChange);
-      router.replace(changeHashTo(cleanCategoryName(category)), undefined, {scroll:false});
+      router.replace(changeHashTo(cleanCategoryName(category)), undefined, {scroll:false, shallow:true});
       window.gtag('event',`click_menu_category_${category}`,{event_category:'click', event_label:`Click on category menu: ${category}`});
     }
 
