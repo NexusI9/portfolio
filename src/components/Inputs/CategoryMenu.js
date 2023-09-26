@@ -29,8 +29,15 @@ const CategoryMenu = ({_category, _onCategoryChange, _setLastAction}) => {
       event.preventDefault();
       _setLastAction('click');
       setActive(category);
+      
       scrollToCategory(category, {behavior:'smooth'},_onCategoryChange);
-      router.replace(changeHashTo(cleanCategoryName(category)), undefined, {scroll:false, shallow:true});
+      
+      //update Hash url
+      router
+      .replace({hash: changeHashTo(cleanCategoryName(category)) }, undefined, {scroll:false, shallow:true})
+      .catch( e => { if(!e.cancelled) throw e; });
+
+      //GA4 event
       window.gtag('event',`click_menu_category_${category}`,{event_category:'click', event_label:`Click on category menu: ${category}`});
     }
 

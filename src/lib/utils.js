@@ -140,11 +140,10 @@ export function isMobile(){ return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IE
 export function setFaviconColor(favicon, color='red'){ return favicon.href = process.env.PUBLIC_URL + '/favicon_'+color+'.ico' ; }
 
 export function changeHashTo(hash){ 
-
   if(!hash || !hash.length || !hash.trim().length ){
-    return "/";
+    return "";
   }else{
-    return "/#"+hash;
+    return "#"+hash;
   }
 
 }
