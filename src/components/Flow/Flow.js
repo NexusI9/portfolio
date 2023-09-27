@@ -58,8 +58,7 @@ const Flow = ({ projects, _onCategoryChange = (e) => 0, _setLastAction = (e) => 
 
         if (
           top < window.innerHeight / 4 &&
-          bottom > window.innerHeight &&
-          category !== title
+          bottom > window.innerHeight
         ) {
           _onCategoryChange(title);
         }

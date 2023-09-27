@@ -18,8 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
   _setSkin: (e) => dispatch({ type: 'SWITCH_SKIN', skin: e }),
 });
 
+const motionLoader = motion(Loader);
 
-function Project({ _setSkin, project, req }) {
+
+function Project({ _setSkin, project }) {
 
   //elements
   const suggestions = (project && { current: getRandomProject({ number: 3, project: project[0] }) }) || useRef();
@@ -90,6 +92,7 @@ function Project({ _setSkin, project, req }) {
       <Head>
         <title>{(project.map(({ title }) => `${title} | Nassim El Khantour`))}</title>
       </Head>
+      
       <AnimatePresence mode='wait'>
       {project?.map(pj =>
         <Loader
@@ -112,7 +115,7 @@ function Project({ _setSkin, project, req }) {
           </motion.div>
 
 
-          <Suggestion projects={suggestions.current} display={!showSideBar} title={pj.title} />
+          <Suggestion projects={suggestions.current} display={!showSideBar} title={pj.title} key={'suggestsection'+pj.title} />
           <Signature />
           <Socials minify={true} />
 
