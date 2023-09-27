@@ -29,14 +29,14 @@ const Pro = ({language}) => (
               zh='初級設計師負責。 確保他們的創造適合客戶藝術指導'
               language={language}/>,
             <Multi
-              eng='Design of websites and print assets.'
-              fr='Design de sites web et de fichiers prints.'
-              zh='網站設計與多種平面元件打造'
+              eng='Design of websites (wireframes, final designs and client presentations).'
+              fr='Design de sites web (wireframes, designs finaux, présentations clients).'
+              zh='網站設計(佈局草稿 、最終設計 、客戶演示)'
               language={language}/>,
             <Multi
-              eng='Branding/ visual identity design.'
-              fr="Design d'identité visuelles et de branding, session de brainstorm marketing."
-              zh='對客戶進行品牌設計'
+              eng='Visual identity design, brand guidelines, and various print media.'
+              fr="Design d’identités visuelles, chartes graphiques et divers médias imprimés."
+              zh='對客戶進行視覺識別設計 、品牌指南 、以及各種印刷媒體'
               language={language}/>,
             <Multi
               eng="Videography and photo editing of the agency's events and venues."
