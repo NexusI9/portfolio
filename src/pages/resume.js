@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { Socials } from '@/components/Statics';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import {
   Pro,
@@ -19,6 +19,7 @@ import {
   Section,
   ResumeHeader
 } from '@/components/Resume';
+
 
 import work from '@/assets/icons/case.svg';
 import hat from '@/assets/icons/hat.svg';
@@ -60,7 +61,7 @@ function Resume() {
   const [hide, setHide] = useState(false);
   const [headTitle, setHeadtitle] = useState('Resume | Nassim El Khantour');
   const dispatch = useDispatch();
-
+  const panelOpen = useSelector(e => e.menu.open);
   const router = useRouter();
 
   const banner = useRef();
@@ -87,9 +88,9 @@ function Resume() {
   const changeLang = (lang) => {
 
     //convert label to language value
-    try{
-      lang = LANG_MAP.filter( item => item.label === lang)[0]['language'];
-    }catch(_){
+    try {
+      lang = LANG_MAP.filter(item => item.label === lang)[0]['language'];
+    } catch (_) {
       lang = 'english';
     }
 
@@ -126,9 +127,9 @@ function Resume() {
 
 
   const LANG_MAP = [
-    {label: 'EN', language: 'english'},
-    {label: 'FR', language: 'french'},
-    {label: '中文', language: 'zhongwen'},
+    { label: 'EN', language: 'english' },
+    { label: 'FR', language: 'french' },
+    { label: '中文', language: 'zhongwen' },
   ]
 
   const LIST_MAP = [
@@ -210,8 +211,8 @@ function Resume() {
   }, [router]);
 
   useEffect(() => {
-    dispatch({type:'SWITCH_SKIN',skin:'default'});
-    dispatch({type:'TOGGLE_BACK_BUTTON',active:false});
+    dispatch({ type: 'SWITCH_SKIN', skin: 'default' });
+    dispatch({ type: 'TOGGLE_BACK_BUTTON', active: false });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -222,42 +223,43 @@ function Resume() {
         <title>{headTitle}</title>
       </Head>
 
-
-      <motion.div
-        id='resume-settings'
-        key='buttonWrappResume'
-        variants={stagger}
-        initial='initial'
-        animate='animate'
-        exit='exit'
-      >
-
-
-        <div className='aligncta'>
-
-          <motion.span key='letsWerk' variants={popUp} id="dlresume">
-            <Cta href='/contact' type='primary'>
-              <small>Let's work together</small>
-            </Cta>
-          </motion.span>
-          <motion.span key='buttonDl' variants={popUp} id="dlresume">
-            <Cta href={dlUrl} type='secondary' newTab={true}>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.1875 10.375H10.8125C10.9285 10.375 11.0398 10.4211 11.1219 10.5031C11.2039 10.5852 11.25 10.6965 11.25 10.8125C11.25 10.9285 11.2039 11.0398 11.1219 11.1219C11.0398 11.2039 10.9285 11.25 10.8125 11.25H1.1875C1.07147 11.25 0.960188 11.2039 0.878141 11.1219C0.796094 11.0398 0.75 10.9285 0.75 10.8125C0.75 10.6965 0.796094 10.5852 0.878141 10.5031C0.960188 10.4211 1.07147 10.375 1.1875 10.375ZM6.4375 6.9065L9.668 3.67512L10.2866 4.29375L5.95625 8.625L1.625 4.29375L2.24363 3.67512L5.5625 6.994V0.75H6.4375V6.9065Z" />
-              </svg>
-              <small>
-                <Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />
-              </small>
-            </Cta>
-          </motion.span>
-
-        </div>
-        <div>
-          { language && <Dropdown entries={ LANG_MAP.map(item => item.label) } onChange={ (e) => changeLang(e.active) }/> }
-        </div>
+      {!panelOpen && 
+        <motion.div
+          id='resume-settings'
+          key='buttonWrappResume'
+          variants={stagger}
+          initial='initial'
+          animate='animate'
+          exit='exit'
+        >
 
 
-      </motion.div>
+          <div className='aligncta'>
+
+            <motion.span key='letsWerk' variants={popUp} id="dlresume">
+              <Cta href='/contact' type='primary'>
+                <small>Let's work together</small>
+              </Cta>
+            </motion.span>
+            <motion.span key='buttonDl' variants={popUp} id="dlresume">
+              <Cta href={dlUrl} type='secondary' newTab={true}>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.1875 10.375H10.8125C10.9285 10.375 11.0398 10.4211 11.1219 10.5031C11.2039 10.5852 11.25 10.6965 11.25 10.8125C11.25 10.9285 11.2039 11.0398 11.1219 11.1219C11.0398 11.2039 10.9285 11.25 10.8125 11.25H1.1875C1.07147 11.25 0.960188 11.2039 0.878141 11.1219C0.796094 11.0398 0.75 10.9285 0.75 10.8125C0.75 10.6965 0.796094 10.5852 0.878141 10.5031C0.960188 10.4211 1.07147 10.375 1.1875 10.375ZM6.4375 6.9065L9.668 3.67512L10.2866 4.29375L5.95625 8.625L1.625 4.29375L2.24363 3.67512L5.5625 6.994V0.75H6.4375V6.9065Z" />
+                </svg>
+                <small>
+                  <Multi eng='Download PDF' fr='Télécharger le PDF' zh='下載PDF' language={language} />
+                </small>
+              </Cta>
+            </motion.span>
+
+          </div>
+          <div>
+            {language && <Dropdown entries={LANG_MAP.map(item => item.label)} onChange={(e) => changeLang(e.active)} />}
+          </div>
+
+
+        </motion.div>
+      }
 
 
       <div id='resume-grid' className='container'>

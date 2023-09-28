@@ -25,6 +25,12 @@ const menuReducer = (state={}, action) => {
                 ...state,
                 homebutton: action.active
             };
+
+        case 'IS_OPEN':
+            return{
+                ...state,
+                open:action.open
+            }
         
         default:
             return {...state};

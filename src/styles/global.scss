@@ -281,6 +281,7 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: fit-content;
   text-transform: lowercase;
   gap: 5px;
@@ -4128,6 +4129,7 @@ img.gradientImg {
     font-family: 'murmure';
     color: var(--purple);
     font-size: utils.clamped(70px, 128px);
+    font-weight: normal;
   }
 
   h2,

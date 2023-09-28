@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {gsap} from 'gsap';
 import { HoverSquare, ScrollDownIcon } from '../Props';
 import { HomeButton, Logo } from '../Inputs';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { cleanCategoryName } from '@/lib/utils';
+
 
 const mapStateToProps = (state) => ({
   _background: state.menu.background,
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => ({
 const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
 
   const router = useRouter(); 
+  const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const [children, setChildren] = useState();
   const [labelBar, setLabelBar] = useState();
@@ -91,6 +93,8 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
     onResize();
     window.addEventListener('resize', onResize);
 
+    dispatch({type:'IS_OPEN', open:active});
+    
     if(!active){
       //reset on close
       setAnimationDone(false);
