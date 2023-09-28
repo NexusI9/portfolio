@@ -60,7 +60,7 @@ export default {
         },
         "banner":"/assets/banners/aciddesign.webp",
         "desc":"Showcase of product design, branding and UI concepts inspired by Science-Fiction",
-        "longdesc":"A series of three exercises with different approaches and goals, exploring a multitude branding, packaging and UX/UI ideas inspired by Science-Fiction.",
+        "longdesc":"A series of exercises with different approaches and goals, exploring a multitude branding, packaging and UX/UI ideas inspired by Science-Fiction.",
         "category":["Product Design", "UX/UI", "Branding"],
         "stack":["Photoshop","Illustrator","Blender"],
         "date":2021,
