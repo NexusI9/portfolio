@@ -42,7 +42,7 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
         return <img className='thumb' src={project.overlay?.url} />
 
       case 'video':
-        return <Video innerRef={videoCtnr} id={project.overlay?.url} autoplay={true} defaultQuality='540p' controls={false} loadIco={false} playIco={false} />
+        return <Video innerRef={videoCtnr} src={project.overlay?.url} autoplay={true} defaultQuality='540p' controls={false} loadIco={false} playIco={false} />
 
       case 'slideshow':
         return <SlideOverlay pictures={project.overlay?.url} />
@@ -69,7 +69,7 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
       const ctnrRatio = ctnrWidth / ctnrHeight;
 
       const iframe = videoCtnr.current.querySelectorAll('iframe')[0];
-
+      if(!iframe){ return; }
       let newHeight, newWidth;
 
       if (ctnrRatio > 1) { //horizontal

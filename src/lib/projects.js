@@ -91,7 +91,7 @@ export default {
         "thumbnail":"/assets/thumbnails/mengfeng.webp",
         "overlay":{
           "type":"video",
-          "url":"717094181"
+          "url":"/assets/thumbnails/mengfeng.webm"
         },
         "banner":"/assets/banners/mengfeng.webp",
         "desc":"Case study of a personal project covering the different steps of product design.",
@@ -107,7 +107,7 @@ export default {
         "banner":"/assets/banners/shangpin.webp",
         "overlay":{
           "type":"video",
-          "url":"787247173"
+          "url":"/assets/thumbnails/shangpin.webm"
         },
         "date": 2023,
         "desc":"Showcase of Taiwanese inspired products design",
@@ -134,7 +134,7 @@ export default {
         "stack":["Photoshop","Illustrator","Blender","Maya","After Effects"],
         "overlay":{
           "type":"video",
-          "url":"713004476"
+          "url":"/assets/thumbnails/acab.webm"
         },
         "date":2021,
         "folder":"acab",
@@ -150,7 +150,7 @@ export default {
         "stack":["Photoshop","Illustrator","Blender","Maya","After Effects"],
         "overlay":{
           "type":"video",
-          "url":"717068461"
+          "url":"/assets/thumbnails/kaiser.webm"
         },
         "date":2019,
         "folder":"kaiserthrone",
@@ -166,7 +166,7 @@ export default {
         "stack":["Photoshop","Illustrator","Blender","Maya","After Effects"],
         "overlay":{
           "type":"video",
-          "url":"717068477"
+          "url":"/assets/thumbnails/neom.webm"
         },
         "date":"2019-2020",
         "folder":"neom",
@@ -182,7 +182,7 @@ export default {
         "stack":["Photoshop","Illustrator","Blender","Maya","After Effects"],
         "overlay":{
           "type":"video",
-          "url":"717068454"
+          "url":"/assets/thumbnails/aftermath.webm"
         },
         "date":2018,
         "folder":"aftermath",
@@ -258,7 +258,7 @@ export default {
         "thumbnail":"/assets/thumbnails/cyber/cyber.webp",
         "overlay":{
           "type":"video",
-          "url":"717071952"
+          "url":"/assets/thumbnails/cyber/cyber.webm"
         },
         "banner":"/assets/banners/cyberrave.webp",
         "desc":"Enter the Cyber Rave",
@@ -282,7 +282,7 @@ export default {
         "category":["Creative Coding", "Interactive", "Events", "VJ"],
         "overlay":{
           "type":"video",
-          "url":"717093373"
+          "url":"/assets/thumbnails/urbexe.webm"
         },
         "banner":"/assets/banners/urbexe.webp",
         "date":2020,
@@ -296,7 +296,7 @@ export default {
         "category":["Creative Coding", "VJ", "Events", "Motion Design"],
         "overlay":{
           "type":"video",
-          "url":"717071936"
+          "url":"/assets/thumbnails/ntk/ntk.webm"
         },
         "banner":"/assets/banners/ntk.webp",
         "date":"2016-2019",
@@ -307,7 +307,7 @@ export default {
         "thumbnail":"/assets/thumbnails/variousvj.webp",
         "overlay":{
           "type":"video",
-          "url":"717093392"
+          "url":"/assets/thumbnails/various/various.webm"
         },
         "banner":"/assets/banners/variouswork.webp",
         "desc":"Collection of older loops",
