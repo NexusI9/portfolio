@@ -92,12 +92,10 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
       </div>
 
       {innerDesc &&
-        <div className='project-desc'>
-          <header>
-            <h2 className={project.font ? project.font : ''}>{project.title}</h2>
-            {project.desc && <p><small>{project.desc}</small></p>}
-          </header>
-        </div>
+        <header className='project-desc'>
+          <h2 className={project.font ? project.font : ''}>{project.title}</h2>
+          {project.desc && <p><small>{project.desc}</small></p>}
+        </header>
       }
       <img
         className='move thumb'

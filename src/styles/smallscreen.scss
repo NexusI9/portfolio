@@ -22,8 +22,7 @@
         h2{
           font-size: 1.5em;
         }
-        header > *{
-          margin: 2% 3%;
+        & > *{
           opacity: 1;
           clip-path: inset(0 0 0 0);
         }
@@ -47,12 +46,11 @@
 
     #letterbox {
       display: grid;
+      justify-items: center;
       gap: 30px;
 
       #iframewrapper{
         width: 90vw;
-        height: calc(90vw*9/16);
-
         #viewshowreel{display: none;}
       }
       #tagline{ 
@@ -62,6 +60,8 @@
       #textLetterbox{
         margin-top: 15%;
         justify-content: space-evenly;
+        gap:32px;
+        height: auto;
         & > header{ 
           span{ display: none; }
 
@@ -77,14 +77,6 @@
           }
         }
 
-      }
-    }
-
-    #homeAbout {
-      .aligncta{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
       }
     }
 
