@@ -232,7 +232,7 @@ form {
   @include mainFont;
 }
 
-h1 {
+h1, .h1 {
   font-family: 'murmure';
   font-size: 11em;
 }
@@ -3944,9 +3944,7 @@ img.gradientImg {
     }
 
     * {
-      //$title:2.5em;
       $title: 7.5vw;
-      //$title:5vw;
       font-family: 'murmure';
       float: left;
       text-transform: none;
