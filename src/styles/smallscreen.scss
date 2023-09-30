@@ -18,11 +18,11 @@
     .projects{
       box-sizing: border-box;
 
-      .project_desc{
+      .project-desc{
         h2{
           font-size: 1.5em;
         }
-        & > *{
+        header > *{
           margin: 2% 3%;
           opacity: 1;
           clip-path: inset(0 0 0 0);
