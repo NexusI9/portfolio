@@ -32,12 +32,10 @@ export default () => {
       const ar = [];
       for(var i = 0; i < listId.length-1; i+=2 ){
         ar.push(
-          <Article key={listId[i]}>
-            <Body>
+            <Body key={listId[i]}>
               <div><Video title={`NTK video sample ${i}`} id={listId[i]} placeholder={'/assets/thumbnails/ntk/video-'+listId[i]+'.webp'} pending={true} autoplay={true}/></div>
               <div><Video title={`NTK video sample ${i+1}`} id={listId[i+1]} placeholder={'/assets/thumbnails/ntk/video-'+listId[i+1]+'.webp'} pending={true} autoplay={true}/></div>
             </Body>
-          </Article>
         )
       }
       return ar;
@@ -45,6 +43,6 @@ export default () => {
     }
 
   return (
-    <>{setBinome(ids)}</>
+    <Article>{setBinome(ids)}</Article>
   );
 }
