@@ -1,47 +1,55 @@
 @font-face {
     font-family: "murmure";
     src: url("../assets/fonts/LeMurmure-Regular.woff2") format('woff2');
+    font-display: swap;
   }
   
   @font-face {
     font-family: 'murmure';
     src: url("../assets/fonts/chuhuo.woff2") format("woff2");
     unicode-range: U+4E00-9FFF;
+    font-display: swap;
   }
   
   @font-face{
     font-family: 'Sora';
     font-weight: normal;
     src: url("../assets/fonts/Sora-Regular.woff2") format('woff2');
+    font-display: swap;
   }
   
   @font-face{
     font-family: 'Sora';
     font-weight: 400;
     src: url("../assets/fonts/Sora-Regular.woff2") format('woff2');
+    font-display: swap;
   }
   
   @font-face{
     font-family: 'Sora';
     font-weight: 500;
     src: url("../assets/fonts/Sora-Medium.woff2") format('woff2');
+    font-display: swap;
   }
   
   @font-face{
     font-family: 'Sora', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     src: url("../assets/fonts/Sora-SemiBold.woff2") format('woff2');
+    font-display: swap;
   }
   
   @font-face{
     font-family: 'Sora';
     font-weight: bolder;
     src: url("../assets/fonts/Sora-Bold.woff2") format('woff2');
+    font-display: swap;
   }
   
   @font-face{
     font-family: 'Sora';
     font-weight: lighter;
     src: url("../assets/fonts/Sora-Light.woff2") format('woff2');
+    font-display: swap;
   }
   
