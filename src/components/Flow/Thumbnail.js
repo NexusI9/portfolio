@@ -24,10 +24,6 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
   const [overlay, setOverlay] = useState();
   const elt = useRef();
 
-  //video resize
-  const thumbnailImg = useRef();
-  const videoCtnr = useRef();
-
   const onProjectClick = () => {
     router.push({ pathname: '/project/' + project.title, query: {} }, undefined, { scroll: false });
     dispatch({ type: 'SET_LAST_ACTION', state: 'click' });
@@ -42,7 +38,7 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
         return <img className='thumb' src={project.overlay?.url} />
 
       case 'video':
-        return <Video innerRef={videoCtnr} src={project.overlay?.url} autoplay={true} defaultQuality='540p' controls={false} loadIco={false} playIco={false} />
+        return <Video src={project.overlay?.url} width='450' autoplay={true} />
 
       case 'slideshow':
         return <SlideOverlay pictures={project.overlay?.url} />
@@ -54,46 +50,6 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
   useEffect(() => {
 
     let lastScroll = -200;
-    let lastVelo = 0
-
-    function scaleVideo() {
-
-      /*Video size === thumbnail natural size*/
-
-      const thumbHeight = thumbnailImg.current.naturalHeight;
-      const thumbWidth = thumbnailImg.current.naturalWidth;
-      const thumbRatio = thumbWidth / thumbHeight;
-
-      const ctnrHeight = elt.current.getBoundingClientRect().height;
-      const ctnrWidth = elt.current.getBoundingClientRect().width;
-      const ctnrRatio = ctnrWidth / ctnrHeight;
-
-      const iframe = videoCtnr.current.querySelectorAll('iframe')[0];
-      if(!iframe){ return; }
-      let newHeight, newWidth;
-
-      if (ctnrRatio > 1) { //horizontal
-        if (thumbRatio > 1) { //horizontal video
-          newHeight = '100%';
-          newWidth = `calc(${newHeight}*16/9)`;
-        }
-        else { //vertical video
-          newHeight = ctnrWidth * thumbHeight / thumbWidth + 'px';
-        }
-      } else { //vertical
-
-        if (thumbRatio > 1) { //horizontal video
-          newHeight = ctnrHeight + 'px';
-          newWidth = `calc(${newHeight}*16/9)`;
-        }
-        else { //vertical video
-          newHeight = ctnrWidth * thumbHeight / thumbWidth + 'px';
-        }
-      }
-      iframe.style.height = newHeight;
-      iframe.style.width = newWidth;
-
-    }
 
     //let tm;
     const onScroll = () => {
@@ -110,14 +66,8 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
 
     if (animated && window.matchMedia('(hover:hover)').matches) { window.addEventListener('scroll', onScroll); }
 
-    if (videoCtnr.current) {
-      scaleVideo();
-      window.addEventListener('resize', scaleVideo);
-    }
-
     return () => {
       if (animated) { window.removeEventListener('scroll', onScroll) }
-      if (videoCtnr) { window.removeEventListener('resize', scaleVideo); }
     };
   }, [elt, overlay]);
 
@@ -153,7 +103,6 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
         className='move thumb'
         {...srcSetFromPath(thumbnail)}
         alt={`Thumbnail of ${project.title} project`}
-        ref={thumbnailImg}
         style={{ transform: `scale3d(${parallaxConfig.zoom},${parallaxConfig.zoom},${parallaxConfig.zoom}) translate3d(0,${yPos}px,0)` }} />
     </motion.article>
   );

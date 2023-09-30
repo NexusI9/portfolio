@@ -1,11 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { Dotty } from '../Loader';
-import play from '../../assets/play.svg';
+import play from '@/assets/play.svg';
 
-const Video = ({ id, src, title = '', onLoad, autoplay = false, style = {}, defaultQuality, placeholder, loadIco, playIco, innerRef, resize = true, pending = false, controls = true, forceUnmute = false, forceStop = false }) => {
+const Video = ({
+  id,
+  src,
+  width = '100%',
+  title = '',
+  autoplay = false,
+  style = {},
+  defaultQuality,
+  placeholder,
+  loadIco,
+  playIco,
+  innerRef,
+  pending = false,
+  controls = true,
+  forceUnmute = false,
+  forceStop = false
+}) => {
 
-  const [thumbnail, setThumbnail] = useState();
-  const [height, setHeight] = useState({});
   const [hideVid, setHideVid] = useState(pending);
   const vimeoContainer = useRef();
 
@@ -19,25 +33,9 @@ const Video = ({ id, src, title = '', onLoad, autoplay = false, style = {}, defa
     </div>
   );
 
-  useEffect(() => {
-
-    //getVimeoThumbnail("https://player.vimeo.com/video/"+id).then( thumbnails => setThumbnail(thumbnails[2]) );
-
-    const onResize = () => {
-      setHeight({ height: vimeoContainer.current?.getBoundingClientRect().width * 9 / 16 + 'px' });
-    };
-
-
-    if (vimeoContainer && resize) {
-      onResize();
-      window.addEventListener('resize', onResize);
-    }
-
-    return () => vimeoContainer ? window.removeEventListener('resize', onResize) : 0;
-  }, [id, vimeoContainer]);
 
   return (
-    <div className='vimeo round' onClick={() => setHideVid(false)} ref={innerRef || vimeoContainer} style={height}>
+    <div className='vimeo round' onClick={() => setHideVid(false)} ref={innerRef || vimeoContainer}>
       {id &&
         <>
           <Placeholder placeholder={placeholder} playIcon={!autoplay} style={style} loadIco={loadIco} playIco={playIco} />
@@ -52,7 +50,7 @@ const Video = ({ id, src, title = '', onLoad, autoplay = false, style = {}, defa
         </>
       }
       {src &&
-        <video width="450" autoPlay={true} muted={true} loop={true}>
+        <video width={width || '100%'} autoPlay={autoplay} muted={true} loop={true}>
           <source src={src} type='video/webm' />
         </video>}
     </div>
