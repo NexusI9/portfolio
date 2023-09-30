@@ -23,12 +23,9 @@ const Video = ({
   const [hideVid, setHideVid] = useState(pending);
   const vimeoContainer = useRef();
 
-  const Placeholder = ({ placeholder = null, playIco = true, loadIco = false, style = {} }) => (
+  const Placeholder = ({ placeholder = null, playIco = true, style = {} }) => (
     <div className='iframePlaceholder' style={style}>
-      {placeholder ?
-        <img className='picPlaceholder' src={placeholder} />
-        :
-        <div className='loadIco'> <Dotty /> </div>}
+      {placeholder && <img className='picPlaceholder' src={placeholder} />}
       {playIco && <img className='playIco round' src={play.src} />}
     </div>
   );

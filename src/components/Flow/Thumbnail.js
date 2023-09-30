@@ -73,7 +73,7 @@ const ProjectThumbnails = ({ project, animated = true, innerDesc = true }) => {
 
   return (
     <motion.article
-      className={'projects round'}
+      className={'project-thumbnail round'}
       ref={elt}
       onMouseEnter={() => setOverlay(overlayContent)}
       onMouseLeave={() => setOverlay()}
