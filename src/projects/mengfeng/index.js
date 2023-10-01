@@ -69,12 +69,10 @@ export default () => (
     </Article>
 
     <Article header='Pod pairing' spaced={true} className='purpleBkg round'>
-      <Body flexAlignement='centered' style={{ textAlign: 'center' }}>
-        <div>
+      <Body flexAlignement='centered' flexDirection='vertical' style={{ textAlign: 'center' }}>
           <h2>Pod pairing</h2>
           <p>The process of pairing the pod with a smartphone is elegantly streamlined into a seamless three-step journey, ensuring a hassle-free connection.
             The interface guides the customer seamlessly through each stage, making the pairing process short, intuitive and straightforward.</p>
-        </div>
       </Body>
       <Body id='pairing' className='padded'>
         <Img className='compress' src="/assets/projects/mengfeng/mockups/wake_1.webp" />
