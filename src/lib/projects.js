@@ -48,14 +48,14 @@ export default {
       },
       {
         "title":"ACID DESIGN",
-        "thumbnail":"/assets/thumbnails/aciddesign/comet.webp",
+        "thumbnail":"/assets/thumbnails/aciddesign/acid_0.webp",
         "overlay":{
           "type":"slideshow",
           "url":[
             "/assets/thumbnails/aciddesign/acid_1.webp",
             "/assets/thumbnails/aciddesign/acid_2.webp",
             "/assets/thumbnails/aciddesign/acid_3.webp",
-            "/assets/thumbnails/aciddesign/comet.webp"
+            "/assets/thumbnails/aciddesign/acid_4.webp"
           ],
         },
         "banner":"/assets/banners/aciddesign.webp",
