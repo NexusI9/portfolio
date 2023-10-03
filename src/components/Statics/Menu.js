@@ -140,7 +140,7 @@ const Menu = ({_background=true, _homebutton=false, _latestHref=''}) => {
         <div>
           <AnimatePresence mode='wait'>
             {!active && _homebutton && <HomeButton key='_homebuttonpresence' latestHref={cleanCategoryName(_latestHref)} /> }
-            {!active && !_homebutton && <Logo location='Montreal, Canada (soon 臺北市)'/> }
+            {!active && !_homebutton && <Logo location='Montreal, Canada (soon 臺灣)'/> }
           </AnimatePresence>
           <div className='topArea'>
             <div id='bars' onClick={onBarsClick} className={active ? 'active' : ''}>
