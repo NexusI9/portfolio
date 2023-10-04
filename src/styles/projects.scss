@@ -457,12 +457,12 @@ object {
   padding-left: 8%;
   width: 100%;
   @include maxWidth();
-
+  
   box-sizing: border-box;
   display: block;
   opacity: 0;
   transition: opacity 0.5s ease-out;
-  max-width: 1440px;
+  max-width: 1280px;
   margin: auto;
 
   &.plain {

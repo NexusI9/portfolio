@@ -182,15 +182,21 @@ export default () => (
           <h5>The logotype</h5>
           <p>Combining elements of modernity with more classical shapes,
             <br />the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
-          <img src={logo.src} />
+            <img src={logo.src} />
         </section>
       </Body>
 
+      <hr/>
+
       <Body flexDirection='vertical'>
-        <GraphicChart />
+        <div className='article-margin-bottom'>
+          <h5>Typeface and colors</h5>
+        </div>
+        <Gallery galleries={gallery} galleryKey={"guidestyle"} />
       </Body>
 
-        <hr/>
+      <hr/>
+
       <Body title='The userflow' flexDirection='vertical'>
 
         <Cartography

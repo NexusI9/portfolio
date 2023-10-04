@@ -70,7 +70,12 @@
     .master {
       grid-column: span 2;
       grid-row: span 2;
+
+      &.vertical{
+        grid-column: 1;
+      }
     }
+
 
     &.split>*,
     &.base>* {

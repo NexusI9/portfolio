@@ -6,5 +6,8 @@ export default {
     ],
     gallery_2: [
         { type: 'base', folder: '/kinoji/Screenshots/', pictures: ['worldmap_1', 'glossaire', 'tags'] }
+    ],
+    guidestyle: [
+        { type: 'split', folder: '/kinoji/guidestyle/', pictures: ['Fonts', 'Colors'] }
     ]
 };

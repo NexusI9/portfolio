@@ -40,8 +40,7 @@ export default () => (
     </Article>
 
     <Article spaced={true} name='snapshots'>
-      <Space type='small' />
-      <Body flexDirection='vertical'>
+      <Body flexDirection='vertical' title="Design & Wireframes">
         <Gallery galleries={gallery} galleryKey='website' />
       </Body>
     </Article>
@@ -68,68 +67,10 @@ export default () => (
       <Body flexDirection='vertical' id='xtra_typecolor'>
         <section className='half' >
           <h5>Typeface & Color swatch</h5>
-          <p>XTRA branding mainly takes inspiration in science-fiction’s aesthetic, wether in its typeface or choice of colors. <br /> The design also put in contrast darker areas brighten up by visuals, with white-themed sections for a clear and segmented navigation.</p>
+          <p className='article-margin-bottom'>XTRA branding mainly takes inspiration in science-fiction’s aesthetic, wether in its typeface or choice of colors. <br /> The design also put in contrast darker areas brighten up by visuals, with white-themed sections for a clear and segmented navigation.</p>
         </section>
-        <div className='tableGroup guidestyle'>
-          <table>
-            <thead>
-              <tr>
-                <td>
-                  <h5>Typeface</h5>
-                </td>
-              </tr>
-            </thead>
+          <Gallery galleries={gallery} galleryKey='guidestyle' />
 
-            <tbody>
-
-              <tr>
-                <td>
-                  <img src={baijam.src} />
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-          <table>
-            <thead>
-              <tr>
-                <td>
-                  <h5>Colors</h5>
-                </td>
-              </tr>
-            </thead>
-
-            <tbody>
-
-              <tr>
-                <td>
-                  <p>Primary swatch</p>
-                  <div className='packColor'>
-                    <span className='colorswatch' style={{ backgroundColor: '#F3F7FC' }}></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#D74545' }}></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#132534' }}></span>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <p>Secondary swatch</p>
-                  <div className='packColor'>
-                    <span className='colorswatch' style={{ backgroundColor: '#E6E7F4' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#DFDDE6' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#D8A6A6' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#C02C41' }} ></span>
-                    <span className='colorswatch' style={{ backgroundColor: '#4F5465' }} ></span>
-                    <span className='colorswatch lightStroke' style={{ backgroundColor: '#050101'}} ></span>
-                  </div>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-
-        </div>
       </Body>
       <hr />
       <Space type='small' />
@@ -163,7 +104,7 @@ export default () => (
           <p>
             XTRA's holistic branding strategy extends beyond the digital realm, creating a 360-degree experience that permeates various touchpoints.
             This comprehensive approach includes a range of collaterals designed to reinforce the brand's identity and message, both within the digital landscape and in physical spaces.
-            <br/><br/>
+            <br /><br />
           </p>
         </section>
         <Gallery galleries={gallery} galleryKey='brand' />

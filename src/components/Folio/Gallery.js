@@ -47,6 +47,12 @@ const Gallery = ({galleries, galleryKey}) => {
         { pictures.map( (img, i) => i === 0 ? <div className='master' key={img+i}><Img onClick={ e => onImgClick(e) } name={img} src={fullpath(img)} /></div> : <Img  onClick={ e => onImgClick(e) } name={img} key={img+i} src={fullpath(img)} /> ) }
       </div>
     );
+
+    const BaseVerticalLayout = ({pictures, fullpath}) => (
+      <div className='gallery base'>
+        { pictures.map( (img, i) => i === 0 ? <div className='master vertical' key={img+i}><Img onClick={ e => onImgClick(e) } name={img} src={fullpath(img)} /></div> : <Img  onClick={ e => onImgClick(e) } name={img} key={img+i} src={fullpath(img)} /> ) }
+      </div>
+    );
   
     const SplitLayout = ({pictures, fullpath}) => (
       <div className='gallery split' > { pictures.map( img => <Img onClick={ e => onImgClick(e) } name={img} key={img} src={fullpath(img)}/> )  } </div>
@@ -74,7 +80,10 @@ const Gallery = ({galleries, galleryKey}) => {
           switch(type){
               case 'base':
                 return <BaseLayout key={pictures[0]} pictures={pictures} fullpath={fullpath}/>
-  
+              
+              case 'base-vertical':
+                  return <BaseVerticalLayout key={pictures[0]} pictures={pictures} fullpath={fullpath}/>
+
               case 'split':
                 return <SplitLayout key={pictures[0]} pictures={pictures} fullpath={fullpath}/>
   
