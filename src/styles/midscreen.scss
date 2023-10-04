@@ -130,17 +130,22 @@
   }
 
 
-  #project_banner {
+  .project-banner {
     padding: 5% 10%;
     height: fit-content;
     position: relative;
-    &>div {
-      grid-template-columns: none;
-      row-gap: 30px;
-      section{
-        width: 100%;
+    &-content{
+
+      &>div {
+        grid-template-columns: none;
+        row-gap: 30px;
+        section{
+          width: 100%;
+        }
       }
+
     }
+
   }
 
   #letterbox {

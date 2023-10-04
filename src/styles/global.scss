@@ -2256,39 +2256,45 @@ span.lineSeparator {
 }
 
 
-#project_banner {
+.project-banner {
   position: fixed;
   background: var(--darkbkg);
   width: 100%;
   height: 60vh;
   top: 0;
   box-sizing: border-box;
-  padding: 5% 20%;
+  padding: 5% 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 
-  &>div {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10%;
-    max-width: 1000px;
-    justify-items: center;
+  &-content{
 
-    &>section {
-      box-sizing: border-box;
+    max-width: 1280px;
 
-      h5 {
-        margin-bottom: 5px;
-      }
-
-      &>div {
-        margin-bottom: 15px;
+    &>div {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 10%;
+      max-width: 1000px;
+      justify-items: center;
+  
+      &>section {
+        box-sizing: border-box;
+  
+        h5 {
+          margin-bottom: 5px;
+        }
+  
+        &>div {
+          margin-bottom: 15px;
+        }
       }
     }
   }
+
 
   .project_category {
     display: flex;

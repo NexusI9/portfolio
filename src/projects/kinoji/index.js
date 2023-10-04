@@ -160,7 +160,7 @@ export default () => (
 
     <Article name='Search engine' spaced={true}>
       <Space type='small' />
-      <Title label='The search engine' className={'half'} summary={
+      <Title label='The search engine' summary={
         <>Even though the word “Archive” usually rhymes with utilitarian design rather than aesthetic,
           Kinoji lies between a functional and a refined interface via its
           3 filtering interfaces, each one having a distinct mechanic while being embedded in the same visual signature. <br /><br />
@@ -182,7 +182,7 @@ export default () => (
           <h5>The logotype</h5>
           <p>Combining elements of modernity with more classical shapes,
             <br />the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
-            <img src={logo.src} />
+                      <img src={logo.src} />
         </section>
       </Body>
 
