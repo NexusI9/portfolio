@@ -149,7 +149,7 @@ const VideoBanner = ({ _setCategory, _setLastAction }) => {
           <img src={viewshowreel.src} />
         </div>
         <div style={{ position: 'relative', width: '100%', height: '100%', display: 'inline-block' }} onMouseMove={onVideoEnter} onMouseLeave={onVideoLeave} >
-          <Video title='showreel' src={'/assets/short_showreel.webm'} autoplay={true} width='100%'/>
+          <Video title='showreel' src={'/assets/short_showreel.webm'} autoplay={true} width='100%' placeholder='./assets/thumbnails/showreel.webp'/>
           <Link href='/showreel'></Link>
         </div>
       </div>

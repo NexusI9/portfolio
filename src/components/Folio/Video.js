@@ -46,8 +46,8 @@ const Video = ({
         </>
       }
       {src &&
-        <video width={width || '100%'} autoPlay={autoplay} muted={true} loop={true}>
-          <source src={src} type='video/webm' />
+        <video width={width || '100%'} autoPlay={autoplay} muted={true} loop={true} poster={placeholder || null}>
+          <source src={src} type='video/webm'/>
         </video>}
     </div>
   );
