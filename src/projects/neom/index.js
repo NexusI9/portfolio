@@ -1,4 +1,4 @@
-import { Article, Img, Video } from '@/components/Folio';
+import { Article, Img, Video, Body} from '@/components/Folio';
 
 export default () => (
 	<>
@@ -6,11 +6,13 @@ export default () => (
 			<Video title='Neom showcase' id={503057732} />
 		</Article>
 
-		<Article id="desc">
+		<Article>
+			<Body flexDirection='vertical'>
 			<h2>Synopsis</h2>
 			<p><i>
 				"Dystopian landscapes, glowing cityscapes, archaic monolith, superstar and aboriginal androids: NEOM is a world of genesis and destruction, a world in which modernism faces tradition."
 			</i></p>
+			</Body>
 		</Article>
 		<Article>
 			<Img alt="neom" src="/assets/projects/neom/neom_1.webp" />

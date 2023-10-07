@@ -15,7 +15,6 @@ export default () => (
 				summary={<>Aftermath is a short animation series exploring the narrative potential of an environment without the direct involvement of human being in its core.
 					<br /><br />It is by looking for an implicit way to explore the ecological behavior of the human in its environment that the series ends up focusing not on the human being itself, but rather on its print, its waste and its remnant as a way to suggest and narrate the purpose of the environment.
 					</>}
-				className='half'
 			/>
 	</Article>
 
