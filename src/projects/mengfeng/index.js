@@ -59,12 +59,28 @@ export default () => (
     </Article>
 
     <Article name='Userflow' spaced={true} className='purpleBkg round'>
-      <Body flexDirection='vertical' title='The userflow'>
-        <div id='userflow'>
+      <Body flexDirection='vertical' title='Userflow'>
+        <div className='mengfeng-cartography'>
           <Cartography
             src="/assets/projects/mengfeng/userflow.svg"
           />
         </div>
+      </Body>
+    </Article>
+
+    <Article name='Wireframe' spaced={true} className='purpleBkg round'>
+      <Body flexDirection='vertical' title='Wireframes'>
+        <div className='mengfeng-cartography'>
+          <Cartography
+            src="/assets/projects/mengfeng/wireframes.svg"
+          />
+        </div>
+      </Body>
+    </Article>
+
+    <Article name='Logotype' spaced={true}>
+      <Body flexDirection='vertical' title="The style guide">
+        <Gallery galleries={galleryRoutes} galleryKey='guidestyle' />
       </Body>
     </Article>
 

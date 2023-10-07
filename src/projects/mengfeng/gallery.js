@@ -9,5 +9,8 @@ export default {
       { type: 'split', folder: '/mengfeng/', pictures: ['font'] },
       { type: 'split', folder: '/mengfeng/', pictures: ['brandpack', 'visitcard'] },
       { type: 'split', folder: '/mengfeng/', pictures: ['collateral_1', 'collateral_2', 'collateral_3'] }
+    ],
+    guidestyle: [
+      { type: 'split', folder: '/mengfeng/guidestyle', pictures: ['fonts', 'colors'] },
     ]
   };

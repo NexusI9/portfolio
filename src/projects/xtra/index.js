@@ -48,7 +48,7 @@ export default () => (
 
     <Article id='xtraLogo_introduce' spaced={true} className='backdrop center fill whitecolor'>
       <Title
-        label="The guidestyle"
+        label="The style guide"
         className='compressed'
         style={{ textAlign: 'center' }} />
       <Space type='small' />
