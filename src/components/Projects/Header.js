@@ -40,17 +40,17 @@ const Header = ({ project }) => {
             {project.desc &&
               <div>
                 <h5>Summary</h5>
-                <small>{project.desc || ' '}</small>
+                <p>{project.desc || ' '}</p>
               </div>
             }
 
             {project.category && <div>
               <h5>Categories</h5>
-              <section className='project_category' >{project.category.map((item, i) => <small key={'cat' + item}>{i < project.category.length - 1 ? <>{item}<span className='dottySeparator'></span></> : item}</small>)}</section>
+              <section className='project_category' >{project.category.map((item, i) => <p key={'cat' + item}>{i < project.category.length - 1 ? <>{item}<span className='dottySeparator'></span></> : item}</p>)}</section>
             </div>
             }
             <br />
-            <small>{project.date}</small>
+            <p>{project.date}</p>
           </section>
           <section>
             <h5>About the project</h5>
