@@ -315,6 +315,21 @@ export default {
         "category":["Creative Coding", "VJ", "Events", "Motion Design"],
         "date":"2015-2017",
         "folder":"variouswork"
+      },
+      {
+        "title":"MTS",
+        "thumbnail":"/assets/thumbnails/mts/mts-1.webp",
+        "overlay":{
+          "type":"picture",
+          "url":"/assets/thumbnails/mts/mts.webp"
+        },
+        "banner":"/assets/banners/mts.webp",
+        "desc":"A generative art installation using kinect and video projection",
+        "longdesc":"The Moon Telecommunication System (MTS) is an interactive installation using the human position and gestures combined with the actual position of the moon in space in order order to generate audiovisual abstract art.",
+        "category":["Creative Coding", "New Medias", "Generative Art"],
+        "date":"2018",
+        "folder":"mts",
+        "skin":"dark"
       }
   
     ]
@@ -344,7 +359,8 @@ export const STATIC_IMPORTS = {
   //creative code
   "UrbEXE":  dynamic(() => import('@/projects/urbexe')),
   "NTK":  dynamic(() => import('@/projects/ntk')),
-  "Various Work":  dynamic(() => import('@/projects/variouswork'))
+  "Various Work":  dynamic(() => import('@/projects/variouswork')),
+  "MTS":  dynamic(() => import('@/projects/mts'))
 
 }
 
