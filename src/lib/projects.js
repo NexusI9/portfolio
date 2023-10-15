@@ -234,7 +234,7 @@ export default {
           "url":"/assets/thumbnails/ozu_overlay.webp"
         },
         "desc":"Various scenes with an expressionistic approach",
-        "longdesc":"Collections of various sceneries where I challenged myself to step back from the realistic approach I was used to, to rejoin with a more stylized depictions of environnments",
+        "longdesc":"Collections of various sceneries where I challenged myself to step back from the realistic approach I was used to, to rejoin with a more stylized depictions of environnments.",
         "category":["Digital Painting", "Concept Art"],
         "date":2021,
         "folder":"stylized"
@@ -311,7 +311,7 @@ export default {
         },
         "banner":"/assets/banners/variouswork.webp",
         "desc":"Collection of older loops",
-        "longdesc":"Animations designed to be projected during cultural events such as music acts, or broader experimental performances",
+        "longdesc":"Animations designed to be projected during cultural events such as music acts, or broader experimental performances.",
         "category":["Creative Coding", "VJ", "Events", "Motion Design"],
         "date":"2015-2017",
         "folder":"variouswork"
@@ -325,7 +325,7 @@ export default {
         },
         "banner":"/assets/banners/mts.webp",
         "desc":"A generative art installation using kinect and video projection",
-        "longdesc":"The Moon Telecommunication System (MTS) is an interactive installation using the human position and gestures combined with the actual position of the moon in space in order order to generate audiovisual abstract art.",
+        "longdesc":"The Moon Telecommunication System (MTS) is an interactive installation using the human position and gestures combined with the actual position of the moon in space in order to generate audiovisual abstract art.",
         "category":["Creative Coding", "New Medias", "Generative Art"],
         "date":"2018",
         "folder":"mts",
