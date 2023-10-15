@@ -291,7 +291,7 @@ export default {
       {
         "title":"NTK",
         "thumbnail":"/assets/thumbnails/ntk.webp",
-        "desc": "Selection of loops and samples made for soundsystems and other associations ",
+        "desc": "Archives of loops and samples made for soundsystems and other associations",
         "longdesc":"Collection of visuals generated from procedural software. Those were audio-interactive animations projected during events.",
         "category":["Creative Coding", "VJ", "Events", "Motion Design"],
         "overlay":{
