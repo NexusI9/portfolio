@@ -12,5 +12,6 @@ export default {
     ],
     guidestyle: [
       { type: 'split', folder: '/mengfeng/guidestyle', pictures: ['fonts', 'colors'] },
+      { type: 'base', folder: '/mengfeng/guidestyle', pictures: ['buttons_icons'] },
     ]
   };
