@@ -7,7 +7,7 @@ export default () => (
   <>
     <Article name='Product Design' spaced={true} >
       <Title
-        label='Product Design'
+        label='Device Design'
         summary={<>
           The design of MengFeng embodies a synthesis of materials and forms that resonate with both sturdiness and elegance. Crafted from Oak wood imitation and polished aluminum, the choice of materials ensures solidity without compromising on the product's lightness. Drawing inspiration from ancient vases, the curvaceous form of the device invites a sense of tranquility into any space.
           <br />The challenge lay in creating a multi-functional object that seamlessly integrates into various home decors, a piece that isn't just an appliance, but an aesthetic statement.

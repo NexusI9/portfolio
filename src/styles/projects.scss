@@ -713,7 +713,7 @@ object {
 
     svg {
       width: 28px;
-      fill: var(--purple);
+      fill: var(--primary-500);
     }
   }
 
@@ -770,12 +770,12 @@ object {
         height: 110%;
         display: block;
         border-radius: 100%;
-        border: solid 1px var(--purple);
+        border: solid 1px var(--primary-500);
         position: absolute;
       }
     }
 
-    background-color: var(--black);
+    background-color: var(--base-500);
     color: var(--white);
     border-radius: 10px 0px 0 10px;
 
@@ -830,7 +830,7 @@ object {
       ul {
         padding: 0;
         list-style: none;
-        color: var(--purple);
+        color: var(--primary-500);
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -847,7 +847,7 @@ object {
               display: block;
               width: 8px;
               height: 8px;
-              background: var(--purple);
+              background: var(--primary-500);
               border-radius: 2px;
             }
           }
@@ -860,7 +860,7 @@ object {
     }
 
     hr {
-      border: solid 1px var(--purple-10);
+      border: solid 1px var(--primary-50);
     }
   }
 
@@ -1180,7 +1180,7 @@ table .tspace td {
   justify-content: center;
   aspect-ratio: 16/9;
 
-  border: solid 1px var(--darkgrey);
+  border: solid 1px var(--base-400);
 
   &-label{
     position: absolute;
