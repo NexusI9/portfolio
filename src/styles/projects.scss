@@ -154,8 +154,69 @@ object {
 }
 
 
-.article-margin-bottom{
-  margin-bottom: 2em;
+.article {
+
+  &-margin-bottom {
+    margin-bottom: 2em;
+  }
+
+  &-table {
+    overflow-x: auto;
+    width: 100%;
+
+    $radius: 10px;
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: solid 1px var(--base-700);
+      border-radius: $radius;
+
+
+
+      tr {
+
+        &:last-of-type {
+          td {
+            &:first-of-type {
+              border-bottom-left-radius: $radius;
+            }
+            &:last-of-type{
+              border-bottom-right-radius: $radius; 
+            }
+          }
+        }
+
+        th {
+          &:first-of-type {
+            border-top-left-radius: $radius;
+          }
+
+          &:last-of-type {
+            border-top-right-radius: $radius;
+          }
+        }
+
+        td {
+          vertical-align: text-top;
+        }
+
+        td,
+        th {
+          padding: 1em;
+          border: solid 1px var(--base-700);
+
+          &:first-of-type {
+            background-color: var(--base-800);
+          }
+        }
+      }
+
+    }
+
+
+  }
 }
 
 /*———————————————————————————————————————————————-*/
@@ -457,7 +518,7 @@ object {
   padding-left: 8%;
   width: 100%;
   @include maxWidth();
-  
+
   box-sizing: border-box;
   display: block;
   opacity: 0;
@@ -663,7 +724,8 @@ object {
         width: 100%;
         aspect-ratio: 1/1;
         height: auto;
-        &.lightStroke{
+
+        &.lightStroke {
           border: solid 1px #252a39;
         }
       }
@@ -690,13 +752,13 @@ object {
     padding: 0px 8% 50px 8%;
     box-sizing: border-box;
 
-    & > div{
+    &>div {
       display: flex;
       flex-direction: row;
       gap: 50px;
       cursor: ew-resize;
     }
- 
+
 
     &::-webkit-scrollbar {
       display: none;
@@ -787,7 +849,8 @@ object {
         margin: 10px 0;
         gap: 10px;
 
-        &, strong {
+        &,
+        strong {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -877,6 +940,7 @@ object {
   &[data-theme="dark"] {
     span {
       background-color: var(--white);
+
       &::before {
         background: var(--white);
       }
@@ -1131,29 +1195,31 @@ table .tspace td {
 }
 
 
-.cartography{
+.cartography {
 
   overflow: hidden;
-  &.active{
-    .cartography-label{
+
+  &.active {
+    .cartography-label {
       opacity: 0;
       transition: opacity 0.2s ease;
     }
+
     cursor: grab;
 
-    .hints{
+    .hints {
       opacity: 1;
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
-  &.drag{
-    img{
+  &.drag {
+    img {
       transition: none;
     }
   }
 
-  .hints{
+  .hints {
     font-size: 0.8em;
     font-weight: bold;
     position: absolute;
@@ -1166,12 +1232,12 @@ table .tspace td {
     transition: transform, opacity, 0.25s ease-out;
   }
 
-  img{
+  img {
     transition: transform 1s ease;
-    pointer-events: none; 
+    pointer-events: none;
     user-select: none;
     user-drag: none;
-    
+
   }
 
   position:relative;
@@ -1182,7 +1248,7 @@ table .tspace td {
 
   border: solid 1px var(--base-400);
 
-  &-label{
+  &-label {
     position: absolute;
     box-sizing: border-box;
     padding: 15px 20px;
@@ -1192,7 +1258,7 @@ table .tspace td {
     opacity: 1;
     transition: opacity 0.5s ease;
     z-index: 1;
-    color:var(--white);
+    color: var(--white);
   }
 
 }
