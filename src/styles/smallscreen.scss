@@ -249,8 +249,12 @@
 
   .article {
     &.spaced{ margin-bottom: 10%; }
+
   }
 
+  section#diffuse_lumino::before{
+    top:0;
+  }
 
 
 
