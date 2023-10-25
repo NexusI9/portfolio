@@ -1,0 +1,52 @@
+.flex {
+    display: flex;
+}
+
+.block {
+    display: block;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.centered {
+    align-items: center;
+    justify-content: center;
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.right {
+    align-items: flex-end;
+}
+
+.hcenter {
+    justify-content: center;
+}
+
+.vcenter {
+    align-items: center;
+}
+
+.padleft {
+    padding-left: 5%;
+}
+
+.padright {
+    padding-right: 5%;
+}
+
+.t-center{
+    text-align: center;
+}
+
+.no-margin{
+    margin:0;
+}
+
+.gap-small{
+    gap:24px;
+}

@@ -208,18 +208,6 @@ export default () => (
     <Space type='small' />
       <Body title="Design Thinking" flexDirection='vertical'>
         <h5>User-base and target audience </h5>
-        <p>
-          Once the stack and structure had been decided it was important to set a data hierarchy between the main components.
-          The most intuitive way to do it was to have a nucleus component from which is declined all the others. In this case the "movie" component is the nucleus.
-          This choice meant that every other components from the database will emerge from the "movie" component.
-
-          By drawing the following scheme, it was inteserting to see the two kinds of data the database would include:
-          <ol>
-            <li><u>The hard data:</u> the static and factual information</li>
-            <li><u>The organic data:</u>  meaning information that are subjects to change, and uncertainty</li>
-          </ol>
-
-        </p>
 
         <Img alt='poster mode' src='/assets/projects/kinoji/user-base.svg' />
       </Body>

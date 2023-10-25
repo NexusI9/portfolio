@@ -1,3 +1,6 @@
+@use './components/base.css';
+
+
 body {
   margin: 0;
   counter-reset: step;
@@ -153,6 +156,27 @@ object {
   padding: 0;
 }
 
+body[data-skin="dark"]{
+
+  .article{
+
+    &-table{
+      table{
+        border-color: var(--base-700);
+
+        td,
+        th {
+          border-color: var(--base-700);
+
+          &:first-of-type {
+            background-color: var(--base-800);
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .article {
 
@@ -170,7 +194,7 @@ object {
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      border: solid 1px var(--base-700);
+      border: none;
       border-radius: $radius;
 
 
@@ -205,10 +229,10 @@ object {
         td,
         th {
           padding: 1em;
-          border: solid 1px var(--base-700);
+          border: solid 1px var(--base-100);
 
           &:first-of-type {
-            background-color: var(--base-800);
+            background-color: var(--base-50);
           }
         }
       }
@@ -470,7 +494,6 @@ object {
 .imgWrapper {
   display: flex;
   max-width: 1920px;
-  margin: auto;
   margin-bottom: 10px;
   justify-content: center;
 
@@ -567,46 +590,7 @@ object {
     max-height: 70%;
   }
 
-  .flex {
-    display: flex;
-  }
-
-  .block {
-    display: block;
-  }
-
-  .vertical {
-    flex-direction: column;
-  }
-
-  .centered {
-    align-items: center;
-    justify-content: center;
-  }
-
-  .horizontal {
-    flex-direction: row;
-  }
-
-  .right {
-    align-items: flex-end;
-  }
-
-  .hcenter {
-    justify-content: center;
-  }
-
-  .vcenter {
-    align-items: center;
-  }
-
-  .padleft {
-    padding-left: 5%;
-  }
-
-  .padright {
-    padding-right: 5%;
-  }
+  
 
   &>.body {
     img {
@@ -782,7 +766,7 @@ object {
   &-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px 50px;
+    gap: 20px 20px;
     box-sizing: border-box;
     padding: 15px 0px;
   }
@@ -878,7 +862,7 @@ object {
     padding: 15px 20px;
 
     .persona-details {
-      max-width: 800px;
+      max-width: 700px;
 
       ul {
         list-style: square;
