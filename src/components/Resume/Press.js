@@ -10,7 +10,7 @@ const Press = ({language}) => (
       <Content
         card={true}
         href="https://www.fedelab.fr/philip-pentacle-animal-chamber-apocalypse-beat-october-tone/"
-        visual={press01.src}
+        visual={press02.src}
         date="2021"
         header={<p>PHILIP PENTACLE – ANIMAL CHAMBER APOCALYPSE BEAT [OCTOBER TONE]</p>}
         detail="Fedelab.fr"
@@ -19,7 +19,7 @@ const Press = ({language}) => (
       <Content
         card={true}
         href="https://www.lalsace.fr/culture-loisirs/2021/04/19/un-nouveau-clip-tres-anime-pour-philip-pentacle?fbclid=IwAR1678dXucyRIkv5ItoE2wi3ena8-KaOiQTVzDe32l8zNvTJe_XqVm1ij94"
-        visual={press02.src}
+        visual={press04.src}
         date={ 
           <Multi 
             eng="April 19th, 2021" 
@@ -50,7 +50,7 @@ const Press = ({language}) => (
       <Content
         card={true}
         href="https://phenixwebtv.com/2019/12/14/les-clips-de-la-semaine-39/"
-        visual={press04.src}
+        visual={press01.src}
         date={ 
           <Multi 
             eng="December 14th, 2020" 

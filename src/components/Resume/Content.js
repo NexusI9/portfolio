@@ -3,7 +3,11 @@ const Content = ({header, body, detail, icon, card, date, visual, href, classNam
 
   const DynamicComponent = href ? 'a' : 'div';
   return (
-    <DynamicComponent className={`content default ${(card ? 'card' : '')} ${(href ? 'linked' : '')} ${className}`}>
+    <DynamicComponent 
+     className={`content default ${(card ? 'card' : '')} ${(href ? 'linked' : '')} ${className}`}
+     {...(href && {href:href, target:'_blank'})}
+     
+     >
       {icon && <img className='contentIcon' src={icon}/>} 
       {visual && <img className="contentVisual" src={visual}/>}
         <div className='contentHeader'>
