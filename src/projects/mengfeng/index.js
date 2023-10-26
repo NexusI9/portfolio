@@ -152,28 +152,6 @@ export default () => (
       </Body>
     </Article>
 
-    <Article name='Userflow' spaced={true} className='purpleBkg round'>
-      <Body flexDirection='vertical'>
-        <h5>Userflow</h5>
-        <div className='mengfeng-cartography'>
-          <Cartography
-            src="/assets/projects/mengfeng/userflow.svg"
-          />
-        </div>
-      </Body>
-    </Article>
-
-    <Article name='Wireframe' spaced={true} className='purpleBkg round'>
-      <Body flexDirection='vertical'>
-        <h5>Wireframe</h5>
-        <div className='mengfeng-cartography'>
-          <Cartography
-            src="/assets/projects/mengfeng/wireframes.svg"
-          />
-        </div>
-      </Body>
-    </Article>
-
     <Article name='Device 3D concept' spaced={true} >
       <Title
         label='Device 3D concept'
@@ -203,6 +181,30 @@ export default () => (
         <Gallery galleries={galleryRoutes} galleryKey='logo' />
       </Body>
     </Article>
+
+    <Article name='Userflow' spaced={true} className='purpleBkg round'>
+      <Body flexDirection='vertical'>
+        <h5>Userflow</h5>
+        <div className='mengfeng-cartography'>
+          <Cartography
+            src="/assets/projects/mengfeng/userflow.svg"
+          />
+        </div>
+      </Body>
+    </Article>
+
+    <Article name='Wireframe' spaced={true} className='purpleBkg round'>
+      <Body flexDirection='vertical'>
+        <h5>Wireframe</h5>
+        <div className='mengfeng-cartography'>
+          <Cartography
+            src="/assets/projects/mengfeng/wireframes.svg"
+          />
+        </div>
+      </Body>
+    </Article>
+
+
 
     <Article name='Style guide' spaced={true}>
       <Body flexDirection='vertical' title="The style guide">

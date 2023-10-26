@@ -118,19 +118,7 @@ export default () => (
         </div>
       </Body>
       <Space />
-      <Title
-        label='Website overview'
-        summary={
-          <>
-            The main challenge designing Kinoji website was to create an interface that seamlessly blends attractiveness, usability, and functionality, ensuring users enjoy a comfortable navigation experience through the vast cinematic archives.
-            The primary focus was on precisely and thoughtfully targeting the number of options presented, striking a balance to avoid overwhelming users with an overly complex and daunting array of features.
-            <br /><br />
-            From a visual standpoint, the goal was to immerse users in the realm of cinema by employing a predominantly black theme that serves to accentuate the prominence of film frames. The website's aesthetic prioritized capturing the essence of the cinematic world, with the dark backdrop providing a canvas for the vibrant movie stills and directorial captures to shine through. This approach not only enhances the overall experience but also draws visitors into the intriguing world of East Asian cinema.
-          </>
-        }
-      />
-      <Body flexDirection='vertical'>
-        <br />
+      <Body flexDirection='vertical' title="Website overview">
         <Gallery galleries={gallery} galleryKey='gallery_1' />
       </Body>
     </Article>
@@ -181,31 +169,9 @@ export default () => (
       </Body>*/}
     </Article>
 
-    <Article spaced={true} name='The style guide' id='kinoji-guidestyle' className='backdrop center fill'>
-
-      <Body title="Style guide" flexDirection='vertical'>
-        <section id='logointroduce' >
-          <h5>The logotype</h5>
-          <p>Combining elements of modernity with more classical shapes,
-            <br />the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
-          <img src={logo.src} />
-        </section>
-      </Body>
-
-      <hr />
-
-      <Body flexDirection='vertical'>
-        <div className='article-margin-bottom'>
-          <h5>Typeface and colors</h5>
-        </div>
-        <Gallery galleries={gallery} galleryKey={"guidestyle"} />
-      </Body>
-
-    </Article>
-
 
     <Article spaced={true} name='Design Thinnking'>
-    <Space type='small' />
+      <Space type='small' />
       <Body title="Design Thinking" flexDirection='vertical'>
         <h5>User-base and target audience </h5>
 
@@ -460,9 +426,9 @@ export default () => (
       <Space type='small' />
       <Body flexDirection='vertical'>
         <header>
-        <h5>Userflow </h5>
-        <p>This macro user flow focuses on the main mechanics and features along with their interrelations.</p>
-        <br/>
+          <h5>Userflow </h5>
+          <p>This macro user flow focuses on the main mechanics and features along with their interrelations.</p>
+          <br />
         </header>
 
         <Cartography
@@ -471,11 +437,42 @@ export default () => (
         />
       </Body>
       <Space type='small' />
-      <Body flexDirection='vertical'>
-        <h5>Wireframes and design</h5>
-        <Gallery galleries={gallery} galleryKey='website' />
+
+    </Article>
+
+
+    <Article spaced={true} name='The style guide' id='kinoji-guidestyle' className='backdrop center fill'>
+
+      <Body title="Style guide" flexDirection='vertical'>
+        <section id='logointroduce' >
+          <h5>The logotype</h5>
+          <p>Combining elements of modernity with more classical shapes,
+            <br />the logotype also does an echo to Asian culture as well as the cinema iconography.</p>
+          <img src={logo.src} />
+        </section>
       </Body>
 
+      <hr />
+
+      <Body flexDirection='vertical'>
+        <div className='article-margin-bottom'>
+          <h5>Typeface and colors</h5>
+        </div>
+        <Gallery galleries={gallery} galleryKey={"guidestyle"} />
+      </Body>
+
+    </Article>
+
+    <Article spaced='true'>
+      <Space type='small' />
+      <Body flexDirection='vertical' title='Wireframes and design' summary={<>
+        The main challenge designing Kinoji website was to create an interface that seamlessly blends attractiveness, usability, and functionality, ensuring users enjoy a comfortable navigation experience through the vast cinematic archives.
+        The primary focus was on precisely and thoughtfully targeting the number of options presented, striking a balance to avoid overwhelming users with an overly complex and daunting array of features.
+        <br /><br />
+        From a visual standpoint, the goal was to immerse users in the realm of cinema by employing a predominantly black theme that serves to accentuate the prominence of film frames. The website's aesthetic prioritized capturing the essence of the cinematic world, with the dark backdrop providing a canvas for the vibrant movie stills and directorial captures to shine through. This approach not only enhances the overall experience but also draws visitors into the intriguing world of East Asian cinema.
+      </>}>
+        <Gallery galleries={gallery} galleryKey='website' />
+      </Body>
     </Article>
 
 
