@@ -3940,14 +3940,14 @@ img.gradientImg {
     margin-top: 10%;
 
     &>* {
-      font-size: clamp(70px, 10vw, 150px);
+      font-size: clamp(70px, 9vw, 150px);
       font-family: 'murmure';
       opacity: 0.6;
       color: transparent;
       -webkit-text-stroke: 1px var(--base-500);
       text-stroke: 1px var(--base-500);
-      line-height: 10rem;
-
+      line-height: 1.1em;
+      margin: 0;
       @media only screen and (min-width: 1920px) {
         font-size: clamp(80px, 13vw, 160px);
       }
