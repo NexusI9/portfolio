@@ -17,7 +17,8 @@ const Events = ({language}) =>(
     <div className='content event grid'>
     <Content
       visual={event10.src}
-      card={true}
+      className='border-light'
+      card={false}
       date={ 
         <Multi eng="March 3rd, 2020" 
                 fr="3 Mars 2020" 
@@ -44,8 +45,9 @@ const Events = ({language}) =>(
      />
   
     <Content
-      card={true}
+      card={false}
       visual={event05.src}
+      className='border-light'
       header={<b>ART’ung Live</b>}
       date={ 
         <Multi 
@@ -73,7 +75,8 @@ const Events = ({language}) =>(
   
   
     <Content
-      card={true}
+      card={false}
+      className='border-light'
       visual={event09.src}
       date={ 
           <Multi 
@@ -94,9 +97,9 @@ const Events = ({language}) =>(
       }
       detail={ 
           <Multi 
-            eng="Local ART’ung, Willerhoff, France" 
-            fr="Local ART’ung, Willerhoff, France" 
-            zh="ENSAD，南錫，法國" 
+            eng="Gallerie NaMiMa de l'ENSAD, Nancy, France" 
+            fr="ENSAD NaMiMa Gallery, Nancy, France" 
+            zh="ENSAD NaMiMa美术馆，南錫，法國" 
             language={language}
           /> 
       }
@@ -104,8 +107,9 @@ const Events = ({language}) =>(
   
   
     <Content
-      card={true}
+      card={false}
       visual={event04.src}
+      className='border-light'
       header={<b>Limedia Party #1</b>}
       date={ 
         <Multi 
@@ -135,8 +139,9 @@ const Events = ({language}) =>(
   
   
     <Content
-      card={true}
+      card={false}
       visual={event08.src}
+      className='border-light'
       header={<b>TECHNO</b>}
       date={ 
         <Multi 
@@ -165,8 +170,9 @@ const Events = ({language}) =>(
      />
   
     <Content
-      card={true}
+      card={false}
       visual={event03.src}
+      className='border-light'
       header={<b>CTL PARTY!</b>}
       date={ 
         <Multi 
@@ -196,8 +202,9 @@ const Events = ({language}) =>(
   
   
     <Content
-      card={true}
+      card={false}
       visual={event07.src}
+      className='border-light'
       header={<b>Ph pas neutre : Jaquarius</b>}
       date={ 
         <Multi 
@@ -227,8 +234,9 @@ const Events = ({language}) =>(
   
   
     <Content
-      card={true}
+      card={false}
       visual={event02.src}
+      className='border-light'
       date={
         <Multi 
           eng="May 7th, 2017"
@@ -257,8 +265,9 @@ const Events = ({language}) =>(
      />
   
     <Content
-      card={true}
+      card={false}
       visual={event06.src}
+      className='border-light'
       header={<b>ARK4-Artem</b>}
       date={ 
         <Multi 
@@ -288,7 +297,8 @@ const Events = ({language}) =>(
   
   
     <Content
-      card={true}
+      card={false}
+      className='border-light'
       visual={event01.src}
       header={<b>Freshmen homecoming</b>}
       date={

@@ -50,3 +50,8 @@
 .gap-small{
     gap:24px;
 }
+
+
+.border-light{
+    border: solid 1px var(--base-50);
+}

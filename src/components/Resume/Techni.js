@@ -25,7 +25,7 @@ const Techni = ({language}) => (
   <div className='content technical'>
     { Object.keys(techList).map( key => {
         const item = techList[key];
-        return(<section key={'section'+key} className='card'>
+        return(<section key={'section'+key} className='border-light round padleft padright'>
           <section>
               <small className='discrete'>
                 <Multi

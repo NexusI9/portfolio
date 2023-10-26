@@ -117,7 +117,7 @@ export default ({
     return (<div
         className={`cartography ${className && className} round ${active && 'active'} ${drag && 'drag'}`}
         ref={container}
-        onMouseEnter={device() === "desktop" && onMouseEnter}
+        onMouseEnter={device() === "desktop" ? onMouseEnter : undefined}
     >
         {device() === "desktop" && <p className='cartography-label round'>{`press ${os() === 'MAC' ? '⌘' : 'CTRL'} + mouse ${label}`}</p> }
         {src && <img ref={picture} src={src} />}

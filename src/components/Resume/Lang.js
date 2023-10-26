@@ -10,7 +10,8 @@ const StatIcon = () =>
 const Lang = ({language}) => (
   <div className='content language grid'>
   <Content
-    card={true}
+    card={false}
+    className='border-light round'
      header={
       <Multi eng={<>French <small className='discrete'><StatIcon/>native</small></>}
        fr={<>Français <small className='discrete'><StatIcon/>maternelle</small></>}
@@ -19,7 +20,8 @@ const Lang = ({language}) => (
        />
    }/>
   <Content
-     card={true}
+     card={false}
+     className='border-light round'
      header={
       <Multi eng={<>English <small className='discrete'><StatIcon/>fluent</small></>}
        fr={<>Anglais <small className='discrete'><StatIcon/>bilingue</small></>}
@@ -28,7 +30,8 @@ const Lang = ({language}) => (
        />
    }/>
   <Content
-     card={true}
+     card={false}
+     className='border-light round'
      header={
       <Multi eng={<>Mandarin <small className='discrete'><StatIcon/>intermediate</small></>}
        fr={<>Mandarin <small className='discrete'><StatIcon/>intermédiaire</small></>}
@@ -37,7 +40,8 @@ const Lang = ({language}) => (
        />
    }/>
   <Content
-     card={true}
+     card={false}
+     className='border-light round'
      separator={false}
      header={
       <Multi eng={<>German <small className='discrete'><StatIcon/>basic</small></>}
