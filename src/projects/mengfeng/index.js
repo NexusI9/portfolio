@@ -20,7 +20,7 @@ export default () => (
 
       <Body flexDirection='vertical'>
         <header>
-          <h5>User base definition</h5>
+          <h5>User base probing</h5>
           <p>Before embarking on the development of detailed personas, it was imperative to identify the job fields and sectors that are most susceptible to anxiety and stress. Conducting extensive statistical research in this regard served a dual purpose. Firstly, it helped in pinpointing the specific demographic of individuals who might find our product most beneficial, offering a precise target audience.
             <br />Secondly, delving into the socio-economic profiles and backgrounds of these individuals provided valuable insights into their unique needs and pain points. This comprehensive approach ensures that our product is not only tailored to address stress and anxiety but is also well-aligned with the diverse and specific requirements of our intended users.
 
