@@ -400,8 +400,8 @@ export default () => (
 
           By drawing the following scheme, it was inteserting to see the two kinds of data the database would include:
           <ol>
-            <li><u>The hard data:</u> the static and factual information</li>
-            <li><u>The organic data:</u>  meaning information that are subjects to change, and uncertainty</li>
+            <li><u>The hard data:</u> the static and factual information.</li>
+            <li><u>The organic data:</u>  meaning information that are subjects to change, and uncertainty.</li>
           </ol>
 
         </p>
