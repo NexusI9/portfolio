@@ -197,7 +197,9 @@ body[data-skin="dark"]{
       border: none;
       border-radius: $radius;
 
-
+      ul{
+        padding-left: 1rem;
+      }
 
       tr {
 
