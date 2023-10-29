@@ -195,8 +195,12 @@ export default () => (
 
     <Article name='Wireframe' spaced={true} className='purpleBkg round'>
       <Body flexDirection='vertical'>
-        <h5>Wireframe</h5>
+        <h5>Low and high-fidelity wireframes</h5>
         <div className='mengfeng-cartography'>
+        <Cartography
+            src="/assets/projects/mengfeng/low-wireframes.svg"
+          />
+          <Space type="small"/>
           <Cartography
             src="/assets/projects/mengfeng/wireframes.svg"
           />

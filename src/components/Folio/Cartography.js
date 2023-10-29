@@ -11,6 +11,7 @@ export default ({
     className
 }) => {
 
+    const [focus, setFocus] = useState(false);
     const [active, setActive] = useState();
     const [drag, setDrag] = useState();
     const container = useRef();
@@ -20,8 +21,8 @@ export default ({
 
 
     const move = () => {
-        if(!container.current){ return; }
-        const {width, height} = container.current.getBoundingClientRect();
+        if (!container.current) { return; }
+        const { width, height } = container.current.getBoundingClientRect();
         delta.x = checkBoundary(STORE.x, width) || delta.x;
         delta.y = checkBoundary(STORE.y, height) || delta.y;
 
@@ -71,15 +72,22 @@ export default ({
     };
 
     const onMouseEnter = () => {
+        setFocus(true);
         window.addEventListener('keydown', onKeyDown);
         window.addEventListener('keyup', onKeyUp);
     };
 
+    const onMouseLeave = () => {
+        setFocus(false);
+        window.addEventListener('keydown', onKeyDown);
+        window.addEventListener('keyup', onKeyUp);
+    }
+
     //--Keyboard related events
     const onKeyDown = (e) => {
-        if (e.code === 'MetaLeft' || e.code === 'ControlLeft') {
+        if (focus && (e.code === 'MetaLeft' || e.code === 'ControlLeft')) {
             //zoom in picture
-            if(picture.current) picture.current.style.transform = STORE.update({scale:zoom});
+            if (picture.current) picture.current.style.transform = STORE.update({ scale: zoom });
 
             delta.scale = zoom;
             setActive(true);
@@ -113,15 +121,18 @@ export default ({
         container.current?.removeEventListener('wheel', onWheel);
     };
 
-
-    return (<div
-        className={`cartography ${className && className} round ${active && 'active'} ${drag && 'drag'}`}
-        ref={container}
+    /* 
         onMouseEnter={device() === "desktop" ? onMouseEnter : undefined}
+        onMouseLeave={device() === "desktop" ? onMouseLeave : undefined }
+    */
+    return (<div
+        className={`cartography ${className && className || undefined} round ${active && 'active' || undefined} ${drag && 'drag' || undefined}`}
+        ref={container}
     >
-        {device() === "desktop" && <p className='cartography-label round'>{`press ${os() === 'MAC' ? '⌘' : 'CTRL'} + mouse ${label}`}</p> }
+
+        {/*device() === "desktop" && <p className='cartography-label round'>{`press ${os() === 'MAC' ? '⌘' : 'CTRL'} + mouse ${label}`}</p>*/}
         {src && <img ref={picture} src={src} />}
-        {<p className="hints"><small>scroll: zoom &nbsp; | &nbsp; click & drag: move</small></p>}
+        {/*<p className="hints"><small>scroll: zoom &nbsp; | &nbsp; click & drag: move</small></p>*/}
     </div>);
 
 
