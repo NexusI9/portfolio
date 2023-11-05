@@ -1226,7 +1226,7 @@ footer {
     display: flex;
     align-items: center;
     pointer-events: none;
-    @include maxWidth();
+    margin: auto;
   }
 
   & * {
@@ -2478,7 +2478,10 @@ span.lineSeparator {
     padding-left: 20px;
     gap: 60px;
     margin: auto;
-    max-width: 1920px;
+    
+    @media only screen and (min-width: 1920px) {
+      grid-template-columns: 1fr 2fr;
+    }
   }
 
   &-portrait {
@@ -2486,7 +2489,6 @@ span.lineSeparator {
     left: 0%;
     top: 100px;
     height: 80vh;
-    max-height: 600px;
 
     canvas {
       height: 70%;
@@ -2754,7 +2756,7 @@ span.lineSeparator {
     padding-right: 6%;
     box-sizing: border-box;
     width: 100%;
-    @include maxWidth();
+    margin:auto;
     left: 0;
     right: 0;
 
