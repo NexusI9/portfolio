@@ -262,7 +262,7 @@ function Resume() {
       }
 
 
-      <div id='resume-grid' className='container'>
+      <div id='resume-grid'>
 
         <Portrait innerRef={e => portrait.current = e} />
 

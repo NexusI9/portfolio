@@ -2473,8 +2473,9 @@ span.lineSeparator {
 
   &-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 0.8fr 2fr;
     padding-right: 100px;
+    padding-left: 20px;
     gap: 60px;
   }
 
@@ -2483,10 +2484,11 @@ span.lineSeparator {
     left: 0%;
     top: 100px;
     height: 80vh;
-    max-height: 800px;
+    max-height: 600px;
 
     canvas {
       height: 70%;
+      
     }
   }
 
@@ -2537,7 +2539,7 @@ span.lineSeparator {
       margin-bottom: 30px;
       transition: transform 0.6s ease-out;
       display: grid;
-      grid-template-columns: 1fr 3fr;
+      grid-template-columns: minMax(100px, 200px) 3fr;
       gap: 40px;
       margin-bottom: 100px;
 
