@@ -13,7 +13,7 @@ export default () => {
         }, {
           type:'yin',
           icon: "/assets/projects/laos/yin.webp",
-          title: "Flashcard game !",
+          title: "Flashcard game",
           summary: "For an easy entry level, flashcards are the choice to start learning new words ! Letting the mouse flowing through the cards to pair them together.",
           img: "/assets/projects/laos/screenshots/cards.webp",
         }, {
@@ -36,10 +36,11 @@ export default () => {
   
     return(
       <>
-        <section id='featuresIconContainer'>
+        <section id='features-icons-container'>
           {contentRoute.map( (item,i) => <span key={item.type+i} onMouseEnter={ () => setContent(contentRoute[i]) } data-type={item.type}></span> ) }
         </section>
-        <section style={{flexBasis: '50%', marginTop:'3%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        {console.log(content)}
+        <section className='features-description'>
           <div id="ft_circle_infobox">
               { content &&
                 <>

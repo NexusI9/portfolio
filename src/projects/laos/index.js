@@ -154,7 +154,7 @@ export default () => (
 
 
     <Article spaced={true} name='Settings'>
-      <Body className='reverse vcenter'>
+      <Body flexDirection='horizontal' className='reverse vcenter'>
         <Img alt='laos options screenshot' src='/assets/projects/laos/mockups/options.webp' />
         <Pointer
           style={{ flexBasis: '50%' }}

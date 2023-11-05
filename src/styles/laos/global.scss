@@ -41,27 +41,23 @@
    
    /*———————————————————————————————————————————————-*/
    
-   #featuresIconContainer{
-     height: 60vh;
-     overflow: hidden;
-     flex-basis: 33%; 
-     padding: 3% 0;
+   #features-icons-container{
+     height: fit-content;
+     gap: 20px;
+     flex-basis: 10%; 
+     padding: 2rem;
      box-sizing: border-box;
      display: grid;
      justify-content: center;
-     $size:10vw;
-     grid-template-columns: $size $size;
-     grid-template-rows: $size $size;
+     grid-template-columns: repeat(2, 50%);
      justify-items: center;
      align-items: center;
-     
    
      span{
-       width: 90%;
-       height: 90%;
+       width: 100%;
        aspect-ratio: 1/1;
        background-color: white;
-       border-radius: 2em;
+       border-radius: 20%;
        cursor: pointer;
        transition: transform 0.3s ease-out;
        transform: scale3d(1,1,1);
@@ -95,10 +91,16 @@
    
    #laos_features{
      height: 90vh;
+     max-height: 600px;
+
+     @media (orientation: portrait) {
+      max-height: none;
+     }
    }
    
    #ft_circle_infobox{
-     width: 90%;
+     box-sizing: border-box;
+     padding: 2rem 4rem;
      max-height: 100%;
    
      & > .infobox{

@@ -1,5 +1,8 @@
 @media only screen and (max-width: 825px) {
 
+  :root {
+    --title: 2em;
+  }
 
   body {
     &[data-skin="dark"] {
@@ -31,8 +34,10 @@
     box-sizing: border-box;
   }
 
-  :root {
-    --title: 2em;
+
+  #mock_popup.laos_pannel {
+    position: relative;
+    margin: auto;
   }
 
   #homeAbout {
@@ -459,7 +464,7 @@
   section#diffuse_lumino::before {
     top: 0;
   }
-  
+
   .article {
 
     .hori,
@@ -476,135 +481,135 @@
     }
 
 
-  .parallax {
-    flex-direction: column;
-    height: max-content;
-    gap: 2rem;
-    width: 100vw;
+    .parallax {
+      flex-direction: column;
+      height: max-content;
+      gap: 2rem;
+      width: 100vw;
 
-    &-picture {
-      height: 40vh;
-      overflow: hidden;
+      &-picture {
+        height: 40vh;
+        overflow: hidden;
+      }
+
+
+      &-header {
+        position: relative;
+        padding-left: 3rem;
+        padding-right: 3rem;
+
+        header.card {
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+        }
+      }
+    }
+
+    #guidesheet {
+      .body {
+        p {
+          text-align: left;
+        }
+      }
+    }
+
+    section.horizontal {
+      flex-direction: column;
+      gap: 1.3rem;
+
+      &.reverse {
+        flex-direction: column-reverse;
+      }
     }
 
 
-    &-header {
-      position: relative;
-      padding-left: 3rem;
-      padding-right: 3rem;
+    /*Remove desktop/ row layout relevant propreties (hald width, padding)*/
 
-      header.card {
-        padding: 0;
-        background: transparent;
-        box-shadow: none;
+    .half {
+      width: 100% !important;
+    }
+
+    .compress {
+      padding: 0;
+    }
+
+    .pointer {
+      display: block;
+      margin-bottom: 1.3rem;
+
+      span {
+        display: none;
+      }
+
+      &>br {
+        display: none;
+      }
+    }
+
+    .blank {
+      height: 10rem;
+    }
+
+    .hidtablet {
+      display: none;
+    }
+
+    .padleft {
+      padding-left: 0;
+    }
+
+    .padright {
+      padding-right: 0;
+    }
+
+    .tableGroup {
+      flex-direction: column;
+    }
+
+  }
+
+  .musicWave {
+    left: -7vw;
+    background-position-y: 75%;
+  }
+
+  #sidemenu {
+    margin-bottom: 40px;
+  }
+
+  #dirpath {
+    margin-top: 40px;
+  }
+
+  #features-icons-container {
+    justify-content: center;
+    $size: 30vw;
+    grid-template-columns: $size $size !important;
+    grid-template-rows: $size $size !important;
+  }
+
+  .projectWrapper {
+    #diffuse_lumino.backdrop {
+      &::before {
+        top: 0;
+        height: 100%;
       }
     }
   }
 
-  #guidesheet {
-    .body {
-      p {
-        text-align: left;
-      }
-    }
+  #kinoji_first_mockup {
+    margin-top: 10%;
   }
 
-  section.horizontal {
+  article.persona {
     flex-direction: column;
-    gap: 1.3rem;
+    width: 90vw;
 
-    &.reverse {
-      flex-direction: column-reverse;
+    header {
+      max-width: none;
+      border-radius: 10px;
     }
   }
-
-
-  /*Remove desktop/ row layout relevant propreties (hald width, padding)*/
-
-  .half {
-    width: 100% !important;
-  }
-
-  .compress {
-    padding: 0;
-  }
-
-  .pointer {
-    display: block;
-    margin-bottom: 1.3rem;
-
-    span {
-      display: none;
-    }
-
-    &>br {
-      display: none;
-    }
-  }
-
-  .blank {
-    height: 10rem;
-  }
-
-  .hidtablet {
-    display: none;
-  }
-
-  .padleft {
-    padding-left: 0;
-  }
-
-  .padright {
-    padding-right: 0;
-  }
-
-  .tableGroup {
-    flex-direction: column;
-  }
-
-}
-
-.musicWave {
-  left: -7vw;
-  background-position-y: 75%;
-}
-
-#sidemenu {
-  margin-bottom: 40px;
-}
-
-#dirpath {
-  margin-top: 40px;
-}
-
-#featuresIconContainer {
-  justify-content: center;
-  $size: 30vw;
-  grid-template-columns: $size $size !important;
-  grid-template-rows: $size $size !important;
-}
-
-.projectWrapper {
-  #diffuse_lumino.backdrop {
-    &::before {
-      top: 0;
-      height: 100%;
-    }
-  }
-}
-
-#kinoji_first_mockup {
-  margin-top: 10%;
-}
-
-article.persona {
-  flex-direction: column;
-  width: 90vw;
-  
-  header {
-    max-width: none;
-    border-radius: 10px;
-  }
-}
 
 }
