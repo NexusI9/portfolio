@@ -1,129 +1,300 @@
 
-#mock_popup * {
-  /*width: auto;
-  height: auto;
-  background: transparent;*/
-  border: none;
-  /*margin: 0px;
-  padding: 0px;*/
-  letter-spacing: normal;
-  text-align: left;
-  text-decoration: none;
-  text-indent: 0px;
-  text-transform: none;
-  white-space: normal;
-  word-spacing: normal;
-  /*font-weight: normal;
-  font-size: 12px;*/
-  font-family: 'Trebuchet MS', sans-serif !important;
-  visibility: visible;
-  line-height: initial;
-  color:black;
+:root {
+  /* Color styles */
+  --mock-laos-tones-a: hsla(210, 91.3%, 63.9%, 1);
+  --mock-laos-tones-b: hsla(7, 100%, 66.7%, 1);
+  --mock-laos-tones-c: hsla(86, 86.2%, 39.8%, 1);
+  --mock-laos-tones-d: hsla(295, 86.2%, 62.9%, 1);
+  --mock-laos-base-0: hsla(0, 0%, 100%, 1);
+  --mock-laos-base-50: hsla(220, 8.1%, 92.7%, 1);
+  --mock-laos-base-100: hsla(225, 7%, 77.6%, 1);
+  --mock-laos-base-200: hsla(222, 7.7%, 66.9%, 1);
+  --mock-laos-base-300: hsla(223, 7.3%, 51.8%, 1);
+  --mock-laos-base-400: hsla(224, 10.2%, 42.4%, 1);
+  --mock-laos-base-500: hsla(224, 18.9%, 28%, 1);
+  --mock-laos-base-600: hsla(225, 18.5%, 25.5%, 1);
+  --mock-laos-base-700: hsla(224, 18.8%, 19.8%, 1);
+  --mock-laos-base-800: hsla(224, 19%, 15.5%, 1);
+  --mock-laos-base-900: hsla(225, 20%, 11.8%, 1);
+  --mock-laos-primary-50: hsla(199, 100%, 95.1%, 1);
+  --mock-laos-primary-100: hsla(198, 100%, 84.7%, 1);
+  --mock-laos-primary-200: hsla(198, 100%, 77.5%, 1);
+  --mock-laos-primary-300: hsla(198, 100%, 67.1%, 1);
+  --mock-laos-primary-400: hsla(198, 100%, 60.6%, 1);
+  --mock-laos-primary-500: hsla(198, 100%, 50.8%, 1);
+  --mock-laos-primary-600: hsla(198, 96.6%, 46.3%, 1);
+  --mock-laos-primary-700: hsla(198, 96.7%, 36.1%, 1);
+  --mock-laos-primary-800: hsla(198, 97.2%, 27.8%, 1);
+  --mock-laos-primary-900: hsla(198, 96.3%, 21.4%, 1);
+
+
+  /*Shape*/
+  --round: 4px;
+
 }
 
-
-
-#mock_popup{
+#mock_popup {
   font-weight: normal;
   word-break: break-word;
-  pointer-events: none;
-  display: block;
+  /*pointer-events: none;*/
   width: auto;
   min-width: 13em;
   max-width: 27em;
-  height:fit-content;
-  border-radius:1em;
-  background-color:#cdcdcd;
-  position:relative;
-  top:0;
-  left:0;
-  box-shadow: rgb(0 0 0 / 50%) 0px 2px 5px;
+  height: fit-content;
+  position: absolute;
 
-  border: double 2px transparent;
-  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #ff0073,#2094ff);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+  h1 {
+    margin: 0;
+    font-weight: 500;
+    font-family: sans-serif;
+    &,
+    * {
+      font-size: 16px !important;
+    }
+  }
 
-  font-family: 'Trebuchet MS', sans-serif !important;
+  &.laos_pannel {
+
+    box-shadow: rgba(0, 0, 0, 0.50) 0px 2px 5px, rgba(0, 0, 0, 0.077) 0px 0px 5px inset;
+    font-size: 16px !important;
+    border: solid 1px var(--mock-laos-base-100);
+    font-family: 'Trebuchet MS', sans-serif !important;
+    background-color: var(--mock-laos-base-0);
+    color: var(--mock-laos-base-900);
+    text-align: left;
+    z-index: 999059;
+    border-radius: 8px;
+
+    .laos_folder {
+      background: var(--mock-laos-base-0);
+      border-radius: 6px;
+      margin: 0.5em;
+      padding: 0.5em;
+      cursor: pointer;
+      transition: background, border, 0.2s ease-out, transform 0.3s ease-out;
+      border: solid 1px var(--mock-laos-base-50);
+  
+      &:hover {
+        background: var(--mock-laos-base-50);
+        border-color: var(--mock-laos-base-50);
+      }
+  
+      &:active {
+        background-color: var(--mock-laos-primary-200);
+        color: var(--mock-laos-primary-900);
+        border-color: var(--mock-laos-primary-300);
+      }
+  
+      &.up {
+        transform: 0.1s cubic-bezier(.03, .35, .35, .9);
+        transform: scale(1.2);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+  
+      section {
+        padding: 0 !important;
+      }
+  
+      p {
+        padding-left: 0.3em;
+        margin: 0;
+        font-size: 13px;
+        font-weight: lighter;
+        line-height: 1.4em;
+        color: var(--mock-laos-base-900);
+      }
+  
+      .laos_header {
+        font-weight: 500;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: baseline;
+        margin: 0;
+  
+        &>* {
+          padding: 0.3em;
+        }
+  
+        h5 {
+          font-weight: normal;
+          font-size: 16px;
+          margin: 0 !important;
+          color: var(--mock-laos-base-900);
+  
+          &:not(:first-child) {
+            padding-left: 0.7em;
+          }
+        }
+  
+        .laos_zhuyin {
+          font-size: 80% !important;
+        }
+  
+        .laos_zhongwhen {
+          font-size: 110% !important;
+        }
+  
+      }
+  
+      .laos_def {
+        font-size: 13px !important;
+      }
+
+
+      .laos_tone {
+        &_a {
+          color: #4fa2f7 !important;
+        }
+      
+        &_b {
+          color: #ff6a55 !important;
+        }
+      
+        &_c {
+          color: #70bd0e !important;
+        }
+      
+        &_d {
+          color: #e54ff2 !important;
+        }
+      }
+  
+  
+    }
+  
+  
+    #laos_tips {
+      margin-top: 0.4em;
+      position: absolute;
+  
+      font-weight: normal;
+      color: #000;
+      font-size: 60%;
+  
+      transition: opacity 0.4s ease;
+  
+      width: 100%;
+      background: none;
+  
+      border-radius: 0.3em;
+  
+      z-index: 0;
+      white-space: nowrap;
+  
+      height: fit-content;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+  
+      &.top {
+        top: 0;
+        margin-top: -20%;
+      }
+  
+      p {
+        color: var(--mock-laos-base-900);
+        background: rgb(255, 255, 255);
+        border-radius: 0.3em;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        width: max-content;
+        margin: 1%;
+        padding: 2%;
+        float: left;
+        font-size: 8px;
+  
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+  
+      }
+  
+      svg {
+        .chclr {
+          fill: black;
+        }
+      }
+  
+    }
+  
+    &[data-theme="dark"] {
+  
+      background-color: var(--mock-laos-base-800);
+      border-color: var(--mock-laos-base-600);
+  
+      * {
+        color: var(--mock-laos-base-50);
+      }
+  
+      .laos_folder {
+        background: var(--mock-laos-base-700);
+        border-color: var(--mock-laos-base-800);
+  
+        p,
+        .laos_zhongwhen {
+          color: var(--mock-laos-base-50);
+        }
+  
+        &:hover {
+          background: var(--mock-laos-base-600);
+          border-color: var(--mock-laos-primary-700);
+        }
+  
+        &:active {
+          background: var(--mock-laos-base-900);
+          border-color: var(--mock-laos-base-800);
+        }
+      }
+  
+      #laos_tips {
+        p {
+          color: var(--mock-laos-base-50);
+          background-color: var(--mock-laos-base-600);
+          border: solid 1px var(--mock-laos-base-600);
+        }
+  
+        svg {
+          .chclr {
+            fill: var(--mock-laos-base-50);
+          }
+        }
+      }
+  
+      #laos_ocr_accuracy {
+        background-color: var(--mock-laos-base-600);
+      }
+  
+      .laos-crop-help {
+        background: var(--mock-laos-base-600);
+      }
+  
+      #laos_ocr_header{
+        section{
+          svg{
+            fill: var(--mock-laos-base-200);
+          }
+          p{
+            color: var(--mock-laos-base-200);
+          }
+          #laos_ocr_close {
+            &>span {
+              background-color: var(--mock-laos-base-200);
+            }
+          }
+  
+        }
+      }
+  
+  
+      #laos_ocr_body {
+        border-color: var(--mock-laos-base-600);
+      }
+  
+    }
+  }
 
 }
 
-#mock_popup .laos_folder{
-  background: #ececec;
-  border-radius: 1em;
-  margin: 0.5em;
-  padding:0.5em;
-}
 
-#mock_popup .laos_header{
-  font-weight:500;
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: baseline;
-}
-
-#mock_popup .laos_header > *{
-  padding:0.3em;
-}
-
-#mock_popup .laos_header h1{
-  font-weight: normal;
-  font-size: 16px;
-  margin: 0 !important;
-}
-
-#mock_popup .laos_header h1:not(:first-child){
-  padding-left: 0.7em;
-}
-
-#mock_popup .laos_zhuyin{
-  font-size: 80% !important;
-
-}
-
-#mock_popup .laos_zhongwhen{
-  font-size: 110% !important;
-}
-
-#mock_popup .laos_popup h1,p{
-  padding: 0.2em;
-}
-
-#mock_popup .laos_folder p{
-  padding-left: 0.3em;
-  margin: 0;
-  font-size: 13px;
-  font-weight: lighter;
-  line-height: 1.4em;
-}
-
-#mock_popup .laos_separator{
-
-    height: 0.1em;
-    width: 98%;
-    display: block;
-    margin-top: 0.5em;
-    background: radial-gradient(circle at top left, #ff0073,#2094ff);
-    margin-left: 1%;
-
-}
-
-#mock_popup .laos_key{
-  background: radial-gradient(circle at top left, rgba(255, 0, 115,0.8),rgba(32, 148, 255,0.8));
-  color: #FFF !important;
-  min-width: 3em;
-  text-align: center;
-  padding: 0.2em 0.4em;
-  border-radius: 0.3em;
-}
-
-#mock_popup .laos_tone_a{ color:#4fa2f7 !important; }
-
-#mock_popup .laos_tone_b{ color:#ff6a55 !important; }
-
-#mock_popup .laos_tone_c{ color:#70bd0e !important; }
-
-#mock_popup .laos_tone_d{ color:#e54ff2 !important; }
