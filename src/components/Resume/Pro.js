@@ -19,9 +19,9 @@ const Pro = ({language}) => (
             language={language}/>
           <List li={[
             <Multi
-              eng='Production of motion design materials and sound design (Google, Meta, TikTok ads, marketing collaterals, as well as product showcases...)'
-              fr='Production de divers éléments Motion Design et Sound Design (Google, Meta, TikTok ads, matériel marketing, ainsi que de la présentation de produits)'
-              zh='動態圖形與聲音設計製作 ( 從Google、 Meta、 TikTok 廣告到產品文宣 )'
+              eng='Production of 100+ motion design and static materials, with sound design (Google, Meta, TikTok ads, marketing collaterals, and product showcases).'
+              fr='Production de 100+ visuels marketing Motion Design, statiques et Sound Design (Google, Meta, TikTok ads et présentation de produits).'
+              zh='一百多個動態圖形和靜態行銷物料製作、與聲音製作( 從Google、Meta、 TikTok 廣告到產品文宣 )'
               language={language}/>,
               <Multi
               eng='Supervision of junior designers ensuring their work fit the established art directions.'
@@ -29,14 +29,14 @@ const Pro = ({language}) => (
               zh='初級設計師負責。 確保他們的創造適合客戶藝術指導'
               language={language}/>,
             <Multi
-              eng='Design of websites and print assets.'
-              fr='Design de sites web et de fichiers prints.'
-              zh='網站設計與多種平面元件打造'
+              eng='Design of 20 websites (wireframes, final designs and client presentations).'
+              fr='Design de 20 sites web (wireframes, designs finaux, présentations clients).'
+              zh='二十個網頁設計(佈局草稿 、最終設計 、客戶演示)'
               language={language}/>,
             <Multi
-              eng='Branding/ visual identity design.'
-              fr="Design d'identité visuelles et de branding, session de brainstorm marketing."
-              zh='對客戶進行品牌設計'
+              eng='Visual identity design, brand guidelines, and various print media.'
+              fr="Design d’identités visuelles, chartes graphiques et divers médias imprimés."
+              zh='對客戶進行視覺識別設計 、品牌指南 、以及各種印刷媒體'
               language={language}/>,
             <Multi
               eng="Videography and photo editing of the agency's events and venues."
