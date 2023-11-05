@@ -135,7 +135,6 @@ export default () => (
       <PersonaSlider personas={persona} />
     </Article>
     <Article name='Blog'>
-      <Space />
       <Body style={{ columnGap: '5%' }} className='flex vcenter' >
         <div>
           <h5>Nurturing the SEO through a content strategy</h5>

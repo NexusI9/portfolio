@@ -39,7 +39,6 @@ export default () => {
         <section id='features-icons-container'>
           {contentRoute.map( (item,i) => <span key={item.type+i} onMouseEnter={ () => setContent(contentRoute[i]) } data-type={item.type}></span> ) }
         </section>
-        {console.log(content)}
         <section className='features-description'>
           <div id="ft_circle_infobox">
               { content &&
