@@ -63,10 +63,6 @@ $depth: 10px;
 $smallDepth: 5px;
 
 
-html {
-  scroll-behavior: smooth;
-}
-
 html::-webkit-scrollbar {
   width: 0 !important;
   display: none;

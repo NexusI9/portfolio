@@ -133,7 +133,7 @@ const VideoBanner = ({ _setCategory, _setLastAction }) => {
           <h1><b>The powerful blend of Art & Code, with a French Touch.</b></h1>
         </header>
         <div className='aligncta'>
-          <Cta type='primary' href='/#Design' onClick={onViewClick}><small><b>explore my work</b></small></Cta>
+          <Cta type='primary' href='/#Design' onClick={onViewClick} scroll={true}><small><b>explore my work</b></small></Cta>
           <Cta type='secondary' href='/resume'><small><b>see my resume</b></small></Cta>
         </div>
       </motion.div>
