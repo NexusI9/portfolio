@@ -45,11 +45,11 @@ const App = ({ Component, pageProps }) => {
                 <meta name="theme-color" content="#000000" />
                 <meta property="og:site_name" content="The Art of Nassim El Khantour"/>
                 <meta name="twitter:site_name" content="The Art of Nassim El Khantour"/>
-                <meta content="Multimedia designer based in Montreal with over 5 years of experience. Expertise in motion and web design." name="description"/>
+                <meta content="Multimedia designer based in Montreal with over 7 years of experience. Expertise in motion and web design." name="description"/>
                 <meta content="Nassim El Khantour - Multimedia designer" property="og:title"/>
-                <meta content="Multimedia designer based in Montreal with over 5 years of experience. Expertise in motion and web design." property="og:description"/>
+                <meta content="Multimedia designer based in Montreal with over 7 years of experience. Expertise in motion and web design." property="og:description"/>
                 <meta content="Nassim El Khantour - Multimedia designer" property="twitter:title"/>
-                <meta content="Multimedia designer based in Montreal with over 5 years of experience. Expertise in motion and web design." property="twitter:description"/>
+                <meta content="Multimedia designer based in Montreal with over 7 years of experience. Expertise in motion and web design." property="twitter:description"/>
                 <meta property="og:type" content="website" />
                 <link rel="manifest" href="/manifest.json" />
                 <title>The Art of Nassim El Khantour</title>
