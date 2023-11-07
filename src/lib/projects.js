@@ -129,7 +129,7 @@ export default {
         "thumbnail":"/assets/thumbnails/acab.webp",
         "banner":"/assets/banners/acab.webp",
         "desc":"Awarded music video made for Philip Pentacle",
-        "longdesc":"For his 4th album, I had the honor to create the music video for the Synthwave music producer Philip Pentacle. Depicting a futuristic world where uncanny phenomenon seems to inhabit the soul of the sprawl. The music video for the first price at Vibrations Urbaines Festival in 2022.",
+        "longdesc":"For his 4th album, I had the honor to create the music video for the Synthwave music producer Philip Pentacle. Depicting a futuristic world where uncanny phenomenon seems to inhabit the soul of the sprawl. The music video won the first price at Vibrations Urbaines Festival in 2022.",
         "category":["Animation","Art Direction","Music Video"],
         "stack":["Photoshop","Illustrator","Blender","Maya","After Effects"],
         "overlay":{
