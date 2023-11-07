@@ -2425,6 +2425,7 @@ span.lineSeparator {
 
 
 #resume-portrait {
+
   h2 {
     font-family: 'murmure';
     writing-mode: vertical-lr;
@@ -2484,11 +2485,13 @@ span.lineSeparator {
     position: sticky;
     left: 0%;
     top: 100px;
-    height: 80vh;
-
+    width: 100%;
+    max-width: 850px;
+    max-height: 90vh;
+    height: auto;
+    aspect-ratio: 360 / 620;
     canvas {
       height: 70%;
-      
     }
   }
 
@@ -4188,10 +4191,10 @@ img.gradientImg {
 }
 
 #contactContainer {
+
   background-color: var(--white);
   position: relative;
   width: 100vw;
-  height: 90vh;
   overflow: hidden;
   background-size: cover;
   background-position: bottom;
@@ -4200,6 +4203,7 @@ img.gradientImg {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 5% 10%;
+  align-content: center;
 
   &>* {
     max-height: 800px;
