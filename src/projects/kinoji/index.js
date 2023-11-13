@@ -426,6 +426,17 @@ export default () => (
       <Space type='small' />
       <Body flexDirection='vertical'>
         <header>
+          <h5>Zoning </h5>
+          <p>Before creating detailed wireframes or user flows, it was crucial to conduct a sitemap zoning to identify redundant modules and understand the overall structure of the website.</p>
+          <br />
+        </header>
+
+        <img src="/assets/projects/kinoji/zoning.svg" />
+      </Body>
+
+      <Space type='small' />
+      <Body flexDirection='vertical'>
+        <header>
           <h5>Userflow </h5>
           <p>This macro user flow focuses on the main mechanics and features along with their interrelations.</p>
           <br />
