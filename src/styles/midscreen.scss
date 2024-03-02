@@ -87,7 +87,11 @@
 
   .quotes {
     &>div {
-      grid-template-columns: auto;
+      flex-direction: column;
+      blockquote{
+        width: 100%;
+        max-width: none;
+      }
     }
   }
 

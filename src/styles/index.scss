@@ -1,5 +1,6 @@
-@import 'global',
-        './components/base.css',
+@import './components/var',
+        'global',
+        './components/base',
         'gallery', 
         'midscreen',
         'projects',
