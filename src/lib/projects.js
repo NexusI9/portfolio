@@ -315,21 +315,6 @@ export default {
         "category":["Creative Coding", "VJ", "Events", "Motion Design"],
         "date":"2015-2017",
         "folder":"variouswork"
-      },
-      {
-        "title":"MTS",
-        "thumbnail":"/assets/thumbnails/mts/mts-1.webp",
-        "overlay":{
-          "type":"picture",
-          "url":"/assets/thumbnails/mts/mts.webp"
-        },
-        "banner":"/assets/banners/mts.webp",
-        "desc":"A generative art installation using kinect and video projection",
-        "longdesc":"The Moon Telecommunication System (MTS) is an interactive installation using the human position and gestures combined with the actual position of the moon in space in order to generate audiovisual abstract art.",
-        "category":["Creative Coding", "New Medias", "Generative Art"],
-        "date":"2018",
-        "folder":"mts",
-        "skin":"dark"
       }
   
     ]
@@ -428,4 +413,21 @@ export const THEMES =
       "date":2021,
       "folder":"webcollection"
     },
+
+
+    {
+        "title":"MTS",
+        "thumbnail":"/assets/thumbnails/mts/mts-1.webp",
+        "overlay":{
+          "type":"picture",
+          "url":"/assets/thumbnails/mts/mts.webp"
+        },
+        "banner":"/assets/banners/mts.webp",
+        "desc":"A generative art installation using kinect and video projection",
+        "longdesc":"The Moon Telecommunication System (MTS) is an interactive installation using the human position and gestures combined with the actual position of the moon in space in order to generate audiovisual abstract art.",
+        "category":["Creative Coding", "New Medias", "Generative Art"],
+        "date":"2018",
+        "folder":"mts",
+        "skin":"dark"
+      }
 */

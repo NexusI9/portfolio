@@ -27,7 +27,7 @@ export default () => {
         {
             quote: <>An incredibly talented and versatile Creative.<br />He consistently demonstrates a proactive approach to problem-solving, seamlessly adapting his skills to various projects and platforms.</>,
             name: 'Louhann M.',
-            job: 'Former Journalist & Copywriter at Grazia Magazine',
+            job: 'Journalist & Copywriter at Grazia Magazine',
             location: 'Paris, France',
             avatar: louhann.src
         },

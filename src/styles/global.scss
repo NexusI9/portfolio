@@ -2642,6 +2642,7 @@ span.lineSeparator {
         &.technical {
           &>* {
             margin-bottom: 15px;
+            padding-top: 10px;
           }
 
           li {
@@ -2928,6 +2929,8 @@ span.lineSeparator {
 
     h5 {
       padding-left: 10px;
+      font-size: 18px;
+      line-height: 1.3em;
       border-left: solid 3px var(--primary-500);
     }
 
